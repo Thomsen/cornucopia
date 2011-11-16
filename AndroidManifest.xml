@@ -17,10 +17,11 @@
         </activity>
         
         <activity
-            android:label="ActivityLifecycle"
+            android:label="test/ActivityLifecycle"
             android:name=".basic.ActivityLifecycle" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.csit.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
     </application>
