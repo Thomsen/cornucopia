@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/apache"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/basic"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/datastorage"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/devices"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/graphics"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/location"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/multimedia"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/ndk"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/others"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/parser"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/search"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/test"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/ui"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/web"/>
+	<classpathentry kind="src" path="src/com/csit/cornucopia/widgets"/>
+	<classpathentry excluding="com/csit/cornucopia/apache/|com/csit/cornucopia/basic/|com/csit/cornucopia/datastorage/|com/csit/cornucopia/devices/|com/csit/cornucopia/graphics/|com/csit/cornucopia/location/|com/csit/cornucopia/multimedia/|com/csit/cornucopia/ndk/|com/csit/cornucopia/others/|com/csit/cornucopia/parser/|com/csit/cornucopia/search/|com/csit/cornucopia/test/|com/csit/cornucopia/ui/|com/csit/cornucopia/web/|com/csit/cornucopia/widgets/" kind="src" path="src"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="output" path="bin/classes"/>
