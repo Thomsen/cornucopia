@@ -16,8 +16,6 @@ public class ActivityLifecycle extends Activity {
 		super.onContentChanged();
 		
 		Log.i(TAG_ACTIVITY_LIFECYCLE, "onContentChanged run...");
-		
-		
 	}
 
 	@Override
