@@ -39,6 +39,9 @@
 
         <service android:name="lifecycle.ServiceLifecycle" >
         </service>
+
+        <receiver android:name="lifecycle.BroadcastReceiverLifecycle" >
+        </receiver>
     </application>
 
 </manifest>
