@@ -1,5 +1,7 @@
 package lifecycle;
 
+import java.util.Calendar;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,11 +11,16 @@ public class BroadcastReceiverLifecycle extends BroadcastReceiver {
 
 	public final static String TAG_RECEIVER_LIFECYCLE = "tag_receiver_lifecycle";
 	
+	public BroadcastReceiverLifecycle() {
+		Log.i(TAG_RECEIVER_LIFECYCLE, "time: " + Calendar.getInstance().getTime().toLocaleString());   
+        Log.i(TAG_RECEIVER_LIFECYCLE , "pid: " + String.valueOf(android.os.Process.myPid()));   
+        Log.i(TAG_RECEIVER_LIFECYCLE , "tid: " + String.valueOf(android.os.Process.myTid()));   
+	}
+	
 	@Override
 	public void onReceive(Context arg0, Intent arg1) {
 		Log.i(TAG_RECEIVER_LIFECYCLE, "onReceiver run...");
 		
-		//test hudson
 	}
 
 }

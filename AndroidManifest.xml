@@ -28,8 +28,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:label="Basic/Lifecycle/ServiceBindStart"
-            android:name="lifecycle.ServiceBindStart" >
+            android:label="Basic/Lifecycle/LifecycleActivity"
+            android:name="lifecycle.LifecycleActivity" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,9 +39,10 @@
 
         <service android:name="lifecycle.ServiceLifecycle" >
         </service>
-
+		
         <receiver android:name="lifecycle.BroadcastReceiverLifecycle" >
         </receiver>
+        
     </application>
 
 </manifest>
