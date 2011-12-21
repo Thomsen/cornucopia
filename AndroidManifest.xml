@@ -4,7 +4,7 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="8" />
+    <uses-sdk android:minSdkVersion="7" />
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -39,10 +39,31 @@
 
         <service android:name="lifecycle.ServiceLifecycle" >
         </service>
-		
+
         <receiver android:name="lifecycle.BroadcastReceiverLifecycle" >
         </receiver>
-        
+
+        <activity
+            android:label="Basic/Content Provider/FetchContacts"
+            android:name="contentprovider.FetchContacts" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.csit.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="Basic/Content Provider/AddContacts"
+            android:name="contentprovider.AddContacts" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.csit.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
     </application>
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
 </manifest>
