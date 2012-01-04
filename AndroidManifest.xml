@@ -81,9 +81,21 @@
             android:name=".activity.ActivityTest">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
+        </activity>
+        
+        <activity 
+            android:label="Basic/Application/Add Tickets"
+            android:name=".ticketsmanager.ViewTicketsActivity"
+            >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ticketsmanager.AddTicketsActivity" >
         </activity>
     </application>
 
