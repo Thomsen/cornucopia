@@ -11,7 +11,7 @@
         android:text="Ticket Name:" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/edit_ticket_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
 

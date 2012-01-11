@@ -32,7 +32,7 @@ public final class R {
         public static final int button_add_ticket=0x7f090008;
         public static final int button_add_tickets_cancel=0x7f090005;
         public static final int button_add_tickets_ok=0x7f090004;
-        public static final int editText1=0x7f090002;
+        public static final int edit_ticket_name=0x7f090002;
         public static final int flaganim=0x7f090009;
         public static final int linearLayout1=0x7f090003;
         public static final int textView1=0x7f090001;

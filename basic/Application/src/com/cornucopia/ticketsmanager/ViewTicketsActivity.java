@@ -1,5 +1,7 @@
 package com.cornucopia.ticketsmanager;
 
+import java.util.ArrayList;
+
 import com.cornucopia.R;
 
 import android.app.Activity;
@@ -9,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ViewTicketsActivity extends Activity {
+public class ViewTicketsActivity extends TicketsManagerActivity {
 
 	private Button mAddButton;
 	private TextView mTicketList;
@@ -22,6 +24,30 @@ public class ViewTicketsActivity extends Activity {
 		
 		// 整体上把握，在此处引用布局的控件
 		setUpViews();
+		
+	}
+	
+	
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
+		showTickets();
+	}
+
+
+
+	private void showTickets() {
+		// 显示添加的tickets
+		ArrayList<Tickets> tickets = getTicketsManagerApplication().getCurrentTickets();
+	
+		StringBuffer sb = new StringBuffer();
+		// 对tickets进行format
+		for(Tickets t:tickets) {
+			sb.append(String.format("* %s\n", t.toString()));
+		}
+		mTicketList.setText(sb.toString());
 	}
 
 	private void setUpViews() {
