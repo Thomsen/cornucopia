@@ -29,31 +29,32 @@ public final class R {
         public static final int loading_flag=0x7f020007;
     }
     public static final class id {
-        public static final int autoCompleteTextView=0x7f09000d;
-        public static final int buttonTransmit=0x7f09000f;
-        public static final int button_add_ticket=0x7f090017;
-        public static final int button_add_tickets_cancel=0x7f090014;
-        public static final int button_add_tickets_ok=0x7f090013;
-        public static final int editDate=0x7f090009;
-        public static final int editNumber=0x7f09000a;
-        public static final int editNumberDecimal=0x7f09000c;
-        public static final int editNumberSigned=0x7f09000b;
-        public static final int editPhone=0x7f090005;
-        public static final int editText=0x7f090001;
-        public static final int editTextEmailAddress=0x7f090004;
-        public static final int editTextMultiLine=0x7f090007;
-        public static final int editTextPassword=0x7f090003;
-        public static final int editTextPersonName=0x7f090002;
-        public static final int editTextPostalAddress=0x7f090006;
-        public static final int editTime=0x7f090008;
-        public static final int edit_ticket_name=0x7f090011;
-        public static final int flaganim=0x7f090018;
-        public static final int linearLayout1=0x7f090012;
-        public static final int multiAutoCompleteTextView=0x7f09000e;
-        public static final int textView1=0x7f090010;
-        public static final int text_activity_test=0x7f090000;
-        public static final int ticket_list_text=0x7f090016;
-        public static final int ticket_title=0x7f090015;
+        public static final int autoCompleteTextView=0x7f09000e;
+        public static final int buttonObtainBack=0x7f090000;
+        public static final int buttonTransmit=0x7f090010;
+        public static final int button_add_ticket=0x7f090018;
+        public static final int button_add_tickets_cancel=0x7f090015;
+        public static final int button_add_tickets_ok=0x7f090014;
+        public static final int editDate=0x7f09000a;
+        public static final int editNumber=0x7f09000b;
+        public static final int editNumberDecimal=0x7f09000d;
+        public static final int editNumberSigned=0x7f09000c;
+        public static final int editPhone=0x7f090006;
+        public static final int editText=0x7f090002;
+        public static final int editTextEmailAddress=0x7f090005;
+        public static final int editTextMultiLine=0x7f090008;
+        public static final int editTextPassword=0x7f090004;
+        public static final int editTextPersonName=0x7f090003;
+        public static final int editTextPostalAddress=0x7f090007;
+        public static final int editTime=0x7f090009;
+        public static final int edit_ticket_name=0x7f090012;
+        public static final int flaganim=0x7f090019;
+        public static final int linearLayout1=0x7f090013;
+        public static final int multiAutoCompleteTextView=0x7f09000f;
+        public static final int textView1=0x7f090011;
+        public static final int text_activity_test=0x7f090001;
+        public static final int ticket_list_text=0x7f090017;
+        public static final int ticket_title=0x7f090016;
     }
     public static final class layout {
         public static final int activity_obtain_data=0x7f030000;

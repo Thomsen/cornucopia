@@ -8,6 +8,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
+import android.widget.Toast;
 
 import com.cornucopia.R;
 import com.cornucopia.activity.data.TextFieldsParcel;
@@ -32,6 +33,8 @@ public class ActivityTransmitData extends Activity {
 	private Button mButtonTransmit;
 	
 	TextFieldsParcel textFieldsParcel;
+	
+	private final static int TRANSMIT_DATA = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +68,8 @@ public class ActivityTransmitData extends Activity {
 				
 				intent.putExtra("parcelable", textFieldsParcel);
 				
-				startActivity(intent);
+//				startActivity(intent);
+				startActivityForResult(intent, TRANSMIT_DATA);
 			}
 		});
 	
@@ -111,6 +115,23 @@ public class ActivityTransmitData extends Activity {
 		mMultiAutoCompleteTextView = (MultiAutoCompleteTextView) findViewById(R.id.multiAutoCompleteTextView);
 		
 		mButtonTransmit = (Button) findViewById(R.id.buttonTransmit);
+		
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		// requestCode 自定义
+		if (requestCode == TRANSMIT_DATA) {
+			// resultCode 系统
+			if (resultCode == RESULT_OK) {
+				Toast.makeText(this, "result: " + data.getStringExtra("test") , Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(this, "result is null", Toast.LENGTH_SHORT).show();
+			}
+		}
+		
 		
 	}
 

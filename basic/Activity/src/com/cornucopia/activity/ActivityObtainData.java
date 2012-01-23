@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
+import com.cornucopia.R;
 import com.cornucopia.activity.data.TextFieldsParcel;
 
 public class ActivityObtainData extends Activity {
@@ -17,6 +20,22 @@ public class ActivityObtainData extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		setContentView(R.layout.activity_obtain_data);
+		
+		findViewById(R.id.buttonObtainBack).setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				Intent intent = getIntent();
+				
+				setResult(RESULT_OK, intent);
+				
+				finish();
+				
+			}
+		});
 	}
 
 	@Override
@@ -40,5 +59,14 @@ public class ActivityObtainData extends Activity {
 		Log.i("thom", "4 " + textParcel.getPlainText());
 		
 	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		
+		setResult(RESULT_CANCELED);
+	}
+	
+	
 
 }
