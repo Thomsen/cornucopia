@@ -111,6 +111,15 @@
         </activity>
         <activity android:name=".ticketsmanager.TicketsManagerActivity" >
         </activity>
+        
+        <activity 
+            android:label="UI/Html/Html UI"
+            android:name=".ui.html.HtmlUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />

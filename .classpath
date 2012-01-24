@@ -6,7 +6,7 @@
 	<classpathentry kind="src" path="basic/Lifecycle/src"/>
 	<classpathentry kind="src" path="basic/Application/src"/>
 	<classpathentry kind="src" path="basic/Activity/src"/>
-	<classpathentry kind="src" path="datastorage/Data/src"/>
+	<classpathentry kind="src" path="ui/Html/src"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
