@@ -120,9 +120,18 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
+        <activity 
+            android:label="Apache/Http/Communication"
+            android:name=".http.Communication">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-
+	<uses-permission android:name="android.permission.INTERNET" />
+	
 </manifest>
