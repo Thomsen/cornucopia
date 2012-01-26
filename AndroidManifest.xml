@@ -113,6 +113,16 @@
         </activity>
         
         <activity 
+            android:label="Basic/Service/ClientActivity"
+            android:name=".service.client.ClientActivity">
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
+        <activity 
             android:label="UI/Html/Html UI"
             android:name=".ui.html.HtmlUI">
             <intent-filter>
@@ -128,6 +138,14 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
+        
+        <service 
+            android:name=".service.server.RemoteExService">
+            <intent-filter >
+                <action android:name="com.cornucopia.service.server.IRemoteService" />
+            </intent-filter>
+        </service>
+        
     </application>
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
