@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.cornucopia.R;
 import com.cornucopia.ticketsmanager.AddTicketsActivity;
+import com.cornucopia.ticketsmanager.Tickets;
 import com.cornucopia.ticketsmanager.TicketsManagerApplication;
 
 import android.app.Activity;
@@ -54,6 +55,9 @@ public class ViewTicketsListActivity extends ListActivity {
 		super.onListItemClick(l, v, position, id);
 		
 		adapter.toggleTicketCompleteAtPosition(position);
+		
+		Tickets ticket = adapter.getItem(position);
+		app.saveTicketToDatabase(ticket);
 	}
 
 	private void setUpViews() {
@@ -82,7 +86,11 @@ public class ViewTicketsListActivity extends ListActivity {
 	}
 
 	protected void removeCompleteTickets() {
-		adapter.removeCompleteTickets();
+		// 修改方法返回id
+		Long[] ids = adapter.removeCompleteTickets();
+		
+		// 根据id从数据库中删除
+		app.deleteTickets(ids);
 	}
 
 

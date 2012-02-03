@@ -128,8 +128,11 @@ public class AddTicketsActivity extends TicketsManagerActivity {
 		Tickets ticket = new Tickets(ticketName);
 		
 		// 通过Application添加ticket
-		getTicketsManagerApplication().addTicket(ticket);
+//		getTicketsManagerApplication().addTicket(ticket);
 		
+		// 添加同时插入到数据库
+		getTicketsManagerApplication().addTicketToDatabase(ticket);
+	
 		finish();
 	}
 

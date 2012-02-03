@@ -59,17 +59,21 @@ public class TicketsListAdapter extends BaseAdapter {
 		  notifyDataSetChanged();
 	}
 
-	public void removeCompleteTickets() {
+	public Long[] removeCompleteTickets() {
 		ArrayList<Tickets> completedTickets = new ArrayList<Tickets>();
+		ArrayList<Long> completedTicketsId = new ArrayList<Long>();
 		
 		for (Tickets ticket : tickets) {
 			if (ticket.isComplete()) {
 				completedTickets.add(ticket);
+				completedTicketsId.add(ticket.getId());
 			}
 		}
 		
 		tickets.removeAll(completedTickets);
 		
 		notifyDataSetChanged();
+		
+		return completedTicketsId.toArray(new Long[] {});
 	}
 }

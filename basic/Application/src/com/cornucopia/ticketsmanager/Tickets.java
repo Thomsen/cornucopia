@@ -1,8 +1,25 @@
 package com.cornucopia.ticketsmanager;
 
-public class Tickets {
+import java.io.Serializable;
+
+public class Tickets implements Serializable {
+	
+	/**
+	 * Eclipse generate uid
+	 */
+	private static final long serialVersionUID = -1222642980393012745L;
+	
 	private String name;
 	private boolean complete = false;
+	private long id;
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public Tickets(String name) {
 		super();
