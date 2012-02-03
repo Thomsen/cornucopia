@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+    <TextView
+        android:id="@+id/ticket_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="tickets" />
+    
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ticket_title"
+        android:layout_above="@+id/add_button" />
+    
+    <TextView
+        android:id="@id/android:empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="no tickets" />
+
+  	<Button
+  	    android:id="@id/add_button"
+  	    android:layout_alignParentBottom="true"
+  	    android:layout_width="wrap_content"
+  	    android:layout_height="wrap_content"
+  	    android:text="Add Ticket" />
+  	
+  	<Button
+  	    android:id="@+id/remove_button"
+  	    android:layout_alignParentBottom="true"
+  	    android:layout_toRightOf="@id/add_button"
+  	    android:layout_width="wrap_content"
+  	    android:layout_height="wrap_content"
+  	    android:text="Remove Complete Ticket" />
+
+</RelativeLayout>

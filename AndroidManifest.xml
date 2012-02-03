@@ -112,6 +112,16 @@
         <activity android:name=".ticketsmanager.TicketsManagerActivity" >
         </activity>
         
+         <activity
+            android:label="Basic/Application/Add Tickets List"
+            android:name=".ticketsmanager.listitem.ViewTicketsListActivity" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
         <activity 
             android:label="Basic/Service/ClientActivity"
             android:name=".service.client.ClientActivity">

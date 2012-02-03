@@ -2,6 +2,7 @@ package com.cornucopia.ticketsmanager;
 
 public class Tickets {
 	private String name;
+	private boolean complete = false;
 
 	public Tickets(String name) {
 		super();
@@ -23,6 +24,18 @@ public class Tickets {
 	
 		// 正确返回
 		return name;
+	}
+
+	public boolean isComplete() {
+		return complete;
+	}
+	
+	public void setComplete(boolean complete) {
+		this.complete = complete;
+	}
+	
+	public void toggleComplete() {
+		complete = ! complete;
 	}
 	
 	

@@ -40,7 +40,6 @@ public class ActivityObtainData extends Activity {
 
 	@Override
 	protected void onStart() {
-		// TODO Auto-generated method stub
 		super.onStart();
 		
 //		Log.i("thom", "1 " + getIntent().getExtras().getString("test"));
@@ -48,7 +47,7 @@ public class ActivityObtainData extends Activity {
 		
 //		Bundle bundle = getIntent().getExtras();
 		Bundle bundle = getIntent().getBundleExtra("bundle");
-		Log.i("thom", "3 " + bundle.getString("date"));
+//		Log.i("thom", "3 " + bundle.getString("date"));
 		
 		TextFieldsParcel textParcel = getIntent().getParcelableExtra("parcelable");
 		
@@ -56,7 +55,7 @@ public class ActivityObtainData extends Activity {
 //		Parcel dest = Parcel.obtain();
 //		textParcel.writeToParcel(dest, 0);
 		
-		Log.i("thom", "4 " + textParcel.getPlainText());
+//		Log.i("thom", "4 " + textParcel.getPlainText());
 		
 	}
 

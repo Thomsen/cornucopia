@@ -157,7 +157,7 @@ public class Cornucopia extends ListActivity {
 			prefixItem = path.split("/");
 			
 			for (int j=0; j<prefixItem.length; j++){
-				Log.i("thom", "prefix path " + prefixItem[j]);
+//				Log.i("thom", "prefix path " + prefixItem[j]);
 			}
 		}
 		
@@ -176,7 +176,7 @@ public class Cornucopia extends ListActivity {
 						: totalItem[prefixItem.length]);
 				
 				for (int k=0; k<totalItem.length; k++){
-					Log.i("thom", "total label " + totalItem[k]);
+//					Log.i("thom", "total label " + totalItem[k]);
 				}
 				
 				

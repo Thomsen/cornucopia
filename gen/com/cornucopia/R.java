@@ -29,6 +29,7 @@ public final class R {
         public static final int loading_flag=0x7f020007;
     }
     public static final class id {
+        public static final int add_button=0x7f090019;
         public static final int autoCompleteTextView=0x7f09000e;
         public static final int buttonObtainBack=0x7f090000;
         public static final int buttonTransmit=0x7f090010;
@@ -48,9 +49,10 @@ public final class R {
         public static final int editTextPostalAddress=0x7f090007;
         public static final int editTime=0x7f090009;
         public static final int edit_ticket_name=0x7f090012;
-        public static final int flaganim=0x7f090019;
+        public static final int flaganim=0x7f09001b;
         public static final int linearLayout1=0x7f090013;
         public static final int multiAutoCompleteTextView=0x7f09000f;
+        public static final int remove_button=0x7f09001a;
         public static final int textView1=0x7f090011;
         public static final int text_activity_test=0x7f090001;
         public static final int ticket_list_text=0x7f090017;
@@ -62,7 +64,9 @@ public final class R {
         public static final int activity_transmit_data=0x7f030002;
         public static final int application_activity_addtickets=0x7f030003;
         public static final int application_activity_viewtickets=0x7f030004;
-        public static final int main=0x7f030005;
+        public static final int application_activity_viewtickets2=0x7f030005;
+        public static final int main=0x7f030006;
+        public static final int tickets_list_item=0x7f030007;
     }
     public static final class menu {
         public static final int filename=0x7f080000;
