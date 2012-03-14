@@ -16,6 +16,9 @@ public class ActivityTestCase extends ActivityInstrumentationTestCase2<ActivityT
 	
 	public ActivityTestCase() {
 		super("com.cornucopia", ActivityTest.class);
+		// 在Level 8以上可以使用super(activityClass)，也是推荐使用的
+		// 出现Expected 1 tests, received 0， 导致这个原因，应该需要测试方法，并且是public
+		// 对于manifest中的package配置，根的package可以是随意，而targetPackage需要与测试应用的包名一样
 	}
 	
 	public ActivityTestCase(String pkg, Class<ActivityTest> activityClass) {
