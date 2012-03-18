@@ -1,36 +1,36 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: D:\\workbench\\workspace\\Cornucopia\\basic\\Service\\src\\com\\cornucopia\\service\\server\\IRemoteService.aidl
+ * Original file: D:\\workbench\\workspace\\Cornucopia\\src\\com\\cornucopia\\basic\\service\\IRemoteService.aidl
  */
-package com.cornucopia.service.server;
+package com.cornucopia.basic.service;
 /**
 *	aidl接口
 */
 public interface IRemoteService extends android.os.IInterface
 {
 /** Local-side IPC implementation stub class. */
-public static abstract class Stub extends android.os.Binder implements com.cornucopia.service.server.IRemoteService
+public static abstract class Stub extends android.os.Binder implements com.cornucopia.basic.service.IRemoteService
 {
-private static final java.lang.String DESCRIPTOR = "com.cornucopia.service.server.IRemoteService";
+private static final java.lang.String DESCRIPTOR = "com.cornucopia.basic.service.IRemoteService";
 /** Construct the stub at attach it to the interface. */
 public Stub()
 {
 this.attachInterface(this, DESCRIPTOR);
 }
 /**
- * Cast an IBinder object into an com.cornucopia.service.server.IRemoteService interface,
+ * Cast an IBinder object into an com.cornucopia.basic.service.IRemoteService interface,
  * generating a proxy if needed.
  */
-public static com.cornucopia.service.server.IRemoteService asInterface(android.os.IBinder obj)
+public static com.cornucopia.basic.service.IRemoteService asInterface(android.os.IBinder obj)
 {
 if ((obj==null)) {
 return null;
 }
 android.os.IInterface iin = (android.os.IInterface)obj.queryLocalInterface(DESCRIPTOR);
-if (((iin!=null)&&(iin instanceof com.cornucopia.service.server.IRemoteService))) {
-return ((com.cornucopia.service.server.IRemoteService)iin);
+if (((iin!=null)&&(iin instanceof com.cornucopia.basic.service.IRemoteService))) {
+return ((com.cornucopia.basic.service.IRemoteService)iin);
 }
-return new com.cornucopia.service.server.IRemoteService.Stub.Proxy(obj);
+return new com.cornucopia.basic.service.IRemoteService.Stub.Proxy(obj);
 }
 public android.os.IBinder asBinder()
 {
@@ -75,7 +75,7 @@ return true;
 }
 return super.onTransact(code, data, reply, flags);
 }
-private static class Proxy implements com.cornucopia.service.server.IRemoteService
+private static class Proxy implements com.cornucopia.basic.service.IRemoteService
 {
 private android.os.IBinder mRemote;
 Proxy(android.os.IBinder remote)
