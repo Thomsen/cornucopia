@@ -1,9 +1,8 @@
-package com.cornucopia.application.ticketsmanager.listitem;
+package com.cornucopia.application.ticketsmanager;
 
 import java.util.ArrayList;
 
 import com.cornucopia.R;
-import com.cornucopia.application.ticketsmanager.Tickets;
 
 import android.content.Context;
 import android.view.View;
@@ -41,7 +40,7 @@ public class TicketsListAdapter extends BaseAdapter {
 		TicketsListItem sTicketsListItem;
 		
 		if (null == arg1) {
-			sTicketsListItem = (TicketsListItem) View.inflate(mContext, R.layout.tickets_list_item, null);
+			sTicketsListItem = (TicketsListItem) View.inflate(mContext, R.layout.application_tickets_list_item, null);
 		} else {
 			sTicketsListItem = (TicketsListItem) arg1;
 		}

@@ -3,8 +3,9 @@ package com.cornucopia.application;
 import java.util.ArrayList;
 
 import com.cornucopia.application.ticketsmanager.Tickets;
-import com.cornucopia.application.ticketsmanager.db.TicketsSQLiteOpenHelper;
-import static com.cornucopia.application.ticketsmanager.db.TicketsSQLiteOpenHelper.*;
+import com.cornucopia.application.ticketsmanager.TicketsSQLiteOpenHelper;
+
+import static com.cornucopia.application.ticketsmanager.TicketsSQLiteOpenHelper.*;
 
 import android.app.Application;
 import android.content.ContentValues;

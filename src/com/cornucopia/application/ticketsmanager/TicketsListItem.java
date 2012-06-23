@@ -1,7 +1,6 @@
-package com.cornucopia.application.ticketsmanager.listitem;
+package com.cornucopia.application.ticketsmanager;
 
 
-import com.cornucopia.application.ticketsmanager.Tickets;
 
 import android.content.Context;
 import android.util.AttributeSet;

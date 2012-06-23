@@ -1,4 +1,4 @@
-package com.cornucopia.application.ticketsmanager.listitem;
+package com.cornucopia.application.ticketsmanager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +13,6 @@ import android.widget.ListView;
 
 import com.cornucopia.R;
 import com.cornucopia.application.CornucopiaApplication;
-import com.cornucopia.application.ticketsmanager.AddTicketsActivity;
-import com.cornucopia.application.ticketsmanager.Tickets;
 
 public class ViewTicketsListActivity extends ListActivity {
 

@@ -1,4 +1,4 @@
-package com.cornucopia.application.ticketsmanager.db;
+package com.cornucopia.application.ticketsmanager;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
