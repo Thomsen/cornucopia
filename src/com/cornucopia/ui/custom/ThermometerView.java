@@ -2,15 +2,21 @@ package com.cornucopia.ui.custom;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.RadialGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+
+import com.cornucopia.R;
 
 // step 1 extend view
 
@@ -23,6 +29,9 @@ public class ThermometerView extends View {
     private Paint rimCirclePaint;
     private Bitmap background;
     private Paint backgroundPaint;
+    private RectF faceRect;
+    private Paint facePaint;
+    private Paint rimShadowPaint;
     
     // step 2 implement constructor
     
@@ -58,6 +67,26 @@ public class ThermometerView extends View {
         rimCirclePaint.setStrokeWidth(0.005f); // 粗细程度
         rimCirclePaint.setColor(Color.argb(0x4f, 0x33, 0x36, 0x33)); // 线的颜色
         
+        float rimSize = 0.02f;
+        faceRect = new RectF();
+        faceRect.set(rimRect.left + rimSize, rimRect.top + rimSize,
+                rimRect.right - rimSize, rimRect.bottom - rimSize);
+        Bitmap faceTexture = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.plastic);
+        BitmapShader paperShader = new BitmapShader(faceTexture, Shader.TileMode.MIRROR, Shader.TileMode.MIRROR);
+        Matrix paperMatrix = new Matrix();
+        paperMatrix.setScale((1.0f / faceTexture.getWidth()), (1.0f / faceTexture.getHeight()));
+        paperShader.setLocalMatrix(paperMatrix);
+        
+        facePaint = new Paint();
+        facePaint.setFilterBitmap(true);
+        facePaint.setStyle(Paint.Style.FILL);
+        facePaint.setShader(paperShader);
+        
+        rimShadowPaint = new Paint();
+        rimShadowPaint.setShader(new RadialGradient(0.5f, 0.5f, faceRect.width() / 2.0f, 
+                new int[] {0x00000000, 0x00000050, 0x50000050}, 
+                new float[] {0.96f, 0.96f, 0.99f}, Shader.TileMode.MIRROR));
+        rimShadowPaint.setStyle(Paint.Style.FILL);
         
         backgroundPaint = new Paint();
         backgroundPaint.setFilterBitmap(true); // 绘画是过滤对bitmap的优化操作，加快显示速度
@@ -107,6 +136,7 @@ public class ThermometerView extends View {
         backgroundCanvas.scale(backgroundScale, backgroundScale);
         
         drawRim(backgroundCanvas);
+        drawFace(backgroundCanvas);
         
         canvas.drawBitmap(background, 0, 0, backgroundPaint);
         
@@ -115,6 +145,13 @@ public class ThermometerView extends View {
         canvas.scale(scale, scale); // 缩放变换
         
         canvas.restore();
+    }
+
+    private void drawFace(Canvas canvas) {
+        canvas.drawOval(faceRect, facePaint);
+        canvas.drawOval(faceRect, rimCirclePaint);
+        canvas.drawOval(faceRect, rimShadowPaint);
+        
     }
 
     private void drawRim(Canvas canvas) {
