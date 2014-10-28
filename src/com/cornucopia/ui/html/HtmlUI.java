@@ -1,4 +1,4 @@
-package com.cornucopia.ui;
+package com.cornucopia.ui.html;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,10 +69,10 @@ public class HtmlUI extends Activity {
 	private List getUserList() {
 		List<UserInfo> userList = new ArrayList<UserInfo>();
 
-		userList.add(new UserInfo("汪长森", "男", "16/10/1989",
-				"androidfoross@gmail.com"));
-		userList.add(new UserInfo("thom", "male", "16/10/1989",
-				"androidfoross@gmail.com"));
+		userList.add(new UserInfo("lulu", "female", "00/08/2000",
+				"lulu@gmail.com"));
+		userList.add(new UserInfo("thom", "male", "01/12/1900",
+				"oss@gmail.com"));
 
 		return userList;
 

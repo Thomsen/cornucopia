@@ -45,7 +45,7 @@ public class LifecycleActivity extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		LayoutParams params = new LayoutParams(LayoutParams.FILL_PARENT,
+		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
 				LayoutParams.WRAP_CONTENT);
 
 		linearLayout = new LinearLayout(this);

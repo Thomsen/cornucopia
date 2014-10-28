@@ -1,4 +1,4 @@
-package com.cornucopia.ui;
+package com.cornucopia.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;

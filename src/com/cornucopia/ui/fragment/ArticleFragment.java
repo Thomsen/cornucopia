@@ -1,4 +1,4 @@
-package com.cornucopia.ui;
+package com.cornucopia.ui.fragment;
 
 import com.cornucopia.R;
 

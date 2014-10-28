@@ -10,10 +10,10 @@ public class TestClassLoader extends TestCase {
 	// bootstrap classloader 原始类加载， 是extension父类
 	public void testBootstrap() {
 		
-		URL[] urls = sun.misc.Launcher.getBootstrapClassPath().getURLs();
-		for (int i=0; i<urls.length; i++) {
-			System.out.println(i + "\t" + urls[i].toExternalForm());
-		}
+//		URL[] urls = sun.misc.Launcher.getBootstrapClassPath().getURLs();
+//		for (int i=0; i<urls.length; i++) {
+//			System.out.println(i + "\t" + urls[i].toExternalForm());
+//		}
 		
 	}
 	
@@ -33,7 +33,7 @@ public class TestClassLoader extends TestCase {
 		
 		System.out.println(System.class.getClassLoader());
 		
-		System.out.println(sun.misc.Launcher.class.getClassLoader());
+//		System.out.println(sun.misc.Launcher.class.getClassLoader());
 		
 		System.out.println(ClassLoader.getSystemResource("java/lang/String.class"));
 	}

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.cornucopia"
-    android:versionCode="1"
+    android:versionCode="2"
     android:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="15"/>
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16"/>
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
@@ -174,7 +174,7 @@
         
         <activity 
             android:label="UI/Html"
-            android:name=".ui.HtmlUI">
+            android:name="com.cornucopia.ui.html.HtmlUI">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
@@ -183,7 +183,7 @@
         
         <activity
             android:label="UI/Fragment/Article"
-            android:name=".ui.ArticleActivity" >
+            android:name="com.cornucopia.ui.fragment.ArticleActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />

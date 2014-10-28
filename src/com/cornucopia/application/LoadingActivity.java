@@ -20,8 +20,8 @@ public class LoadingActivity extends Activity {
 
 		// code进行布局
 		LinearLayout.LayoutParams linearParmas = new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.FILL_PARENT,
-				LinearLayout.LayoutParams.FILL_PARENT);
+				LinearLayout.LayoutParams.MATCH_PARENT,
+				LinearLayout.LayoutParams.MATCH_PARENT);
 		
 		LinearLayout.LayoutParams textParmas = linearParmas;
 		textParmas.height = LinearLayout.LayoutParams.WRAP_CONTENT;
