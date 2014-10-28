@@ -9,9 +9,11 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RadialGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +34,22 @@ public class ThermometerView extends View {
     private RectF faceRect;
     private Paint facePaint;
     private Paint rimShadowPaint;
+    private Paint scalePaint;
+    private RectF scaleRect;
+    private Paint titlePaint;
+    private Path titlePath;
+    private Paint logoPaint;
+    private Matrix logoMatrix;
+    private Paint handPaint;
+    private Path handPath;
+    private Paint handScrewPaint;
+    
+    // scale configuration
+    private static final int totalNicks = 100;
+    private static final float degreesPerNick = 360.0f / totalNicks;    
+    private static final int centerDegree = 40; // the one in the top center (12 o'clock)
+    private static final int minDegrees = -30;
+    private static final int maxDegrees = 110;
     
     // step 2 implement constructor
     
@@ -88,6 +106,59 @@ public class ThermometerView extends View {
                 new float[] {0.96f, 0.96f, 0.99f}, Shader.TileMode.MIRROR));
         rimShadowPaint.setStyle(Paint.Style.FILL);
         
+        scalePaint = new Paint();
+        scalePaint.setStyle(Paint.Style.STROKE);
+        scalePaint.setColor(0x9f004d0f);
+        scalePaint.setStrokeWidth(0.005f);
+        scalePaint.setAntiAlias(true);
+        scalePaint.setTextSize(0.045f);
+        scalePaint.setTypeface(Typeface.SANS_SERIF); // 字体
+        scalePaint.setTextScaleX(0.8f);
+        scalePaint.setTextAlign(Paint.Align.CENTER);
+        
+        float scalePosition = 0.10f;
+        scaleRect = new RectF();
+        scaleRect.set(faceRect.left + scalePosition, faceRect.top + scalePosition,
+                      faceRect.right - scalePosition, faceRect.bottom - scalePosition); // 位置（左，上，右，下）
+        
+        titlePaint = new Paint();
+        titlePaint.setColor(0xaf946109);
+        titlePaint.setAntiAlias(true);
+        titlePaint.setTypeface(Typeface.DEFAULT_BOLD);
+        titlePaint.setTextAlign(Paint.Align.CENTER);
+        titlePaint.setTextSize(0.05f);
+        titlePaint.setTextScaleX(0.8f);
+        
+        titlePath = new Path(); // 路径
+        titlePath.addArc(new RectF(0.24f, 0.24f, 0.76f, 0.76f), -180.0f, -180.0f);
+        
+        logoPaint = new Paint();
+        logoPaint.setFilterBitmap(true);
+        Bitmap logo = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ic_launcher);
+        logoMatrix = new Matrix();
+        float logoScale = (1.0f / logo.getWidth()) * 0.3f;;
+        logoMatrix.setScale(logoScale, logoScale);
+
+        handPaint = new Paint();
+        handPaint.setAntiAlias(true);
+        handPaint.setColor(0xff392f2c);     
+        handPaint.setShadowLayer(0.01f, -0.005f, -0.005f, 0x7f000000);
+        handPaint.setStyle(Paint.Style.FILL);   
+        
+        handPath = new Path();
+        handPath.moveTo(0.5f, 0.5f + 0.2f);
+        handPath.lineTo(0.5f - 0.010f, 0.5f + 0.2f - 0.007f);
+        handPath.lineTo(0.5f - 0.002f, 0.5f - 0.32f);
+        handPath.lineTo(0.5f + 0.002f, 0.5f - 0.32f);
+        handPath.lineTo(0.5f + 0.010f, 0.5f + 0.2f - 0.007f);
+        handPath.lineTo(0.5f, 0.5f + 0.2f);
+        handPath.addCircle(0.5f, 0.5f, 0.025f, Path.Direction.CW);
+        
+        handScrewPaint = new Paint();
+        handScrewPaint.setAntiAlias(true);
+        handScrewPaint.setColor(0xff493f3c);
+        handScrewPaint.setStyle(Paint.Style.FILL);
+        
         backgroundPaint = new Paint();
         backgroundPaint.setFilterBitmap(true); // 绘画是过滤对bitmap的优化操作，加快显示速度
     }
@@ -137,6 +208,7 @@ public class ThermometerView extends View {
         
         drawRim(backgroundCanvas);
         drawFace(backgroundCanvas);
+        drawScale(backgroundCanvas);
         
         canvas.drawBitmap(background, 0, 0, backgroundPaint);
         
@@ -145,6 +217,36 @@ public class ThermometerView extends View {
         canvas.scale(scale, scale); // 缩放变换
         
         canvas.restore();
+    }
+
+    private void drawScale(Canvas canvas) {
+        canvas.drawOval(scaleRect, scalePaint);
+        
+        canvas.save(Canvas.MATRIX_SAVE_FLAG);
+        
+        for (int i=0; i<totalNicks; ++i) {
+            float y1 = scaleRect.top;
+            float y2 = y1 - 0.02f;
+            canvas.drawLine(0.5f, y1, 0.5f, y2, scalePaint);
+            
+            if (i % 5 == 0) {
+                int value = nickToDegree(i);
+                if (value >= minDegrees && value <= maxDegrees) {
+                    String valueText = Integer.toString(value);
+                    canvas.drawText(valueText, 0.5f, y2 - 0.015f, scalePaint);
+                }
+            }
+            
+            canvas.rotate(degreesPerNick, 0.5f, 0.5f);
+        }
+        
+        canvas.restore(); // to save
+    }
+
+    private int nickToDegree(int nick) {
+        int rawDegree = ((nick < totalNicks / 2) ? nick : (nick - totalNicks)) * 2;
+        int shiftedDegree = rawDegree + centerDegree;
+        return shiftedDegree;
     }
 
     private void drawFace(Canvas canvas) {
