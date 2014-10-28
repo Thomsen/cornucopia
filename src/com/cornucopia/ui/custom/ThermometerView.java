@@ -209,6 +209,7 @@ public class ThermometerView extends View {
         drawRim(backgroundCanvas);
         drawFace(backgroundCanvas);
         drawScale(backgroundCanvas);
+        drawTitle(backgroundCanvas);
         
         canvas.drawBitmap(background, 0, 0, backgroundPaint);
         
@@ -217,6 +218,15 @@ public class ThermometerView extends View {
         canvas.scale(scale, scale); // 缩放变换
         
         canvas.restore();
+    }
+
+    private void drawTitle(Canvas canvas) {
+        String title = getTitle();
+        canvas.drawTextOnPath(title, titlePath, 0.0f, 0.0f, titlePaint);
+    }
+
+    private String getTitle() {
+        return "thom thermometer";
     }
 
     private void drawScale(Canvas canvas) {
