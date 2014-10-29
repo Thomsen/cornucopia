@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <com.cornucopia.ui.custom.ThermometerView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
 </LinearLayout>

@@ -1,11 +1,13 @@
 package com.cornucopia.ui.custom;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LightingColorFilter;
 import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
@@ -14,15 +16,23 @@ import android.graphics.RadialGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Typeface;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.View.MeasureSpec;
 
 import com.cornucopia.R;
 
+import java.util.List;
+
 // step 1 extend view
 
-public class ThermometerView extends View {
+public class ThermometerView extends View implements SensorEventListener {
 
     // rim 轮廓
 
@@ -44,30 +54,49 @@ public class ThermometerView extends View {
     private Path handPath;
     private Paint handScrewPaint;
     
+    private Bitmap logoBitmap;
+    private float logoScale;
+    
     // scale configuration
     private static final int totalNicks = 100;
     private static final float degreesPerNick = 360.0f / totalNicks;    
     private static final int centerDegree = 40; // the one in the top center (12 o'clock)
     private static final int minDegrees = -30;
     private static final int maxDegrees = 110;
+
+    // hand dynamics
+    private float handPosition = centerDegree;
+    private long lastHandMoveTime = -1L;
+    private float handVelocity = 0.0f;
+    private float handAcceleration = 0.0f;
+    private float handTarget = centerDegree;
+    private boolean handInitialized = false;
+    private Handler handler;
     
     // step 2 implement constructor
     
     public ThermometerView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init();
+        init(attrs, defStyle);
     }
 
     public ThermometerView(Context context, AttributeSet attrs) {
-        this(context, attrs, -1);
+        this(context, attrs, 0);
     }
 
     public ThermometerView(Context context) {
-        this(context, null);
+        super(context);
+        init(null, 0);
     }
     
-    private void init() {
+    @SuppressLint("NewApi") 
+    private void init(AttributeSet attrs, int defStyle) {
+        handler = new Handler();
         initDrawingTools();
+        
+        // solove android 4.1.2 bug, drawPath no effect. or manifest 
+        // application node android:hardwareAccelerated="false"
+        setLayerType(View.LAYER_TYPE_SOFTWARE, null);
     }
 
     private void initDrawingTools() {
@@ -130,13 +159,13 @@ public class ThermometerView extends View {
         titlePaint.setTextScaleX(0.8f);
         
         titlePath = new Path(); // 路径
-        titlePath.addArc(new RectF(0.24f, 0.24f, 0.76f, 0.76f), -180.0f, -180.0f);
+        titlePath.addArc(new RectF(0.24f, 0.24f, 0.76f, 0.76f), -180.0f, -180.0f); // 圆弧
         
         logoPaint = new Paint();
         logoPaint.setFilterBitmap(true);
-        Bitmap logo = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ic_launcher);
+        logoBitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ic_launcher);
         logoMatrix = new Matrix();
-        float logoScale = (1.0f / logo.getWidth()) * 0.3f;;
+        logoScale = (1.0f / logoBitmap.getWidth()) * 0.3f;;
         logoMatrix.setScale(logoScale, logoScale);
 
         handPaint = new Paint();
@@ -146,13 +175,13 @@ public class ThermometerView extends View {
         handPaint.setStyle(Paint.Style.FILL);   
         
         handPath = new Path();
-        handPath.moveTo(0.5f, 0.5f + 0.2f);
+        handPath.moveTo(0.5f, 0.5f + 0.2f); // 起始点
         handPath.lineTo(0.5f - 0.010f, 0.5f + 0.2f - 0.007f);
         handPath.lineTo(0.5f - 0.002f, 0.5f - 0.32f);
         handPath.lineTo(0.5f + 0.002f, 0.5f - 0.32f);
         handPath.lineTo(0.5f + 0.010f, 0.5f + 0.2f - 0.007f);
         handPath.lineTo(0.5f, 0.5f + 0.2f);
-        handPath.addCircle(0.5f, 0.5f, 0.025f, Path.Direction.CW);
+        handPath.addCircle(0.5f, 0.5f, 0.025f, Path.Direction.CW); // clockwise 顺时针
         
         handScrewPaint = new Paint();
         handScrewPaint.setAntiAlias(true);
@@ -167,7 +196,9 @@ public class ThermometerView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        Log.d("thom", "Width spec: " + MeasureSpec.toString(widthMeasureSpec));
+        Log.d("thom", "Height spec: " + MeasureSpec.toString(heightMeasureSpec));
         
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
@@ -198,27 +229,112 @@ public class ThermometerView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+        super.onDraw(canvas); 
        
-        background = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888); // 创建背景图
-        Canvas backgroundCanvas = new Canvas(background);  // up and line, Avoid object allocations during draw/layout
-                                                           //   operations (preallocate and reuse instead)
-        float backgroundScale = getWidth();
-        backgroundCanvas.scale(backgroundScale, backgroundScale);
-        
-        drawRim(backgroundCanvas);
-        drawFace(backgroundCanvas);
-        drawScale(backgroundCanvas);
-        drawTitle(backgroundCanvas);
+        if (background == null) {
+            background = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888); // 创建背景图
+            Canvas backgroundCanvas = new Canvas(background);  // up and line, Avoid object allocations during draw/layout
+                                                               //   operations (preallocate and reuse instead)
+            float backgroundScale = getWidth();
+            backgroundCanvas.scale(backgroundScale, backgroundScale);
+            
+            drawRim(backgroundCanvas);
+            drawFace(backgroundCanvas);
+            drawScale(backgroundCanvas);
+            drawTitle(backgroundCanvas);
+        }
         
         canvas.drawBitmap(background, 0, 0, backgroundPaint);
         
         float scale = getWidth();
-        canvas.save(Canvas.MATRIX_SAVE_FLAG); // 矩阵需要还原
-        canvas.scale(scale, scale); // 缩放变换
+        canvas.save(Canvas.MATRIX_SAVE_FLAG); // 保存状态，矩阵变换
+        canvas.scale(scale, scale); // 缩放变换preconcat，width x height变为（1.0 x 1.0）
+        
+        drawLogo(canvas);
+        drawHand(canvas);
+
+        canvas.restore(); // 恢复状态
+        
+//        if (handNeedsToMove()) {
+//            moveHand();
+//        }
+    }
+
+    private void moveHand() {
+        if (! handNeedsToMove()) {
+            return;
+        }
+        
+        if (lastHandMoveTime != -1L) {
+            long currentTime = System.currentTimeMillis();
+            float delta = (currentTime - lastHandMoveTime) / 1000.0f;
+
+            float direction = Math.signum(handVelocity);
+            if (Math.abs(handVelocity) < 90.0f) {
+                handAcceleration = 5.0f * (handTarget - handPosition);
+            } else {
+                handAcceleration = 0.0f;
+            }
+            handPosition += handVelocity * delta;
+            handVelocity += handAcceleration * delta;
+            if ((handTarget - handPosition) * direction < 0.01f * direction) {
+                handPosition = handTarget;
+                handVelocity = 0.0f;
+                handAcceleration = 0.0f;
+                lastHandMoveTime = -1L;
+            } else {
+                lastHandMoveTime = System.currentTimeMillis();              
+            }
+            invalidate();
+        } else {
+            lastHandMoveTime = System.currentTimeMillis();
+            moveHand();
+        }
+        
+    }
+
+    private boolean handNeedsToMove() {
+        return Math.abs(handPosition - handTarget) > 0.01f;
+    }
+
+    private void drawHand(Canvas canvas) {
+        if (handInitialized) {
+            float handAngle = degreeToAngle(handPosition);
+            canvas.save(Canvas.MATRIX_SAVE_FLAG);
+            canvas.rotate(handAngle, 0.5f, 0.5f);
+            canvas.drawPath(handPath, handPaint); // android:targetSdkVersion="16" 无效
+            canvas.restore();
+            
+            canvas.drawCircle(0.5f, 0.5f, 0.01f, handScrewPaint);
+        }
+    }
+
+    private float degreeToAngle(float degree) {
+        return (degree - centerDegree) / 2.0f * degreesPerNick;
+    }
+
+    private void drawLogo(Canvas canvas) {
+        canvas.save(Canvas.MATRIX_SAVE_FLAG);
+        
+        canvas.translate(0.5f - logoBitmap.getWidth() * logoScale / 2.0f,
+                         0.5f - logoBitmap.getHeight() * logoScale / 2.0f);
+        int color = 0x00000000;
+        float position = getRelativeTemperaturePosition();
+        Log.d("thom", "relative temperature position " + position);
+        if (position < 0) {
+            color |= (int) ((0xf0) * (-position));  // blue
+        } else {
+            color |= ((int) ((0xf0) * (position))) << 16; // red
+        }
+        LightingColorFilter logoFilter = new LightingColorFilter(0xff338822, color);
+        logoPaint.setColorFilter(logoFilter);
+        
+        canvas.drawBitmap(logoBitmap, logoMatrix, logoPaint);
         
         canvas.restore();
     }
+
+
 
     private void drawTitle(Canvas canvas) {
         String title = getTitle();
@@ -285,10 +401,84 @@ public class ThermometerView extends View {
     
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);  // onMeasure => onSizeChanged => onDraw
+//        super.onSizeChanged(w, h, oldw, oldh);  // onMeasure => onSizeChanged => onDraw
+        Log.d("thom", "Size changed to " + w + "x" + h);
+    }
+
+    // step 6 mechanics
+    
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        attachToSensor();
     }
     
-    // step 6 mechanics
+    @Override
+    protected void onDetachedFromWindow() {
+        detachFromSensor();
+        super.onDetachedFromWindow();
+//        detachFromSensor();
+    }
+    
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        if (sensorEvent.values.length > 0) {
+            float temperatureC = sensorEvent.values[0];
+            Log.d("thom", "*** Temperature: " + temperatureC);
+            
+            float temperatureF = (9.0f / 5.0f) * temperatureC + 32.0f;
+            setHandTarget(temperatureF);
+        } else {
+            Log.w("thom", "Empty sensor event received");
+        }
+    }
+    
+    private void setHandTarget(float temperature) {
+        if (temperature < minDegrees) {
+            temperature = minDegrees;
+        } else if (temperature > maxDegrees) {
+            temperature = maxDegrees;
+        }
+        handTarget = temperature;
+        handInitialized = true;
+        invalidate();
+    }
+    
+    private float getRelativeTemperaturePosition() {
+        if (handPosition < centerDegree) {
+            return - (centerDegree - handPosition) / (float) (centerDegree - minDegrees);
+        } else {
+            return (handPosition - centerDegree) / (float) (maxDegrees - centerDegree);
+        }
+    }
+    
+    private SensorManager getSensorManager() {
+        return (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);       
+    }
+    
+    private void attachToSensor() {
+        SensorManager sensorManager = getSensorManager();
+        
+        @SuppressWarnings("deprecation")
+        List<Sensor> sensors = sensorManager.getSensorList(Sensor.TYPE_TEMPERATURE);
+        if (sensors.size() > 0) {
+            Sensor sensor = sensors.get(0);
+            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_FASTEST, handler);
+        } else {
+            Log.e("thom", "No temperature sensor found");
+        }       
+    }
+    
+    private void detachFromSensor() {
+        SensorManager sensorManager = getSensorManager();
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // TODO Auto-generated method stub
+        
+    }
     
     // step 7 state saving & geting the temperature
     
