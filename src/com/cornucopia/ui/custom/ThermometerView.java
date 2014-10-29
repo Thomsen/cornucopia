@@ -28,6 +28,7 @@ import android.view.View.MeasureSpec;
 
 import com.cornucopia.R;
 
+import java.security.GeneralSecurityException;
 import java.util.List;
 
 // step 1 extend view
@@ -39,23 +40,28 @@ public class ThermometerView extends View implements SensorEventListener {
     private RectF rimRect;
     private Paint rimPaint;
     private Paint rimCirclePaint;
+    
     private Bitmap background;
     private Paint backgroundPaint;
+    
     private RectF faceRect;
     private Paint facePaint;
     private Paint rimShadowPaint;
+    
     private Paint scalePaint;
     private RectF scaleRect;
+    
     private Paint titlePaint;
     private Path titlePath;
+
     private Paint logoPaint;
+    private Bitmap logoBitmap;
+    private float logoScale;
     private Matrix logoMatrix;
+    
     private Paint handPaint;
     private Path handPath;
     private Paint handScrewPaint;
-    
-    private Bitmap logoBitmap;
-    private float logoScale;
     
     // scale configuration
     private static final int totalNicks = 100;
@@ -196,7 +202,7 @@ public class ThermometerView extends View implements SensorEventListener {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         Log.d("thom", "Width spec: " + MeasureSpec.toString(widthMeasureSpec));
         Log.d("thom", "Height spec: " + MeasureSpec.toString(heightMeasureSpec));
         
@@ -229,23 +235,9 @@ public class ThermometerView extends View implements SensorEventListener {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas); 
+        super.onDraw(canvas);
+        drawBackground(canvas);
        
-        if (background == null) {
-            background = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888); // 创建背景图
-            Canvas backgroundCanvas = new Canvas(background);  // up and line, Avoid object allocations during draw/layout
-                                                               //   operations (preallocate and reuse instead)
-            float backgroundScale = getWidth();
-            backgroundCanvas.scale(backgroundScale, backgroundScale);
-            
-            drawRim(backgroundCanvas);
-            drawFace(backgroundCanvas);
-            drawScale(backgroundCanvas);
-            drawTitle(backgroundCanvas);
-        }
-        
-        canvas.drawBitmap(background, 0, 0, backgroundPaint);
-        
         float scale = getWidth();
         canvas.save(Canvas.MATRIX_SAVE_FLAG); // 保存状态，矩阵变换
         canvas.scale(scale, scale); // 缩放变换preconcat，width x height变为（1.0 x 1.0）
@@ -255,46 +247,9 @@ public class ThermometerView extends View implements SensorEventListener {
 
         canvas.restore(); // 恢复状态
         
-//        if (handNeedsToMove()) {
-//            moveHand();
-//        }
-    }
-
-    private void moveHand() {
-        if (! handNeedsToMove()) {
-            return;
-        }
-        
-        if (lastHandMoveTime != -1L) {
-            long currentTime = System.currentTimeMillis();
-            float delta = (currentTime - lastHandMoveTime) / 1000.0f;
-
-            float direction = Math.signum(handVelocity);
-            if (Math.abs(handVelocity) < 90.0f) {
-                handAcceleration = 5.0f * (handTarget - handPosition);
-            } else {
-                handAcceleration = 0.0f;
-            }
-            handPosition += handVelocity * delta;
-            handVelocity += handAcceleration * delta;
-            if ((handTarget - handPosition) * direction < 0.01f * direction) {
-                handPosition = handTarget;
-                handVelocity = 0.0f;
-                handAcceleration = 0.0f;
-                lastHandMoveTime = -1L;
-            } else {
-                lastHandMoveTime = System.currentTimeMillis();              
-            }
-            invalidate();
-        } else {
-            lastHandMoveTime = System.currentTimeMillis();
+        if (handNeedsToMove()) {
             moveHand();
         }
-        
-    }
-
-    private boolean handNeedsToMove() {
-        return Math.abs(handPosition - handTarget) > 0.01f;
     }
 
     private void drawHand(Canvas canvas) {
@@ -320,7 +275,6 @@ public class ThermometerView extends View implements SensorEventListener {
                          0.5f - logoBitmap.getHeight() * logoScale / 2.0f);
         int color = 0x00000000;
         float position = getRelativeTemperaturePosition();
-        Log.d("thom", "relative temperature position " + position);
         if (position < 0) {
             color |= (int) ((0xf0) * (-position));  // blue
         } else {
@@ -333,8 +287,6 @@ public class ThermometerView extends View implements SensorEventListener {
         
         canvas.restore();
     }
-
-
 
     private void drawTitle(Canvas canvas) {
         String title = getTitle();
@@ -401,11 +353,66 @@ public class ThermometerView extends View implements SensorEventListener {
     
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-//        super.onSizeChanged(w, h, oldw, oldh);  // onMeasure => onSizeChanged => onDraw
+        super.onSizeChanged(w, h, oldw, oldh);  // onMeasure => onSizeChanged => onDraw
         Log.d("thom", "Size changed to " + w + "x" + h);
+      
+        generateBackground();
+    }
+    
+    private void generateBackground() {
+        if (null != background) {
+            background.recycle();
+        }
+        background = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888); // 创建背景图
+        Canvas backgroundCanvas = new Canvas(background);  // up and line, Avoid object allocations during draw/layout
+                                                           //   operations (preallocate and reuse instead)
+        float backgroundScale = getWidth();
+        backgroundCanvas.scale(backgroundScale, backgroundScale);
+        
+        drawRim(backgroundCanvas);
+        drawFace(backgroundCanvas);
+        drawScale(backgroundCanvas);
+        drawTitle(backgroundCanvas);
+    }
+    
+    // step 6 mechanics
+
+    private void moveHand() {
+        if (! handNeedsToMove()) {
+            return;
+        }
+        
+        if (lastHandMoveTime != -1L) {
+            long currentTime = System.currentTimeMillis();
+            float delta = (currentTime - lastHandMoveTime) / 1000.0f;
+
+            float direction = Math.signum(handVelocity);
+            if (Math.abs(handVelocity) < 90.0f) {
+                handAcceleration = 5.0f * (handTarget - handPosition);
+            } else {
+                handAcceleration = 0.0f;
+            }
+            handPosition += handVelocity * delta;
+            handVelocity += handAcceleration * delta;
+            if ((handTarget - handPosition) * direction < 0.01f * direction) {
+                handPosition = handTarget;
+                handVelocity = 0.0f;
+                handAcceleration = 0.0f;
+                lastHandMoveTime = -1L;
+            } else {
+                lastHandMoveTime = System.currentTimeMillis();              
+            }
+            invalidate();
+        } else {
+            lastHandMoveTime = System.currentTimeMillis();
+            moveHand();
+        }
+        
     }
 
-    // step 6 mechanics
+    private boolean handNeedsToMove() {
+        return Math.abs(handPosition - handTarget) > 0.01f;
+    }
     
     @Override
     protected void onAttachedToWindow() {
@@ -417,7 +424,6 @@ public class ThermometerView extends View implements SensorEventListener {
     protected void onDetachedFromWindow() {
         detachFromSensor();
         super.onDetachedFromWindow();
-//        detachFromSensor();
     }
     
     @Override
@@ -476,7 +482,6 @@ public class ThermometerView extends View implements SensorEventListener {
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // TODO Auto-generated method stub
         
     }
     
