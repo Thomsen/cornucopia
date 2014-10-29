@@ -20,7 +20,9 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -487,4 +489,33 @@ public class ThermometerView extends View implements SensorEventListener {
     
     // step 7 state saving & geting the temperature
     
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Parcelable savedState = super.onSaveInstanceState();
+        
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("savedState", savedState);
+        bundle.putBoolean("handInitialized", handInitialized);
+        bundle.putFloat("handPosition", handPosition);
+        bundle.putFloat("handTarget", handTarget);
+        bundle.putFloat("handVelocity", handVelocity);
+        bundle.putFloat("handAcceleration", handAcceleration);
+        bundle.putLong("lastHandMoveTime", lastHandMoveTime);
+        
+        return bundle;
+    }
+    
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        Bundle bundle = (Bundle) state;
+        Parcelable savedState = bundle.getParcelable("savedState");
+        super.onRestoreInstanceState(savedState);
+        
+        handInitialized = bundle.getBoolean("handInitialized");
+        handPosition = bundle.getFloat("handPosition");
+        handTarget = bundle.getFloat("handTarget");
+        handVelocity = bundle.getFloat("handVelocity");
+        handAcceleration = bundle.getFloat("handAcceleration");
+        lastHandMoveTime = bundle.getLong("lastHandMoveTime");
+    }
 }
