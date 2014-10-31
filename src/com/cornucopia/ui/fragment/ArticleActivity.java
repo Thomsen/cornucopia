@@ -8,8 +8,6 @@ import com.cornucopia.R;
 
 public class ArticleActivity extends FragmentActivity implements HeadlineFragment.OnHeadlineSelectedListener {
 	
-	
-	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
