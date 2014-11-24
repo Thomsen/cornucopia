@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cornucopia</string>
+    
+    <string name="enable_admin">Enable admin</string>
+    <string name="device_capabilities_category">Device capabilities</string>
+    <string name="disable_camera">Disable all device cameras</string>
+    <string name="camera_disabled">Device cameras disabled</string>
+    <string name="camera_enabled">Device cameras enabled</string>
+    
+    <string name="add_admin_extra_app_text">
+        Additional text explaining why this needs to be added.</string>
+        
+    <string name="key_enable_admin">key_enable_admin</string>
+    <string name="key_disable_camera">key_disable_camera</string>
+    
 </resources>
