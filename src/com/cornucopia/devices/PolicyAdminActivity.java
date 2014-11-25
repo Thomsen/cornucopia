@@ -30,8 +30,7 @@ public class PolicyAdminActivity extends PreferenceActivity implements
 
     protected DevicePolicyManager mDPM;
     protected ComponentName mPolicyAdmin;
-    
-    protected boolean isAdminActive;
+    private boolean isAdminActive;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +38,6 @@ public class PolicyAdminActivity extends PreferenceActivity implements
         
         mDPM = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
         mPolicyAdmin = new ComponentName(this, PolicyAdminReceiver.class);
-        isAdminActive = mDPM.isAdminActive(mPolicyAdmin);
         
         addPreferencesFromResource(R.xml.device_admin_general);
         mEnableCheckbox = (CheckBoxPreference) findPreference(getString(R.string.key_enable_admin));
@@ -52,6 +50,7 @@ public class PolicyAdminActivity extends PreferenceActivity implements
     @Override
     public void onResume() {
         super.onResume();
+        isAdminActive = isAdminActive();
         mEnableCheckbox.setChecked(isAdminActive);
         enableDeviceCapabilitiesArea(isAdminActive);
 
@@ -77,7 +76,8 @@ public class PolicyAdminActivity extends PreferenceActivity implements
                     intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, mPolicyAdmin);
                     intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
                             this.getString(R.string.add_admin_extra_app_text));
-                    startActivityForResult(intent, REQUEST_CODE_ENABLE_ADMIN); // device_admin uses-policies
+                    // android.app.device_admin error, not intent
+                    startActivityForResult(intent, REQUEST_CODE_ENABLE_ADMIN); 
                     // return false - don't update checkbox until we're really active
                     return false;
                 } else {
@@ -92,7 +92,15 @@ public class PolicyAdminActivity extends PreferenceActivity implements
         }
         return true;
     }
-    
+
+    public boolean isAdminActive() {
+        if (null != mDPM) {
+            return mDPM.isAdminActive(mPolicyAdmin);
+        } else {
+            return false;
+        }
+    }
+
     protected void reloadSummaries() {
         String cameraSummary = getString(mDPM.getCameraDisabled(mPolicyAdmin)
                 ? R.string.camera_disabled : R.string.camera_enabled);
@@ -103,6 +111,7 @@ public class PolicyAdminActivity extends PreferenceActivity implements
     private void enableDeviceCapabilitiesArea(boolean enabled) {
         mDisableCameraCheckbox.setEnabled(enabled);
     }
+    
     /**
      * DeviceAdminReceiver (api level 8+)
      * static must
