@@ -17,7 +17,7 @@ import com.cornucopia.R;
 
 /**
  * {@link DevicePolicyManager#getCameraDisabled(ComponentName)} need api level 14+ 
- * (from baidu yun not uninstall)
+ * (from baidu yun not uninstall. cannot uninstall: this package is an active device administrator)
  */
 public class PolicyAdminActivity extends PreferenceActivity implements
     OnPreferenceChangeListener, OnPreferenceClickListener {
