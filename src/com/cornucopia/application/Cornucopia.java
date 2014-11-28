@@ -1,6 +1,9 @@
 package com.cornucopia.application;
 
+import java.text.Collator;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +13,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -116,6 +118,8 @@ public class Cornucopia extends ListActivity {
 			}
 
 		}
+		
+		Collections.sort(result, sDisplayNameComparator);
 
 		return result;
 	}
@@ -198,9 +202,25 @@ public class Cornucopia extends ListActivity {
 				}
 			}
 		}
+		
+		Collections.sort(result, sDisplayNameComparator);
 
 		return result;
 	}
+	
+	   
+    /**
+     * 以item比较
+     */
+    private final static Comparator<Map<String, Object>> sDisplayNameComparator =
+        new Comparator<Map<String, Object>>() {
+    
+        private final Collator collator = Collator.getInstance();
+
+        public int compare(Map<String, Object> map1, Map<String, Object> map2) {
+            return collator.compare(map1.get("item"), map2.get("item"));
+        }
+    };
 
 	/**
 	 * 通过哈希对象来设置键值对应
