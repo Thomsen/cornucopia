@@ -1,1 +1,15 @@
-first to study android application
+### 1. Memory Share
+
+### 2. File storage
+ 
+2.1 normal file different directory
+
+2.2 SharedPreferences
+
+### 3. DB storage
+
+3.1 sqlite3 storage
+
+3.2 ContentProvider storage
+
+### 4. Web storage
