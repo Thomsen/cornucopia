@@ -13,5 +13,10 @@
         
     <string name="key_enable_admin">key_enable_admin</string>
     <string name="key_disable_camera">key_disable_camera</string>
+
+    <string name="mibo_address">127.0.0.1:3000</string>
+    <string name="login_username">username</string>
+    <string name="login_password">password</string>
+    <string name="login_confirm">confirm</string>
     
 </resources>

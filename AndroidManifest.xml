@@ -50,6 +50,15 @@
             </intent-filter>
         </activity>
         
+        <activity 
+            android:label="Apache/Http/Mibo Login"
+            android:name=".apache.http.MiboLoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
         <!--  Basic -->
         
         <activity
