@@ -12,10 +12,15 @@ import com.cornucopia.R;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 
 import java.io.BufferedReader;
@@ -23,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 public class MiboLoginActivity extends Activity implements OnClickListener {
     
@@ -31,7 +37,7 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
     private EditText mEtPassword;
     private Button mBtnConfirm;
     
-    private static final String SERVER_ADDRESS = "http://192.168.1.116:3000"; 
+    private static final String SERVER_ADDRESS = "http://192.168.0.102:3031"; 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,25 +58,58 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
         if (R.id.btn_login_confirm == v.getId()) {
             new Thread() {
                 public void run() {
-                    httpPost();
+                	show();
                 }
             }.start();
         }
     }
     
-    private void httpGet() {
+    private void show() {
+    	String showUrl = SERVER_ADDRESS + "/users/17";
+    	HttpParams params = new BasicHttpParams();
+//    	params.setIntParameter("id", 17);
+    	httpGet(showUrl, params);
+    }
+    
+    private void login() {
+    	String loginUrl = SERVER_ADDRESS + "/users/login";
+    }
+    
+    private void httpGet(String url, HttpParams params) {
+        HttpClient httpClient = new DefaultHttpClient(params);
+        HttpGet httpGet = new HttpGet(url);
+        
+        HttpParams getParams = httpClient.getParams();
+        httpGet.setParams(getParams);
+        
+        String response = "";
+        try {
+			HttpResponse httpResp = httpClient.execute(httpGet);
+			if (httpResp.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+				HttpEntity httpEntity = httpResp.getEntity();
+				InputStream inStream = httpEntity.getContent();
+				response = convertStreamToString(inStream);
+				Log.d("thom", "get request " + response);
+			} else {
+				Log.e("thom", "get request bad!");
+			}
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
         
     }
     
-    private void httpPost() {
+    private void httpPost(String url, List<NameValuePair> params) {
         HttpClient httpClient = new DefaultHttpClient();
-        String loginUrl = SERVER_ADDRESS + "/users/login";
-        HttpPost httpPost = new HttpPost(loginUrl);
         
-        HttpParams params = httpClient.getParams();
-        params.setParameter("username", mEtUsername.getText().toString());
-        params.setParameter("password", mEtPassword.getText().toString());
-        httpPost.setParams(params);
+        HttpPost httpPost = new HttpPost(url);
+        try {
+			httpPost.setEntity(new UrlEncodedFormEntity(params));
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		}
         
         String response = "";
         
