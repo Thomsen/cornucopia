@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.cornucopia.R;
 
@@ -20,6 +21,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 
@@ -28,6 +30,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MiboLoginActivity extends Activity implements OnClickListener {
@@ -37,7 +40,7 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
     private EditText mEtPassword;
     private Button mBtnConfirm;
     
-    private static final String SERVER_ADDRESS = "http://192.168.0.102:3031"; 
+    private static final String SERVER_ADDRESS = "http://192.168.0.103:3031";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +61,7 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
         if (R.id.btn_login_confirm == v.getId()) {
             new Thread() {
                 public void run() {
-                	show();
+                	login();
                 }
             }.start();
         }
@@ -73,6 +76,10 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
     
     private void login() {
     	String loginUrl = SERVER_ADDRESS + "/users/login";
+    	ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+    	params.add(new BasicNameValuePair("username", mEtUsername.getText().toString()));
+    	params.add(new BasicNameValuePair("password", mEtPassword.getText().toString()));
+    	httpPost(loginUrl, params);
     }
     
     private void httpGet(String url, HttpParams params) {
@@ -111,21 +118,29 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
 			e1.printStackTrace();
 		}
         
-        String response = "";
-        
         try {
             HttpResponse httpResp = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResp.getEntity();
             if (null != httpEntity) {
                 InputStream inStream = httpEntity.getContent();
-                response = convertStreamToString(inStream);
+                final String response = convertStreamToString(inStream);
+                
+                Log.i("thom", "response: " + response);
+                runOnUiThread(new Runnable() {
+
+        			@Override
+        			public void run() {
+        				Toast.makeText(MiboLoginActivity.this, response, Toast.LENGTH_SHORT).show();
+        			}
+                	
+                });
             }
         } catch (ClientProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.i("thom", "response: " + response);
+        
     }
     
     private String convertStreamToString(InputStream inStream) {
