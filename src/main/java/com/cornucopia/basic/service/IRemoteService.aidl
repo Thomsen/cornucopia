@@ -1,8 +1,9 @@
 package com.cornucopia.basic.service;
 
 /**
-*	aidl接口
-*/
+ *	aidl接口
+ *  maven generate need src/main/java
+ */
 
 interface IRemoteService {
 	

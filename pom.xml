@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.anyuaning</groupId>
+	<artifactId>Cornucopia</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>apk</packaging>
+
+	<properties>
+		<volley.version>1.0.9</volley.version>
+		<android.version>5.0.1_r2</android.version>
+		<support-v4.version>21.0.3</support-v4.version>
+		<android.platform>21</android.platform>
+		<jdk.version>1.7</jdk.version>
+		<maven-compiler.version>2.0.2</maven-compiler.version>
+		<android-maven.version>3.9.0-rc.2</android-maven.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.mcxiaoke.volley</groupId>
+			<artifactId>library</artifactId>
+			<version>${volley.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>android</groupId>
+			<artifactId>android</artifactId>
+			<version>${android.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>android.support</groupId>
+			<artifactId>compatibility-v4</artifactId>
+			<version>${support-v4.version}</version>
+			<type>jar</type>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler.version}</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+			    <!-- mvn 3.1.1 higher -->
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<version>${android-maven.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<sdk>
+						<platform>${android.platform}</platform>
+						<path>${android.home}</path>
+					</sdk>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>maven central repository</id>
+			<url>http://search.maven.org/</url>
+		</repository>
+		<repository>
+		    <!-- download and cd dir, mvn install -P 5.0 -->
+		    <!-- extras\compatibility-v4>mvn install -->
+		    <id>maven android sdk deployer</id>
+		    <url>https://github.com/simpligility/maven-android-sdk-deployer</url>
+		</repository>
+	</repositories>
+
+</project>

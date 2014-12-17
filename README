@@ -1,2 +1,5 @@
 first to study android application
 project classpath
+
+convert to maven project
+mvn clean install android:run or android:deploy
