@@ -1,4 +1,4 @@
-package com.cornucopia.apache.http;
+package com.cornucopia.http;
 
 import java.io.BufferedReader;
 import java.io.IOException;
