@@ -10,21 +10,17 @@
 	<packaging>apk</packaging>
 
 	<properties>
-		<volley.version>1.0.9</volley.version>
+	    <jdk.version>1.7</jdk.version>
+        <maven-compiler.version>2.0.2</maven-compiler.version>
+        <android-maven.version>3.9.0-rc.2</android-maven.version>
 		<android.version>5.0.1_r2</android.version>
 		<support-v4.version>21.0.3</support-v4.version>
 		<android.platform>21</android.platform>
-		<jdk.version>1.7</jdk.version>
-		<maven-compiler.version>2.0.2</maven-compiler.version>
-		<android-maven.version>3.9.0-rc.2</android-maven.version>
+        <volley.version>1.0.9</volley.version>
+        <gson.version>2.3.1</gson.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.mcxiaoke.volley</groupId>
-			<artifactId>library</artifactId>
-			<version>${volley.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>android</groupId>
 			<artifactId>android</artifactId>
@@ -37,6 +33,16 @@
 			<version>${support-v4.version}</version>
 			<type>jar</type>
 		</dependency>
+        <dependency>
+            <groupId>com.mcxiaoke.volley</groupId>
+            <artifactId>library</artifactId>
+            <version>${volley.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>		
 	</dependencies>
 	<build>
 		<plugins>

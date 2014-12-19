@@ -42,8 +42,8 @@
        	<!-- Apache -->
         
         <activity 
-            android:label="Apache/Http/Communication"
-            android:name=".apache.http.Communication">
+            android:label="Http/Communication"
+            android:name="com.cornucopia.http.Communication">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
@@ -51,8 +51,8 @@
         </activity>
         
         <activity 
-            android:label="Apache/Http/Mibo Login"
-            android:name=".apache.http.MiboLoginActivity">
+            android:label="Http/Mibo Login"
+            android:name="com.cornucopia.http.MiboLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
