@@ -109,9 +109,9 @@ public class ClientActivity extends Activity {
 		// 需要在manifest配置IRemoteService，正确的配置成action
 		Intent intent = new Intent(IRemoteService.class.getName());
 		
-		// 启动服务
-//		startService(intent); // 不启动，在系统-正在运行中就看不到，但进程依然存在
-		
+		// 启动服务。不启动，在系统-正在运行的服务中就看不到，但进程依然存在，是一个缓存应用程序(cached process)。
+//		startService(intent); 
+
 		// 启动服务，并没有调用onBind方法，需要绑定服务
 		bindService(intent, mConnecitonService, Context.BIND_AUTO_CREATE);
 
