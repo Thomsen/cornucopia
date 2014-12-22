@@ -148,7 +148,9 @@
         </activity>
         
         <service 
+            android:process=":remote"  
             android:name=".basic.service.RemoteExService">
+            <!-- INSTALL_PARSE_FAILED_MANIFEST_MALFORMED process="remote" -->
             <intent-filter >
                 <action android:name="com.cornucopia.basic.service.IRemoteService" />
             </intent-filter>

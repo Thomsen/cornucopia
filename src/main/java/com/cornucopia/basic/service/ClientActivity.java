@@ -20,7 +20,8 @@ public class ClientActivity extends Activity {
 	private IRemoteService mIRemoteService;
 	
 	private TextView mTextView;
-	private Button mButton;
+	private Button mBtnShowRemoteId;
+	private Button mBtnCloseRemoteService;
 
 	private ServiceConnection mConnecitonService = new ServiceConnection() {
 
@@ -31,10 +32,12 @@ public class ClientActivity extends Activity {
 			mIRemoteService = IRemoteService.Stub.asInterface(arg1);
 			
 			if (mIRemoteService == null) {
-				mButton.setEnabled(false);
+				mBtnShowRemoteId.setEnabled(false);
 			} else {
-				mButton.setEnabled(true);
+				mBtnShowRemoteId.setEnabled(true);
 			}
+			// 显示进程ID
+			setTextViewContent();
 		}
 
 		@Override
@@ -43,6 +46,7 @@ public class ClientActivity extends Activity {
 			
 			// 只有发现异常服务中断时，才会调用该方法
 			mIRemoteService = null;
+			setTextViewContent();
 		}
 		
 	};
@@ -57,25 +61,39 @@ public class ClientActivity extends Activity {
 		linearLayout.setOrientation(LinearLayout.VERTICAL);
 		
 		mTextView = new TextView(this);
-		mButton = new Button(this);
+		mBtnShowRemoteId = new Button(this);
+		mBtnCloseRemoteService = new Button(this);
 		
-		mButton.setText("显示远程服务的ID");
+		mBtnShowRemoteId.setText("绑定远程服务");
+		// TODO show/hide
+		mBtnCloseRemoteService.setText("关闭远程服务");
 		
 		linearLayout.addView(mTextView);
-		linearLayout.addView(mButton);
+		linearLayout.addView(mBtnShowRemoteId);
+		linearLayout.addView(mBtnCloseRemoteService);
 		
-		mButton.setOnClickListener(new View.OnClickListener() {
+		mBtnShowRemoteId.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				
-				// 点击时的mIRemoteService为null， 并不是null，是因为不是String
-				setTextViewContent();
-				
+			    mActivity.bindService(new Intent(IRemoteService.class.getName()),
+			            mConnecitonService, Context.BIND_AUTO_CREATE);
 			}
-
-			
 		});
+		
+		mBtnCloseRemoteService.setOnClickListener(new View.OnClickListener() {
+            
+            @Override
+            public void onClick(View v) {
+                // 结束服务的进程
+                try {
+                    // 服务与进程关联了，结束了自己。在manifest配置
+                    android.os.Process.killProcess(mIRemoteService.getPid());
+                } catch (RemoteException e) {
+                    Toast.makeText(mActivity, "服务已停止", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 		
 		setContentView(linearLayout);
 	}
@@ -92,14 +110,10 @@ public class ClientActivity extends Activity {
 		Intent intent = new Intent(IRemoteService.class.getName());
 		
 		// 启动服务
-//		startService(intent);
+//		startService(intent); // 不启动，在系统-正在运行中就看不到，但进程依然存在
 		
 		// 启动服务，并没有调用onBind方法，需要绑定服务
 		bindService(intent, mConnecitonService, Context.BIND_AUTO_CREATE);
-		
-		// 启动时的NullPointerException
-//		setTextViewContent();
-		
 
 	}
 	
@@ -107,23 +121,29 @@ public class ClientActivity extends Activity {
 	protected void onStop() {
 		super.onStop();
 		
-		// 结束服务的进程
-		try {
-			android.os.Process.killProcess(mIRemoteService.getPid());
-		} catch (RemoteException e) {
-			Toast.makeText(mActivity, "服务已停止", Toast.LENGTH_SHORT).show();
-		}
-		
 		unbindService(mConnecitonService);
 	}
 
 	private void setTextViewContent() {
 		try {
 			// 调用mIRemoteService前需要绑定服务
-			mTextView.setText(String.valueOf(mIRemoteService.getPid()));
+		    if (null != mIRemoteService) {
+		        mTextView.setText(String.valueOf(mIRemoteService.getPid()));
+		    } else {
+		        mTextView.setText("无进程ID");
+		    }
+		    visibleCloseRemote();
 		} catch (RemoteException e) {
 			mTextView.setText("exception");
 		}
+	}
+	
+	private void visibleCloseRemote() {
+	    if (null == mIRemoteService) {
+	        mBtnCloseRemoteService.setVisibility(View.GONE);
+	    } else {
+	        mBtnCloseRemoteService.setVisibility(View.VISIBLE);
+	    }
 	}
 
 }
