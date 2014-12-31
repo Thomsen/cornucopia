@@ -18,6 +18,7 @@
 		<android.platform>21</android.platform>
         <volley.version>1.0.9</volley.version>
         <gson.version>2.3.1</gson.version>
+        <okhttp.version>2.1.0</okhttp.version>
 	</properties>
 
 	<dependencies>
@@ -42,6 +43,11 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
         </dependency>		
 	</dependencies>
 	<build>
