@@ -221,6 +221,15 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
+        
+        <activity 
+            android:label="UI/List/SwipeRefresh"
+            android:name="com.cornucopia.ui.list.SwipeRefreshActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
 
         
     </application>
