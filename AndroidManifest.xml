@@ -19,7 +19,9 @@
     <application
         android:name=".application.CornucopiaApplication"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        
         <uses-library android:name="android.test.runner" >
         </uses-library>
 
@@ -230,7 +232,24 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-
+        
+        <activity 
+            android:label="UI/Material/Button"
+            android:name="com.cornucopia.ui.material.DemoButtonActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
+        <activity 
+            android:label="UI/Material/EditText"
+            android:name="com.cornucopia.ui.material.DemoEditTextActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
         
     </application>
 
