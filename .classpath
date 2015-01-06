@@ -26,6 +26,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="target/unpacked-libs/cas_support-v4/classes.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/unpacked-libs/cas_support-v4/classes.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/unpacked-libs/cas_support-v4/libs/internal_impl-21.0.3.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
