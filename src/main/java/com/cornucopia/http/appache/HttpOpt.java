@@ -16,8 +16,10 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpHead;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.params.HttpParams;
 
 import java.io.IOException;
@@ -61,8 +63,13 @@ public class HttpOpt {
     
     public void httpPost(String url, List<NameValuePair> params) {
         HttpClient httpClient = new DefaultHttpClient();
+        // connect timeout
+        httpClient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 20000);
+        // socket timeout (read and write)
+        httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 20000);
         
         HttpPost httpPost = new HttpPost(url);
+        
         try {
             httpPost.setEntity(new UrlEncodedFormEntity(params));
         } catch (UnsupportedEncodingException e1) {

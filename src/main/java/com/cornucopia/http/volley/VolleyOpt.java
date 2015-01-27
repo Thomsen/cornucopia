@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.Request.Method;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -43,6 +44,9 @@ public class VolleyOpt {
 
             @Override
             public void onErrorResponse(VolleyError error) {
+                if (error instanceof TimeoutError) {
+                    Log.e("thom", "error response timeout");
+                }
                 Log.e("thom", "error response " + error.getMessage());
             }
         }));

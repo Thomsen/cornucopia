@@ -89,13 +89,13 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
                 }
                 
             }
-//            new Thread() {
-//                public void run() {
-//                	login();
-//                }
-//            }.start();
+            new Thread() {
+                public void run() {
+                	login();
+                }
+            }.start();
 //            volleyLogin();
-            okHttpLogin();
+//            okHttpLogin();
         }
     }
     
