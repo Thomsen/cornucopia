@@ -1,8 +1,8 @@
-<project 
+<project
     xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.anyuaning</groupId>
 	<artifactId>Cornucopia</artifactId>
@@ -21,6 +21,7 @@
         <gson.version>2.3.1</gson.version>
         <okhttp.version>2.1.0</okhttp.version>
         <nineoldandroids.version>2.4.0</nineoldandroids.version>
+        <eventbus.version>2.4.0</eventbus.version>
 	</properties>
 
 	<dependencies>
@@ -59,7 +60,7 @@
                     <groupId>com.android.support</groupId>
                     <artifactId>support-v4</artifactId>
                 </exclusion>
-            </exclusions>			
+            </exclusions>
 		</dependency>
         <dependency>
             <groupId>com.mcxiaoke.volley</groupId>
@@ -80,6 +81,11 @@
             <groupId>com.nineoldandroids</groupId>
             <artifactId>library</artifactId>
             <version>${nineoldandroids.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.greenrobot</groupId>
+            <artifactId>eventbus</artifactId>
+            <version>${eventbus.version}</version>
         </dependency>
 	</dependencies>
 	<build>
