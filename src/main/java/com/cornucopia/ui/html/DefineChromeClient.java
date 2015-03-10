@@ -3,6 +3,7 @@ package com.cornucopia.ui.html;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
@@ -30,7 +31,7 @@ public class DefineChromeClient extends WebChromeClient {
                         }).create().show();
         result.confirm();
 //        return super.onJsAlert(view, url, message, result);
-        return true;  // 取代默认的dialog，result.confirm
+        return true;  // 取代默认的dialog
     }
 
     @Override
@@ -53,16 +54,10 @@ public class DefineChromeClient extends WebChromeClient {
     public boolean onJsPrompt(WebView view, String url, String message, String defaultValue,
             JsPromptResult result) {
         Toast.makeText(mContext, "prompt " + message, Toast.LENGTH_SHORT).show();
-        new AlertDialog.Builder(mContext).
-                setTitle("Prompt").setMessage(message).setPositiveButton("OK",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                //
-                            }
-                        }).setNegativeButton("Cancel", null).create().show();
-        result.confirm();
-//        return super.onJsPrompt(view, url, message, defaultValue, result);
+        Log.i("thom", "prompt url " + url);
+        Log.i("thom", "prompt defaultValue " + defaultValue);
+        // no dialog handle
+        result.confirm(); // continue handle
         return true;
     }
 
