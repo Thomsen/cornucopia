@@ -1,8 +1,8 @@
 document.writeln("html javascript inovke java");
 
-//alert();
-//window.confirm("window confirm");
-//window.prompt("window prompt");
+alert("window alert");
+window.confirm("window confirm");
+window.prompt("window prompt");
 
 
 var callJs = function() {

@@ -51,6 +51,8 @@ public class HtmlUI extends Activity {
 	private void setWebViewAttribute() {
 		mWebView.getSettings().setJavaScriptEnabled(true);
 
+		mWebView.setWebChromeClient(new DefineChromeClient(this));
+
 		// 设置javascript插件，并将其命名为addUser，在html中的onload加载并调用getUsers()
 		mWebView.addJavascriptInterface(new AddUserPlugin(mHandler), "addUser");
 
