@@ -1,21 +1,41 @@
 package com.cornucopia.ui.html;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 public class HtmlUI extends Activity {
 
-	WebView mWebView;
+    private WebView mWebView;
 
-	@Override
+    private final String JAVASCRIPT_INTERFACE = "hu";
+
+    private Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case AddUserPlugin.GET_USERS: {
+                    String param = (String) msg.obj;
+                    // addUserShow方法是在add_table.js中定义的
+                    mWebView.loadUrl(param);  // must be ui thread
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
+        }
+    };
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
@@ -32,98 +52,43 @@ public class HtmlUI extends Activity {
 		mWebView.getSettings().setJavaScriptEnabled(true);
 
 		// 设置javascript插件，并将其命名为addUser，在html中的onload加载并调用getUsers()
-		mWebView.addJavascriptInterface(new AddUserPlugin(), "addUser");
+		mWebView.addJavascriptInterface(new AddUserPlugin(mHandler), "addUser");
+
+		// 添加插件
+		mWebView.addJavascriptInterface(this, JAVASCRIPT_INTERFACE);
 	}
 
-	class AddUserPlugin {
-		public void getUsers() {
-			List<UserInfo> uList = getUserList();
-
-			// 转化为json格式数据 [{name, sex, date, contact}, {name, sex, date,
-			// contact}]
-
-			JSONArray jsonArray = new JSONArray();
-
-			for (UserInfo uInfo : uList) {
-				JSONObject jsonObject = new JSONObject();
-
-				try {
-					jsonObject.put("name", uInfo.getName());
-					jsonObject.put("sex", uInfo.getSex());
-					jsonObject.put("date", uInfo.getDate());
-					jsonObject.put("contact", uInfo.getContact());
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-
-				jsonArray.put(jsonObject);
-
-			}
-
-			// addUserShow方法是在add_table.js中定义的
-			mWebView.loadUrl("javascript:addUserShow('" + jsonArray.toString()
-					+ "')");
-		}
+	public void startFunction() {
+	    // js case sensitive, java must public
+	    Toast.makeText(this, "js interface " + JAVASCRIPT_INTERFACE, Toast.LENGTH_SHORT).show();
 	}
 
-	private List getUserList() {
-		List<UserInfo> userList = new ArrayList<UserInfo>();
-
-		userList.add(new UserInfo("lulu", "female", "00/08/2000",
-				"lulu@gmail.com"));
-		userList.add(new UserInfo("thom", "male", "01/12/1900",
-				"oss@gmail.com"));
-
-		return userList;
-
+	public void startFunction(String param) {
+        Toast.makeText(this, "js interface " + JAVASCRIPT_INTERFACE
+                + " with " + param, Toast.LENGTH_SHORT).show();
 	}
 
-	class UserInfo {
-		private String name;
-		private String sex;
-		private String date;
-		private String contact;
 
-		public String getName() {
-			return name;
-		}
+	private final CharSequence MENU_ONE = "invoke js";
+	private final CharSequence MENU_TWO = "invoke js with param";
 
-		public void setName(String name) {
-			this.name = name;
-		}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    menu.add(MENU_ONE);
+	    menu.add(MENU_TWO);
 
-		public String getSex() {
-			return sex;
-		}
+	    return super.onCreateOptionsMenu(menu);
+	}
 
-		public void setSex(String sex) {
-			this.sex = sex;
-		}
-
-		public String getDate() {
-			return date;
-		}
-
-		public void setDate(String date) {
-			this.date = date;
-		}
-
-		public String getContact() {
-			return contact;
-		}
-
-		public void setContact(String contact) {
-			this.contact = contact;
-		}
-
-		public UserInfo(String name, String sex, String date, String contact) {
-			super();
-			this.name = name;
-			this.sex = sex;
-			this.date = date;
-			this.contact = contact;
-		}
-
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    if (MENU_ONE.equals(item.getTitle())) {
+	        mWebView.loadUrl("javascript:callJs()");
+	    }
+	    if (MENU_TWO.equals(item.getTitle())) {
+	        mWebView.loadUrl("javascript:callJsWithParam('param')");
+	    }
+	    return super.onOptionsItemSelected(item);
 	}
 
 }

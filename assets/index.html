@@ -24,12 +24,12 @@
 			<td>33</td>
 		</tr>
 		</table>
-		
+
 		<form>
 			<input type="text" />
-			<input type="button" />
+			<input type="button" value="btn" />
 		</form>
-		
+
 		<table id="showUserTable">
 			<tr>
 				<td>用户名</td>
@@ -39,5 +39,8 @@
 			</tr>
 		</table>
 		<h3> <script src="js/print_document.js"></script></h3>
+        <a onClick="window.hu.startFunction()">invoke java</a> <br />
+        <a onClick="window.hu.startFunction('param')">invoke java with param</a>
+        <div id="content">content</div>
 	</body>
 </html>
