@@ -22,6 +22,7 @@
         <okhttp.version>2.1.0</okhttp.version>
         <nineoldandroids.version>2.4.0</nineoldandroids.version>
         <eventbus.version>2.4.0</eventbus.version>
+        <robospice.version>1.4.10</robospice.version>
 	</properties>
 
 	<dependencies>
@@ -86,6 +87,11 @@
             <groupId>de.greenrobot</groupId>
             <artifactId>eventbus</artifactId>
             <version>${eventbus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.octo.android.robospice</groupId>
+            <artifactId>robospice</artifactId>
+            <version>${robospice.version}</version>
         </dependency>
 	</dependencies>
 	<build>
