@@ -26,40 +26,80 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rl_picture_compress"
+        android:id="@+id/rl_picture_gray_compress"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tv_title_compress"
-            android:layout_below="@+id/tv_title_compress"
+            android:id="@+id/tv_title_gray_compress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/picture_compress"
+            android:text="@string/picture_gray_compress"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <ImageView
-            android:id="@+id/iv_image_compress"
+            android:id="@+id/iv_image_gray_compress"
+            android:layout_below="@+id/tv_title_gray_compress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rl_picture_android"
+        android:id="@+id/rl_picture_rgb_compress"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tv_title_android"
+            android:id="@+id/tv_title_rgb_compress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/picture_android"
+            android:text="@string/picture_rgb_compress"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <ImageView
-            android:id="@+id/iv_image_android"
-            android:layout_below="@+id/tv_title_android"
+            android:id="@+id/iv_image_rgb_compress"
+            android:layout_below="@+id/tv_title_rgb_compress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_picture_yuv_compress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_title_yuv_compress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/picture_yuv_compress"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ImageView
+            android:id="@+id/iv_image_yuv_compress"
+            android:layout_below="@+id/tv_title_yuv_compress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_picture_android_compress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_title_android_compress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/picture_android_compress"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ImageView
+            android:id="@+id/iv_image_android_compress"
+            android:layout_below="@+id/tv_title_android_compress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

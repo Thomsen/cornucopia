@@ -20,8 +20,10 @@
     <string name="login_confirm">confirm</string>
 
     <string name="picture_original">Original Picture</string>
-    <string name="picture_compress">Compress Picture</string>
-    <string name="picture_android">Android Compress Picture</string>
+    <string name="picture_gray_compress">Gray Compress Picture</string>
+    <string name="picture_rgb_compress">Rgb Compress Picture</string>
+    <string name="picture_yuv_compress">Yuv Compress Picture</string>
+    <string name="picture_android_compress">Android Compress Picture</string>
     <string name="take_picture">Take Picture</string>
 
 </resources>
