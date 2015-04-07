@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cornucopia</string>
-    
+
     <string name="enable_admin">Enable admin</string>
     <string name="device_capabilities_category">Device capabilities</string>
     <string name="disable_camera">Disable all device cameras</string>
     <string name="camera_disabled">Device cameras disabled</string>
     <string name="camera_enabled">Device cameras enabled</string>
-    
+
     <string name="add_admin_extra_app_text">
         Additional text explaining why this needs to be added.</string>
-        
+
     <string name="key_enable_admin">key_enable_admin</string>
     <string name="key_disable_camera">key_disable_camera</string>
 
@@ -18,5 +18,10 @@
     <string name="login_username">username</string>
     <string name="login_password">password</string>
     <string name="login_confirm">confirm</string>
-    
+
+    <string name="picture_original">Original Picture</string>
+    <string name="picture_compress">Compress Picture</string>
+    <string name="picture_android">Android Compress Picture</string>
+    <string name="take_picture">Take Picture</string>
+
 </resources>
