@@ -278,6 +278,15 @@
         </activity>
 
         <activity
+            android:label="UI/Compat/Toolbar"
+            android:name="com.cornucopia.ui.compat.ToolbarDemoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:label="Event/EventBus"
             android:name="com.cornucopia.event.EeventBusMainActivity">
             <intent-filter>
