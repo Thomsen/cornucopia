@@ -23,6 +23,7 @@
         <nineoldandroids.version>2.4.0</nineoldandroids.version>
         <eventbus.version>2.4.0</eventbus.version>
         <robospice.version>1.4.10</robospice.version>
+        <fresco.version>0.2.0</fresco.version>
 	</properties>
 
 	<dependencies>
@@ -36,7 +37,7 @@
 			<groupId>com.android.support</groupId>
 			<artifactId>support-v4</artifactId>
 			<version>${support-v4.version}</version>
-			<type>aar</type>
+			<type>aar</type> <!-- mvn generate-sources -->
 		</dependency>
 		<!-- repositories>mvn clean install -->
 		<dependency>
@@ -93,6 +94,52 @@
             <artifactId>robospice</artifactId>
             <version>${robospice.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.facebook.fresco</groupId>
+            <artifactId>fresco</artifactId>
+            <version>${fresco.version}</version>
+            <type>aar</type>
+              <exclusions>
+                <exclusion>
+                    <groupId>com.facebook.fresco</groupId>
+                    <artifactId>drawee</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.facebook.fresco</groupId>
+                    <artifactId>fbcore</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.facebook.fresco</groupId>
+                    <artifactId>imagepipeline</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>com.facebook.fresco</groupId>
+            <artifactId>drawee</artifactId>
+            <version>${fresco.version}</version>
+            <type>aar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.facebook.fresco</groupId>
+                    <artifactId>drawee</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.facebook.fresco</groupId>
+            <artifactId>fbcore</artifactId>
+            <version>${fresco.version}</version>
+            <type>aar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.facebook.fresco</groupId>
+            <artifactId>imagepipeline</artifactId>
+            <version>${fresco.version}</version>
+            <type>aar</type>
+        </dependency>
+         -->
 	</dependencies>
 	<build>
 		<plugins>
