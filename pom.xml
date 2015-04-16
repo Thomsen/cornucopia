@@ -39,6 +39,13 @@
 			<version>${support-v4.version}</version>
 			<type>aar</type>
 		</dependency>
+		<dependency>
+		    <groupId>android.support.v4</groupId>
+		    <artifactId>internal_impl-21.0.3</artifactId>
+		    <version>${support-v4.version}</version>
+		    <scope>system</scope>
+		    <systemPath>${project.build.directory}/unpacked-libs/cas_support-v4/libs/internal_impl-21.0.3.jar</systemPath>
+		</dependency>
 		<!-- aar > mvn generate-sources -->
 		<!-- repositories > mvn clean install -->
 		<dependency>
@@ -151,6 +158,11 @@
 				<configuration>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
+					<!--
+					<compilerArguments>
+	                   <extdirs>${project.build.directory}/unpacked-libs/cas_support-v4/libs</extdirs>
+	                </compilerArguments>
+	                 -->
 				</configuration>
 			</plugin>
 			<plugin>
