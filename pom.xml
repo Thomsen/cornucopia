@@ -37,9 +37,10 @@
 			<groupId>com.android.support</groupId>
 			<artifactId>support-v4</artifactId>
 			<version>${support-v4.version}</version>
-			<type>aar</type> <!-- mvn generate-sources -->
+			<type>aar</type>
 		</dependency>
-		<!-- repositories>mvn clean install -->
+		<!-- aar > mvn generate-sources -->
+		<!-- repositories > mvn clean install -->
 		<dependency>
 			<groupId>com.android.support</groupId>
 			<artifactId>appcompat-v7</artifactId>
