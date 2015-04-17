@@ -209,6 +209,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".graphics.fresco.FrescoDemoActivity"
+            android:label="Graphics/PictureFresco">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
         <!-- Multimedia -->
 
         <activity

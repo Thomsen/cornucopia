@@ -39,6 +39,7 @@
 			<version>${support-v4.version}</version>
 			<type>aar</type>
 		</dependency>
+		<!--
 		<dependency>
 		    <groupId>android.support.v4</groupId>
 		    <artifactId>internal_impl-21.0.3</artifactId>
@@ -46,6 +47,7 @@
 		    <scope>system</scope>
 		    <systemPath>${project.build.directory}/unpacked-libs/cas_support-v4/libs/internal_impl-21.0.3.jar</systemPath>
 		</dependency>
+		 -->
 		<!-- aar > mvn generate-sources -->
 		<!-- repositories > mvn clean install -->
 		<dependency>
@@ -122,7 +124,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--
         <dependency>
             <groupId>com.facebook.fresco</groupId>
             <artifactId>drawee</artifactId>
@@ -133,21 +134,41 @@
                     <groupId>com.facebook.fresco</groupId>
                     <artifactId>drawee</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>com.facebook.fresco</groupId>
+                    <artifactId>fbcore</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.android.support</groupId>
+                    <artifactId>support-v4</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
+         <!-- com.facebook.imagepipeline.core.ImagePipelineFactory -->
+        <dependency>
+            <groupId>com.facebook.fresco</groupId>
+            <artifactId>imagepipeline</artifactId>
+            <version>${fresco.version}</version>
+            <type>aar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.facebook.fresco</groupId>
+                    <artifactId>fbcore</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.android.support</groupId>
+                    <artifactId>support-v4</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- om.facebook.common.internal.Preconditions -->
         <dependency>
             <groupId>com.facebook.fresco</groupId>
             <artifactId>fbcore</artifactId>
             <version>${fresco.version}</version>
             <type>aar</type>
         </dependency>
-        <dependency>
-            <groupId>com.facebook.fresco</groupId>
-            <artifactId>imagepipeline</artifactId>
-            <version>${fresco.version}</version>
-            <type>aar</type>
-        </dependency>
-         -->
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -158,11 +179,9 @@
 				<configuration>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
-					<!--
 					<compilerArguments>
 	                   <extdirs>${project.build.directory}/unpacked-libs/cas_support-v4/libs</extdirs>
 	                </compilerArguments>
-	                 -->
 				</configuration>
 			</plugin>
 			<plugin>
