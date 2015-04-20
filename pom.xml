@@ -24,6 +24,7 @@
         <eventbus.version>2.4.0</eventbus.version>
         <robospice.version>1.4.10</robospice.version>
         <fresco.version>0.2.0</fresco.version>
+        <glide.version>3.5.2</glide.version>
 	</properties>
 
 	<dependencies>
@@ -167,6 +168,11 @@
             <artifactId>fbcore</artifactId>
             <version>${fresco.version}</version>
             <type>aar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.github.bumptech.glide</groupId>
+            <artifactId>glide</artifactId>
+            <version>${glide.version}</version>
         </dependency>
 
 	</dependencies>
