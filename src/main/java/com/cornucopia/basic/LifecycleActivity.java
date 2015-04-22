@@ -130,7 +130,8 @@ public class LifecycleActivity extends Activity implements
 	public void onClick(View arg0) {
 		switch (arg0.getId()) {
 		case 2301: {
-
+		    Intent intent = new Intent();
+		    intent.setClassName(this, "com.cornucopia.basic.ServiceLifecycle");
 			startService(intent);
 			Toast.makeText(this, "start", Toast.LENGTH_SHORT).show();
 			break;
@@ -167,9 +168,9 @@ public class LifecycleActivity extends Activity implements
 			break;
 		}
 		case 2306: {
-			
+
 			Log.i(BroadcastReceiverLifecycle.TAG_RECEIVER_LIFECYCLE, "Cancel Broadcast");
-			
+
 			((AlarmManager) this.getSystemService(Context.ALARM_SERVICE))
 					.cancel(PendingIntent.getBroadcast(this, 0, new Intent(
 							this, BroadcastReceiverLifecycle.class), 0));
