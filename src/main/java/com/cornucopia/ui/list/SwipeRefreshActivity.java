@@ -53,7 +53,7 @@ public class SwipeRefreshActivity extends Activity implements OnRefreshListener,
         mLvContent = (ListView) findViewById(R.id.lv_content);
         
         listData = new ArrayList<String>(Arrays.asList("Application", "Basic", "Datastorage", "Devices", "Grahpics"));
-        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
+        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listData);
         mLvContent.setAdapter(mAdapter);
         mLvContent.setOnItemClickListener(this);
         

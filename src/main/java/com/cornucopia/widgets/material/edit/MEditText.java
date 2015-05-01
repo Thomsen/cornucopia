@@ -196,7 +196,7 @@ public class MEditText extends EditText {
     ObjectAnimator bottomLinesAnimator;
     OnFocusChangeListener innerFocusChangeListener;
     OnFocusChangeListener outerFocusChangeListener;
-    private ArrayList<METValidator> validators = new ArrayList<>();
+    private ArrayList<METValidator> validators = new ArrayList<METValidator>();
 
     public MEditText(Context context) {
         this(context, null);

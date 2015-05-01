@@ -32,7 +32,7 @@ public class VolleyOpt {
         JSONObject jsonRequest = new JSONObject(params);
         TypeToken<MiboUser> typeOf = new TypeToken<MiboUser>(){};
         RequestQueue queue = Volley.newRequestQueue(mContext);
-        queue.add(new GsonRequest<>(Method.POST, url, typeOf, null, jsonRequest, new Response.Listener<MiboUser>() {
+        queue.add(new GsonRequest<MiboUser>(Method.POST, url, typeOf, null, jsonRequest, new Response.Listener<MiboUser>() {
 
             @Override
             public void onResponse(MiboUser response) {
