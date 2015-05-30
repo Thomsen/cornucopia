@@ -53,7 +53,7 @@ public class ViewTicketsListActivity extends ListActivity {
 		adapter.toggleTicketCompleteAtPosition(position);
 		
 		Tickets ticket = adapter.getItem(position);
-		app.saveTicketToDatabase(ticket);
+		app.getTicketDBHelper().saveTicketToDatabase(ticket);
 	}
 
 	private void setUpViews() {
@@ -86,7 +86,7 @@ public class ViewTicketsListActivity extends ListActivity {
 		Long[] ids = adapter.removeCompleteTickets();
 		
 		// 根据id从数据库中删除
-		app.deleteTickets(ids);
+		app.getTicketDBHelper().deleteTickets(ids);
 	}
 
 

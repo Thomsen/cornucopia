@@ -131,7 +131,7 @@ public class AddTicketsActivity extends TicketsManagerActivity {
 //		getTicketsManagerApplication().addTicket(ticket);
 		
 		// 添加同时插入到数据库
-		getTicketsManagerApplication().addTicketToDatabase(ticket);
+		getTicketsManagerApplication().getTicketDBHelper().addTicketToDatabase(ticket);
 	
 		finish();
 	}
