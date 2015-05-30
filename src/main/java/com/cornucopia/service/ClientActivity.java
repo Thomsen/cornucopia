@@ -1,4 +1,4 @@
-package com.cornucopia.basic.service;
+package com.cornucopia.service;
 
 import android.app.Activity;
 import android.content.ComponentName;

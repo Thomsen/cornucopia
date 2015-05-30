@@ -1,4 +1,4 @@
-package com.cornucopia.basic;
+package com.cornucopia.lifecycle;
 
 import java.util.Calendar;
 

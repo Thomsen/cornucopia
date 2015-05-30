@@ -1,4 +1,4 @@
-package com.cornucopia.basic.data;
+package com.cornucopia.transmit;
 
 import android.app.Activity;
 import android.content.Intent;

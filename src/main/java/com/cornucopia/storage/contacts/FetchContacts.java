@@ -1,4 +1,4 @@
-package com.cornucopia.basic.contacts;
+package com.cornucopia.storage.contacts;
 
 
 import com.cornucopia.R;

@@ -1,4 +1,4 @@
-package com.cornucopia.basic.contacts;
+package com.cornucopia.storage.contacts;
 
 import android.app.Activity;
 import android.content.ContentUris;

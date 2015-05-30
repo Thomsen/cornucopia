@@ -1,4 +1,4 @@
-package com.cornucopia.basic.data;
+package com.cornucopia.transmit;
 
 import com.cornucopia.R;
 

@@ -1,4 +1,4 @@
-package com.cornucopia.basic;
+package com.cornucopia.lifecycle;
 
 
 import android.app.Activity;
@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
 
-public class LifecycleActivity extends Activity implements
+public class StarterActivity extends Activity implements
 		OnGlobalLayoutListener, OnClickListener {
 
 	public final static String TAG_SERVICE_VIEWWITDH = "tag_service_viewwitdh";
@@ -184,7 +184,7 @@ public class LifecycleActivity extends Activity implements
 	@Override
 	protected void onStart() {
 		super.onStart();
-		intent = new Intent(LifecycleActivity.this, ServiceLifecycle.class);
+		intent = new Intent(StarterActivity.this, ServiceLifecycle.class);
 	}
 
 	@Override

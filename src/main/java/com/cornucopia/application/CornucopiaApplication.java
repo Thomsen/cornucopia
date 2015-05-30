@@ -2,11 +2,10 @@ package com.cornucopia.application;
 
 import java.util.ArrayList;
 
-import com.cornucopia.application.ticketsmanager.Tickets;
-import com.cornucopia.application.ticketsmanager.TicketsSQLiteOpenHelper;
+import com.cornucopia.storage.ticketsmanager.Tickets;
+import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
 
-import static com.cornucopia.application.ticketsmanager.TicketsSQLiteOpenHelper.*;
-
+import static com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper.*;
 import android.app.Application;
 import android.content.ContentValues;
 import android.database.Cursor;

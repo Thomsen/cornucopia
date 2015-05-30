@@ -1,4 +1,4 @@
-package com.cornucopia.basic.data;
+package com.cornucopia.transmit;
 
 import android.os.Parcel;
 import android.os.Parcelable;

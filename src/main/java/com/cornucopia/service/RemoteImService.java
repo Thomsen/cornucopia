@@ -1,4 +1,4 @@
-package com.cornucopia.basic.service;
+package com.cornucopia.service;
 
 import android.os.IBinder;
 import android.os.RemoteException;

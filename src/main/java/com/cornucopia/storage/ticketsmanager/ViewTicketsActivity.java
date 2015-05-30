@@ -1,4 +1,4 @@
-package com.cornucopia.application.ticketsmanager;
+package com.cornucopia.storage.ticketsmanager;
 
 import java.util.ArrayList;
 

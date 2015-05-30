@@ -81,7 +81,7 @@
 
         <activity
             android:label="Basic/Lifecycle/ActivityLifecycle"
-            android:name=".basic.ActivityLifecycle" >
+            android:name="com.cornucopia.lifecycle.ActivityLifecycle" >
 
             <!-- android:configChanges="orientation|keyboardHidden" > -->
             <intent-filter >
@@ -90,8 +90,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:label="Basic/Lifecycle/LifecycleActivity"
-            android:name=".basic.LifecycleActivity" >
+            android:label="Basic/Lifecycle/LifecycleStarter"
+            android:name="com.cornucopia.lifecycle.StarterActivity" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
@@ -100,7 +100,7 @@
 
         <activity
             android:label="Basic/Content Provider/FetchContacts"
-            android:name=".basic.contacts.FetchContacts" >
+            android:name="com.cornucopia.storage.contacts.FetchContacts" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
@@ -108,7 +108,7 @@
         </activity>
         <activity
             android:label="Basic/Content Provider/AddContacts"
-            android:name=".basic.contacts.AddContacts" >
+            android:name="com.cornucopia.storage.contacts.AddContacts" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
@@ -116,7 +116,7 @@
         </activity>
         <activity
             android:label="Basic/Activity/Activity Test"
-            android:name=".basic.data.ActivityTest" >
+            android:name="com.cornucopia.transmit.ActivityTest" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
@@ -124,32 +124,30 @@
         </activity>
         <activity
             android:label="Basic/Activity/Activity Transmit Data"
-            android:name=".basic.data.ActivityTransmitData" >
+            android:name="com.cornucopia.transmit.ActivityTransmitData" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".basic.data.ActivityObtainData" >
+            android:name="com.cornucopia.transmit.ActivityObtainData" >
 
         </activity>
         <activity
             android:label="Basic/Application/Add Tickets"
-            android:name=".application.ticketsmanager.ViewTicketsActivity" >
+            android:name="com.cornucopia.storage.ticketsmanager.ViewTicketsActivity">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        <activity android:name=".application.ticketsmanager.AddTicketsActivity" >
-        </activity>
-        <activity android:name=".application.ticketsmanager.TicketsManagerActivity" >
-        </activity>
+        <activity android:name="com.cornucopia.storage.ticketsmanager.AddTicketsActivity"></activity>
+        <activity android:name="com.cornucopia.storage.ticketsmanager.TicketsManagerActivity"></activity>
 
          <activity
             android:label="Basic/Application/Add Tickets List"
-            android:name=".application.ticketsmanager.ViewTicketsListActivity" >
+            android:name="com.cornucopia.storage.ticketsmanager.ViewTicketsListActivity">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
@@ -158,7 +156,7 @@
 
         <activity
             android:label="Basic/Service/ClientActivity"
-            android:name=".basic.service.ClientActivity">
+            android:name="com.cornucopia.service.ClientActivity">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
@@ -167,17 +165,17 @@
 
         <service
             android:process=":remote"
-            android:name=".basic.service.RemoteExService">
+            android:name="com.cornucopia.service.RemoteExService">
             <!-- INSTALL_PARSE_FAILED_MANIFEST_MALFORMED process="remote" -->
             <intent-filter >
                 <action android:name="com.cornucopia.basic.service.IRemoteService" />
             </intent-filter>
         </service>
 
-        <service android:name=".basic.ServiceLifecycle" >
+        <service android:name="com.cornucopia.lifecycle.ServiceLifecycle" >
         </service>
 
-        <receiver android:name=".basic.BroadcastReceiverLifecycle" >
+        <receiver android:name="com.cornucopia.lifecycle.BroadcastReceiverLifecycle" >
         </receiver>
 
         <!-- Device -->
@@ -316,4 +314,4 @@
 
 
 
-</manifest>
+</manifest>	

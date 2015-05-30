@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.cornucopia.R;
-import com.cornucopia.basic.data.ActivityTest;
+import com.cornucopia.transmit.ActivityTest;
 
 public class ActivityTestCase extends ActivityInstrumentationTestCase2<ActivityTest> {
 
