@@ -10,6 +10,15 @@ public class StringUtils {
 
     private StringUtils() {};
     
+    /**
+     * 对象转成字符串
+     * @param obj
+     * @return
+     */
+    public static String toString(Object obj) {
+    	return (null == obj ? "" : String.valueOf(obj));
+    }
+    
     public static String convertStreamToString(InputStream inStream) {
         String result = "result";
 

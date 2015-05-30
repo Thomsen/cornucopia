@@ -33,6 +33,14 @@ public class CornucopiaApplication extends Application {
 			loadTickets();
 			
 		}
+		
+		// 异常捕获
+		initCrashHandler();
+	}
+
+	private void initCrashHandler() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void loadTickets() {
