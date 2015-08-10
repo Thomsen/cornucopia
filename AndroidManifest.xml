@@ -196,6 +196,29 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
+        
+        <activity android:name=".devices.timer.TimerTaskActivity"
+            android:label="Device/Task">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
+        <receiver android:name=".devices.timer.TimerTaskActivity$MyReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_LOW" />
+                <action android:name="com.example.alarm" />
+                <action android:name="com.example.alarmwakeup" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".devices.timer.AlarmTimerBroadcast" >
+            <intent-filter>
+                <action android:name="timer_restart" />
+            </intent-filter>
+        </receiver>
+        
+        <service android:name=".devices.timer.TestOnStartCommandService" />
 
         <!-- Graphics -->
 
