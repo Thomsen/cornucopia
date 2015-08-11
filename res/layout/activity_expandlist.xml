@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <!-- height为wrap_content，展开后滚动会有问题 -->
+    <ExpandableListView
+        android:id="@+id/explist_panel"
+        android:layout_height="match_parent" 
+        android:layout_width="match_parent"
+        android:layout_above="@+id/operation_layout" />
+    
+    <LinearLayout
+        android:id="@+id/operation_layout"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true" >
+        <Button
+	        android:id="@+id/btn_submit"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:text="@string/submit" />
+    </LinearLayout>
+    
+    
+
+</RelativeLayout>

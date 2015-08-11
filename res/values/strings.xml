@@ -1,29 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="app_name">Cornucopia</string>
-
     <string name="enable_admin">Enable admin</string>
     <string name="device_capabilities_category">Device capabilities</string>
     <string name="disable_camera">Disable all device cameras</string>
     <string name="camera_disabled">Device cameras disabled</string>
     <string name="camera_enabled">Device cameras enabled</string>
-
     <string name="add_admin_extra_app_text">
         Additional text explaining why this needs to be added.</string>
-
     <string name="key_enable_admin">key_enable_admin</string>
     <string name="key_disable_camera">key_disable_camera</string>
-
     <string name="mibo_address">127.0.0.1:3000</string>
     <string name="login_username">username</string>
     <string name="login_password">password</string>
     <string name="login_confirm">confirm</string>
-
     <string name="picture_original">Original Picture</string>
     <string name="picture_gray_compress">Gray Compress Picture</string>
     <string name="picture_rgb_compress">Rgb Compress Picture</string>
     <string name="picture_yuv_compress">Yuv Compress Picture</string>
     <string name="picture_android_compress">Android Compress Picture</string>
     <string name="take_picture">Take Picture</string>
-
+    <string name="submit">submit</string>
+    <string name="expandlist">伸缩</string>
+    <string name="txt_group">buzform</string>
+    <string name="actionbar">搜索</string>
+    <string name="action_title">标题</string>
+    <string name="label_btn_browser">浏览</string>
+    <string name="label_btn_refresh">刷新</string>
+    <string name="pull_header_tap_label">拉动刷新</string>
+    <string name="label_btn_tree">组织</string>
+    <string name="label_btn_drag">拖动</string>
+    <string name="label_btn_dynamicmenu">菜单</string>
+    <string name="title_activity_drag_main">DragMainActivity</string>
+    <string name="menu_settings">Settings</string>
 </resources>

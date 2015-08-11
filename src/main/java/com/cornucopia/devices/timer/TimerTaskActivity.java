@@ -1,5 +1,6 @@
 package com.cornucopia.devices.timer;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -8,15 +9,19 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cornucopia.R;
 import com.cornucopia.application.basic.CorncopiaActivity;
+import com.cornucopia.devices.PhoneCallReceiver;
 
 public class TimerTaskActivity extends CorncopiaActivity {
 	
@@ -32,6 +37,8 @@ public class TimerTaskActivity extends CorncopiaActivity {
 	
 	private TimerTask timerTask = null;
 	
+	private TimerTask networkValidateTimerTask;
+	
 	private int timerCount = 0;
 	
 	private static int alarmCount = 0;
@@ -43,12 +50,36 @@ public class TimerTaskActivity extends CorncopiaActivity {
 	PendingIntent pendingIntent1;
 	PendingIntent pendingIntent2;
 	
+	private Context mContext;
+	
 	private Handler mHandler = new Handler() {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case HANDLE_ONE: {
 				tvTimerCount.setText("timer: " + msg.arg1);
 				TestOnStartCommandService.appendContentToAnalysis("timer: " + msg.arg1, "alarm_Performance.txt");
+				break;
+			}
+			case VALIDATE_NEWWORK: {
+				ConnectivityManager connManager = (ConnectivityManager) mContext.getSystemService(mContext.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = connManager.getActiveNetworkInfo();
+                if (networkInfo == null) {
+                    Toast.makeText(mContext, "当前网络连接不可用，请检查网络环境", Toast.LENGTH_SHORT).show();
+//                    noticeNetworkBreak();
+                    if (PhoneCallReceiver.isPhoneState) {
+                    	Log.i("thom", "phone calling");
+                    } else {
+                    	Log.i("thom", "phone called");
+                    }
+                    
+                } else {
+                    if (!networkInfo.isConnected()) {
+                    	Toast.makeText(mContext, "当前网络连接不可用，请启用网络", Toast.LENGTH_SHORT).show();
+                        if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
+                            connManager.startUsingNetworkFeature(networkInfo.getType(), "wap"); // OPhone
+                        }
+                    }
+                }
 				break;
 			}
 			default:
@@ -61,6 +92,7 @@ public class TimerTaskActivity extends CorncopiaActivity {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_timer_task);
+		mContext = this;
 		
         tvAlarmCount = (TextView) findViewById(R.id.tv_alarm_count);
         tvTimerCount = (TextView) findViewById(R.id.tv_timer_count);
@@ -197,4 +229,47 @@ public class TimerTaskActivity extends CorncopiaActivity {
 		}
 		
 	}
+	
+	private void suRun() {
+		Process proc = null;
+		try {
+			proc = Runtime.getRuntime().exec("su");
+			
+			// TODO 
+			Log.i("thom", "su run");
+			
+			proc.waitFor();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			proc.destroy();
+		}
+		
+	}
+	
+	private void startTestNetwork() {
+        //
+        // 检查网络是否连接
+        //
+		if (timer == null) {
+			timer = new Timer();
+        }
+		networkValidateTimerTask = new TimerTask() {
+            @Override
+            public void run() {
+                mHandler.sendEmptyMessage(VALIDATE_NEWWORK);
+            }
+        };
+        timer.schedule(this.networkValidateTimerTask, 0, 20000);
+	}
+	
+    /*
+     * 当back时，应用退出，但是timertask并没有被停止，
+     * 这样重新运行应用后，就会有两个timertask在运行。
+     * android.os.Process.killProcess(android.os.Process.myPid()); // 会停止timer
+     */
 }

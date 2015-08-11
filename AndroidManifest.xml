@@ -270,8 +270,44 @@
         </activity>
 
         <activity
+            android:label="UI/Dynamic/Expandlist"
+            android:name="com.cornucopia.ui.dynamic.ExpandlistDemo" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:label="UI/Dynamic/SearchBar"
+            android:name="com.cornucopia.ui.dynamic.SearchbarDemo" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:label="UI/Dynamic/Menu"
+            android:name="com.cornucopia.ui.dynamic.DynamicMenuMainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
+        <activity
             android:label="UI/Fragment/Article"
             android:name="com.cornucopia.ui.fragment.ArticleActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:label="UI/Fragment/Menu"
+            android:name="com.cornucopia.ui.fragment.MenuFragmentActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
@@ -286,10 +322,28 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:label="UI/Drag/DragMain"
+            android:name="com.cornucopia.ui.drag.DragMainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:label="UI/List/SwipeRefresh"
             android:name="com.cornucopia.ui.list.SwipeRefreshActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:label="UI/List/PullPushRefresh"
+            android:name="com.cornucopia.ui.list.PullPushRefreshDemo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
@@ -317,6 +371,24 @@
         <activity
             android:label="UI/Compat/Toolbar"
             android:name="com.cornucopia.ui.compat.ToolbarDemoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:label="UI/Tree/Orgtree"
+            android:name="com.cornucopia.ui.tree.OrgTreeMainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:label="Web/WebBrowser"
+            android:name="com.cornucopia.web.WebBrowserDemo" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
