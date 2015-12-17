@@ -394,6 +394,24 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:label="Web/NativeInvokeJs"
+            android:name="com.cornucopia.web.NativeInvokeJs" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:label="Web/JsInvokeNative"
+            android:name="com.cornucopia.web.JsInvokeNative" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:label="Event/EventBus"

@@ -1,0 +1,19 @@
+
+<html>
+<head>
+<script type="text/javascript">
+	
+	function showAndroidToast(toast) {
+		AndroidNative.showToast(toast);
+	}
+	
+	function showJsToast(toast) {
+		window.alert(toast);
+	}
+	
+</script>
+</head>
+<body>
+	<input type="button" value="js invoke native" onClick="showAndroidToast('Hello Android Native')" />
+</body>
+</html>

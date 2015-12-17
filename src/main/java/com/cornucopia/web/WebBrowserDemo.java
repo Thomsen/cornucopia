@@ -35,7 +35,7 @@ public class WebBrowserDemo extends Activity {
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
 //				return super.shouldOverrideUrlLoading(view, url);
 				view.loadUrl(url);
-				return true;  // ����ʹ���ⲿ�����
+				return true;  // 表示点击页面链接还在当前webview跳转，不跳转到浏览器
 			}
 			
 		});
