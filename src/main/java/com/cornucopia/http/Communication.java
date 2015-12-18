@@ -8,10 +8,13 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -52,24 +55,88 @@ public class Communication extends Activity implements OnClickListener {
 	
 	@Override
 	public void onClick(View v) {
-		String url = "http://www.baidu.com";
+		final String url = "http://www.baidu.com";
 		
 		switch (v.getId()) {
 		case R.id.conn_url_get: {
-			mTextView.setText(getResultWithUrlGet(url));
+			
+			new Thread() {
+				public void run() {
+					
+					final String content = getResultWithUrlGet(url); 
+					
+					runOnUiThread(new Runnable() {
+						
+						@Override
+						public void run() {
+							mTextView.setText(content);
+						}
+					});
+				}
+			}.start();
+			
+
 			break;
 		}
 		case R.id.conn_url_post: {
-			mTextView.setText(getResultWithUrlPost(url));
+			
+			new Thread("urlPost") {
+				public void run() {
+					
+					final CharSequence content = getResultWithUrlPost(url); 
+					
+					runOnUiThread(new Runnable() {
+						
+						@Override
+						public void run() {
+							mTextView.setText(content);
+						}
+					});
+				}
+			}.start();
+
 			break;
 		}
 		case R.id.conn_http_get: {
 //			url = "http://www.baidu.com";
-			mTextView.setText(getResultWithHttpGet(url));
+			
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					final String content = getResultWithHttpGet(url); 
+					
+					runOnUiThread(new Runnable() {
+						
+						@Override
+						public void run() {
+							mTextView.setText(content);
+						}
+					});
+				}
+			}).start();
+			
 			break;
 		}
 		case R.id.conn_http_post: {
-			mTextView.setText(getResultWithHttpPost(url));
+			BlockingQueue<Runnable> queue = new LinkedBlockingQueue<Runnable>();
+			ThreadPoolExecutor tpe = new ThreadPoolExecutor(5, 10, 1000, TimeUnit.SECONDS, queue);
+			tpe.execute(new Runnable() {
+				
+				@Override
+				public void run() {
+					final CharSequence content = getResultWithHttpPost(url); 
+					
+					runOnUiThread(new Runnable() {
+						
+						@Override
+						public void run() {
+							mTextView.setText(content);
+						}
+					});
+				}
+			});
+			
 			break;
 		}
 		}
@@ -91,6 +158,10 @@ public class Communication extends Activity implements OnClickListener {
 	}
 
 	private String getResultWithUrlGet(String strUrl) {
+		// For Gingerbread and better, HttpURLConnection is the best choice. Its simple API and small size makes it great fit for Android.
+		// Transparent compression and response caching reduce network use, improve speed and save battery.
+		// New applications should use HttpURLConnection; it is where we will be spending our energy going forward.
+		
 		String result = "communication url get";
 
 		try {
@@ -127,8 +198,16 @@ public class Communication extends Activity implements OnClickListener {
 
 		return result;
 	}
+	
+	private CharSequence getResultWithUrlPost(String url) {
+		String result = "communication url post";
 
+		return result;
+	}
+	
+	@SuppressWarnings("deprecation")
 	private String getResultWithHttpGet(String strUrl) {
+		// Apache HTTP client has fewer bugs on Eclair and Froyo. It is the best choice for these releases.
 
 		String result = "communication http get";
 
@@ -192,12 +271,6 @@ public class Communication extends Activity implements OnClickListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		return result;
-	}
-	
-	private CharSequence getResultWithUrlPost(String url) {
-		String result = "communication url post";
 
 		return result;
 	}
