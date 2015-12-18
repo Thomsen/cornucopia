@@ -7,6 +7,7 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import com.cornucopia.R;
 import com.facebook.common.logging.FLog;
@@ -22,8 +23,6 @@ import com.facebook.imagepipeline.image.ImageInfo;
 import com.facebook.imagepipeline.image.QualityInfo;
 
 import java.util.List;
-
-import javax.annotation.Nullable;
 
 public class FrescoDemoActivity extends Activity {
 

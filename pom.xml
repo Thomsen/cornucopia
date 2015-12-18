@@ -23,7 +23,7 @@
         <nineoldandroids.version>2.4.0</nineoldandroids.version>
         <eventbus.version>2.4.0</eventbus.version>
         <robospice.version>1.4.10</robospice.version>
-        <fresco.version>0.2.0</fresco.version>
+        <fresco.version>0.8.1</fresco.version>
         <glide.version>3.5.2</glide.version>
 	</properties>
 
