@@ -197,6 +197,14 @@
             </intent-filter>
         </receiver>
         
+        <activity android:name=".devices.map.LocMainActivity"
+            android:label="Device/Map/Loc">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
         <activity android:name=".devices.timer.TimerTaskActivity"
             android:label="Device/Task">
             <intent-filter>
