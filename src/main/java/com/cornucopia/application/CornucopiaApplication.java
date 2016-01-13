@@ -2,15 +2,10 @@ package com.cornucopia.application;
 
 import java.util.ArrayList;
 
+import android.app.Application;
+
 import com.cornucopia.storage.ticketsmanager.Tickets;
 import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
-
-import static com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper.*;
-import android.app.Application;
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 
 
 public class CornucopiaApplication extends Application {
@@ -35,6 +30,7 @@ public class CornucopiaApplication extends Application {
 		
 		// 异常捕获
 		initCrashHandler();
+		
 	}
 
 	private void initCrashHandler() {

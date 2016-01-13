@@ -42,3 +42,9 @@ appcompat drawee and imagepipeline is library
 
 reopen cornucopia project
 
+
+5. maven run
+
+$ mvn install:install-file -Dfile=libs/BaiduLBS_Android.jar -DgroupId=com.baidu.android -DartifactId=baidulbs -Dversion=5.0.0 -Dpackaging=jar
+
+$ mvn package android:deploy android:run

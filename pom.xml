@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.anyuaning</groupId>
+	<groupId>com.cornucopia</groupId>
 	<artifactId>Cornucopia</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>apk</packaging>
@@ -16,7 +16,7 @@
 		<android.version>5.1.1_r2</android.version>
 		<support-v4.version>21.0.3</support-v4.version>
 		<support-v7.version>21.0.3</support-v7.version>
-		<android.platform>21</android.platform>
+		<android.platform>22</android.platform>
         <volley.version>1.0.9</volley.version>
         <gson.version>2.3.1</gson.version>
         <okhttp.version>2.1.0</okhttp.version>
@@ -25,6 +25,7 @@
         <robospice.version>1.4.10</robospice.version>
         <fresco.version>0.8.1</fresco.version>
         <glide.version>3.5.2</glide.version>
+        <aspectj.version>1.8.7</aspectj.version>
 	</properties>
 
 	<dependencies>
@@ -174,6 +175,29 @@
             <artifactId>glide</artifactId>
             <version>${glide.version}</version>
         </dependency>
+        
+        <dependency>  
+	        <groupId>org.aspectj</groupId>  
+	        <artifactId>aspectjrt</artifactId>  
+	        <version>${aspectj.version}</version>  
+    	</dependency>
+    	<dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+		<dependency>
+			<groupId>com.baidu.android</groupId>
+			<artifactId>baidulbs</artifactId>
+			<version>5.0.0</version>
+			<scope>compile</scope>
+		</dependency>  
 
 	</dependencies>
 	<build>
@@ -185,8 +209,13 @@
 				<configuration>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
+					<encoding>utf8</encoding>
 					<compilerArguments>
 	                   <extdirs>${project.build.directory}/unpacked-libs/cas_support-v4/libs</extdirs>
+	                   <!-- 
+	                   [ERROR] The type android.support.v4.widget.DrawerLayoutImpl cannot be resolved. It is indirectly referenced from required .class files
+        				...\cornucopia\src\main\java\com\cornucopia\ui\compat\ToolbarDemoActivity.java:1
+        				 -->
 	                </compilerArguments>
 				</configuration>
 			</plugin>
@@ -202,6 +231,39 @@
 						<path>${android.home}</path>
 					</sdk>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>aspectj-maven-plugin</artifactId>
+				<version>1.8</version>
+				<configuration>
+					<complianceLevel>${jdk.version}</complianceLevel>
+					<source>${jdk.version}</source>
+					<verbose>true</verbose>
+					<showWeaveInfo>true</showWeaveInfo>
+					<forceAjcCompile>true</forceAjcCompile>
+					<!--
+					<weaveDependencies>
+						<weaveDependency>							
+							<groupId>com.cornucopia</groupId>
+							<artifactId>Cornucopia</artifactId>							 
+						</weaveDependency>						 
+					</weaveDependencies>
+					-->
+					<weaveDirectories>
+					 	<weaveDirectory>${project.build.outputDirectory}</weaveDirectory>
+					 	<weaveDirectory>${project.build.directory}/unpacked-libs/cas_support-v4/libs</weaveDirectory>
+					</weaveDirectories>
+				</configuration>
+				<executions>
+					<execution>
+					    <phase>process-sources</phase>
+						<goals>
+							<goal>compile</goal>
+							<!-- <goal>test-compile</goal> -->
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
