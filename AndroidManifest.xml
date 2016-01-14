@@ -76,7 +76,7 @@
 
         <service
             android:name=".http.robospice.RobospiceService" />
-
+        
         <!--  Basic -->
 
         <activity
@@ -168,7 +168,7 @@
             android:name="com.cornucopia.service.RemoteExService">
             <!-- INSTALL_PARSE_FAILED_MANIFEST_MALFORMED process="remote" -->
             <intent-filter >
-                <action android:name="com.cornucopia.basic.service.IRemoteService" />
+                <action android:name="com.cornucopia.service.IRemoteService" />
             </intent-filter>
         </service>
 

@@ -1,5 +1,7 @@
 package com.cornucopia.service;
 
+import com.cornucopia.utils.IntentUtils;
+
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -76,8 +78,13 @@ public class ClientActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-			    mActivity.bindService(new Intent(IRemoteService.class.getName()),
-			            mConnecitonService, Context.BIND_AUTO_CREATE);
+				Intent implictIntent = new Intent();
+//				implictIntent.setAction("com.cornucopia.basic.service.IRemoteService");
+				implictIntent.setAction(IRemoteService.class.getName());
+				implictIntent.setPackage(getPackageName());
+				Intent intent = IntentUtils.getExplicitIntent(mActivity, implictIntent);
+//				Intent intent = new Intent(mActivity, IRemoteService.class);
+			    mActivity.bindService(intent, mConnecitonService, Context.BIND_AUTO_CREATE);
 			}
 		});
 		
@@ -88,7 +95,9 @@ public class ClientActivity extends Activity {
                 // 结束服务的进程
                 try {
                     // 服务与进程关联了，结束了自己。在manifest配置
-                    android.os.Process.killProcess(mIRemoteService.getPid());
+                	if (null != mIRemoteService) {
+                		android.os.Process.killProcess(mIRemoteService.getPid());
+                	}
                 } catch (RemoteException e) {
                     Toast.makeText(mActivity, "服务已停止", Toast.LENGTH_SHORT).show();
                 }
