@@ -179,8 +179,9 @@
         <dependency>  
 	        <groupId>org.aspectj</groupId>  
 	        <artifactId>aspectjrt</artifactId>  
-	        <version>${aspectj.version}</version>  
+	        <version>${aspectj.version}</version>
     	</dependency>
+    	<!-- 
     	<dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjtools</artifactId>
@@ -191,13 +192,14 @@
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
         </dependency>
+         -->
 
 		<dependency>
 			<groupId>com.baidu.android</groupId>
 			<artifactId>baidulbs</artifactId>
 			<version>5.0.0</version>
-			<scope>compile</scope>
-		</dependency>  
+			<scope>provided</scope>
+		</dependency>
 
 	</dependencies>
 	<build>
@@ -209,7 +211,7 @@
 				<configuration>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
-					<encoding>utf8</encoding>
+					<encoding>UTF-8</encoding>
 					<compilerArguments>
 	                   <extdirs>${project.build.directory}/unpacked-libs/cas_support-v4/libs</extdirs>
 	                   <!-- 
@@ -239,9 +241,11 @@
 				<configuration>
 					<complianceLevel>${jdk.version}</complianceLevel>
 					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
 					<verbose>true</verbose>
 					<showWeaveInfo>true</showWeaveInfo>
 					<forceAjcCompile>true</forceAjcCompile>
+					<encoding>UTF-8</encoding>
 					<!--
 					<weaveDependencies>
 						<weaveDependency>							
@@ -252,7 +256,7 @@
 					-->
 					<weaveDirectories>
 					 	<weaveDirectory>${project.build.outputDirectory}</weaveDirectory>
-					 	<weaveDirectory>${project.build.directory}/unpacked-libs/cas_support-v4/libs</weaveDirectory>
+					 	<weaveDirectory>${project.build.directory}/unpacked-libs/cas_support-v4/libs/internal_impl-21.0.3.jar</weaveDirectory>
 					</weaveDirectories>
 				</configuration>
 				<executions>

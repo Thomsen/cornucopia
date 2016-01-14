@@ -1,4 +1,4 @@
-package com.cornucopia.application.aspect;
+package com.cornucopia.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;

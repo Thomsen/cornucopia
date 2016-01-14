@@ -47,4 +47,6 @@ reopen cornucopia project
 
 $ mvn install:install-file -Dfile=libs/BaiduLBS_Android.jar -DgroupId=com.baidu.android -DartifactId=baidulbs -Dversion=5.0.0 -Dpackaging=jar
 
+$ mvn clean compile
+
 $ mvn package android:deploy android:run
