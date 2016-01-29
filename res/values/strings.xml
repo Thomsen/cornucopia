@@ -40,4 +40,8 @@
     <string name="label_accuracy">精度：</string>
     <string name="label_altitude_accuracy">地址准确度：</string>
     <string name="label_address">地址：</string>
+    
+    <string name="label_gson_serializer">gson serializer</string>
+    <string name="label_gson_deserializer">gson deserializer</string>
+    
 </resources>

@@ -265,6 +265,17 @@
         		<category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
+        
+        <!--  parser -->
+        
+        <activity
+            android:label="Parser/Gson"
+            android:name="com.cornucopia.parser.ParserGsonActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
 
        	<!-- UI -->
 
