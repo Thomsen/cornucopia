@@ -27,6 +27,7 @@
         <glide.version>3.5.2</glide.version>
         <aspectj.version>1.8.7</aspectj.version>
         <jackson.version>2.7.0</jackson.version>
+        <fastjson.version>1.2.7</fastjson.version>
 	</properties>
 
 	<dependencies>
@@ -219,6 +220,12 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
 			<version>${jackson.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
 		</dependency>
 	
 	</dependencies>

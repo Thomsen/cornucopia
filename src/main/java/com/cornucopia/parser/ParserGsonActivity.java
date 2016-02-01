@@ -2,6 +2,7 @@ package com.cornucopia.parser;
 
 import java.io.IOException;
 
+import com.alibaba.fastjson.JSON;
 import com.cornucopia.R;
 import com.cornucopia.parser.entry.Cat;
 import com.cornucopia.parser.entry.Dog;
@@ -46,6 +47,12 @@ public class ParserGsonActivity extends Activity implements OnClickListener {
 		btnJasksonSe.setOnClickListener(this);
 		btnJasksonDe.setOnClickListener(this);
 		
+		Button btnFastjsonSe = (Button) findViewById(R.id.btn_fastjson_serializer);
+		Button btnFastjsonDe = (Button) findViewById(R.id.btn_fastjson_deserializer);
+		
+		btnFastjsonSe.setOnClickListener(this);
+		btnFastjsonDe.setOnClickListener(this);
+		
 		mAnimal = new IAnimal[] {
 				new Cat("Kitty"),
 				new Dog("Brutus", 5)
@@ -65,6 +72,12 @@ public class ParserGsonActivity extends Activity implements OnClickListener {
 		}
 		if (v.getId() == R.id.btn_jaskson_deserializer) {
 			jasksonDeserializer();
+		}
+		if (v.getId() == R.id.btn_fastjson_serializer) {
+			fastjsonSerializer();
+		}
+		if (v.getId() == R.id.btn_fastjson_deserializer) {
+			fastjsonDeserializer();
 		}
 	}
 
@@ -116,7 +129,7 @@ public class ParserGsonActivity extends Activity implements OnClickListener {
 		Dog dog = new Dog("Brutus", 5);
 		try {
 			mJsonStr = JasksonUtil.getMapper().writeValueAsString(dog);
-			Log.i(TAG, "jaskson serializer: " + mJsonStr);
+			Log.i(TAG, "jaskson serialized: " + mJsonStr);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
@@ -133,5 +146,17 @@ public class ParserGsonActivity extends Activity implements OnClickListener {
 		}
 	}
 
+	private void fastjsonSerializer() {
+		Cat cat = new Cat("Kitty");
+		mJsonStr = JSON.toJSONString(cat);
+		Log.i(TAG, "fastJson serialized: " + mJsonStr);
+	}
+
+	private void fastjsonDeserializer() {
+		if (null != mJsonStr) {
+			Cat cat = JSON.parseObject(mJsonStr, Cat.class);
+			Log.i(TAG, "fastjson deserialized: " + cat.sound());
+		}
+	}
 
 }
