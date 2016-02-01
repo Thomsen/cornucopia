@@ -17,7 +17,7 @@ public class Dog implements IAnimal {
 
 	@Override
 	public String sound() {
-		return getName() + ":\"brak\" { ferocity level: " + " }"; 
+		return getName() + ":\"brak\" { ferocity level: " + getFerocity() + " }"; 
 	}
 
 	public String getName() {

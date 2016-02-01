@@ -61,9 +61,12 @@ public class ParserGsonActivity extends Activity implements OnClickListener {
 //				// serialized: {"CLASSNAME":"com.cornucopia.parser.entry.Cat","INSTANCE":{"name":"Kitty"}}
 //				// serialized: {"CLASSNAME":"com.cornucopia.parser.entry.Dog","INSTANCE":{"name":"Brutus","ferocity":5}}
 				
-				aniStr = GsonBuilderUtil.createAnimalHierarchyGson().toJson(mAnimal[i]);
+				aniStr = GsonBuilderUtil.createAnimalHierarchyGson().toJson(mAnimal[i], IAnimal.class);
 				// serialized: "Kitty"
-				// serialized: "Brutus"	
+				// serialized: "Brutus"  // no IAnimal.class
+				
+				// serialized: {"CLASSNAME":"com.cornucopia.parser.entry.Cat","INSTANCE":"Kitty"}
+				// serialized: {"CLASSNAME":"com.cornucopia.parser.entry.Dog","INSTANCE":{"name":"Brutus","ferocity":5}}
 				
 				mAnimalStr[i] = aniStr;
 				Log.i(TAG, "serialized: " + aniStr);
@@ -81,6 +84,9 @@ public class ParserGsonActivity extends Activity implements OnClickListener {
 //				// deserialized: Brutus:"brak" { ferocity level:  }
 				
 				ani = GsonBuilderUtil.createAnimalHierarchyGson().fromJson(aniStr, IAnimal.class);
+				
+				// deserialized: Kitty:"meaow"
+				// deserialized: Brutus:"brak" { ferocity level: 5 }
 				
 				Log.i(TAG, "deserialized: " + ani.sound());
 			}
