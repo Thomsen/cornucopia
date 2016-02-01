@@ -1,10 +1,14 @@
 package com.cornucopia.parser;
 
+import java.io.IOException;
+
 import com.cornucopia.R;
 import com.cornucopia.parser.entry.Cat;
 import com.cornucopia.parser.entry.Dog;
 import com.cornucopia.parser.entry.IAnimal;
 import com.cornucopia.parser.gson.GsonBuilderUtil;
+import com.cornucopia.parser.jaskson.JasksonUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -21,6 +25,8 @@ public class ParserGsonActivity extends Activity implements OnClickListener {
 	
 	private String[] mAnimalStr;
 	
+	private String mJsonStr;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,6 +39,12 @@ public class ParserGsonActivity extends Activity implements OnClickListener {
 		
 		btnGsonSe.setOnClickListener(this);
 		btnGsonDe.setOnClickListener(this);
+		
+		Button btnJasksonSe = (Button) findViewById(R.id.btn_jaskson_serializer);
+		Button btnJasksonDe = (Button) findViewById(R.id.btn_jaskson_deserializer);
+		
+		btnJasksonSe.setOnClickListener(this);
+		btnJasksonDe.setOnClickListener(this);
 		
 		mAnimal = new IAnimal[] {
 				new Cat("Kitty"),
@@ -47,6 +59,12 @@ public class ParserGsonActivity extends Activity implements OnClickListener {
 		}
 		if (v.getId() == R.id.btn_gson_deserializer) {
 			gsonDeserializer();
+		}
+		if (v.getId() == R.id.btn_jaskson_serializer) {
+			jasksonSerializer();
+		}
+		if (v.getId() == R.id.btn_jaskson_deserializer) {
+			jasksonDeserializer();
 		}
 	}
 
@@ -69,7 +87,7 @@ public class ParserGsonActivity extends Activity implements OnClickListener {
 				// serialized: {"CLASSNAME":"com.cornucopia.parser.entry.Dog","INSTANCE":{"name":"Brutus","ferocity":5}}
 				
 				mAnimalStr[i] = aniStr;
-				Log.i(TAG, "serialized: " + aniStr);
+				Log.i(TAG, "gson serialized: " + aniStr);
 			}
 		}
 		
@@ -88,11 +106,32 @@ public class ParserGsonActivity extends Activity implements OnClickListener {
 				// deserialized: Kitty:"meaow"
 				// deserialized: Brutus:"brak" { ferocity level: 5 }
 				
-				Log.i(TAG, "deserialized: " + ani.sound());
+				Log.i(TAG, "gson deserialized: " + ani.sound());
 			}
 		}
 	}
 	
+
+	private void jasksonSerializer() {
+		Dog dog = new Dog("Brutus", 5);
+		try {
+			mJsonStr = JasksonUtil.getMapper().writeValueAsString(dog);
+			Log.i(TAG, "jaskson serializer: " + mJsonStr);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+	}
 	
+	private void jasksonDeserializer() {
+		if (null != mJsonStr) {
+			try {
+				Dog dog = JasksonUtil.getMapper().readValue(mJsonStr, Dog.class);
+				Log.i(TAG, "jaskson deserialized: " + dog.sound());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 
 }

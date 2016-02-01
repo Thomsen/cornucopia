@@ -43,5 +43,7 @@
     
     <string name="label_gson_serializer">gson serializer</string>
     <string name="label_gson_deserializer">gson deserializer</string>
+    <string name="label_jaskson_serializer">jaskson serializer</string>
+    <string name="label_jaskson_deserializer">jaskson deserializer</string>
     
 </resources>

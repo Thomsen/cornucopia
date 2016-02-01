@@ -26,6 +26,7 @@
         <fresco.version>0.8.1</fresco.version>
         <glide.version>3.5.2</glide.version>
         <aspectj.version>1.8.7</aspectj.version>
+        <jackson.version>2.7.0</jackson.version>
 	</properties>
 
 	<dependencies>
@@ -200,7 +201,26 @@
 			<version>5.0.0</version>
 			<scope>provided</scope>
 		</dependency>
-
+		
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+		
+		<dependency>
+			<!-- Note: core-annotations version x.y.0 is generally compatible with 
+				(identical to) version x.y.1, x.y.2, etc. -->
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+	
 	</dependencies>
 	<build>
 		<plugins>
@@ -282,6 +302,14 @@
 		    <!-- extras\compatibility-v4>mvn install -->
 		    <id>maven android sdk deployer</id>
 		    <url>https://github.com/simpligility/maven-android-sdk-deployer</url>
+		</repository>
+		<repository>
+			<id>codehaus-mule-repo</id>
+			<name>codehaus-mule-repo</name>
+			<url>
+				https://repository-master.mulesoft.org/nexus/content/groups/public/
+			</url>
+			<layout>default</layout>
 		</repository>
 	</repositories>
 
