@@ -9,5 +9,3 @@ android/support/multidex/ZipUtil.class
 android/support/multidex/ZipUtil$CentralDirectory.class
 com/cornucopia/application/CornucopiaApplication.class
 
-
-android/support/v4/graphics/drawable/RoundedBitmapDrawable.class

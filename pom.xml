@@ -366,14 +366,13 @@
                             <jvmArgument>-Xms2048m</jvmArgument>
                             <jvmArgument>-Xmx2048m</jvmArgument>
                         </jvmArguments>
-                        <!-- multi dex -->
-                        <multi-dex>false</multi-dex>
+                        <!-- multi dex DexMojo.java runDex -->
+                        <multi-dex>true</multi-dex>
                         <minimal-main-dex>true</minimal-main-dex>
                         <dex-arguments>--set-max-idx-number=65536</dex-arguments>
-                        <!-- main dex class -->
-                        <!-- 
+                        <!-- main dex classes.dex -->
                         <main-dex-list>${project.basedir}/MainDexList.txt</main-dex-list>
-                        -->
+                        
                     </dex>
                     
                     <sign>
