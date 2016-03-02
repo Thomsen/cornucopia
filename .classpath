@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="/cas_appcompat-v7/classes.jar"/>
-	<classpathentry exported="true" kind="lib" path="/cas_support-v4/classes.jar"/>
-	<classpathentry exported="true" kind="lib" path="/cff_drawee/classes.jar"/>
-	<classpathentry exported="true" kind="lib" path="/cff_fresco/classes.jar"/>
-	<classpathentry exported="true" kind="lib" path="/cff_imagepipeline/classes.jar"/>
-	<classpathentry exported="true" kind="lib" path="/cff_fbcore/classes.jar"/>
-	<classpathentry exported="true" kind="lib" path="/cas_support-v4/libs/internal_impl-21.0.3.jar"/>
+	<classpathentry kind="lib" path="/cas_multidex_1.0.1/classes.jar"/>
+	<classpathentry kind="lib" path="/cas_appcompat-v7_21.0.3/classes.jar"/>
+	<classpathentry kind="lib" path="/cas_support-v4_21.0.3/classes.jar"/>
+	<classpathentry kind="lib" path="/cff_drawee_0.8.1/classes.jar"/>
+	<classpathentry kind="lib" path="/cff_fbcore_0.8.1/classes.jar"/>
+	<classpathentry kind="lib" path="/cff_fresco_0.8.1/classes.jar"/>
+	<classpathentry kind="lib" path="/cff_imagepipeline_0.8.1/classes.jar"/>
+	<classpathentry kind="lib" path="/cas_support-v4_21.0.3/libs/internal_impl-21.0.3.jar"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -24,6 +25,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="src/aidl"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>

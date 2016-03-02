@@ -3,12 +3,13 @@ package com.cornucopia.application;
 import java.util.ArrayList;
 
 import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.cornucopia.storage.ticketsmanager.Tickets;
 import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
 
 
-public class CornucopiaApplication extends Application {
+public class CornucopiaApplication extends MultiDexApplication {
 
 	private ArrayList<Tickets> currentTickets;
 

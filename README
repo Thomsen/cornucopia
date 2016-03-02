@@ -8,6 +8,8 @@ and "Android Configurator for M2E" http://rgladwell.github.com/m2e-android/updat
 
 2. maven android sdk deployer
 
+config ${android.home} in pom.xml
+
 $ git clone http://github.com/simpligility/maven-android-sdk-deployer.git
 
 $ cd maven-android-sdk-deployer/
