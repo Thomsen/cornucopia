@@ -1,13 +1,11 @@
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cornucopia</groupId>
 	<artifactId>Cornucopia</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>apk</packaging>
+	<packaging>pom</packaging>
 
 	<properties>
 		<android.platform>22</android.platform>
@@ -34,7 +32,7 @@
         <jackson.version>2.7.0</jackson.version>
         <fastjson.version>1.2.7</fastjson.version>
         
-        <sign.keystore>cornucopia.keystore</sign.keystore>
+        <sign.keystore>.keystore</sign.keystore>
         <sign.storepass>keystore</sign.storepass>
         <sign.alias>copia</sign.alias>
 	</properties>
@@ -311,7 +309,7 @@
 						<phase>package</phase>
 						<inherited>true</inherited>
 						<configuration>
-							<archiveDirectory></archiveDirectory>
+							<archiveDirectory/>
 							<removeExistingSignatures>true</removeExistingSignatures>
 							<includes>
 								<include>target/${project.artifactId}-${project.version}.apk</include>
@@ -446,7 +444,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore/>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -478,4 +476,7 @@
 		</repository>
 	</repositories>
 
+  <modules>
+    <module>copia-app</module>
+  </modules>
 </project>
