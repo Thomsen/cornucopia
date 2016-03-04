@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.cornucopia</groupId>
-	<artifactId>Cornucopia</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.cornucopia</groupId>
+    <artifactId>Cornucopia</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-	<properties>
-		<android.platform>22</android.platform>
-		<android.home>D:\Android\android-sdk</android.home>
-	
-	    <jdk.version>1.7</jdk.version>
+    <properties>
+        <android.platform>22</android.platform>
+        <android.home>D:\Android\android-sdk</android.home>
+
+        <jdk.version>1.7</jdk.version>
         <maven-compiler.version>3.5.1</maven-compiler.version>
         <maven-resources.version>2.7</maven-resources.version>
         <maven-jarsigner.version>1.4</maven-jarsigner.version>
         <android-maven.version>4.4.1</android-maven.version>
-		<android.version>5.1.1_r2</android.version>
-		<support-v4.version>21.0.3</support-v4.version>
-		<support-v7.version>21.0.3</support-v7.version>
-		<multidex.version>1.0.1</multidex.version>
+        <android.version>5.1.1_r2</android.version>
+        <support-v4.version>21.0.3</support-v4.version>
+        <support-v7.version>21.0.3</support-v7.version>
+        <multidex.version>1.0.1</multidex.version>
         <volley.version>1.0.9</volley.version>
         <gson.version>2.3.1</gson.version>
         <okhttp.version>2.1.0</okhttp.version>
@@ -31,321 +31,123 @@
         <aspectj.version>1.8.7</aspectj.version>
         <jackson.version>2.7.0</jackson.version>
         <fastjson.version>1.2.7</fastjson.version>
-        
-        <sign.keystore>.keystore</sign.keystore>
+
+        <sign.keystore>../.keystore</sign.keystore>
         <sign.storepass>keystore</sign.storepass>
         <sign.alias>copia</sign.alias>
-	</properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>android</groupId>
-			<artifactId>android</artifactId>
-			<version>${android.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.android.support</groupId>
-			<artifactId>support-v4</artifactId>
-			<version>${support-v4.version}</version>
-			<type>aar</type>
-		</dependency>
-		<!--
-		<dependency>
-		    <groupId>android.support.v4</groupId>
-		    <artifactId>internal_impl-21.0.3</artifactId>
-		    <version>${support-v4.version}</version>
-		    <scope>system</scope>
-		    <systemPath>${project.build.directory}/unpacked-libs/cas_support-v4/libs/internal_impl-21.0.3.jar</systemPath>
-		</dependency>
-		 -->
-		<!-- aar > mvn generate-sources -->
-		<!-- repositories > mvn clean install -->
-		<dependency>
-			<groupId>com.android.support</groupId>
-			<artifactId>appcompat-v7</artifactId>
-			<version>${support-v7.version}</version>
-			<type>aar</type>
-			<exclusions>
-				<exclusion>
-					<groupId>com.android.support</groupId>
-					<artifactId>support-v4</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.android.support</groupId>
-			<artifactId>recyclerview-v7</artifactId>
-			<version>${support-v7.version}</version>
-			<type>aar</type>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.android.support</groupId>
-                    <artifactId>support-v4</artifactId>
-                </exclusion>
-            </exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.android.support</groupId>
-			<artifactId>multidex</artifactId>
-			<version>${multidex.version}</version>
-			<type>aar</type>
-		</dependency>
+        <copia-app.version>0.0.1-SNAPSHOT</copia-app.version>
+        <copia-hotfix.version>0.0.1-SNAPSHOT</copia-hotfix.version>
+
+    </properties>
+
+    <dependencies>
         <dependency>
-            <groupId>com.mcxiaoke.volley</groupId>
-            <artifactId>library</artifactId>
-            <version>${volley.version}</version>
+            <groupId>android</groupId>
+            <artifactId>android</artifactId>
+            <version>${android.version}</version>
+            <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>${okhttp.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.nineoldandroids</groupId>
-            <artifactId>library</artifactId>
-            <version>${nineoldandroids.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.greenrobot</groupId>
-            <artifactId>eventbus</artifactId>
-            <version>${eventbus.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.octo.android.robospice</groupId>
-            <artifactId>robospice</artifactId>
-            <version>${robospice.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.facebook.fresco</groupId>
-            <artifactId>fresco</artifactId>
-            <version>${fresco.version}</version>
-            <type>aar</type>
-              <exclusions>
-                <exclusion>
-                    <groupId>com.facebook.fresco</groupId>
-                    <artifactId>drawee</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.facebook.fresco</groupId>
-                    <artifactId>fbcore</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.facebook.fresco</groupId>
-                    <artifactId>imagepipeline</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.facebook.fresco</groupId>
-            <artifactId>drawee</artifactId>
-            <version>${fresco.version}</version>
-            <type>aar</type>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.facebook.fresco</groupId>
-                    <artifactId>drawee</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.facebook.fresco</groupId>
-                    <artifactId>fbcore</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.android.support</groupId>
-                    <artifactId>support-v4</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-         <!-- com.facebook.imagepipeline.core.ImagePipelineFactory -->
-        <dependency>
-            <groupId>com.facebook.fresco</groupId>
-            <artifactId>imagepipeline</artifactId>
-            <version>${fresco.version}</version>
-            <type>aar</type>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.facebook.fresco</groupId>
-                    <artifactId>fbcore</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.android.support</groupId>
-                    <artifactId>support-v4</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- om.facebook.common.internal.Preconditions -->
-        <dependency>
-            <groupId>com.facebook.fresco</groupId>
-            <artifactId>fbcore</artifactId>
-            <version>${fresco.version}</version>
-            <type>aar</type>
-        </dependency>
-        <dependency>
-            <groupId>com.github.bumptech.glide</groupId>
-            <artifactId>glide</artifactId>
-            <version>${glide.version}</version>
-        </dependency>
-        
-        <dependency>  
-	        <groupId>org.aspectj</groupId>  
-	        <artifactId>aspectjrt</artifactId>  
-	        <version>${aspectj.version}</version>
-    	</dependency>
-    	<!-- 
-    	<dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjtools</artifactId>
-            <version>${aspectj.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
+            <artifactId>aspectjrt</artifactId>
             <version>${aspectj.version}</version>
         </dependency>
-         -->
+    </dependencies>
 
-		<dependency>
-			<groupId>com.baidu.android</groupId>
-			<artifactId>baidulbs</artifactId>
-			<version>5.0.0</version>
-			<scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>${jackson.version}</version>
-		</dependency>
-		
-		<dependency>
-			<!-- Note: core-annotations version x.y.0 is generally compatible with 
-				(identical to) version x.y.1, x.y.2, etc. -->
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>${fastjson.version}</version>
-		</dependency>
-	
-	</dependencies>
-	<build>
-		<plugins>
-			<!-- maven compiler plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler.version}</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-					<encoding>UTF-8</encoding>
-					<!-- 
-					<compilerArguments>
-	                   <extdirs>${project.build.directory}/unpacked-libs/cas_support-v4_21.0.3/libs</extdirs>
-	                   
-	                   [ERROR] The type android.support.v4.widget.DrawerLayoutImpl cannot be resolved. It is indirectly referenced from required .class files
-        				...\cornucopia\src\main\java\com\cornucopia\ui\compat\ToolbarDemoActivity.java:1
-        			
-	                </compilerArguments>
-	                 -->
-				</configuration>
-			</plugin>
-			<!-- android resource plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>${maven-resources.version}</version>
-				<configuration>
-					<encoding>UTF-8</encoding>
-				</configuration>
-				<executions>
+    <build>
+        <plugins>
+            <!-- maven compiler plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler.version}</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>UTF-8</encoding>
+                    <!-- <compilerArguments> <extdirs>${project.build.directory}/unpacked-libs/cas_support-v4_21.0.3/libs</extdirs> 
+                        [ERROR] The type android.support.v4.widget.DrawerLayoutImpl cannot be resolved. 
+                        It is indirectly referenced from required .class files ...\cornucopia\src\main\java\com\cornucopia\ui\compat\ToolbarDemoActivity.java:1 
+                        </compilerArguments> -->
+                </configuration>
+            </plugin>
+
+            <!-- android resource plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources.version}</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+                <executions>
+                    <!-- <execution> <id>copy-resources</id> <phase>validate</phase> 
+                        <goals> <goal>copy-resources</goal> </goals> <configuration> <outputDirectory>${basedir}/res/drawable/</outputDirectory> 
+                        <resources> <resource> <directory>${basedir}/securityjpg/</directory> <filtering>true</filtering> 
+                        <includes> <include>*.jpg</include> </includes> </resource> </resources> 
+                        </configuration> </execution> -->
+                </executions>
+            </plugin>
+
+            <!-- android jarsigner plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jarsigner-plugin</artifactId>
+                <version>${maven-jarsigner.version}</version>
+                <executions>
                     <execution>
-                        <id>copy-resources</id>
-                        <phase>validate</phase>
+                        <id>signing</id>
                         <goals>
-                            <goal>copy-resources</goal>
+                            <goal>sign</goal>
+                            <goal>verify</goal>
                         </goals>
+                        <phase>package</phase>
+                        <inherited>true</inherited>
                         <configuration>
-                            <outputDirectory>${basedir}/res/drawable/</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${basedir}/securityjpg/</directory>
-                                    <filtering>true</filtering>
-                                    <includes>
-                                        <include>*.jpg</include>
-                                    </includes>
-                                </resource>
-                            </resources>
+                            <archiveDirectory/>
+                            <removeExistingSignatures>true</removeExistingSignatures>
+                            <includes>
+                                <include>target/${project.artifactId}-${project.version}.apk</include>
+                            </includes>
+                            <keystore>${sign.keystore}</keystore>
+                            <alias>${sign.alias}</alias>
+                            <storepass>${sign.storepass}</storepass>
+                            <verbose>true</verbose>
+                            <arguments>
+                                <argument>-sigalg</argument><argument>MD5withRSA</argument>
+                                <argument>-digestalg</argument><argument>SHA1</argument>
+                            </arguments>
                         </configuration>
                     </execution>
                 </executions>
-			</plugin>
-			<!-- android jarsigner plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jarsigner-plugin</artifactId>
-				<version>${maven-jarsigner.version}</version>
-				<executions>
-					<execution>
-						<id>signing</id>
-						<goals>
-							<goal>sign</goal>
-							<goal>verify</goal>
-						</goals>
-						<phase>package</phase>
-						<inherited>true</inherited>
-						<configuration>
-							<archiveDirectory/>
-							<removeExistingSignatures>true</removeExistingSignatures>
-							<includes>
-								<include>target/${project.artifactId}-${project.version}.apk</include>
-							</includes>
-							<keystore>${sign.keystore}</keystore>
-							<alias>${sign.alias}</alias>
-							<storepass>${sign.storepass}</storepass>
-							<verbose>true</verbose>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- android maven plugin -->
-			<plugin>
-			    <!-- mvn 3.0.5 higher -->
-				<groupId>com.simpligility.maven.plugins</groupId>
-				<artifactId>android-maven-plugin</artifactId>
-				<version>${android-maven.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-					<encoding>UTF-8</encoding>
-					<sdk>
-						<platform>${android.platform}</platform>
-						<path>${android.home}</path>
-					</sdk>
-					
-					<androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
-                   	<assetsDirectory>${project.basedir}/assets</assetsDirectory>
-                   	<nativeLibrariesDirectory>${project.basedir}/libs</nativeLibrariesDirectory>
+            </plugin>
+
+            <!-- android maven plugin -->
+            <plugin>
+                <!-- mvn 3.0.5 higher -->
+                <groupId>com.simpligility.maven.plugins</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <version>${android-maven.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>UTF-8</encoding>
+                    <sdk>
+                        <platform>${android.platform}</platform>
+                        <path>${android.home}</path>
+                    </sdk>
+
+                    <androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
+                    <assetsDirectory>${project.basedir}/assets</assetsDirectory>
+                    <nativeLibrariesDirectory>${project.basedir}/libs</nativeLibrariesDirectory>
                     <resourceDirectory>${project.basedir}/res</resourceDirectory>
-                 	<aidlSourceDirectory>${project.basedir}/src/main/aidl</aidlSourceDirectory>
+                    <aidlSourceDirectory>${project.basedir}/src/main/aidl</aidlSourceDirectory>
 
                     <failOnDuplicatePackages>false</failOnDuplicatePackages>
-                        
+
                     <proguard>
                         <skip>true</skip>
                         <config>${project.basedir}/proguard.cfg</config>
@@ -358,7 +160,7 @@
                         <filterManifest>true</filterManifest> <!-- remove META-INF/MANIFEST.MF -->
                         <customFilter>META-INF</customFilter>
                     </proguard>
-                    
+
                     <dex>
                         <jvmArguments>
                             <jvmArgument>-Xms2048m</jvmArgument>
@@ -370,113 +172,104 @@
                         <dex-arguments>--set-max-idx-number=65536</dex-arguments>
                         <!-- main dex classes.dex -->
                         <main-dex-list>${project.basedir}/MainDexList.txt</main-dex-list>
-                        
-                    </dex>
-                    
-                    <sign>
-                    	<debug>false</debug>
-                    </sign>
-				</configuration>
-			</plugin>
-			<!-- aspectj maven plugin -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>aspectj-maven-plugin</artifactId>
-				<version>1.8</version>
-				<configuration>
-					<complianceLevel>${jdk.version}</complianceLevel>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-					<verbose>true</verbose>
-					<showWeaveInfo>true</showWeaveInfo>
-					<forceAjcCompile>true</forceAjcCompile>
-					<encoding>UTF-8</encoding>
-					<!--
-					<weaveDependencies>
-						<weaveDependency>							
-							<groupId>com.cornucopia</groupId>
-							<artifactId>Cornucopia</artifactId>							 
-						</weaveDependency>						 
-					</weaveDependencies>
-					-->
-					<!-- 
-					<weaveDirectories>
-					 	<weaveDirectory>${project.build.outputDirectory}</weaveDirectory>
-					 	<weaveDirectory>${project.build.directory}/generated-sources/aidl</weaveDirectory>
-					 	<weaveDirectory>${project.build.directory}/unpacked-libs/cas_support-v4_21.0.3/libs/internal_impl-21.0.3.jar</weaveDirectory>
-					</weaveDirectories>
-					 -->
-				</configuration>
-				<executions>
-					<execution>
-					    <phase>process-sources</phase>
-						<goals>
-							<goal>compile</goal>
-							<!-- <goal>test-compile</goal> -->
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											com.simpligility.maven.plugins
-										</groupId>
-										<artifactId>
-											android-maven-plugin
-										</artifactId>
-										<versionRange>
-											[4.4.1,)
-										</versionRange>
-										<goals>
-											<goal>emma</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore/>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
 
-	<repositories>
-		<repository>
-			<id>maven central repository</id>
-			<url>http://search.maven.org/</url>
-		</repository>
-		<repository>
-		    <!-- download and cd dir, mvn install -P 5.0 -->
-		    <!-- extras\compatibility-v4>mvn install -->
-		    <id>maven android sdk deployer</id>
-		    <url>https://github.com/simpligility/maven-android-sdk-deployer</url>
-		</repository>
-		<repository>
-			<id>codehaus-mule-repo</id>
-			<name>codehaus-mule-repo</name>
-			<url>
+                    </dex>
+
+                    <sign>
+                        <debug>false</debug>
+                    </sign>
+                </configuration>
+            </plugin>
+
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse 
+                    m2e settings only. It has no influence on the Maven build itself. -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            com.simpligility.maven.plugins
+                                        </groupId>
+                                        <artifactId>
+                                            android-maven-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [4.4.1,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>emma</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore/>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>all</id> <!-- mvn [] -P aop -->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>copia-app</module>
+                <module>copia-hotfix</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>app</id>
+            <modules>
+                <module>copia-app</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>hotfix</id>
+            <modules>
+                <module>copia-hotfix</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>hackdex</id>
+            <modules>
+                <module>copia-hackdex</module>
+            </modules>
+        </profile>
+    </profiles>
+
+    <repositories>
+        <repository>
+            <id>maven central repository</id>
+            <url>http://search.maven.org/</url>
+        </repository>
+        <repository>
+            <!-- download and cd dir, mvn install -P 5.0 -->
+            <!-- extras\compatibility-v4>mvn install -->
+            <id>maven android sdk deployer</id>
+            <url>https://github.com/simpligility/maven-android-sdk-deployer</url>
+        </repository>
+        <repository>
+            <id>codehaus-mule-repo</id>
+            <name>codehaus-mule-repo</name>
+            <url>
 				https://repository-master.mulesoft.org/nexus/content/groups/public/
 			</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
+            <layout>default</layout>
+        </repository>
+    </repositories>
 
-  <modules>
-    <module>copia-app</module>
-  </modules>
 </project>

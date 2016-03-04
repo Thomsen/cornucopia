@@ -1,12 +1,6 @@
 package com.cornucopia.storage.ticketsmanager;
 
-import static com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper.TICKETS_COMPLETE;
-import static com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper.TICKETS_ID;
-import static com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper.TICKETS_NAME;
-import static com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper.TICKETS_TABLE;
-
 import java.util.ArrayList;
-import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
