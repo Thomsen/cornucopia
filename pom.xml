@@ -83,11 +83,25 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
                 <executions>
-                    <!-- <execution> <id>copy-resources</id> <phase>validate</phase> 
-                        <goals> <goal>copy-resources</goal> </goals> <configuration> <outputDirectory>${basedir}/res/drawable/</outputDirectory> 
-                        <resources> <resource> <directory>${basedir}/securityjpg/</directory> <filtering>true</filtering> 
-                        <includes> <include>*.jpg</include> </includes> </resource> </resources> 
-                        </configuration> </execution> -->
+                   <execution>
+                        <id>copy-dex</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/dex/</directory>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>*.dex</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
 
