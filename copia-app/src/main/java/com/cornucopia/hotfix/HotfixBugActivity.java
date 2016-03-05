@@ -13,8 +13,8 @@ public class HotfixBugActivity extends Activity {
         
         setContentView(R.layout.activity_test);
         
-//        Hotfix hotfix = new Hotfix();
-//        hotfix.loadBugfix(this, "patch_dex.jar", "com.cornucopia.hotfix.HotfixBug");
+        Hotfix hotfix = new Hotfix();
+        hotfix.loadBugfix(this, "patch_dex.jar", "com.cornucopia.hotfix.HotfixBug");
         
         HotfixBug hotBug = new HotfixBug();
         hotBug.bug();

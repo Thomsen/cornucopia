@@ -25,7 +25,7 @@ public class CornucopiaApplication extends MultiDexApplication {
         hotfix.loadBugfix(this, "hackdex.jar", "com.cornucopia.hackdex.App");
         
         try {
-            System.out.println(getClassLoader().loadClass("com.cornucoipa.hackdex.App"));
+            System.out.println(getClassLoader().loadClass("com.cornucopia.hackdex.App"));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
