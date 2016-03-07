@@ -77,6 +77,15 @@
         <service
             android:name=".http.robospice.RobospiceService" />
         
+        <!-- Aspect -->
+        <activity android:label="Aspect/Dexposed"
+            android:name="com.cornucopia.aspect.dexposed.DexposedActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
         <!--  Basic -->
 
         <activity

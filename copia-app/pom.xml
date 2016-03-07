@@ -196,6 +196,13 @@
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>com.taobao.android</groupId>
+            <artifactId>dexposed</artifactId>
+            <version>0.1.1</version>
+            <type>aar</type>
+        </dependency>
 
     </dependencies>
 

@@ -8,6 +8,11 @@
 	<classpathentry kind="lib" path="/cff_imagepipeline_0.8.1/classes.jar"/>
 	<classpathentry kind="lib" path="/cas_appcompat-v7_21.0.3/classes.jar"/>
 	<classpathentry kind="lib" path="/cas_support-v4_21.0.3/libs/internal_impl-21.0.3.jar"/>
+	<classpathentry kind="lib" path="/cta_dexposed_0.1.1/classes.jar" sourcepath="C:/Users/wangchangsen/.m2/repository/com/taobao/android/dexposed/0.1.1/dexposed-0.1.1-sources.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" output="bin/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -31,7 +36,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src/main/aidl"/>
-	<classpathentry kind="src" path="target/generated-sources/aidl"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>

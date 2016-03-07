@@ -10,3 +10,4 @@ android/support/multidex/ZipUtil$CentralDirectory.class
 com/cornucopia/application/CornucopiaApplication.class
 com/cornucopia/hotfix/Hotfix.class
 com/cornucopia/storage/ticketsmanager/TicketsSQLiteOpenHelper.class
+com/cornucopia/aspect/dexposed/DexposedHook.class

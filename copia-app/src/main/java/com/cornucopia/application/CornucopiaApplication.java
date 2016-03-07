@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.support.multidex.MultiDexApplication;
 
+import com.cornucopia.aspect.dexposed.DexposedHook;
 import com.cornucopia.hotfix.Hotfix;
 import com.cornucopia.storage.ticketsmanager.Tickets;
 import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
@@ -34,6 +35,9 @@ public class CornucopiaApplication extends MultiDexApplication {
 		
 		Hotfix hotfix = new Hotfix();
 		hotfix.loadBugfix(this, "patch_dex.jar", "com.cornucopia.hotfix.HotfixBug");
+		
+		DexposedHook dexposed = new DexposedHook();
+		dexposed.hook(this);
 		
 	}
 
