@@ -468,6 +468,17 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
+        
+        <!-- Search -->
+        
+        <activity
+            android:label="Search/Applist"
+            android:name="com.cornucopia.search.loader.AppListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
 
     </application>
 
