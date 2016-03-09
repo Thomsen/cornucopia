@@ -33,6 +33,8 @@
         <jackson.version>2.7.0</jackson.version>
         <fastjson.version>1.2.7</fastjson.version>
         <dexposed.version>0.1.1</dexposed.version>
+        <rxjava.version>1.1.1</rxjava.version>
+        <rxandroid.version>1.1.0</rxandroid.version>
 
         <sign.keystore>../.keystore</sign.keystore>
         <sign.storepass>keystore</sign.storepass>
@@ -184,7 +186,8 @@
                         </jvmArguments>
                         <!-- multi dex DexMojo.java runDex -->
                         <multi-dex>true</multi-dex>
-                        <minimal-main-dex>true</minimal-main-dex>
+                        <!-- false: classes.dex, true: classes.dex classes1.dex -->
+                        <minimal-main-dex>true</minimal-main-dex> 
                         <dex-arguments>--set-max-idx-number=65536</dex-arguments>
                         <!-- main dex classes.dex -->
                         <main-dex-list>${project.basedir}/MainDexList.txt</main-dex-list>

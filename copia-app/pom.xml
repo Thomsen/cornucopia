@@ -203,6 +203,19 @@
             <version>0.1.1</version>
             <type>aar</type>
         </dependency>
+        
+        <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>${rxjava.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxandroid</artifactId>
+            <version>${rxandroid.version}</version>
+            <type>aar</type>
+        </dependency>
 
     </dependencies>
 
