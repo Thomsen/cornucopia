@@ -11,6 +11,9 @@ public class HotfixBugActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        Hotfix hotfix = new Hotfix();
+        hotfix.loadBugfix(this, "hackdex.jar", "com.cornucopia.hackdex.App");
+        
         setContentView(R.layout.activity_test);
         
         Hotfix hotfix = new Hotfix();

@@ -2,9 +2,7 @@ package com.cornucopia.application;
 
 import java.util.ArrayList;
 
-import android.app.Application;
 import android.support.multidex.MultiDexApplication;
-import android.util.Log;
 
 import com.cornucopia.hotfix.Hotfix;
 import com.cornucopia.storage.ticketsmanager.Tickets;
@@ -21,17 +19,6 @@ public class CornucopiaApplication extends MultiDexApplication {
 	public void onCreate() {
 		super.onCreate();
 		
-		Hotfix hotfix = new Hotfix();
-        hotfix.loadBugfix(this, "hackdex.jar", "com.cornucopia.hackdex.App");
-        
-        try {
-            System.out.println(getClassLoader().loadClass("com.cornucopia.hackdex.App"));
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        
-        hotfix.loadBugfix(this, "patch_dex.jar", "com.cornucopia.hotfix.HotfixBug");
-		
 		// 数据库操作
 		ticketDBHelper = new TicketsSQLiteOpenHelper(this);
 		
@@ -44,6 +31,9 @@ public class CornucopiaApplication extends MultiDexApplication {
 		
 		// 异常捕获
 		initCrashHandler();
+		
+		Hotfix hotfix = new Hotfix();
+		hotfix.loadBugfix(this, "patch_dex.jar", "com.cornucopia.hotfix.HotfixBug");
 		
 	}
 
