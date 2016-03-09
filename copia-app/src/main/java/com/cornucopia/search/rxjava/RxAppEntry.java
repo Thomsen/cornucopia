@@ -1,16 +1,19 @@
-package com.cornucopia.event.loader;
+package com.cornucopia.search.rxjava;
 
 import java.io.File;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
-public class AppEntry {
-    public AppEntry(AppListLoader loader, ApplicationInfo info) {
-        mLoader = loader;
+public class RxAppEntry {
+    
+    public RxAppEntry(Context context, ApplicationInfo info) {
         mInfo = info;
         mApkFile = new File(info.sourceDir);
+        this.context = context;
+        pkgManager = context.getPackageManager();
     }
 
     public ApplicationInfo getApplicationInfo() {
@@ -24,7 +27,7 @@ public class AppEntry {
     public Drawable getIcon() {
         if (mIcon == null) {
             if (mApkFile.exists()) {
-                mIcon = mInfo.loadIcon(mLoader.mPm);
+                mIcon = mInfo.loadIcon(pkgManager);
                 return mIcon;
             } else {
                 mMounted = false;
@@ -34,14 +37,14 @@ public class AppEntry {
             // its icon.
             if (mApkFile.exists()) {
                 mMounted = true;
-                mIcon = mInfo.loadIcon(mLoader.mPm);
+                mIcon = mInfo.loadIcon(pkgManager);
                 return mIcon;
             }
         } else {
             return mIcon;
         }
 
-        return mLoader.getContext().getResources().getDrawable(
+        return context.getResources().getDrawable(
                 android.R.drawable.sym_def_app_icon);
     }
 
@@ -62,7 +65,8 @@ public class AppEntry {
         }
     }
 
-    private final AppListLoader mLoader;
+    private final Context context;
+    private final PackageManager pkgManager;
     private final ApplicationInfo mInfo;
     private final File mApkFile;
     private String mLabel;

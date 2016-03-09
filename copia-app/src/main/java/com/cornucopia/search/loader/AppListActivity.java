@@ -115,5 +115,4 @@ public class AppListActivity extends ListActivity implements LoaderCallbacks<Lis
     }
 
 
-
 }
