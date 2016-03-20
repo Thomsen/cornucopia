@@ -77,6 +77,15 @@
         <service
             android:name=".http.robospice.RobospiceService" />
         
+        <!-- Aspect -->
+        <activity android:label="Aspect/Dexposed"
+            android:name="com.cornucopia.aspect.dexposed.DexposedActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
         <!--  Basic -->
 
         <activity
@@ -275,7 +284,7 @@
             </intent-filter>
         </activity>
         
-        <!--  parser -->
+        <!--  Parser -->
         
         <activity
             android:label="Parser/Gson"
@@ -451,6 +460,34 @@
         </activity>
         <activity android:name="com.cornucopia.event.EventBusSubActivity"></activity>
 
+        <activity
+            android:label="Event/Rxjava"
+            android:name="com.cornucopia.event.rxjava.RxjavaActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Search -->
+        
+        <activity
+            android:label="Search/Applist"
+            android:name="com.cornucopia.search.loader.AppListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:label="Search/RxApplist"
+            android:name="com.cornucopia.search.rxjava.RxAppListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
 
     </application>
 

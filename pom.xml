@@ -10,15 +10,16 @@
     <properties>
         <android.platform>21</android.platform>
         <android.version>5.0.1_r2</android.version>
-        <android.home>/opt/android-sdk-linux</android.home>
         <support-v4.version>21.0.3</support-v4.version>
         <support-v7.version>21.0.3</support-v7.version>
+        <android.home>/opt/android-sdk-linux</android.home>
 
         <jdk.version>1.7</jdk.version>
         <maven-compiler.version>3.5.1</maven-compiler.version>
         <maven-resources.version>2.7</maven-resources.version>
         <maven-jarsigner.version>1.4</maven-jarsigner.version>
         <android-maven.version>4.4.1</android-maven.version>
+        
         <multidex.version>1.0.1</multidex.version>
         <volley.version>1.0.9</volley.version>
         <gson.version>2.3.1</gson.version>
@@ -31,6 +32,9 @@
         <aspectj.version>1.8.7</aspectj.version>
         <jackson.version>2.7.0</jackson.version>
         <fastjson.version>1.2.7</fastjson.version>
+        <dexposed.version>0.1.1</dexposed.version>
+        <rxjava.version>1.1.1</rxjava.version>
+        <rxandroid.version>1.1.0</rxandroid.version>
 
         <sign.keystore>../.keystore</sign.keystore>
         <sign.storepass>keystore</sign.storepass>
