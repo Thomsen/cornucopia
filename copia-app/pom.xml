@@ -30,9 +30,14 @@
             <version>${support-v4.version}</version>
             <type>aar</type>
         </dependency>
-        <!-- <dependency> <groupId>android.support.v4</groupId> <artifactId>internal_impl-21.0.3</artifactId> 
-            <version>${support-v4.version}</version> <scope>system</scope> <systemPath>${project.build.directory}/unpacked-libs/cas_support-v4/libs/internal_impl-21.0.3.jar</systemPath> 
-            </dependency> -->
+        <!--
+        <dependency>
+            <groupId>android.support.v4</groupId>
+            <artifactId>internal_impl-21.0.3</artifactId> 
+            <version>${support-v4.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.build.directory}/unpacked-libs/cas_support-v4/libs/internal_impl-21.0.3.jar</systemPath> 
+        </dependency> -->
         <!-- aar > mvn generate-sources -->
         <!-- repositories > mvn clean install -->
         <dependency>
@@ -209,13 +214,46 @@
             <artifactId>rxjava</artifactId>
             <version>${rxjava.version}</version>
         </dependency>
-        
         <dependency>
             <groupId>io.reactivex</groupId>
             <artifactId>rxandroid</artifactId>
             <version>${rxandroid.version}</version>
             <type>aar</type>
         </dependency>
+        
+        <!-- 
+        <dependency>
+            <groupId>com.squareup.dagger</groupId>
+            <artifactId>dagger</artifactId>
+            <version>${dagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.dagger</groupId>
+            <artifactId>dagger-compiler</artifactId>
+            <version>${dagger.version}</version>
+            <optional>true</optional>
+        </dependency>
+         -->
+        
+        <dependency>
+            <groupId>com.google.dagger</groupId>
+            <artifactId>dagger</artifactId>
+            <version>${dagger2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jakewharton</groupId>
+            <artifactId>butterknife</artifactId>
+            <version>${butterknife.version}</version>
+        </dependency>
+        <!-- 
+        <dependency>
+            <groupId>com.jakewharton</groupId>
+            <artifactId>butterknife-compiler</artifactId>
+            <version>${butterknife.version}</version>
+            <optional>true</optional>
+        </dependency>
+         -->
 
     </dependencies>
 
@@ -234,12 +272,17 @@
                     <showWeaveInfo>true</showWeaveInfo>
                     <forceAjcCompile>true</forceAjcCompile>
                     <encoding>UTF-8</encoding>
-                    <!-- <weaveDependencies> <weaveDependency> <groupId>com.cornucopia</groupId> 
-                        <artifactId>Cornucopia</artifactId> </weaveDependency> </weaveDependencies> -->
-                    <!-- <weaveDirectories> <weaveDirectory>${project.build.outputDirectory}</weaveDirectory> 
-                        <weaveDirectory>${project.build.directory}/generated-sources/aidl</weaveDirectory> 
-                        <weaveDirectory>${project.build.directory}/unpacked-libs/cas_support-v4_21.0.3/libs/internal_impl-21.0.3.jar</weaveDirectory> 
-                        </weaveDirectories> -->
+                    <!-- 
+                    <weaveDependencies>
+                        <weaveDependency>
+                            <groupId>com.cornucopia</groupId> 
+                            <artifactId>Cornucopia</artifactId>
+                        </weaveDependency>
+                    </weaveDependencies> -->
+                    <!-- 
+                    <weaveDirectories>
+                        <weaveDirectory>${project.basedir}\.apt_generated</weaveDirectory> 
+                    </weaveDirectories> -->
                 </configuration>
                 <executions>
                     <execution>
@@ -250,6 +293,36 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            
+            <!-- processor maven plugin -->
+            <plugin>
+                <groupId>org.bsc.maven</groupId>
+                <artifactId>maven-processor-plugin</artifactId>
+                <version>${maven-processor.version}</version>
+                <executions>
+                    <execution>
+                        <id>process</id>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <!-- 
+                        <configuration>
+                            <processors>
+                                <processor>dagger.internal.codegen.ComponentProcessor</processor>
+                            </processors>
+                        </configuration>
+                        -->
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.google.dagger</groupId>
+                        <artifactId>dagger-compiler</artifactId>
+                        <version>${dagger2.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

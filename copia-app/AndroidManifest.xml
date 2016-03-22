@@ -18,7 +18,7 @@
         android:targetPackage="com.cornucopia" >
     </instrumentation>
 
-    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="22" />
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="22" />
 
     <application
         android:name=".application.CornucopiaApplication"
@@ -245,7 +245,17 @@
         </receiver>
         
         <service android:name=".devices.timer.TestOnStartCommandService" />
+        
+        <!-- Di -->
 
+        <activity android:name="com.cornucopia.di.dagger2.D2MainActivity"
+            android:label="Di/Main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
         <!-- Graphics -->
 
         <activity android:name=".graphics.compress.PictureCompressActivity"

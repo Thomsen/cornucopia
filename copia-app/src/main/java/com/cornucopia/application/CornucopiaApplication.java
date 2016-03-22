@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.support.multidex.MultiDexApplication;
 
 import com.cornucopia.aspect.dexposed.DexposedHook;
+import com.cornucopia.di.dagger2.D2GraphComponent;
 import com.cornucopia.hotfix.Hotfix;
 import com.cornucopia.storage.ticketsmanager.Tickets;
 import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
@@ -16,9 +17,15 @@ public class CornucopiaApplication extends MultiDexApplication {
 
 	private TicketsSQLiteOpenHelper ticketDBHelper;
 	
+	private static D2GraphComponent graph;
+	
+	private static CornucopiaApplication instance;
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		
+		instance = this;
 		
 		// 数据库操作
 		ticketDBHelper = new TicketsSQLiteOpenHelper(this);
@@ -39,9 +46,11 @@ public class CornucopiaApplication extends MultiDexApplication {
 		DexposedHook dexposed = new DexposedHook();
 		dexposed.hook(this);
 		
+		buildComponentGraph();
+		
 	}
 
-	private void initCrashHandler() {
+    private void initCrashHandler() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -71,5 +80,14 @@ public class CornucopiaApplication extends MultiDexApplication {
 	public TicketsSQLiteOpenHelper getTicketDBHelper() {
 		return ticketDBHelper;
 	}
+
+	
+    private void buildComponentGraph() {
+        graph = D2GraphComponent.Initializer.init(instance);
+    }
+    
+    public static D2GraphComponent component() {
+        return graph;
+    }
 
 }
