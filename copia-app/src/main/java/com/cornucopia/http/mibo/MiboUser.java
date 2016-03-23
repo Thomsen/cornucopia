@@ -1,15 +1,22 @@
-package com.cornucopia.http.volley;
+package com.cornucopia.http.mibo;
+
+import com.google.gson.annotations.SerializedName;
 
 public class MiboUser {
     
+    @SerializedName("id")
     private String id;
     
+    @SerializedName("username")
     private String username;
     
+    @SerializedName("email")
     private String email;
     
+    @SerializedName("remark")
     private String remark;
     
+    @SerializedName("description")
     private String description;
 
     public String getId() {

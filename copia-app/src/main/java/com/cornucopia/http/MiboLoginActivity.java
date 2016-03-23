@@ -1,5 +1,15 @@
 package com.cornucopia.http;
 
+import java.util.ArrayList;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
+import org.json.JSONObject;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,58 +20,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Request.Method;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HttpStack;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.cornucopia.R;
 import com.cornucopia.http.appache.HttpOpt;
+import com.cornucopia.http.mibo.MiboUser;
 import com.cornucopia.http.okhttp.OkHttpOpt;
-import com.cornucopia.http.volley.GsonRequest;
-import com.cornucopia.http.volley.MiboUser;
+import com.cornucopia.http.retrofit.MiboRetrofitService;
+import com.cornucopia.http.retrofit.RetrofitOpt;
 import com.cornucopia.http.volley.VolleyOpt;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+@SuppressWarnings("deprecation")
 public class MiboLoginActivity extends Activity implements OnClickListener {
+    
+    private static final String TAG = "MiboLoginActivity";
     
     private EditText mEtServerAddress;
     private EditText mEtUsername;
     private EditText mEtPassword;
     private Button mBtnConfirm;
     
-    private String serverAddress = "http://192.168.1.116:3000";
+    private Button mBtnShowUser;
+    
+//    private String serverAddress = "http://192.168.1.116:3000";
+    private String serverAddress = "http://mibo-api.herokuapp.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +53,10 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
         mEtUsername = (EditText) findViewById(R.id.et_login_username);
         mEtPassword = (EditText) findViewById(R.id.et_login_password);
         mBtnConfirm = (Button) findViewById(R.id.btn_login_confirm);
+        mBtnShowUser = (Button) findViewById(R.id.btn_show_user);
         
         mBtnConfirm.setOnClickListener(this);
+        mBtnShowUser.setOnClickListener(this);
     }
 
     @Override
@@ -97,6 +79,10 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
 //            volleyLogin();
 //            okHttpLogin();
         }
+        if (R.id.btn_show_user == v.getId()) {
+//            volleyShow();
+            retrofitShow();
+        }
     }
     
     private void show() {
@@ -117,7 +103,7 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
     }
     
     private void volleyShow() {
-        String showUrl = serverAddress + "/users/1";
+        String showUrl = serverAddress + "/users/6";
         JSONObject jsonRequest = new JSONObject();
         VolleyOpt vopt = new VolleyOpt(this);
         vopt.volleyGet(showUrl, jsonRequest);
@@ -136,7 +122,7 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
                 String showUrl = serverAddress + "/users/6";
                 OkHttpOpt oopt = new OkHttpOpt(MiboLoginActivity.this);
                 String resp = oopt.okHttpGet(showUrl);
-                Log.d("thom", "ok http resp: " + resp);
+                Log.d(TAG, "ok http resp: " + resp);
             }
         }.start();
     }
@@ -146,6 +132,32 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
         String loginUrl = serverAddress + "/users/login";
         oopt.okHttpLogin(loginUrl, mEtUsername.getText().toString(),
                 mEtPassword.getText().toString());
+    }
+    
+    private void retrofitShow() {
+        String showUrl = serverAddress;
+        RetrofitOpt retrofitOpt = new RetrofitOpt(showUrl);
+        MiboRetrofitService miboService = retrofitOpt.getMiboRetrofitService();
+        miboService.findUser("6").enqueue(new Callback<MiboUser>() {
+
+            @Override
+            public void onFailure(Call<MiboUser> arg0, Throwable throwable) {
+                Log.e(TAG, "retrofit find user " + throwable);
+            }
+
+            @Override
+            public void onResponse(Call<MiboUser> arg0,
+                    retrofit2.Response<MiboUser> response) {
+                if (response.isSuccessful()) {
+                    MiboUser user = response.body();
+                    String message = "retrofit find user " + user.getUsername(); 
+                    Log.e(TAG, message);
+                    Toast.makeText(MiboLoginActivity.this, message, Toast.LENGTH_SHORT).show();
+                }
+            }
+            
+        });;
+        
     }
     
 }
