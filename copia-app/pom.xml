@@ -221,20 +221,6 @@
             <type>aar</type>
         </dependency>
         
-        <!-- 
-        <dependency>
-            <groupId>com.squareup.dagger</groupId>
-            <artifactId>dagger</artifactId>
-            <version>${dagger.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.dagger</groupId>
-            <artifactId>dagger-compiler</artifactId>
-            <version>${dagger.version}</version>
-            <optional>true</optional>
-        </dependency>
-         -->
-        
         <dependency>
             <groupId>com.google.dagger</groupId>
             <artifactId>dagger</artifactId>
@@ -246,14 +232,6 @@
             <artifactId>butterknife</artifactId>
             <version>${butterknife.version}</version>
         </dependency>
-        <!-- 
-        <dependency>
-            <groupId>com.jakewharton</groupId>
-            <artifactId>butterknife-compiler</artifactId>
-            <version>${butterknife.version}</version>
-            <optional>true</optional>
-        </dependency>
-         -->
 
     </dependencies>
 
@@ -307,13 +285,14 @@
                             <goal>process</goal>
                         </goals>
                         <phase>generate-sources</phase>
-                        <!-- 
+                        <!--                         
                         <configuration>
                             <processors>
                                 <processor>dagger.internal.codegen.ComponentProcessor</processor>
+                                <processor>butterknife.internal.ButterKnifeProcessor</processor>
                             </processors>
                         </configuration>
-                        -->
+                         -->
                     </execution>
                 </executions>
                 <dependencies>
@@ -322,6 +301,14 @@
                         <artifactId>dagger-compiler</artifactId>
                         <version>${dagger2.version}</version>
                     </dependency>
+                    <!-- 
+                    <dependency>
+                        <groupId>com.jakewharton</groupId>
+                        <artifactId>butterknife-compiler</artifactId>
+                        <version>${butterknife.version}</version>
+                        <optional>true</optional>
+                    </dependency>
+                     -->
                 </dependencies>
             </plugin>
         </plugins>

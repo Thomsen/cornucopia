@@ -3,4 +3,5 @@
     <factorypathentry kind="EXTJAR" id="C:\Users\wangchangsen\.m2\repository\com\google\dagger\dagger\2.1\dagger-2.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Users\wangchangsen\.m2\repository\com\google\dagger\dagger-compiler\2.1\dagger-compiler-2.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="C:\Users\wangchangsen\.m2\repository\com\google\dagger\dagger-producers\2.1\dagger-producers-2.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="EXTJAR" id="C:\Users\wangchangsen\.m2\repository\com\jakewharton\butterknife\7.0.1\butterknife-7.0.1.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>

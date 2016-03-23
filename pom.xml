@@ -82,11 +82,6 @@
                         </compilerArguments> -->
                 </configuration>
                 <dependencies>
-                    <dependency>
-                        <groupId>com.google.dagger</groupId>
-                        <artifactId>dagger-compiler</artifactId>
-                        <version>${dagger2.version}</version>
-                    </dependency>
                 </dependencies>
             </plugin>
 
