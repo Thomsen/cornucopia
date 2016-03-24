@@ -41,6 +41,7 @@
         <butterknife.version>7.0.1</butterknife.version>
         <retrofit2.version>2.0.0</retrofit2.version>
         <okio.version>1.6.0</okio.version>
+        <realm.version>0.87.5</realm.version>
 
         <sign.keystore>../.keystore</sign.keystore>
         <sign.storepass>keystore</sign.storepass>
@@ -297,6 +298,25 @@
 			</url>
             <layout>default</layout>
         </repository>
+        <repository>
+            <id>oss-jf-repo</id>
+            <name>oss-jf-repo</name>
+            <url>
+                http://oss.jfrog.org/artifactory/oss-snapshot-local
+            </url>
+        </repository>
     </repositories>
+    
+    <pluginRepositories>
+        <!-- maven-processor-plugin use realm 0.87.5 -->
+        <pluginRepository>
+            <id>codehaus-mule-repo</id>
+            <name>codehaus-mule-repo</name>
+            <url>
+                https://repository-master.mulesoft.org/nexus/content/groups/public/
+            </url>
+            <layout>default</layout>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>

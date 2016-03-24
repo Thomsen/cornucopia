@@ -1,7 +1,5 @@
 package com.cornucopia.storage.ticketsmanager;
 
-
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.CheckedTextView;
@@ -11,6 +9,8 @@ public class TicketsListItem extends LinearLayout {
 	
 	private Tickets ticket;
 	private CheckedTextView mCheckedTextView;
+	
+//	private RealmTickets realmTicket;
 
 	public TicketsListItem(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -41,6 +41,11 @@ public class TicketsListItem extends LinearLayout {
 		
 	}
 	
-	
+//	public void setRealmTicket(RealmTickets realmTicket) {
+//	    this.realmTicket = realmTicket;
+//	    
+//	    mCheckedTextView.setText(realmTicket.getName());
+//        mCheckedTextView.setChecked(realmTicket.isComplete());
+//	}
 
 }

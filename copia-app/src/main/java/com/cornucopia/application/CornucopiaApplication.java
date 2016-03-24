@@ -1,5 +1,8 @@
 package com.cornucopia.application;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 import java.util.ArrayList;
 
 import android.support.multidex.MultiDexApplication;
@@ -48,6 +51,7 @@ public class CornucopiaApplication extends MultiDexApplication {
 		
 		buildComponentGraph();
 		
+		initRealmInstance();
 	}
 
     private void initCrashHandler() {
@@ -88,6 +92,11 @@ public class CornucopiaApplication extends MultiDexApplication {
     
     public static D2GraphComponent component() {
         return graph;
+    }
+    
+    private void initRealmInstance() {
+        RealmConfiguration config = new RealmConfiguration.Builder(this).build();
+        Realm.setDefaultConfiguration(config);
     }
 
 }

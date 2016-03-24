@@ -151,26 +151,6 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
-        <activity
-            android:label="Basic/Application/Add Tickets"
-            android:name="com.cornucopia.storage.ticketsmanager.ViewTicketsActivity">
-            <intent-filter >
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-        <activity android:name="com.cornucopia.storage.ticketsmanager.AddTicketsActivity"></activity>
-        <activity android:name="com.cornucopia.storage.ticketsmanager.TicketsManagerActivity"></activity>
-
-         <activity
-            android:label="Basic/Application/Add Tickets List"
-            android:name="com.cornucopia.storage.ticketsmanager.ViewTicketsListActivity">
-            <intent-filter >
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
 
         <activity
             android:label="Basic/Service/ClientActivity"
@@ -304,6 +284,44 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
+        
+        <!-- Storage -->
+        <activity
+            android:name="com.cornucopia.storage.ticketsmanager.ViewTicketsActivity"
+            android:label="Storage/SQLite/Add Tickets" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.cornucopia.storage.ticketsmanager.ViewTicketsListActivity"
+            android:label="Storage/SQLite/Add Tickets List" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.cornucopia.storage.ticketsmanager.AddTicketsActivity" ></activity>
+        <activity android:name="com.cornucopia.storage.ticketsmanager.TicketsManagerActivity" ></activity>
+        <!-- 
+        <activity
+            android:label="Storage/SQLite/Realm Add Tickets"
+            android:name="com.cornucopia.storage.realm.RealmViewTicketsActivity">
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.cornucopia.storage.realm.RealmViewTicketsListActivity"
+            android:label="Storage/SQLite/Realm Add Tickets List" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.cornucopia.storage.realm.RealmAddTicketsActivity"></activity> -->
 
        	<!-- UI -->
 
