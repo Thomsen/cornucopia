@@ -5,6 +5,7 @@ import io.realm.RealmConfiguration;
 
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
 import com.cornucopia.aspect.dexposed.DexposedHook;
@@ -12,6 +13,8 @@ import com.cornucopia.di.dagger2.D2GraphComponent;
 import com.cornucopia.hotfix.Hotfix;
 import com.cornucopia.storage.ticketsmanager.Tickets;
 import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 
 public class CornucopiaApplication extends MultiDexApplication {
@@ -22,7 +25,14 @@ public class CornucopiaApplication extends MultiDexApplication {
 	
 	private static D2GraphComponent graph;
 	
+	private static RefWatcher refWatcher;
+	
 	private static CornucopiaApplication instance;
+	
+	@Override
+	protected void attachBaseContext(Context base) {
+	    super.attachBaseContext(base);
+	}
 	
 	@Override
 	public void onCreate() {
@@ -52,6 +62,8 @@ public class CornucopiaApplication extends MultiDexApplication {
 		buildComponentGraph();
 		
 		initRealmInstance();
+		
+		refWatcher = LeakCanary.install(this);
 	}
 
     private void initCrashHandler() {
@@ -97,6 +109,10 @@ public class CornucopiaApplication extends MultiDexApplication {
     private void initRealmInstance() {
         RealmConfiguration config = new RealmConfiguration.Builder(this).build();
         Realm.setDefaultConfiguration(config);
+    }
+
+    public static RefWatcher getRefWatcher() {
+        return refWatcher;
     }
 
 }

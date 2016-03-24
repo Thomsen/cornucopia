@@ -255,6 +255,13 @@
             <version>${realm.version}</version>
         </dependency>
         
+        <dependency>
+            <groupId>com.squareup.leakcanary</groupId>
+            <artifactId>leakcanary-android</artifactId>
+            <version>${leakcanary.version}</version>
+            <type>aar</type>
+        </dependency>
+        
 
     </dependencies>
 
@@ -301,6 +308,10 @@
                 <groupId>org.bsc.maven</groupId>
                 <artifactId>maven-processor-plugin</artifactId>
                 <version>${maven-processor.version}</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
                 <executions>
                     <execution>
                         <id>process</id>
