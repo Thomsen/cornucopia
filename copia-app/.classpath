@@ -15,6 +15,9 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="/ir_rxandroid_1.1.0/classes.jar"/>
 	<classpathentry kind="lib" path="/DisplayLeakActivity/classes.jar"/>
+	<classpathentry kind="lib" path="/DisplayBlockActivity/classes.jar"/>
+	<classpathentry kind="lib" path="/cgm_blockcanary-android_1.2.0/classes.jar"/>
+	<classpathentry kind="lib" path="/cgm_blockcanary-core_1.2.0/classes.jar"/>
 	<classpathentry kind="src" output="bin/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>

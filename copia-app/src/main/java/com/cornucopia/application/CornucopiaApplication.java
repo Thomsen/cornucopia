@@ -8,11 +8,14 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
+import com.cornucopia.application.exception.AppBlockCanaryContext;
 import com.cornucopia.aspect.dexposed.DexposedHook;
 import com.cornucopia.di.dagger2.D2GraphComponent;
 import com.cornucopia.hotfix.Hotfix;
 import com.cornucopia.storage.ticketsmanager.Tickets;
 import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
+import com.github.moduth.blockcanary.BlockCanary;
+import com.github.moduth.blockcanary.BlockCanaryContext;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -64,6 +67,8 @@ public class CornucopiaApplication extends MultiDexApplication {
 		initRealmInstance();
 		
 		refWatcher = LeakCanary.install(this);
+		
+		BlockCanary.install(this, new AppBlockCanaryContext()).start();
 	}
 
     private void initCrashHandler() {

@@ -9,7 +9,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.cornucopia</groupId>
     <artifactId>copia-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>apk</packaging>
@@ -262,6 +261,40 @@
             <type>aar</type>
         </dependency>
         
+        <dependency>
+            <groupId>com.github.moduth</groupId>
+            <artifactId>blockcanary-core</artifactId>
+            <version>${blockcanary.version}</version>
+            <type>aar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.github.moduth</groupId>
+            <artifactId>blockcanary-android</artifactId>
+            <version>${blockcanary.version}</version>
+            <type>aar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.github.moduth</groupId>
+                    <artifactId>blockcanary-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.github.moduth</groupId>
+            <artifactId>blockcanary-ui</artifactId>
+            <version>${blockcanary.version}</version>
+            <type>aar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.github.moduth</groupId>
+                    <artifactId>blockcanary-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.github.moduth</groupId>
+                    <artifactId>blockcanary-android</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
     </dependencies>
 
