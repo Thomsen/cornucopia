@@ -169,6 +169,13 @@
                 <action android:name="com.cornucopia.service.IRemoteService" />
             </intent-filter>
         </service>
+        
+        <service
+            android:name="com.cornucopia.service.MessengerService">
+            <intent-filter >
+            </intent-filter>
+        </service>
+        
 
         <service android:name="com.cornucopia.lifecycle.ServiceLifecycle" >
         </service>
