@@ -10,8 +10,12 @@
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-	<uses-feature android:name="android.hardware.camera" />
+    
+    <!-- camera -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />  <!--  image contain gps  -->
+    
 
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"
@@ -270,15 +274,30 @@
         </activity>
 
         <!-- Multimedia -->
-
+        
         <activity
             android:name=".multimedia.SpeakAndTextActivity"
             android:label="Multimedia/Voice/STTS"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.cornucopia.multimedia.CameraShowActivity"
+            android:label="Multimedia/Camera"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
         		<category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.cornucopia.multimedia.CameraActivity"
+            android:windowSoftInputMode="adjustResize">
         </activity>
         
         <!--  Parser -->
