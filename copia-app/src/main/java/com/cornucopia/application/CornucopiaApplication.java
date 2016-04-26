@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
+import com.bugsnag.android.Bugsnag;
+import com.bugsnag.android.MetaData;
+import com.bugsnag.android.Severity;
 import com.cornucopia.application.exception.AppBlockCanaryContext;
 import com.cornucopia.aspect.dexposed.DexposedHook;
 import com.cornucopia.di.dagger2.D2GraphComponent;
@@ -43,6 +46,9 @@ public class CornucopiaApplication extends MultiDexApplication {
 		
 		instance = this;
 		
+	    // 异常捕获 
+        initCrashHandler();
+		
 		// 数据库操作
 		ticketDBHelper = new TicketsSQLiteOpenHelper(this);
 		
@@ -52,9 +58,6 @@ public class CornucopiaApplication extends MultiDexApplication {
 			// 使用数据库
 			currentTickets = ticketDBHelper.loadTickets();
 		}
-		
-		// 异常捕获
-		initCrashHandler();
 		
 		Hotfix hotfix = new Hotfix();
 		hotfix.loadBugfix(this, "patch_dex.jar", "com.cornucopia.hotfix.HotfixBug");
@@ -72,8 +75,11 @@ public class CornucopiaApplication extends MultiDexApplication {
 	}
 
     private void initCrashHandler() {
-		// TODO Auto-generated method stub
-		
+        Bugsnag.init(this);
+        
+//        MetaData metaData = new MetaData();
+//        metaData.addToTab("User", "username", "thom");
+//        Bugsnag.notify(new Exception("Non-fatal"), Severity.INFO,  metaData);
 	}
 
 	// 设置和获取当前的ticket

@@ -32,6 +32,9 @@
 
         <uses-library android:name="android.test.runner" >
         </uses-library>
+        
+        <meta-data android:name="com.bugsnag.android.API_KEY"
+          android:value="a36d30d59be748e249b99d06162df7fa" />
 
         <!-- Application -->
 

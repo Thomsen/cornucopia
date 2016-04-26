@@ -44,6 +44,7 @@
         <realm.version>0.87.5</realm.version>
         <leakcanary.version>1.3.1</leakcanary.version>
         <blockcanary.version>1.2.0</blockcanary.version>
+        <bugsnag.version>3.4.0</bugsnag.version>
 
         <sign.keystore>../.keystore</sign.keystore>
         <sign.storepass>keystore</sign.storepass>

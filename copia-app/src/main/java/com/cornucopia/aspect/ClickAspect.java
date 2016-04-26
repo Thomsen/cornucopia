@@ -20,6 +20,9 @@ public class ClickAspect {
 	
 	@Before("onClickEntryPoint()")
 	public void onClickBefore(JoinPoint jointPoint) {
-		Log.d(TAG, "Before Advice ==> Clicked on : " + ((Button) jointPoint.getArgs()[0]).getText());
+		// PictureCompressActivity ViewFlipper cannot be cast to
+	    if (jointPoint.getArgs()[0] instanceof Button) {
+	        Log.d(TAG, "Before Advice ==> Clicked on : " + ((Button) jointPoint.getArgs()[0]).getText());
+	    }
 	}
 }
