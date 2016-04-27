@@ -29,9 +29,9 @@ public class Cornucopia extends ListActivity {
 		 * 使用SimpleAdapter进行布局
 		 */
 		// 单层
-		setListAdapter(new SimpleAdapter(this, getIntentData(),
-				android.R.layout.simple_list_item_1, new String[] { "item" },
-				new int[] { android.R.id.text1 }));
+//		setListAdapter(new SimpleAdapter(this, getIntentData(),
+//				android.R.layout.simple_list_item_1, new String[] { "item" },
+//				new int[] { android.R.id.text1 }));
 
 		/*
 		 * 多层
@@ -52,7 +52,7 @@ public class Cornucopia extends ListActivity {
 
 	/**
 	 * @return List结构，通过Map将键值对应
-	 * 
+	 * @deprecated
 	 */
 	private List<? extends Map<String, ?>> getIntentData() {
 
