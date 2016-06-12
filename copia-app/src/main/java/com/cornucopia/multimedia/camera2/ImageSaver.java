@@ -4,9 +4,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-
+import android.annotation.SuppressLint;
 import android.media.Image;
 
+@SuppressLint("NewApi") 
 public class ImageSaver implements Runnable {
 
     private final Image mImage;

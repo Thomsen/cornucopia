@@ -1,5 +1,6 @@
 package com.cornucopia.multimedia.camera2;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.TextureView;
@@ -14,8 +15,8 @@ public class AutoFitTextureView extends TextureView {
     private int mRatioWidth;
     private int mRatioHeight;
 
-    public AutoFitTextureView(Context context, AttributeSet attrs,
-            int defStyleAttr, int defStyleRes) {
+    @SuppressLint("NewApi") public AutoFitTextureView(Context context, AttributeSet attrs,
+         int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 

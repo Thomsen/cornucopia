@@ -565,6 +565,16 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+        
+        <!-- mvp -->
+        <activity
+            android:label="MVP/Todo"
+            android:name="com.cornucopia.mvp.TasksActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
 
     </application>
 

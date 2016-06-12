@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -41,19 +41,18 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.baidu.a.a.a.a;
 import com.cornucopia.R;
 
+@SuppressLint("NewApi")
 public class Camera2BasicFragment extends Fragment implements OnClickListener {
     
     private static final int DEFAULT_WIDTH = 1920;
     
     private static final int DEFAULT_HEIGHT = 1080;
-          
 
     private Context mContext;
-    
+
     private String mCameraId;
     
     private Uri fileUri;
@@ -64,7 +63,7 @@ public class Camera2BasicFragment extends Fragment implements OnClickListener {
     private Handler mBackgroundHandler;
     
     private AutoFitTextureView mTextureView;
-    
+
     private ImageReader mImageReader;
     
     
@@ -470,9 +469,9 @@ public class Camera2BasicFragment extends Fragment implements OnClickListener {
             int textureViewHeight, int maxWidth, int maxHeight, Size aspectRatio) {
 
         // Collect the supported resolutions that are at least as big as the preview Surface
-        List<Size> bigEnough = new ArrayList<>();
+        List<Size> bigEnough = new ArrayList<Size>();
         // Collect the supported resolutions that are smaller than the preview Surface
-        List<Size> notBigEnough = new ArrayList<>();
+        List<Size> notBigEnough = new ArrayList<Size>();
         int w = aspectRatio.getWidth();
         int h = aspectRatio.getHeight();
         for (Size option : choices) {

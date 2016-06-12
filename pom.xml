@@ -45,6 +45,7 @@
         <leakcanary.version>1.3.1</leakcanary.version>
         <blockcanary.version>1.2.0</blockcanary.version>
         <bugsnag.version>3.4.0</bugsnag.version>
+        <guava.version>19.0</guava.version>
 
         <sign.keystore>../.keystore</sign.keystore>
         <sign.storepass>keystore</sign.storepass>
@@ -52,6 +53,7 @@
 
         <copia-app.version>0.0.1-SNAPSHOT</copia-app.version>
         <copia-hotfix.version>0.0.1-SNAPSHOT</copia-hotfix.version>
+        <copia-mvp.version>0.0.1-SNAPSHOT</copia-mvp.version>
 
     </properties>
 
@@ -196,7 +198,7 @@
                             <jvmArgument>-Xms2048m</jvmArgument>
                             <jvmArgument>-Xmx2048m</jvmArgument>
                         </jvmArguments>
-                        <!-- multi dex DexMojo.java runDex -->
+                        <!-- multi dex .java runDex -->
                         <multi-dex>true</multi-dex>
                         <!-- false: classes.dex, true: classes.dex classes1.dex -->
                         <minimal-main-dex>true</minimal-main-dex> 
@@ -260,6 +262,7 @@
             <modules>
                 <module>copia-app</module>
                 <module>copia-hotfix</module>
+                <module>copia-mvp</module>
             </modules>
         </profile>
         <profile>
@@ -323,4 +326,6 @@
         </pluginRepository>
     </pluginRepositories>
 
+  <modules>
+  </modules>
 </project>
