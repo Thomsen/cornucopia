@@ -19,10 +19,11 @@
         <maven-resources.version>2.7</maven-resources.version>
         <maven-jarsigner.version>1.4</maven-jarsigner.version>
         <android-maven.version>4.4.1</android-maven.version>
+        <maven-processor.version>3.1.0</maven-processor.version>
         
         <multidex.version>1.0.1</multidex.version>
         <volley.version>1.0.9</volley.version>
-        <gson.version>2.3.1</gson.version>
+        <gson.version>2.6.2</gson.version>
         <okhttp.version>2.1.0</okhttp.version>
         <nineoldandroids.version>2.4.0</nineoldandroids.version>
         <eventbus.version>2.4.0</eventbus.version>
@@ -35,6 +36,14 @@
         <dexposed.version>0.1.1</dexposed.version>
         <rxjava.version>1.1.1</rxjava.version>
         <rxandroid.version>1.1.0</rxandroid.version>
+        <dagger.version>1.2.2</dagger.version>
+        <dagger2.version>2.1</dagger2.version>
+        <butterknife.version>7.0.1</butterknife.version>
+        <retrofit2.version>2.0.0</retrofit2.version>
+        <okio.version>1.6.0</okio.version>
+        <realm.version>0.87.5</realm.version>
+        <leakcanary.version>1.3.1</leakcanary.version>
+        <blockcanary.version>1.2.0</blockcanary.version>
 
         <sign.keystore>../.keystore</sign.keystore>
         <sign.storepass>keystore</sign.storepass>
@@ -76,6 +85,8 @@
                         It is indirectly referenced from required .class files ...\cornucopia\src\main\java\com\cornucopia\ui\compat\ToolbarDemoActivity.java:1 
                         </compilerArguments> -->
                 </configuration>
+                <dependencies>
+                </dependencies>
             </plugin>
 
             <!-- android resource plugin -->
@@ -198,7 +209,7 @@
                     </sign>
                 </configuration>
             </plugin>
-
+            
         </plugins>
         <pluginManagement>
             <plugins>
@@ -288,6 +299,26 @@
 			</url>
             <layout>default</layout>
         </repository>
+        <!-- 
+        <repository>
+            <id>oss-jf-repo</id>
+            <name>oss-jf-repo</name>
+            <url>
+                http://oss.jfrog.org/artifactory/oss-snapshot-local
+            </url>
+        </repository> -->
     </repositories>
+    
+    <pluginRepositories>
+        <!-- maven-processor-plugin use realm 0.87.5 -->
+        <pluginRepository>
+            <id>codehaus-mule-repo</id>
+            <name>codehaus-mule-repo</name>
+            <url>
+                https://repository-master.mulesoft.org/nexus/content/groups/public/
+            </url>
+            <layout>default</layout>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>

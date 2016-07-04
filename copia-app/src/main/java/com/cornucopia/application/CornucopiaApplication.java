@@ -1,13 +1,23 @@
 package com.cornucopia.application;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
+import com.cornucopia.application.exception.AppBlockCanaryContext;
 import com.cornucopia.aspect.dexposed.DexposedHook;
+import com.cornucopia.di.dagger2.D2GraphComponent;
 import com.cornucopia.hotfix.Hotfix;
 import com.cornucopia.storage.ticketsmanager.Tickets;
 import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
+import com.github.moduth.blockcanary.BlockCanary;
+import com.github.moduth.blockcanary.BlockCanaryContext;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 
 public class CornucopiaApplication extends MultiDexApplication {
@@ -16,9 +26,22 @@ public class CornucopiaApplication extends MultiDexApplication {
 
 	private TicketsSQLiteOpenHelper ticketDBHelper;
 	
+	private static D2GraphComponent graph;
+	
+	private static RefWatcher refWatcher;
+	
+	private static CornucopiaApplication instance;
+	
+	@Override
+	protected void attachBaseContext(Context base) {
+	    super.attachBaseContext(base);
+	}
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		
+		instance = this;
 		
 		// 数据库操作
 		ticketDBHelper = new TicketsSQLiteOpenHelper(this);
@@ -39,9 +62,16 @@ public class CornucopiaApplication extends MultiDexApplication {
 		DexposedHook dexposed = new DexposedHook();
 		dexposed.hook(this);
 		
+		buildComponentGraph();
+		
+		initRealmInstance();
+		
+		refWatcher = LeakCanary.install(this);
+		
+		BlockCanary.install(this, new AppBlockCanaryContext()).start();
 	}
 
-	private void initCrashHandler() {
+    private void initCrashHandler() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -71,5 +101,23 @@ public class CornucopiaApplication extends MultiDexApplication {
 	public TicketsSQLiteOpenHelper getTicketDBHelper() {
 		return ticketDBHelper;
 	}
+
+	
+    private void buildComponentGraph() {
+        graph = D2GraphComponent.Initializer.init(instance);
+    }
+    
+    public static D2GraphComponent component() {
+        return graph;
+    }
+    
+    private void initRealmInstance() {
+        RealmConfiguration config = new RealmConfiguration.Builder(this).build();
+        Realm.setDefaultConfiguration(config);
+    }
+
+    public static RefWatcher getRefWatcher() {
+        return refWatcher;
+    }
 
 }

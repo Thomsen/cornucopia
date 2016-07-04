@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.Settings.Global;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
 import com.cornucopia.R;
+import com.cornucopia.application.CornucopiaApplication;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
@@ -52,6 +55,8 @@ public class PictureCompressActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_picture_compress);
+        
+        CornucopiaApplication.getRefWatcher().watch(this);
 
         mImageOriginal = (ImageView) findViewById(R.id.iv_image_original);
         mImageGrayCompress = (ImageView) findViewById(R.id.iv_image_gray_compress);

@@ -55,5 +55,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_confirm" />
+    
+    <Button
+        android:id="@+id/btn_show_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mibo_show_user" />
 
 </LinearLayout>

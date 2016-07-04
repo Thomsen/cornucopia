@@ -11,6 +11,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.Request.Method;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.cornucopia.http.mibo.MiboUser;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONObject;

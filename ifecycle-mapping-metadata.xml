@@ -17,6 +17,20 @@
             </action>
         </pluginExecution>
         
+        <pluginExecution>
+            <pluginExecutionFilter>
+                <groupId>org.bsc.maven</groupId>
+                <artifactId>maven-processor-plugin</artifactId>
+                <goals>
+                    <goal>process</goal>
+                </goals>
+                <versionRange>[2.0,)</versionRange>
+            </pluginExecutionFilter>
+            <action>
+                <ignore />
+            </action>
+        </pluginExecution>
+        
     </pluginExecutions>
 </lifecycleMappingMetadata>
 <!-- window - preferences - maven - lifecycle mappings -->
