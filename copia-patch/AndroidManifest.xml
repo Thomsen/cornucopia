@@ -10,7 +10,7 @@
 
     <application>
         <activity
-            android:name="com.cornucopia.patch.PatchMainActivity"
+            android:name="com.cornucopia.view.PatchMainActivity"
             android:label="@string/title_activity_patch_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

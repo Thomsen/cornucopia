@@ -1,10 +1,16 @@
-package com.cornucopia.patch;
+package com.cornucopia.view;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import com.cornucopia.patch.BSPatch;
+import com.cornucopia.patch.R;
+import com.cornucopia.patch.R.id;
+import com.cornucopia.patch.R.layout;
+import com.cornucopia.patch.R.menu;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.cornucopia.patch.PatchMainActivity" >
+    tools:context="com.cornucopia.view.PatchMainActivity" >
 
     <TextView
         android:id="@+id/tv_view"
