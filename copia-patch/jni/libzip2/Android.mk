@@ -13,4 +13,4 @@ LOCAL_SRC_FILES := \
 	huffman.c \
 	randtable.c
 
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)

@@ -7,6 +7,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+#include <assert.h>
+
 #include "../libzip2/bzlib.h"
 
 static off_t offtin(u_char *buf) {
@@ -184,4 +186,65 @@ JNIEXPORT jint JNICALL Java_com_cornucopia_patch_BSPatch_mergePatch(
 	(*env)->ReleaseStringUTFChars(env, newf, argv[2]);
 	(*env)->ReleaseStringUTFChars(env, patch, argv[3]);
 	return ret;
+}
+
+static int registerNativeMethods(JNIEnv* env , const char* className , JNINativeMethod* gMethods, int numMethods)
+{
+    jclass clazz;
+    clazz = (*env)->FindClass(env, className);
+    if (clazz == NULL)
+    {
+        return JNI_FALSE;
+    }
+
+    if ((*env)->RegisterNatives(env, clazz, gMethods, numMethods) < 0)
+    {
+        return JNI_FALSE;
+    }
+
+    return JNI_TRUE;
+}
+
+static JNINativeMethod methods[] = {
+	// {java method name, java method signature, native method pointer}
+	/*
+		$ javap -s com.cornucopia.patch.BSPatch
+		Compiled from "BSPatch.java"
+		public class com.cornucopia.patch.BSPatch {
+		  static {};
+		    descriptor: ()V
+
+		  public com.cornucopia.patch.BSPatch();
+		    descriptor: ()V
+
+		  public static native int mergePatch(java.lang.String, java.lang.String, java.lang.String);
+		    descriptor: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I */
+    {"mergePatch", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I", (void*)Java_com_cornucopia_patch_BSPatch_mergePatch},
+};
+
+static int registerNatives(JNIEnv* env)
+{
+    const char* kClassName = "com/cornucopia/patch/BSPatch";
+    return registerNativeMethods(env, kClassName, methods,  sizeof(methods) / sizeof(methods[0]));
+}
+
+JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved)
+{
+	JNIEnv* env = NULL;
+	jint result = -1;
+
+	if ((*vm) -> GetEnv(vm, (void**) &env, JNI_VERSION_1_4) != JNI_OK)
+	{
+		return -1;
+	}
+
+	assert(env != NULL);
+
+	if (!registerNatives(env))
+	{
+		return -1;
+	}
+
+	return JNI_VERSION_1_4;
+
 }

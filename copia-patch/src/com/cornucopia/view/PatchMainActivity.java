@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -58,13 +59,15 @@ public class PatchMainActivity extends Activity implements OnClickListener {
     }
 
     private void mergePatch() {
-        File oldFile = copeFile("v1.apk", "v1.apk");
-        File patchFile = copeFile("patch_v1_v2.patch", "patch_v1_v2.patch");
+        File oldFile = copyFile("v1.apk", "v1.apk");
+        File patchFile = copyFile("patch_v1_v2.patch", "patch_v1_v2.patch");
         File newFile = new File(getExternalFilesDir("apk"), "v2.apk");
         
         try {
+
             BSPatch.mergePatch(oldFile.getAbsolutePath(),
                     newFile.getAbsolutePath(), patchFile.getAbsolutePath());
+            
             intentInstaLL(newFile);
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,12 +83,20 @@ public class PatchMainActivity extends Activity implements OnClickListener {
         startActivity(intent);
     }
 
-    private File copeFile(String oldFileName, String newFileName) {
+    private File copyFile(String oldFileName, String newFileName) {
         File file = null;
         
         try {
             InputStream inStream = getAssets().open(oldFileName);
-            File dirFile = getExternalFilesDir("apk");
+            File dirFile = null;
+            
+            if (Environment.isExternalStorageEmulated()) {
+                dirFile = getExternalFilesDir("apk");
+            } else {
+                dirFile = getFilesDir();  // 没有权限合并
+            }
+            
+            
             if (! dirFile.exists()) {
                 dirFile.mkdir();
             }
