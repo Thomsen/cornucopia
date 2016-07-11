@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
+
     <string name="app_name">Cornucopia</string>
     <string name="enable_admin">Enable admin</string>
     <string name="device_capabilities_category">Device capabilities</string>
     <string name="disable_camera">Disable all device cameras</string>
     <string name="camera_disabled">Device cameras disabled</string>
     <string name="camera_enabled">Device cameras enabled</string>
-    <string name="add_admin_extra_app_text">
-        Additional text explaining why this needs to be added.</string>
+    <string name="add_admin_extra_app_text">        Additional text explaining why this needs to be added.</string>
     <string name="key_enable_admin">key_enable_admin</string>
     <string name="key_disable_camera">key_disable_camera</string>
     <string name="mibo_address">127.0.0.1:3000</string>
@@ -34,19 +34,20 @@
     <string name="label_btn_dynamicmenu">菜单</string>
     <string name="title_activity_drag_main">DragMainActivity</string>
     <string name="menu_settings">Settings</string>
-    
     <string name="label_latitude">纬度：</string>
     <string name="label_longitude">经度：</string>
     <string name="label_altitude">海拔：</string>
     <string name="label_accuracy">精度：</string>
     <string name="label_altitude_accuracy">地址准确度：</string>
     <string name="label_address">地址：</string>
-    
     <string name="label_gson_serializer">gson serializer</string>
     <string name="label_gson_deserializer">gson deserializer</string>
     <string name="label_jaskson_serializer">jaskson serializer</string>
     <string name="label_jaskson_deserializer">jaskson deserializer</string>
     <string name="label_fastjson_serializer">fastjson serializer</string>
     <string name="label_fastjson_deserializer">fastjson deserializer</string>
-    
+    <string name="title_activity_tickets_deadlock">TicketsDeadlock</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
 </resources>

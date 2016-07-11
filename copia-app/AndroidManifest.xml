@@ -1,230 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cornucopia"
     android:versionCode="2"
     android:versionName="1.0" >
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <!-- camera -->
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />  <!--  image contain gps  -->
-    
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- image contain gps -->
 
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"
         android:targetPackage="com.cornucopia" >
     </instrumentation>
 
-    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="22" />
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="22" />
 
     <application
         android:name=".application.CornucopiaApplication"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
         <uses-library android:name="android.test.runner" >
         </uses-library>
-        
-        <meta-data android:name="com.bugsnag.android.API_KEY"
-          android:value="a36d30d59be748e249b99d06162df7fa" />
+
+        <meta-data
+            android:name="com.bugsnag.android.API_KEY"
+            android:value="a36d30d59be748e249b99d06162df7fa" />
 
         <!-- Application -->
 
         <activity
             android:name=".application.LoadingActivity"
             android:theme="@style/Theme.Transparent" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".application.Cornucopia" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-       	<!-- Apache -->
+        <!-- Apache -->
 
         <activity
-            android:label="Http/Communication"
-            android:name="com.cornucopia.http.Communication">
+            android:name=".http.Communication"
+            android:label="Http/Communication" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".http.MiboLoginActivity"
+            android:label="Http/Mibo Login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".http.robospice.RobospiceActivity"
+            android:label="Http/Robospice" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:label="Http/Mibo Login"
-            android:name="com.cornucopia.http.MiboLoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
+        <service android:name=".http.robospice.RobospiceService" />
 
-        <activity
-            android:label="Http/Robospice"
-            android:name="com.cornucopia.http.robospice.RobospiceActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-
-        <service
-            android:name=".http.robospice.RobospiceService" />
-        
         <!-- Aspect -->
-        <activity android:label="Aspect/Dexposed"
-            android:name="com.cornucopia.aspect.dexposed.DexposedActivity">
+        <activity
+            android:name=".aspect.dexposed.DexposedActivity"
+            android:label="Aspect/Dexposed" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
-        <!--  Basic -->
+
+        <!-- Basic -->
 
         <activity
-            android:label="Basic/Lifecycle/ActivityLifecycle"
-            android:name="com.cornucopia.lifecycle.ActivityLifecycle" >
+            android:name=".lifecycle.ActivityLifecycle"
+            android:label="Basic/Lifecycle/ActivityLifecycle" >
 
             <!-- android:configChanges="orientation|keyboardHidden" > -->
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
         <activity
-            android:label="Basic/Lifecycle/LifecycleStarter"
-            android:name="com.cornucopia.lifecycle.StarterActivity" >
-            <intent-filter >
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:label="Basic/Content Provider/FetchContacts"
-            android:name="com.cornucopia.storage.contacts.FetchContacts" >
-            <intent-filter >
+            android:name=".lifecycle.StarterActivity"
+            android:label="Basic/Lifecycle/LifecycleStarter" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
         <activity
-            android:label="Basic/Content Provider/AddContacts"
-            android:name="com.cornucopia.storage.contacts.AddContacts" >
-            <intent-filter >
+            android:name=".storage.contacts.FetchContacts"
+            android:label="Basic/Content Provider/FetchContacts" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
         <activity
-            android:label="Basic/Activity/Activity Test"
-            android:name="com.cornucopia.transmit.ActivityTest" >
-            <intent-filter >
+            android:name=".storage.contacts.AddContacts"
+            android:label="Basic/Content Provider/AddContacts" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
         <activity
-            android:label="Basic/Activity/Activity Transmit Data"
-            android:name="com.cornucopia.transmit.ActivityTransmitData" >
-            <intent-filter >
+            android:name=".transmit.ActivityTest"
+            android:label="Basic/Activity/Activity Test" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.cornucopia.transmit.ActivityObtainData" >
-
+            android:name=".transmit.ActivityTransmitData"
+            android:label="Basic/Activity/Activity Transmit Data" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
         </activity>
-                <activity
-            android:label="Basic/Activity/Hotfix"
-            android:name="com.cornucopia.hotfix.HotfixBugActivity">
+        <activity android:name=".transmit.ActivityObtainData" >
+        </activity>
+        <activity
+            android:name=".hotfix.HotfixBugActivity"
+            android:label="Basic/Activity/Hotfix" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".service.ClientActivity"
+            android:label="Basic/Service/ClientActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:label="Basic/Service/ClientActivity"
-            android:name="com.cornucopia.service.ClientActivity">
-            <intent-filter >
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-
         <service
-            android:process=":remote"
-            android:name="com.cornucopia.service.RemoteExService">
+            android:name=".service.RemoteExService"
+            android:process=":remote" >
+
             <!-- INSTALL_PARSE_FAILED_MANIFEST_MALFORMED process="remote" -->
-            <intent-filter >
+            <intent-filter>
                 <action android:name="com.cornucopia.service.IRemoteService" />
             </intent-filter>
         </service>
-        
-        <service
-            android:name="com.cornucopia.service.MessengerService">
-            <intent-filter >
+        <service android:name=".service.MessengerService" >
+            <intent-filter>
             </intent-filter>
         </service>
-        
-
-        <service android:name="com.cornucopia.lifecycle.ServiceLifecycle" >
+        <service android:name=".lifecycle.ServiceLifecycle" >
         </service>
 
-        <receiver android:name="com.cornucopia.lifecycle.BroadcastReceiverLifecycle" >
+        <receiver android:name=".lifecycle.BroadcastReceiverLifecycle" >
         </receiver>
 
         <!-- Device -->
 
-        <activity android:name=".devices.PolicyAdminActivity"
-            android:label="Device/Policy/General">
+        <activity
+            android:name=".devices.PolicyAdminActivity"
+            android:label="Device/Policy/General" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
 
-        <receiver android:name=".devices.PolicyAdminActivity$PolicyAdminReceiver"
-            android:permission="android.permission.BIND_DEVICE_ADMIN">
-            <meta-data android:name="android.app.device_admin"
+        <receiver
+            android:name=".devices.PolicyAdminActivity$PolicyAdminReceiver"
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            <meta-data
+                android:name="android.app.device_admin"
                 android:resource="@xml/device_admin" />
+
             <intent-filter>
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
-        
-        <activity android:name=".devices.map.LocMainActivity"
-            android:label="Device/Map/Loc">
+
+        <activity
+            android:name=".devices.map.LocMainActivity"
+            android:label="Device/Map/Loc" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
-        <activity android:name=".devices.timer.TimerTaskActivity"
-            android:label="Device/Task">
+        <activity
+            android:name=".devices.timer.TimerTaskActivity"
+            android:label="Device/Task" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
+
         <receiver android:name=".devices.timer.TimerTaskActivity$MyReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BATTERY_LOW" />
@@ -237,39 +236,41 @@
                 <action android:name="timer_restart" />
             </intent-filter>
         </receiver>
-        
+
         <service android:name=".devices.timer.TestOnStartCommandService" />
-        
+
         <!-- Di -->
 
-        <activity android:name="com.cornucopia.di.dagger2.D2MainActivity"
-            android:label="Di/Main">
+        <activity
+            android:name=".di.dagger2.D2MainActivity"
+            android:label="Di/Main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
+
         <!-- Graphics -->
 
-        <activity android:name=".graphics.compress.PictureCompressActivity"
-            android:label="Graphics/PictureCompress">
+        <activity
+            android:name=".graphics.compress.PictureCompressActivity"
+            android:label="Graphics/PictureCompress" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".graphics.fresco.FrescoDemoActivity"
-            android:label="Graphics/PictureFresco">
+        <activity
+            android:name=".graphics.fresco.FrescoDemoActivity"
+            android:label="Graphics/PictureFresco" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".graphics.glide.GlideDemoActivity"
-            android:label="Graphics/PictureGlide">
+        <activity
+            android:name=".graphics.glide.GlideDemoActivity"
+            android:label="Graphics/PictureGlide" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
@@ -277,46 +278,44 @@
         </activity>
 
         <!-- Multimedia -->
-        
+
         <activity
             android:name=".multimedia.SpeakAndTextActivity"
             android:label="Multimedia/Voice/STTS"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".multimedia.CameraShowActivity"
+            android:label="Multimedia/Camera"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".multimedia.CameraActivity"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+
+        <!-- Parser -->
+
+        <activity
+            android:name=".parser.ParserGsonActivity"
+            android:label="Parser/Gson" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:name="com.cornucopia.multimedia.CameraShowActivity"
-            android:label="Multimedia/Camera"
-            android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-        		<category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-        
-        <activity
-            android:name="com.cornucopia.multimedia.CameraActivity"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
-        
-        <!--  Parser -->
-        
-        <activity
-            android:label="Parser/Gson"
-            android:name="com.cornucopia.parser.ParserGsonActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-        
         <!-- Storage -->
         <activity
-            android:name="com.cornucopia.storage.ticketsmanager.ViewTicketsActivity"
+            android:name=".storage.ticketsmanager.ViewTicketsActivity"
             android:label="Storage/SQLite/Add Tickets" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -324,16 +323,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.cornucopia.storage.ticketsmanager.ViewTicketsListActivity"
+            android:name=".storage.ticketsmanager.ViewTicketsListActivity"
             android:label="Storage/SQLite/Add Tickets List" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        <activity android:name="com.cornucopia.storage.ticketsmanager.AddTicketsActivity" ></activity>
-        <activity android:name="com.cornucopia.storage.ticketsmanager.TicketsManagerActivity" ></activity>
-        <!-- 
+        <activity android:name=".storage.ticketsmanager.AddTicketsActivity" >
+        </activity>
+        <activity android:name=".storage.ticketsmanager.TicketsManagerActivity" >
+        </activity>
+        
+        <activity
+            android:name="com.cornucopia.storage.deadlock.TicketDeadlockActivity"
+            android:label="Storage/SQLite/Deadlock" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <!--
         <activity
             android:label="Storage/SQLite/Realm Add Tickets"
             android:name="com.cornucopia.storage.realm.RealmViewTicketsActivity">
@@ -350,202 +360,186 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        <activity android:name="com.cornucopia.storage.realm.RealmAddTicketsActivity"></activity> -->
+        <activity android:name="com.cornucopia.storage.realm.RealmAddTicketsActivity"></activity>
+        -->
 
-       	<!-- UI -->
 
-        <activity
-            android:label="UI/Html"
-            android:name="com.cornucopia.ui.html.HtmlUI">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
+        <!-- UI -->
 
         <activity
-            android:label="UI/Dynamic/Expandlist"
-            android:name="com.cornucopia.ui.dynamic.ExpandlistDemo" >
+            android:name=".ui.html.HtmlUI"
+            android:label="UI/Html" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
         <activity
-            android:label="UI/Dynamic/SearchBar"
-            android:name="com.cornucopia.ui.dynamic.SearchbarDemo" >
+            android:name=".ui.dynamic.ExpandlistDemo"
+            android:label="UI/Dynamic/Expandlist" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
         <activity
-            android:label="UI/Dynamic/Menu"
-            android:name="com.cornucopia.ui.dynamic.DynamicMenuMainActivity" >
+            android:name=".ui.dynamic.SearchbarDemo"
+            android:label="UI/Dynamic/SearchBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
         <activity
-            android:label="UI/Fragment/Article"
-            android:name="com.cornucopia.ui.fragment.ArticleActivity" >
+            android:name=".ui.dynamic.DynamicMenuMainActivity"
+            android:label="UI/Dynamic/Menu" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
         <activity
-            android:label="UI/Fragment/Menu"
-            android:name="com.cornucopia.ui.fragment.MenuFragmentActivity" >
+            android:name=".ui.fragment.ArticleActivity"
+            android:label="UI/Fragment/Article" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.fragment.MenuFragmentActivity"
+            android:label="UI/Fragment/Menu" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.ThermometerActivity"
+            android:label="UI/Custom/Thermometer" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.drag.DragMainActivity"
+            android:label="UI/Drag/DragMain" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.list.SwipeRefreshActivity"
+            android:label="UI/List/SwipeRefresh" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.list.PullPushRefreshDemo"
+            android:label="UI/List/PullPushRefresh" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.material.DemoButtonActivity"
+            android:label="UI/Material/Button" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.material.DemoEditTextActivity"
+            android:label="UI/Material/EditText" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.compat.ToolbarDemoActivity"
+            android:label="UI/Compat/Toolbar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.tree.OrgTreeMainActivity"
+            android:label="UI/Tree/Orgtree" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".web.WebBrowserDemo"
+            android:label="Web/WebBrowser" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".web.NativeInvokeJs"
+            android:label="Web/NativeInvokeJs" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".web.JsInvokeNative"
+            android:label="Web/JsInvokeNative" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".event.EeventBusMainActivity"
+            android:label="Event/EventBus" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".event.EventBusSubActivity" >
+        </activity>
+        <activity
+            android:name=".event.rxjava.RxjavaActivity"
+            android:label="Event/Rxjava" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:label="UI/Custom/Thermometer"
-            android:name="com.cornucopia.ui.ThermometerActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-        
-        <activity
-            android:label="UI/Drag/DragMain"
-            android:name="com.cornucopia.ui.drag.DragMainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:label="UI/List/SwipeRefresh"
-            android:name="com.cornucopia.ui.list.SwipeRefreshActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-        
-        <activity
-            android:label="UI/List/PullPushRefresh"
-            android:name="com.cornucopia.ui.list.PullPushRefreshDemo">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:label="UI/Material/Button"
-            android:name="com.cornucopia.ui.material.DemoButtonActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:label="UI/Material/EditText"
-            android:name="com.cornucopia.ui.material.DemoEditTextActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:label="UI/Compat/Toolbar"
-            android:name="com.cornucopia.ui.compat.ToolbarDemoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-        
-        <activity
-            android:label="UI/Tree/Orgtree"
-            android:name="com.cornucopia.ui.tree.OrgTreeMainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-        
-        <activity
-            android:label="Web/WebBrowser"
-            android:name="com.cornucopia.web.WebBrowserDemo" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-        
-        <activity
-            android:label="Web/NativeInvokeJs"
-            android:name="com.cornucopia.web.NativeInvokeJs" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-        
-        <activity
-            android:label="Web/JsInvokeNative"
-            android:name="com.cornucopia.web.JsInvokeNative" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:label="Event/EventBus"
-            android:name="com.cornucopia.event.EeventBusMainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-        <activity android:name="com.cornucopia.event.EventBusSubActivity"></activity>
-
-        <activity
-            android:label="Event/Rxjava"
-            android:name="com.cornucopia.event.rxjava.RxjavaActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity>
-        
         <!-- Search -->
-        
+
         <activity
-            android:label="Search/Applist"
-            android:name="com.cornucopia.search.loader.AppListActivity">
+            android:name=".search.loader.AppListActivity"
+            android:label="Search/Applist" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
         <activity
-            android:label="Search/RxApplist"
-            android:name="com.cornucopia.search.rxjava.RxAppListActivity">
+            android:name=".search.rxjava.RxAppListActivity"
+            android:label="Search/RxApplist" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
+
         <!-- memory leak -->
         <service
             android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
@@ -554,6 +548,7 @@
         <service
             android:name="com.squareup.leakcanary.DisplayLeakService"
             android:enabled="false" />
+
         <activity
             android:name="com.squareup.leakcanary.internal.DisplayLeakActivity"
             android:enabled="false"
@@ -565,17 +560,17 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        
+
         <!-- mvp -->
         <activity
-            android:label="MVP/Todo"
-            android:name="com.cornucopia.mvp.TasksActivity">
+            android:name=".mvp.TasksActivity"
+            android:label="MVP/Todo" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-
+      
     </application>
 
-</manifest>	
+</manifest>
