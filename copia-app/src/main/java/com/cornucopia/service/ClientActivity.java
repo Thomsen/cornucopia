@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
 import android.os.RemoteException;
 import android.view.View;
 import android.widget.Button;
@@ -51,6 +53,22 @@ public class ClientActivity extends Activity {
 			setTextViewContent();
 		}
 		
+	};
+	
+	Messenger mMessenger = null;
+	
+	private ServiceConnection mMessengerService = new ServiceConnection() {
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            mMessenger = new Messenger(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mMessenger = null;
+        }
+	    
 	};
 
 	@Override
@@ -104,6 +122,23 @@ public class ClientActivity extends Activity {
             }
         });
 		
+		Button btnMessenger = new Button(this);
+		btnMessenger.setText("hello messenger");
+		
+		btnMessenger.setOnClickListener(new View.OnClickListener() {
+            
+            @Override
+            public void onClick(View v) {
+                Message msg = Message.obtain(null, MessengerService.HANDLE_MESSENGER, 0, 0);
+                try {
+                    mMessenger.send(msg);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+		linearLayout.addView(btnMessenger);
+		
 		setContentView(linearLayout);
 	}
 
@@ -116,13 +151,16 @@ public class ClientActivity extends Activity {
 		
 //		Intent intent = new Intent(mActivity, RemoteExService.class);
 		// 需要在manifest配置IRemoteService，正确的配置成action
-		Intent intent = new Intent(IRemoteService.class.getName());
+		Intent intent = new Intent(IRemoteService.class.getName()); // android 5.0
 		
 		// 启动服务。不启动，在系统-正在运行的服务中就看不到，但进程依然存在，是一个缓存应用程序(cached process)。
 //		startService(intent); 
 
 		// 启动服务，并没有调用onBind方法，需要绑定服务
-		bindService(intent, mConnecitonService, Context.BIND_AUTO_CREATE);
+		bindService(IntentUtils.getExplicitIntent(this, intent), mConnecitonService, Context.BIND_AUTO_CREATE);
+		
+		// messenger bound service
+		bindService(new Intent(this, MessengerService.class), mMessengerService, Context.BIND_AUTO_CREATE);
 
 	}
 	
@@ -131,6 +169,8 @@ public class ClientActivity extends Activity {
 		super.onStop();
 		
 		unbindService(mConnecitonService);
+		
+		unbindService(mMessengerService);
 	}
 
 	private void setTextViewContent() {

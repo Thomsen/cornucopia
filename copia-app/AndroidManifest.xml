@@ -10,8 +10,12 @@
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-	<uses-feature android:name="android.hardware.camera" />
+    
+    <!-- camera -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />  <!--  image contain gps  -->
+    
 
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"
@@ -28,6 +32,9 @@
 
         <uses-library android:name="android.test.runner" >
         </uses-library>
+        
+        <meta-data android:name="com.bugsnag.android.API_KEY"
+          android:value="a36d30d59be748e249b99d06162df7fa" />
 
         <!-- Application -->
 
@@ -169,6 +176,13 @@
                 <action android:name="com.cornucopia.service.IRemoteService" />
             </intent-filter>
         </service>
+        
+        <service
+            android:name="com.cornucopia.service.MessengerService">
+            <intent-filter >
+            </intent-filter>
+        </service>
+        
 
         <service android:name="com.cornucopia.lifecycle.ServiceLifecycle" >
         </service>
@@ -263,15 +277,30 @@
         </activity>
 
         <!-- Multimedia -->
-
+        
         <activity
             android:name=".multimedia.SpeakAndTextActivity"
             android:label="Multimedia/Voice/STTS"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.cornucopia.multimedia.CameraShowActivity"
+            android:label="Multimedia/Camera"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
         		<category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.cornucopia.multimedia.CameraActivity"
+            android:windowSoftInputMode="adjustResize">
         </activity>
         
         <!--  Parser -->
@@ -534,6 +563,16 @@
             android:theme="@style/__LeakCanary.Base" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        
+        <!-- mvp -->
+        <activity
+            android:label="MVP/Todo"
+            android:name="com.cornucopia.mvp.TasksActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
 

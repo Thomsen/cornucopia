@@ -21,6 +21,13 @@
     </properties>
 
     <dependencies>
+    
+        <dependency>
+            <groupId>com.cornucopia</groupId>
+            <artifactId>copia-mvp</artifactId>
+            <version>${copia-mvp.version}</version>
+            <type>aar</type>
+        </dependency>
 
         <!-- third -->
         <dependency>
@@ -295,6 +302,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        
+        <dependency>
+            <groupId>com.bugsnag</groupId>
+            <artifactId>bugsnag-android</artifactId>
+            <version>${bugsnag.version}</version>
+            <type>aar</type>
+        </dependency>
 
     </dependencies>
 
@@ -335,7 +349,7 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
             <!-- processor maven plugin -->
             <plugin>
                 <groupId>org.bsc.maven</groupId>
@@ -378,6 +392,7 @@
                      -->
                 </dependencies>
             </plugin>
+
         </plugins>
     </build>
 

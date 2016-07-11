@@ -8,13 +8,13 @@
     <packaging>pom</packaging>
 
     <properties>
-        <android.platform>21</android.platform>
-        <android.version>5.0.1_r2</android.version>
+        <jdk.version>1.7</jdk.version>
+        <android.platform>22</android.platform>
+        <android.version>5.1.1_r2</android.version>
         <support-v4.version>21.0.3</support-v4.version>
         <support-v7.version>21.0.3</support-v7.version>
         <android.home>/opt/android-sdk-linux</android.home>
 
-        <jdk.version>1.7</jdk.version>
         <maven-compiler.version>3.5.1</maven-compiler.version>
         <maven-resources.version>2.7</maven-resources.version>
         <maven-jarsigner.version>1.4</maven-jarsigner.version>
@@ -44,6 +44,8 @@
         <realm.version>0.87.5</realm.version>
         <leakcanary.version>1.3.1</leakcanary.version>
         <blockcanary.version>1.2.0</blockcanary.version>
+        <bugsnag.version>3.4.0</bugsnag.version>
+        <guava.version>19.0</guava.version>
 
         <sign.keystore>../.keystore</sign.keystore>
         <sign.storepass>keystore</sign.storepass>
@@ -51,6 +53,7 @@
 
         <copia-app.version>0.0.1-SNAPSHOT</copia-app.version>
         <copia-hotfix.version>0.0.1-SNAPSHOT</copia-hotfix.version>
+        <copia-mvp.version>0.0.1-SNAPSHOT</copia-mvp.version>
 
     </properties>
 
@@ -197,7 +200,8 @@
                         </jvmArguments>
                         <!-- multi dex DexMojo.java runDex -->
                         <multi-dex>true</multi-dex>
-                        <minimal-main-dex>true</minimal-main-dex>
+                        <!-- false: classes.dex, true: classes.dex classes1.dex -->
+                        <minimal-main-dex>true</minimal-main-dex> 
                         <dex-arguments>--set-max-idx-number=65536</dex-arguments>
                         <!-- main dex classes.dex -->
                         <main-dex-list>${project.basedir}/MainDexList.txt</main-dex-list>
