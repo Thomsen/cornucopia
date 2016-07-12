@@ -13,6 +13,7 @@ import com.cornucopia.patch.R.layout;
 import com.cornucopia.patch.R.menu;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ public class PatchMainActivity extends Activity implements OnClickListener {
         setContentView(R.layout.activity_patch_main);
         
         findViewById(R.id.btn_patch).setOnClickListener(this);
+        
+        new BSPatch();
     }
 
     @Override
@@ -61,7 +64,7 @@ public class PatchMainActivity extends Activity implements OnClickListener {
     private void mergePatch() {
         File oldFile = copyFile("v1.apk", "v1.apk");
         File patchFile = copyFile("patch_v1_v2.patch", "patch_v1_v2.patch");
-        File newFile = new File(getExternalFilesDir("apk"), "v2.apk");
+        File newFile = new File(patchFile.getParentFile().getPath(), "v2.apk");
         
         try {
 
@@ -90,8 +93,12 @@ public class PatchMainActivity extends Activity implements OnClickListener {
             InputStream inStream = getAssets().open(oldFileName);
             File dirFile = null;
             
-            if (Environment.isExternalStorageEmulated()) {
-                dirFile = getExternalFilesDir("apk");
+//            if (Environment.isExternalStorageEmulated()) {
+            if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+                dirFile = getExternalFilesDir(null);
+                if (null == dirFile) {
+                    dirFile = getFilesDir();
+                }
             } else {
                 dirFile = getFilesDir();  // 没有权限合并
             }
