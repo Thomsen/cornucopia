@@ -8,6 +8,6 @@ LOCAL_SRC_FILES := patch.c \
 LOCAL_STATIC_LIBRARIES := \
 	libcopia-bzip2
 	
-LOCAL_LDLIBS := -llog
+LOCAL_LDLIBS := -lz -llog
 
 include $(BUILD_SHARED_LIBRARY)

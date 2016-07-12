@@ -7,8 +7,10 @@
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="22" />
-
-    <application>
+    <permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></permission>
+    
+    <application
+        android:debuggable="true" >
         <activity
             android:name="com.cornucopia.view.PatchMainActivity"
             android:label="@string/title_activity_patch_main" >
@@ -18,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
     </application>
 
 </manifest>
