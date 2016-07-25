@@ -10,11 +10,13 @@
     <properties>
         <jdk.version>1.7</jdk.version>
         <android.platform>22</android.platform>
+        <android.buildTools>23.0.3</android.buildTools>
         <android.version>5.1.1_r2</android.version>
         <support-v4.version>21.0.3</support-v4.version>
         <support-v7.version>21.0.3</support-v7.version>
         <android.home>/opt/android-sdk-linux</android.home>
 
+        <maven-enforcer.version>1.4.1</maven-enforcer.version>
         <maven-compiler.version>3.5.1</maven-compiler.version>
         <maven-resources.version>2.7</maven-resources.version>
         <maven-jarsigner.version>1.4</maven-jarsigner.version>
@@ -74,6 +76,38 @@
 
     <build>
         <plugins>
+
+	  <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-enforcer-plugin</artifactId>
+            <version>${maven-enforcer.version}</version>
+	    <executions>
+	      <execution>
+		<id>enforce-maven</id>
+		<goals>
+		  <goal>enforce</goal>
+		</goals>
+		<phase>initialize</phase>
+		<configuration>
+		  <rules>
+		    <requireMavenVersion>
+		      <version>[3.1.1,)</version>
+		      <message>Check for Maven version &gt;=3.2.1 failed.
+		      Upgrade your Maven installation to be able to build
+		      this project.</message>
+		    </requireMavenVersion>
+		    <requireJavaVersion>
+		      <version>[1.7.0,)</version>
+		      <message>Java 7 or higher is required to build the
+		      Android Maven Plugin.</message>
+		      <!-- because the takari-plugin-testing needs Java 7 -->
+		    </requireJavaVersion>
+		  </rules>
+		</configuration>
+	      </execution>
+	    </executions>
+	  </plugin>
+	      
             <!-- maven compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -169,6 +203,7 @@
                     <encoding>UTF-8</encoding>
                     <sdk>
                         <platform>${android.platform}</platform>
+                        <buildTools>${android.buildTools}</buildTools>
                         <path>${android.home}</path>
                     </sdk>
 

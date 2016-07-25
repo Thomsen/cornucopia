@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>copia-app</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>apk</packaging>
     <name>copia-app</name>
     <url>http://maven.apache.org</url>
