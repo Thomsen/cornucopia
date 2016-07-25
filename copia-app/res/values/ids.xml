@@ -2,4 +2,6 @@
 <resources>
     <item type="id" name="menu_item_icon" />
     <item type="id" name="menu_item_title" />
+    <item name="dialog_button_one" type="id" />
+    <item name="dialog_et_one" type="id" />
 </resources>

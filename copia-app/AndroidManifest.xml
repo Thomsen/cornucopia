@@ -149,6 +149,16 @@
         <activity android:name=".transmit.ActivityObtainData" >
         </activity>
         <activity
+            android:name=".transmit.DialogIntentActivity"
+            android:label="Basic/Activity/Activity Dialog Intent" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".transmit.DialogResultActivity" >
+        </activity>
+        <activity
             android:name=".hotfix.HotfixBugActivity"
             android:label="Basic/Activity/Hotfix" >
             <intent-filter>
