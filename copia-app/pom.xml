@@ -308,6 +308,12 @@
             <version>${bugsnag.version}</version>
             <type>aar</type>
         </dependency>
+        
+        <dependency>
+          	<groupId>com.github.PhilJay</groupId>
+          	<artifactId>MPAndroidChart</artifactId>
+          	<version>${mpchart.version}</version>
+        </dependency>
 
     </dependencies>
 

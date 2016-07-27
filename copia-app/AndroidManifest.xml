@@ -286,6 +286,15 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name=".graphics.chart.LineChartActivity"
+            android:label="Graphics/Chart/Line" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
 
         <!-- Multimedia -->
 

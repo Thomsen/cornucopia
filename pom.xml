@@ -48,6 +48,7 @@
         <blockcanary.version>1.2.0</blockcanary.version>
         <bugsnag.version>3.4.0</bugsnag.version>
         <guava.version>19.0</guava.version>
+        <mpchart.version>v3.0.0-beta1</mpchart.version>
 
         <sign.keystore>../.keystore</sign.keystore>
         <sign.storepass>keystore</sign.storepass>
@@ -346,6 +347,10 @@
                 http://oss.jfrog.org/artifactory/oss-snapshot-local
             </url>
         </repository> -->
+        <repository>
+        	<id>jitpack.io</id>
+    		<url>https://jitpack.io</url>
+        </repository>
     </repositories>
     
     <pluginRepositories>
