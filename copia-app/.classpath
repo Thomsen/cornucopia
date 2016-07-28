@@ -8,17 +8,13 @@
 	<classpathentry kind="lib" path="/cff_imagepipeline_0.8.1/classes.jar"/>
 	<classpathentry kind="lib" path="/cas_appcompat-v7_21.0.3/classes.jar"/>
 	<classpathentry kind="lib" path="/cas_support-v4_21.0.3/libs/internal_impl-21.0.3.jar"/>
-	<classpathentry kind="lib" path="/cta_dexposed_0.1.1/classes.jar">
-		<attributes>
-			<attribute name="source_encoding" value="UTF-8"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="/ir_rxandroid_1.1.0/classes.jar"/>
 	<classpathentry kind="lib" path="/DisplayLeakActivity/classes.jar"/>
 	<classpathentry kind="lib" path="/DisplayBlockActivity/classes.jar"/>
 	<classpathentry kind="lib" path="/cgm_blockcanary-android_1.2.0/classes.jar"/>
 	<classpathentry kind="lib" path="/cgm_blockcanary-core_1.2.0/classes.jar"/>
 	<classpathentry kind="lib" path="/cb_bugsnag-android_3.4.0/classes.jar"/>
+	<classpathentry kind="lib" path="/cta_dexposed_0.1.1/classes.jar"/>
 	<classpathentry kind="src" output="bin/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -60,6 +56,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/cta_dexposed_0.1.1/classes.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

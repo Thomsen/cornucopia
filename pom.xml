@@ -57,6 +57,7 @@
         <copia-app.version>0.0.1-SNAPSHOT</copia-app.version>
         <copia-hotfix.version>0.0.1-SNAPSHOT</copia-hotfix.version>
         <copia-mvp.version>0.0.1-SNAPSHOT</copia-mvp.version>
+        <copia-patch.version>0.0.1-SNAPSHOT</copia-patch.version>
 
     </properties>
 
@@ -330,6 +331,18 @@
             <id>hackdex</id>
             <modules>
                 <module>copia-hackdex</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>mvp</id>
+            <modules>
+                <module>copia-mvp</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>patch</id>
+            <modules>
+                <module>copia-patch</module>
             </modules>
         </profile>
     </profiles>
