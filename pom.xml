@@ -14,7 +14,7 @@
         <android.version>5.1.1_r2</android.version>
         <support-v4.version>21.0.3</support-v4.version>
         <support-v7.version>21.0.3</support-v7.version>
-        <android.home>/opt/android-sdk-linux</android.home>
+        <android.home>${env.ANDROID_HOME}</android.home>
 
         <maven-enforcer.version>1.4.1</maven-enforcer.version>
         <maven-compiler.version>3.5.1</maven-compiler.version>
@@ -290,6 +290,20 @@
     </build>
 
     <profiles>
+        <profile>
+            <id>win10</id>
+            <activation>
+                <os>
+                    <name>windows 8.1</name>
+                    <family>windows</family>
+                    <arch>amd64</arch>
+                    <version>6.3</version>
+                </os>
+            </activation>
+            <modules>
+                <module>copia-app</module>
+            </modules>
+        </profile>
         <profile>
             <id>all</id> <!-- mvn [] -P aop -->
             <activation>

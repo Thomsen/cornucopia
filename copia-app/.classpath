@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="lib" path="/cas_support-v4_21.0.3/classes.jar"/>
+	<classpathentry kind="lib" path="/cas_multidex_1.0.1/classes.jar"/>
+	<classpathentry kind="lib" path="/cff_fresco_0.8.1/classes.jar"/>
+	<classpathentry kind="lib" path="/cff_drawee_0.8.1/classes.jar"/>
+	<classpathentry kind="lib" path="/cff_fbcore_0.8.1/classes.jar"/>
+	<classpathentry kind="lib" path="/cff_imagepipeline_0.8.1/classes.jar"/>
+	<classpathentry kind="lib" path="/cas_appcompat-v7_21.0.3/classes.jar"/>
+	<classpathentry kind="lib" path="/cas_support-v4_21.0.3/libs/internal_impl-21.0.3.jar"/>
+	<classpathentry kind="lib" path="/cta_dexposed_0.1.1/classes.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/ir_rxandroid_1.1.0/classes.jar"/>
+	<classpathentry kind="lib" path="/DisplayLeakActivity/classes.jar"/>
+	<classpathentry kind="lib" path="/DisplayBlockActivity/classes.jar"/>
+	<classpathentry kind="lib" path="/cgm_blockcanary-android_1.2.0/classes.jar"/>
+	<classpathentry kind="lib" path="/cgm_blockcanary-core_1.2.0/classes.jar"/>
+	<classpathentry kind="lib" path="/cb_bugsnag-android_3.4.0/classes.jar"/>
+	<classpathentry kind="src" output="bin/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="gen">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src/main/aidl"/>
+	<classpathentry kind="src" path=".apt_generated">
+		<attributes>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="con" path="me.gladwell.eclipse.m2e.android.classpath.NONRUNTIME_DEPENDENCIES">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/cta_dexposed_0.1.1/classes.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
