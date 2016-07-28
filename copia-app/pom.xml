@@ -27,6 +27,13 @@
             <version>${copia-mvp.version}</version>
             <type>aar</type>
         </dependency>
+        
+        <dependency>
+            <groupId>com.cornucopia</groupId>
+            <artifactId>copia-patch</artifactId>
+            <version>${copia-patch.version}</version>
+            <type>aar</type>
+        </dependency>
 
         <!-- third -->
         <dependency>

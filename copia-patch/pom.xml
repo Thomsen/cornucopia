@@ -8,9 +8,10 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <groupId>com.cornucopia</groupId>
-  <artifactId>copia-bsdiff</artifactId>
+  <artifactId>copia-patch</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>copia-bsdiff</name>
+  <name>copia-patch</name>
+  <packaging>aar</packaging>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

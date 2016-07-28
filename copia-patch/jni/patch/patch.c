@@ -169,10 +169,10 @@ int applypatch(int argc, char * argv[]) {
 		err(1, "%s", argv[2]);
 
 
-	if (chmod(argv[2], S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH ) == -1)
-	{
-		err(1, "chmod(%s_", argv[2]);
-	}
+	// if (chmod(argv[2], S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH ) == -1)
+	// {
+	// 	err(1, "chmod(%s_", argv[2]);
+	// }
 
 	free(newf);
 	free(oldf);
@@ -189,9 +189,9 @@ JNIEXPORT jint JNICALL Java_com_cornucopia_patch_BSPatch_mergePatch(
 	argv[2] = (*env)->GetStringUTFChars(env, newf, 0);
 	argv[3] = (*env)->GetStringUTFChars(env, patch, 0);
 
-	__android_log_print(ANDROID_LOG_INFO, "patch", "old = %s ", argv[1]);
-	__android_log_print(ANDROID_LOG_INFO, "patch", "new = %s ", argv[2]);
-	__android_log_print(ANDROID_LOG_INFO, "patch", "patch = %s ", argv[3]);
+	// __android_log_print(ANDROID_LOG_INFO, "patch", "old = %s ", argv[1]);
+	// __android_log_print(ANDROID_LOG_INFO, "patch", "new = %s ", argv[2]);
+	// __android_log_print(ANDROID_LOG_INFO, "patch", "patch = %s ", argv[3]);
 
 	int ret = applypatch(argc, argv);
 
@@ -199,7 +199,7 @@ JNIEXPORT jint JNICALL Java_com_cornucopia_patch_BSPatch_mergePatch(
 	(*env)->ReleaseStringUTFChars(env, newf, argv[2]);
 	(*env)->ReleaseStringUTFChars(env, patch, argv[3]);
 
-	__android_log_print(ANDROID_LOG_INFO, "patch", "ret = %d ", ret);
+	// __android_log_print(ANDROID_LOG_INFO, "patch", "ret = %d ", ret);
 
 	return ret;
 }

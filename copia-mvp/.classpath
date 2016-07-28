@@ -29,6 +29,9 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+=======
+>>>>>>> 397150ae66a83aed5d4c074010c7c2430456aeb8
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
