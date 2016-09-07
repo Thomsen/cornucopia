@@ -506,8 +506,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".web.NativeInvokeJs"
-            android:label="Web/NativeInvokeJs" >
+            android:name=".web.NativeInvokeJsToNative"
+            android:label="Web/NativeInvokeJsToNative" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />

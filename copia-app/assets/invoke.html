@@ -1,19 +1,51 @@
 
 <html>
 <head>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width,height=device-height">
+<link rel="stylesheet" type="text/css" href="css/invoke.css" />
 <script type="text/javascript">
 	
 	function showAndroidToast(toast) {
-		AndroidNative.showToast(toast);
+		try {
+		  AndroidNative.showToast(toast);
+		} catch(e) {		
+		}
 	}
 	
 	function showJsToast(toast) {
 		window.alert(toast);
 	}
 	
+	function showAndroidPrompt(toast) {
+		window.prompt(toast);
+	}
+
+	function show(msg) {
+		confirm(msg);
+	}
+	
+	function init() {
+		window.addEventListener("online", pollOnlineEvent, false);  // need time to add
+		// document.addEventListener("offline", pollEvent, false);  // need window
+		window.addEventListener("offline", pollOfflineEvent, false);
+	}
+	
+	function pollOnlineEvent() {
+		confirm(prompt("online change"));
+	}
+	
+	function pollOfflineEvent() {
+		AndroidNative.showToast("offline change");
+		confirm(AndroidNative.retrieveMessage());
+	}
+	
 </script>
 </head>
-<body>
-	<input type="button" value="js invoke native" onClick="showAndroidToast('Hello Android Native')" />
+<body onload="init()">
+	<input type="button" value="js invoke native by interface" onClick="showAndroidToast('Hello Android Native by Interface.')" />
+	<input type="button" value="js invoke native by prompt" onClick="showAndroidPrompt('Hello Android Native by Prompt.')" /> <br /><br />
+	<input type="button" value="web confirm" onClick="show('Hello Web Alert.')" />
+	<input type="button" value="native alert" onClick="showJsToast('Hello Native Alert.')" />
+	
 </body>
 </html>
