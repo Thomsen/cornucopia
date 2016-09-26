@@ -55,7 +55,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Apache -->
+        <!-- Http -->
 
         <activity
             android:name=".http.Communication"
@@ -83,6 +83,23 @@
         </activity>
 
         <service android:name=".http.robospice.RobospiceService" />
+        
+        <activity 
+            android:name=".http.socket.SocketMainActivity" 
+            android:label="Http/Socket" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity 
+            android:name=".http.socket.SocketNioMainActivity" 
+            android:label="Http/SocketNio" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
 
         <!-- Aspect -->
         <activity
