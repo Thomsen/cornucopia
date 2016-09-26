@@ -52,6 +52,8 @@ public class NativeInvokeJsToNative extends Activity implements OnClickListener 
 		findViewById(R.id.btn_invoke_offline).setOnClickListener(this);
 		
 		mWebView.requestFocus();
+		
+		mWebView.setWebContentsDebuggingEnabled(true);
 	}
 		
 	@Override
