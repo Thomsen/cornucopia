@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.cornucopia.R;
+import com.cornucopia.utils.ByteUtils;
 
 public class SocketMainActivity extends Activity implements OnClickListener {
     
@@ -114,11 +115,11 @@ public class SocketMainActivity extends Activity implements OnClickListener {
                 byte[] msgSize = new byte[4];
                 
                 serverInputStream.read(msgType);  // @4
-                int type = byteArrayToInt(msgType);
+                int type = ByteUtils.byteArrayToInt(msgType);
                 Log.i("Socket", "server receive client msg type: " + type);
                 
                 serverInputStream.read(msgSize);
-                int size = byteArrayToInt(msgSize);
+                int size = ByteUtils.byteArrayToInt(msgSize);
                 Log.i("Socket", "server receive client msg size: " + size);
                 
                 byte[] data = new byte[size];
@@ -155,7 +156,7 @@ public class SocketMainActivity extends Activity implements OnClickListener {
                 respType = ByteBuffer.allocate(4).putInt(201).array();
                 respStatus = ByteBuffer.allocate(4).putInt(200).array();
                 respSize = ByteBuffer.allocate(4).putInt(1).array();
-                respKeyLength = ByteBuffer.allocate(4).putInt(intToByteArray(1).length).array();
+                respKeyLength = ByteBuffer.allocate(4).putInt(ByteUtils.intToByteArray(1).length).array();
                 respKeyValue = ByteBuffer.allocate(4).putInt(1).array();
 //                String body = "response success";  // no "UTF-8" also receive success
                 String body = "响应成功";            // 
@@ -246,9 +247,9 @@ public class SocketMainActivity extends Activity implements OnClickListener {
                 clientInputStream.read(respStatus);
                 clientInputStream.read(respSize);
                 
-                int type = byteArrayToInt(respType);
-                int status = byteArrayToInt(respStatus);
-                int size = byteArrayToInt(respSize);
+                int type = ByteUtils.byteArrayToInt(respType);
+                int status = ByteUtils.byteArrayToInt(respStatus);
+                int size = ByteUtils.byteArrayToInt(respSize);
                 
                 Log.i("Socket", clientName + " receive response: type " + type);
                 Log.i("Socket", clientName + " receive response: status " + status);
@@ -256,14 +257,14 @@ public class SocketMainActivity extends Activity implements OnClickListener {
                 for (int i=0; i<size; i++) {
                     byte[] respKeyLength = new byte[4];
                     clientInputStream.read(respKeyLength);
-                    int keyLength = byteArrayToInt(respKeyLength);
+                    int keyLength = ByteUtils.byteArrayToInt(respKeyLength);
                     byte[] respKeyValue = new byte[keyLength];
                     clientInputStream.read(respKeyValue);
-                    int keyValue = byteArrayToInt(respKeyValue);
+                    int keyValue = ByteUtils.byteArrayToInt(respKeyValue);
                     
                     byte[] respValueLength = new byte[4];
                     clientInputStream.read(respValueLength);
-                    int bodyLength = byteArrayToInt(respValueLength);
+                    int bodyLength = ByteUtils.byteArrayToInt(respValueLength);
                     byte[] respBodyValue = new byte[bodyLength];
                     clientInputStream.read(respBodyValue);
                     String bodyValue = new String(respBodyValue);
@@ -301,22 +302,7 @@ public class SocketMainActivity extends Activity implements OnClickListener {
         }
         return null;
     }
-    
-    public static int byteArrayToInt(byte[] b) {  
-        return   b[3] & 0xFF |  
-                (b[2] & 0xFF) << 8 |  
-                (b[1] & 0xFF) << 16 |  
-                (b[0] & 0xFF) << 24;  
-    }
-      
-    public static byte[] intToByteArray(int a) {  
-        return new byte[] {  
-            (byte) ((a >> 24) & 0xFF),  
-            (byte) ((a >> 16) & 0xFF),     
-            (byte) ((a >> 8) & 0xFF),     
-            (byte) (a & 0xFF)  
-        };  
-    }
+
     
 //    Option A:
 //
