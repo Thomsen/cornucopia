@@ -466,6 +466,7 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
+        
         <activity
             android:name=".ui.list.SwipeRefreshActivity"
             android:label="UI/List/SwipeRefresh" >
@@ -482,6 +483,16 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name=".ui.list.RecyclerListActivity"
+            android:label="UI/List/Recycler" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        
         <activity
             android:name=".ui.material.DemoButtonActivity"
             android:label="UI/Material/Button" >
