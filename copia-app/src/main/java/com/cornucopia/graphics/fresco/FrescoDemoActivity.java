@@ -2,7 +2,6 @@ package com.cornucopia.graphics.fresco;
 
 import android.app.Activity;
 import android.graphics.ColorFilter;
-import android.graphics.PointF;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -89,7 +88,7 @@ public class FrescoDemoActivity extends Activity {
         GenericDraweeHierarchyBuilder builder = new GenericDraweeHierarchyBuilder(getResources());
         GenericDraweeHierarchy hierarchy = builder.setFadeDuration(300)
                 .setPlaceholderImage(getResources().getDrawable(R.drawable.loading_flag))
-                .setBackgrounds(backgroundsList)
+//                .setBackgrounds(backgroundsList)
                 .setOverlays(overlaysList)
                 .build();
 

@@ -1,6 +1,4 @@
-**/bin
-**/gen
-**/.settings/*
-**/.externalToolBuilders/*
-**/target/
-**/.factorypath
+.idea
+.gradle
+*.iml
+build

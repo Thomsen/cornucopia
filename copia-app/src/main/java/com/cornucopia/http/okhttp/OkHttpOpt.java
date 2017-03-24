@@ -6,15 +6,17 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.cornucopia.utils.StringUtils;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.FormEncodingBuilder;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
 import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class OkHttpOpt {
 
@@ -52,21 +54,26 @@ public class OkHttpOpt {
             .build();
         
         OkHttpClient client = new OkHttpClient();
-        client.newCall(request).enqueue(new Callback() {
+//        client.newCall(request).enqueue(new Callback() {
+//
+//            @Override
+//            public void onFailure(Request arg0, IOException arg1) {
+//
+//            }
+//
+//            @Override
+//            public void onResponse(Response resp) throws IOException {
+//                String rst = StringUtils.convertStreamToString(resp.body().byteStream());
+//                Log.d("thom", "ok http async resp: " + rst);
+//            }
+//
+//        });
+        try {
+            client.newCall(request).execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-            @Override
-            public void onFailure(Request arg0, IOException arg1) {
-                
-            }
-
-            @Override
-            public void onResponse(Response resp) throws IOException {
-                String rst = StringUtils.convertStreamToString(resp.body().byteStream());
-                Log.d("thom", "ok http async resp: " + rst);
-            }
-            
-        });
-        
         return result;
     }
     
@@ -93,10 +100,14 @@ public class OkHttpOpt {
     public String okHttpLogin(String url, String username, String password) {
         String result = "";
         
-        RequestBody body = new FormEncodingBuilder()
-            .add("username", username)
-            .add("password", password)
-            .build();
+//        RequestBody body = new FormEncodingBuilder()
+//            .add("username", username)
+//            .add("password", password)
+//            .build();
+        RequestBody body = new FormBody.Builder()
+                .add("username", username)
+                .add("password", password)
+                .build();
         
         Request request = new Request.Builder()
             .url(url)
@@ -105,28 +116,26 @@ public class OkHttpOpt {
         
         OkHttpClient client = new OkHttpClient();
         client.newCall(request).enqueue(new Callback() {
-            
             @Override
-            public void onResponse(Response resp) throws IOException {
-                final String rst = StringUtils.convertStreamToString(resp.body().byteStream());
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String rst = StringUtils.convertStreamToString(response.body().byteStream());
                 Log.d("thom", "ok http login resp: " + rst);
                 if (mContext instanceof Activity) {
                     Activity act = (Activity) mContext;
                     // looper.prepare
                     act.runOnUiThread(new Runnable() {
-                        
+
                         @Override
                         public void run() {
                             Toast.makeText(mContext, rst, Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
-                
-            }
-            
-            @Override
-            public void onFailure(Request arg0, IOException arg1) {
-                
             }
         });
         

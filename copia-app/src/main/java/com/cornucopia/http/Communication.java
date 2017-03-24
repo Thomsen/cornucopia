@@ -1,26 +1,5 @@
 package com.cornucopia.http;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +12,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cornucopia.R;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class Communication extends Activity implements OnClickListener {
 
@@ -104,15 +96,15 @@ public class Communication extends Activity implements OnClickListener {
 				
 				@Override
 				public void run() {
-					final String content = getResultWithHttpGet(url); 
-					
-					runOnUiThread(new Runnable() {
-						
-						@Override
-						public void run() {
-							mTextView.setText(content);
-						}
-					});
+//					final String content = getResultWithHttpGet(url);
+//
+//					runOnUiThread(new Runnable() {
+//
+//						@Override
+//						public void run() {
+//							mTextView.setText(content);
+//						}
+//					});
 				}
 			}).start();
 			
@@ -205,44 +197,44 @@ public class Communication extends Activity implements OnClickListener {
 		return result;
 	}
 	
-	@SuppressWarnings("deprecation")
-	private String getResultWithHttpGet(String strUrl) {
-		// Apache HTTP client has fewer bugs on Eclair and Froyo. It is the best choice for these releases.
-
-		String result = "communication http get";
-
-		HttpClient httpClient = new DefaultHttpClient();
-
-		// get方式
-		 HttpGet httpGet = new HttpGet(strUrl);
-
-		// post方式
-//		HttpPost httpPost = new HttpPost(strUrl);
-
-		// 设置连接和读取参数
-		HttpParams params = httpClient.getParams();
-		HttpConnectionParams.setConnectionTimeout(params, 5 * 1000);
-		HttpConnectionParams.setSoTimeout(params, 1 * 1000);
-
-		try {
-			 HttpResponse httpResponse = httpClient.execute(httpGet);
-//			HttpResponse httpResponse = httpClient.execute(httpPost);
-
-			HttpEntity httpEntity = httpResponse.getEntity();
-
-			// 处理获取的数据
-			if (httpEntity != null) {
-				InputStream inStream = httpEntity.getContent();
-				// 流转字符串
-				result = convertStreamToString(inStream);
-
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return result;
-	}
+//	@SuppressWarnings("deprecation")
+//	private String getResultWithHttpGet(String strUrl) {
+//		// Apache HTTP client has fewer bugs on Eclair and Froyo. It is the best choice for these releases.
+//
+//		String result = "communication http get";
+//
+//		HttpClient httpClient = new DefaultHttpClient();
+//
+//		// get方式
+//		 HttpGet httpGet = new HttpGet(strUrl);
+//
+//		// post方式
+////		HttpPost httpPost = new HttpPost(strUrl);
+//
+//		// 设置连接和读取参数
+//		HttpParams params = httpClient.getParams();
+//		HttpConnectionParams.setConnectionTimeout(params, 5 * 1000);
+//		HttpConnectionParams.setSoTimeout(params, 1 * 1000);
+//
+//		try {
+//			 HttpResponse httpResponse = httpClient.execute(httpGet);
+////			HttpResponse httpResponse = httpClient.execute(httpPost);
+//
+//			HttpEntity httpEntity = httpResponse.getEntity();
+//
+//			// 处理获取的数据
+//			if (httpEntity != null) {
+//				InputStream inStream = httpEntity.getContent();
+//				// 流转字符串
+//				result = convertStreamToString(inStream);
+//
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		return result;
+//	}
 	
 	private CharSequence getResultWithHttpPost(String url) {
 		

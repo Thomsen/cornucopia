@@ -1,16 +1,15 @@
 package com.cornucopia.di.dagger2;
 
-import javax.inject.Inject;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.TextView;
 
 import com.cornucopia.R;
 import com.cornucopia.application.CornucopiaApplication;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.widget.TextView;
+import javax.inject.Inject;
+
+import butterknife.ButterKnife;
 
 public class D2MainActivity extends Activity {
     

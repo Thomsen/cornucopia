@@ -100,7 +100,7 @@ public class PatchMainActivity extends Activity implements OnClickListener {
                     dirFile = getFilesDir();
                 }
             } else {
-                dirFile = getFilesDir();  // 没有权限合并
+                dirFile = getFilesDir();  // 娌℃湁鏉冮檺鍚堝苟
             }
             
             

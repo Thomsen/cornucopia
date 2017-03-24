@@ -1,0 +1,3 @@
+include ':copia-mvp'
+include ':copia-app'
+include ':copia-hackdex'

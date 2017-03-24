@@ -1,20 +1,5 @@
 package com.cornucopia.event.rxjava;
 
-import java.util.concurrent.TimeUnit;
-
-import rx.Observable;
-import rx.Observer;
-import rx.Subscriber;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.android.schedulers.HandlerScheduler;
-import rx.exceptions.OnErrorThrowable;
-import rx.functions.Action1;
-import rx.functions.Func0;
-import rx.schedulers.Schedulers;
-
-import com.cornucopia.R;
-
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -26,6 +11,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.cornucopia.R;
+
+import java.util.concurrent.TimeUnit;
+
+import rx.Observable;
+import rx.Observer;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.exceptions.OnErrorThrowable;
+import rx.functions.Action1;
+import rx.functions.Func0;
+import rx.schedulers.Schedulers;
+
 import static android.os.Process.THREAD_PRIORITY_BACKGROUND;
 
 public class RxjavaActivity extends Activity implements OnClickListener {
@@ -92,7 +91,7 @@ public class RxjavaActivity extends Activity implements OnClickListener {
         
         Observable.just("1", "2", "3", "4", "5")
             .subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread())
+//            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(myObserver);
         
         new Thread(new Runnable() {
@@ -103,7 +102,7 @@ public class RxjavaActivity extends Activity implements OnClickListener {
                 Observable.just("6", "7", "8", "9", "10")
                     .subscribeOn(Schedulers.newThread())
                     // 如果是AndroidSchedulers.mainThread()，则1~10；HandlerScheduler.from(handler)，6~10 1~5 parallel
-                    .observeOn(HandlerScheduler.from(handler))
+//                    .observeOn(HandlerScheduler.from(handler))
                     .subscribe(myObserver);
                 Looper.loop();
             }
@@ -154,9 +153,9 @@ public class RxjavaActivity extends Activity implements OnClickListener {
     void onRunSchedulerExampleButtonClicked() {
         sampleObservable()
             // Run on a background thread
-            .subscribeOn(HandlerScheduler.from(backgroundHandler))
+//            .subscribeOn(HandlerScheduler.from(backgroundHandler))
             // Be notified on the main thread
-            .observeOn(AndroidSchedulers.mainThread())
+//            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new Subscriber<String>() {
                 @Override
                 public void onCompleted() {

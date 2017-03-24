@@ -1,7 +1,5 @@
 package com.cornucopia.graphics.chart;
 
-import java.util.ArrayList;
-
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -26,6 +24,8 @@ import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.Utils;
 
+import java.util.ArrayList;
+
 public class LineChartActivity extends FragmentActivity implements OnChartGestureListener, OnChartValueSelectedListener  {
 	
 	private LineChart mChart;
@@ -45,8 +45,8 @@ public class LineChartActivity extends FragmentActivity implements OnChartGestur
 	        
 
         // no description text
-        mChart.setDescription("");
-        mChart.setNoDataTextDescription("You need to provide data for the chart.");
+//        mChart.setDescription("");
+//        mChart.setNoDataTextD("You need to provide data for the chart.");
 
         // enable touch gestures
         mChart.setTouchEnabled(true);

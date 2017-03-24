@@ -1,15 +1,5 @@
 package com.cornucopia.http;
 
-import java.util.ArrayList;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-import org.json.JSONObject;
-
-import retrofit2.Call;
-import retrofit2.Callback;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,12 +11,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cornucopia.R;
-import com.cornucopia.http.appache.HttpOpt;
 import com.cornucopia.http.mibo.MiboUser;
 import com.cornucopia.http.okhttp.OkHttpOpt;
 import com.cornucopia.http.retrofit.MiboRetrofitService;
 import com.cornucopia.http.retrofit.RetrofitOpt;
 import com.cornucopia.http.volley.VolleyOpt;
+
+import org.json.JSONObject;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 @SuppressWarnings("deprecation")
 public class MiboLoginActivity extends Activity implements OnClickListener {
@@ -73,7 +67,7 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
             }
             new Thread() {
                 public void run() {
-                	login();
+//                	login();
                 }
             }.start();
 //            volleyLogin();
@@ -85,22 +79,22 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
         }
     }
     
-    private void show() {
-    	String showUrl = serverAddress + "/users/17";
-    	HttpParams params = new BasicHttpParams();
-//    	params.setIntParameter("id", 17);
-    	HttpOpt hopt = new HttpOpt(this);
-    	hopt.httpGet(showUrl, params);
-    }
+//    private void show() {
+//    	String showUrl = serverAddress + "/users/17";
+//    	HttpParams params = new BasicHttpParams();
+////    	params.setIntParameter("id", 17);
+//    	HttpOpt hopt = new HttpOpt(this);
+//    	hopt.httpGet(showUrl, params);
+//    }
     
-    private void login() {
-    	String loginUrl = serverAddress + "/users/login";
-    	ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-    	params.add(new BasicNameValuePair("username", mEtUsername.getText().toString()));
-    	params.add(new BasicNameValuePair("password", mEtPassword.getText().toString()));
-    	HttpOpt hopt = new HttpOpt(this);
-    	hopt.httpPost(loginUrl, params);
-    }
+//    private void login() {
+//    	String loginUrl = serverAddress + "/users/login";
+//    	ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+//    	params.add(new BasicNameValuePair("username", mEtUsername.getText().toString()));
+//    	params.add(new BasicNameValuePair("password", mEtPassword.getText().toString()));
+//    	HttpOpt hopt = new HttpOpt(this);
+//    	hopt.httpPost(loginUrl, params);
+//    }
     
     private void volleyShow() {
         String showUrl = serverAddress + "/users/6";

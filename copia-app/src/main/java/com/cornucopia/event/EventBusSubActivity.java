@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.cornucopia.R;
 
-import de.greenrobot.event.EventBus;
+import org.greenrobot.eventbus.EventBus;
 
 public class EventBusSubActivity extends Activity implements OnClickListener {
 

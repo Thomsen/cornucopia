@@ -1,16 +1,5 @@
 package com.cornucopia.search.rxjava;
 
-import java.text.Collator;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func0;
-import rx.schedulers.Schedulers;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -24,6 +13,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cornucopia.R;
+
+import java.text.Collator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import rx.Observable;
+import rx.Subscriber;
+import rx.functions.Func0;
+import rx.schedulers.Schedulers;
 
 public class RxAppListActivity extends ListActivity {
     
@@ -44,7 +44,7 @@ public class RxAppListActivity extends ListActivity {
 
         loadAppObservable()
             .subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread())
+//            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new Subscriber<List<RxAppEntry>>() {
 
                 @Override
@@ -80,8 +80,8 @@ public class RxAppListActivity extends ListActivity {
     private List<RxAppEntry> loadAppList() {
         // Retrieve all known applications.
         List<ApplicationInfo> apps = getPackageManager().getInstalledApplications(
-                PackageManager.GET_UNINSTALLED_PACKAGES |
-                PackageManager.GET_DISABLED_COMPONENTS);
+                PackageManager.GET_UNINSTALLED_PACKAGES);
+//                PackageManager.GET_DISABLED_COMPONENTS);
         if (apps == null) {
             apps = new ArrayList<ApplicationInfo>();
         }

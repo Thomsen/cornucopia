@@ -1,16 +1,17 @@
 package com.cornucopia.http.retrofit;
 
-import java.util.concurrent.TimeUnit;
-
-import com.cornucopia.http.mibo.MiboUser;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import android.util.Log;
+
+import com.cornucopia.http.mibo.MiboUser;
+
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitOpt {
     
@@ -36,7 +37,7 @@ public class RetrofitOpt {
         
         Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(url)
-            .addConverterFactory(GsonConverterFactory.create(gsonIns))
+//            .addConverterFactory(GsonConverterFactory.create(gsonIns))
             .client(client)
             .build();
         
