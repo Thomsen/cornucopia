@@ -1,7 +1,8 @@
 package com.cornucopia.event.rxjava;
 
-import rx.Observable;
 import android.widget.Button;
+
+import io.reactivex.Observable;
 
 public class ViewObservable {
 

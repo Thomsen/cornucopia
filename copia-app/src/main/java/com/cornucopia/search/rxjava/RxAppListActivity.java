@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -19,11 +18,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import rx.Observable;
-import rx.Subscriber;
-import rx.functions.Func0;
-import rx.schedulers.Schedulers;
 
 public class RxAppListActivity extends ListActivity {
     
@@ -42,40 +36,40 @@ public class RxAppListActivity extends ListActivity {
     
     void onAppLoading() {
 
-        loadAppObservable()
-            .subscribeOn(Schedulers.newThread())
-//            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new Subscriber<List<RxAppEntry>>() {
-
-                @Override
-                public void onCompleted() {
-                    AppListAdapter adapter = new AppListAdapter(listApp);
-                    setListAdapter(adapter);
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    Log.e(TAG, "onError", e);
-                }
-
-                @Override
-                public void onNext(List<RxAppEntry> t) {
-                    listApp = t;
-                }
-                
-            }); 
+//        loadAppObservable()
+//            .subscribeOn(Schedulers.newThread())
+////            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe(new Subscriber<List<RxAppEntry>>() {
+//
+//                @Override
+//                public void onCompleted() {
+//                    AppListAdapter adapter = new AppListAdapter(listApp);
+//                    setListAdapter(adapter);
+//                }
+//
+//                @Override
+//                public void onError(Throwable e) {
+//                    Log.e(TAG, "onError", e);
+//                }
+//
+//                @Override
+//                public void onNext(List<RxAppEntry> t) {
+//                    listApp = t;
+//                }
+//
+//            });
     }
     
-    private Observable<List<RxAppEntry>> loadAppObservable() {
-        return Observable.defer(new Func0<Observable<List<RxAppEntry>>>() {
-
-            @Override
-            public Observable<List<RxAppEntry>> call() {
-                List<RxAppEntry> applist = loadAppList();
-                return Observable.just(applist);
-            }
-        });
-    }
+//    private Observable<List<RxAppEntry>> loadAppObservable() {
+//        return Observable.defer(new Func0<Observable<List<RxAppEntry>>>() {
+//
+//            @Override
+//            public Observable<List<RxAppEntry>> call() {
+//                List<RxAppEntry> applist = loadAppList();
+//                return Observable.just(applist);
+//            }
+//        });
+//    }
 
     private List<RxAppEntry> loadAppList() {
         // Retrieve all known applications.

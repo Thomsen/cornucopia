@@ -3,7 +3,6 @@ package com.cornucopia.http.robospice;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -62,7 +61,7 @@ public class RobospiceActivity extends BaseRobospiceActivity {
     @Override
     protected void onStop() {
         BitmapDrawable bitmapDrawable = (BitmapDrawable) mIvRobospice.getDrawable();
-        if (bitmapDrawable != null) {
+        if (bitmapDrawable != null && null != bitmapDrawable.getBitmap()) {
             bitmapDrawable.getBitmap().recycle();
         }
         super.onStop();
