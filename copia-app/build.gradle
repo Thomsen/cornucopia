@@ -37,6 +37,10 @@ android {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/rxjava.properties'
     }
+
+    configurations {
+        all*.exclude group: 'org.apache.commons'
+    }
 }
 
 dependencies {

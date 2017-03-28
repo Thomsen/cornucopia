@@ -38,8 +38,9 @@ public class LoadingActivity extends Activity {
 		LinearLayout linearLayout = new LinearLayout(this);
 		linearLayout.setLayoutParams(linearParmas);
 		linearLayout.setOrientation(LinearLayout.VERTICAL);
-		linearLayout.setBackgroundColor(Color.parseColor("#ffffff"));
-		
+//		linearLayout.setBackgroundColor(Color.parseColor("#ffffff"));
+		linearLayout.setBackgroundColor(Color.TRANSPARENT);
+
 		linearLayout.addView(textView);
 		
 		LinearLayout.LayoutParams imageParmas = textParmas;

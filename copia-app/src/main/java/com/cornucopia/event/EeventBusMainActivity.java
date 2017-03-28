@@ -41,13 +41,11 @@ public class EeventBusMainActivity extends Activity implements OnClickListener {
     @Override
     protected void onStart() {
         super.onStart();
-//        EventBus.getDefault().register(this);
         // only register once
     }
 
     @Override
     protected void onStop() {
-//        EventBus.getDefault().unregister(this);
         super.onStop();
     }
 

@@ -15,7 +15,9 @@ public class ToolbarDemoActivity extends ActionBarActivity {
     private Toolbar mToolbar;
 
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.CopiaAppCompat);
         super.onCreate(savedInstanceState);
+
 
         setContentView(R.layout.activity_toolbar_demo);
 
