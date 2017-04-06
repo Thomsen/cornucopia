@@ -3,16 +3,16 @@ apply plugin: 'realm-android'
 apply plugin: 'com.jakewharton.butterknife'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.cornucopia"
-        minSdkVersion 15
-        targetSdkVersion 24
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         compileOptions {
-            sourceCompatibility JavaVersion.VERSION_1_7
-            targetCompatibility JavaVersion.VERSION_1_7
+            sourceCompatibility rootProject.ext.javaVersion
+            targetCompatibility rootProject.ext.javaVersion
         }
 
         testApplicationId "com.cornucopia.test"
@@ -25,6 +25,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+
+        debug {
+            resValue("string", "PORT_NUMBER", "8081")
         }
     }
 
@@ -82,10 +86,14 @@ dependencies {
     // jitpack.io
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
     // support-v4 sub
-    compile 'com.android.support:support-compat:24.2.0'
-    compile 'com.android.support:support-fragment:24.2.0'
-    compile 'com.android.support:support-annotations:24.2.0'
+    compile "com.android.support:support-compat:$rootProject.supportLibVersion"
+    compile "com.android.support:support-fragment:$rootProject.supportLibVersion"
+    compile "com.android.support:support-annotations:$rootProject.supportLibVersion"
     compile 'com.android.support:multidex:1.0.1'
-    compile 'com.android.support:appcompat-v7:24.2.0'
-    compile 'com.android.support:recyclerview-v7:24.2.0'
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
+    compile "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
+
+
+    // sqlite
+    debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
 }
