@@ -1,11 +1,12 @@
 package com.cornucopia.http.retrofit;
 
-import android.util.Log;
-
-import com.cornucopia.http.mibo.MiboUser;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+
+import android.util.Log;
+
+import com.cornucopia.http.mibo.MiboUser;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +24,7 @@ public class RetrofitOpt {
         
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
         clientBuilder.addInterceptor(loggintInterceptor);
-        clientBuilder.readTimeout(20000, TimeUnit.SECONDS);
+        clientBuilder.readTimeout(200, TimeUnit.SECONDS);
         
         OkHttpClient client = clientBuilder.build();
         

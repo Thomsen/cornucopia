@@ -1,5 +1,7 @@
 package com.cornucopia.http;
 
+import com.google.gson.Gson;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -19,8 +21,11 @@ import com.cornucopia.http.volley.VolleyOpt;
 
 import org.json.JSONObject;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 @SuppressWarnings("deprecation")
 public class MiboLoginActivity extends Activity implements OnClickListener {
@@ -75,7 +80,8 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
         }
         if (R.id.btn_show_user == v.getId()) {
 //            volleyShow();
-            retrofitShow();
+//            retrofitShow();
+            retrofitListUser();
         }
     }
     
@@ -126,6 +132,25 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
         String loginUrl = serverAddress + "/users/login";
         oopt.okHttpLogin(loginUrl, mEtUsername.getText().toString(),
                 mEtPassword.getText().toString());
+    }
+
+    private void retrofitListUser() {
+        RetrofitOpt retrofitOpt = new RetrofitOpt(serverAddress);
+        MiboRetrofitService miboRetrofitService = retrofitOpt.getMiboRetrofitService();
+        miboRetrofitService.listUsers().enqueue(new Callback<List<MiboUser>>() {
+            @Override
+            public void onResponse(Call<List<MiboUser>> call, Response<List<MiboUser>> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(MiboLoginActivity.this, "all: " + new Gson().toJson(response.body()),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<MiboUser>> call, Throwable t) {
+
+            }
+        });
     }
     
     private void retrofitShow() {
