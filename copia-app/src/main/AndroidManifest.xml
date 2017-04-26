@@ -623,16 +623,7 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        <!-- patch -->
-        <!--
-        <activity
-            android:name="com.cornucopia.view.PatchMainActivity"
-            android:label="Third/Patch/Main" >
-            <intent-filter>
-               <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
-            </intent-filter>
-        </activity> -->
+
       
     </application>
 

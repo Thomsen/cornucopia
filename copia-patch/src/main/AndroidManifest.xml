@@ -11,12 +11,14 @@
     
     <application
         android:debuggable="true" >
+
+        <!-- patch to merge copia-app -->
         <activity
-            android:name="com.cornucopia.view.PatchMainActivity"
-            android:label="@string/title_activity_patch_main" >
+                android:name="com.cornucopia.view.PatchMainActivity"
+                android:label="Third/Patch/Main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
         
