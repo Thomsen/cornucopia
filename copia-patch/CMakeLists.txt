@@ -17,4 +17,17 @@ add_library( # Specifies the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/jni/copia-patch.cpp )
+             src/main/jni/copia-patch.cpp
+             src/main/jni/libzip2/blocksort.c
+             src/main/jni/libzip2/bzip2.c
+             src/main/jni/libzip2/bzlib.c
+             src/main/jni/libzip2/compress.c
+             src/main/jni/libzip2/crctable.c
+             src/main/jni/libzip2/decompress.c
+             src/main/jni/libzip2/huffman.c
+             src/main/jni/libzip2/randtable.c
+             src/main/jni/patch/patch.c)
+
+# Specifies a path to native header files.
+include_directories(src/main/jni/libzip2/)
+include_directories(src/main/jni/patch/)
