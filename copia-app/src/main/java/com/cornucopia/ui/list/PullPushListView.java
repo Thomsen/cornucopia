@@ -114,10 +114,10 @@ public class PullPushListView extends ListView implements AbsListView.OnScrollLi
         mReverseAnimation.setDuration(250);
         mReverseAnimation.setFillAfter(true);
 
-//        TextView tv = new TextView(context);
-//        tv.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-//        tv.setText("header");
-//        addHeaderView(tv);
+//        TextView tvOne = new TextView(context);
+//        tvOne.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+//        tvOne.setText("header");
+//        addHeaderView(tvOne);
         
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mPullRefresh = (RelativeLayout) inflater.inflate(R.layout.pull_header_refresh, this, false); 

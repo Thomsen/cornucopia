@@ -1,18 +1,15 @@
 package com.cornucopia.ui.list;
 
-import com.cornucopia.R;
-
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.cornucopia.R;
 
 public class RecyclerListActivity extends Activity {
     
@@ -39,50 +36,32 @@ public class RecyclerListActivity extends Activity {
         }
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
 //                android.R.id.text1, datas);  // SimpleAdapter
-        
-        mRecyclerView.setAdapter(new RecAdapter(datas));
-    }
-    
-    class RecAdapter extends RecyclerView.Adapter<RecAdapter.ViewHolder> {
-        
-        String[] datas;
-        
-        final class ViewHolder extends RecyclerView.ViewHolder {
 
-            public ViewHolder(View itemView) {
-                super(itemView);
+        RecyclerAdapter adapter = new RecyclerAdapter(this, datas);
+//        mRecyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new RecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+                if (null != tv) {
+                    Snackbar.make(mRecyclerView, "item: " + tv.getText(), Snackbar.LENGTH_LONG)
+                            .setAction("action", new View.OnClickListener() {
+
+                                @Override
+                                public void onClick(View v) {
+                                    Toast.makeText(RecyclerListActivity.this, "snackbar action", Toast.LENGTH_SHORT).show();
+                                }
+                            }).show();
+                } else {
+                    Toast.makeText(RecyclerListActivity.this, "click", Toast.LENGTH_SHORT).show();
+                }
             }
-            
-            TextView tv;
-            
-        }
-        
-        public RecAdapter(String[] datas) {
-            this.datas = datas;
-        }
+        });
 
-        @Override
-        public int getItemCount() {
-            if (null == datas) {
-                return 0;
-            } else {
-                return datas.length;
-            }           
-        }
+        mRecyclerView.setAdapter(adapter);
 
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.tv.setText(datas[position]);
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(getApplicationContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
-            ViewHolder holder = new ViewHolder(v);
-            holder.tv = (TextView) v.findViewById(android.R.id.text1);
-            holder.tv.setTextColor(Color.BLACK);
-            return holder;
-        }
     }
+
 
 }
