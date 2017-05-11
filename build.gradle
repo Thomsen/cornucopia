@@ -8,6 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
+//        classpath 'com.andriod.tools.build:gradle-experimental:0.9.1'
         classpath "io.realm:realm-gradle-plugin:3.0.0"
         classpath "nl.eveoh:gradle-aspectj:1.6"
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
@@ -38,7 +39,7 @@ ext {
     minSdkVersion = 16
     targetSdkVersion = 23
     compileSdkVersion = 23
-    buildToolsVersion = '23.0.3'
+    buildToolsVersion = '25.0.2'
 
     javaVersion = JavaVersion.VERSION_1_7
 

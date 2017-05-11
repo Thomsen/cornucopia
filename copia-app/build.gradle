@@ -49,7 +49,7 @@ android {
 
 dependencies {
     compile project(':copia-mvp')
-    compile project(':copia-patch')
+//    compile project(':copia-patch')
 
     compile files('libs/BaiduLBS_Android.jar')
     compile files('libs/httpmime-4.1.2.jar')
