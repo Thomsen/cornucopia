@@ -1,7 +1,5 @@
 package com.cornucopia.multimedia.camera;
 
-import com.cornucopia.R;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -16,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.cornucopia.R;
+
 public class CameraBasicFragment extends Fragment implements OnClickListener {
     
     private Context mContext;
@@ -29,11 +29,14 @@ public class CameraBasicFragment extends Fragment implements OnClickListener {
     private int mCameraId;
 
     public static CameraBasicFragment newInstance(Uri fileUri) {
-        return new CameraBasicFragment(fileUri);
+        CameraBasicFragment fragment = new CameraBasicFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("fileUri", fileUri);
+        fragment.setArguments(bundle);
+        return fragment;
     }
     
-    private CameraBasicFragment(Uri fileUri) {
-        this.fileUri = fileUri;
+    public CameraBasicFragment() {
     }
     
     @Override

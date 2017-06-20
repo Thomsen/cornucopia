@@ -10,16 +10,16 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.Messenger;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.Toast;
+
+import com.cornucopia.R;
 
 public class StarterActivity extends Activity implements
 		OnGlobalLayoutListener, OnClickListener {
@@ -56,7 +56,7 @@ public class StarterActivity extends Activity implements
 
 		startService = new Button(this);
 		startService.setLayoutParams(params);
-		startService.setId(2301);
+		startService.setId(R.id.start_service);
 		startService.setText("Start Service");
 		startService.setOnClickListener(this);
 
@@ -64,7 +64,7 @@ public class StarterActivity extends Activity implements
 
 		stopService = new Button(this);
 		stopService.setLayoutParams(params);
-		stopService.setId(2302);
+		stopService.setId(R.id.stop_service);
 		stopService.setText("Stop Service");
 		stopService.setOnClickListener(this);
 
@@ -72,7 +72,7 @@ public class StarterActivity extends Activity implements
 
 		bindService = new Button(this);
 		bindService.setLayoutParams(params);
-		bindService.setId(2303);
+		bindService.setId(R.id.bind_service);
 		bindService.setText("Bind Service");
 		bindService.setOnClickListener(this);
 
@@ -80,7 +80,7 @@ public class StarterActivity extends Activity implements
 
 		unBindService = new Button(this);
 		unBindService.setLayoutParams(params);
-		unBindService.setId(2304);
+		unBindService.setId(R.id.unbind_service);
 		unBindService.setText("Un Bind Service");
 		unBindService.setOnClickListener(this);
 
@@ -88,7 +88,7 @@ public class StarterActivity extends Activity implements
 
 		startBroadcast = new Button(this);
 		startBroadcast.setLayoutParams(params);
-		startBroadcast.setId(2305);
+		startBroadcast.setId(R.id.start_broadcast);
 		startBroadcast.setText("Start Broadcast");
 		startBroadcast.setOnClickListener(this);
 
@@ -96,7 +96,7 @@ public class StarterActivity extends Activity implements
 
 		stopBroadcast = new Button(this);
 		stopBroadcast.setLayoutParams(params);
-		stopBroadcast.setId(2306);
+		stopBroadcast.setId(R.id.stop_broadcast);
 		stopBroadcast.setText("Stop Broadcast");
 		stopBroadcast.setOnClickListener(this);
 
