@@ -1,7 +1,5 @@
 package com.cornucopia.ui.fragment;
 
-import com.cornucopia.R;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.cornucopia.R;
 
 public class ArticleFragment extends Fragment {
 
@@ -19,9 +19,14 @@ public class ArticleFragment extends Fragment {
 	public ArticleFragment() {
     }
 
-	public ArticleFragment(int position) {
-	    mCurrentPosition = position;
-    }
+	public static ArticleFragment newInstance(int position) {
+		ArticleFragment fragment = new ArticleFragment();
+		Bundle args = new Bundle();
+		args.putInt(POSITION_STATE, position);
+		fragment.setArguments(args);
+		return fragment;
+	}
+
 
 	private String[] articles = new String[] {
 			"article one",
