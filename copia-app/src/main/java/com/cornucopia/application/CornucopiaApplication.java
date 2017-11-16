@@ -1,23 +1,24 @@
 package com.cornucopia.application;
 
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
-
-import java.util.ArrayList;
-
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
 import com.bugsnag.android.Bugsnag;
-import com.cornucopia.application.exception.AppBlockCanaryContext;
+import com.cornucopia.BuildConfig;
 import com.cornucopia.aspect.dexposed.DexposedHook;
 import com.cornucopia.di.dagger2.D2GraphComponent;
 import com.cornucopia.hotfix.Hotfix;
 import com.cornucopia.storage.ticketsmanager.Tickets;
 import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
-import com.github.moduth.blockcanary.BlockCanary;
+import com.cornucoppia.component.data.persist.UserDatabase;
+import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+
+import java.util.ArrayList;
+
+import io.flowup.FlowUp;
 
 
 public class CornucopiaApplication extends MultiDexApplication {
@@ -71,6 +72,17 @@ public class CornucopiaApplication extends MultiDexApplication {
 		// no found class
 //		AppBlockCanaryContext appBlock = new AppBlockCanaryContext(); 
 //		BlockCanary.install(this, appBlock).start();
+
+		// room database
+		UserDatabase db = Room.databaseBuilder(getApplicationContext(),
+				UserDatabase.class, "user-db").build();
+
+		Stetho.initializeWithDefaults(this);
+
+		FlowUp.Builder.with(this)
+				.apiKey("a090c1b35c024aeda4c4c64d6909f0b4")
+				.forceReports(BuildConfig.DEBUG)
+				.start();
 	}
 
     private void initCrashHandler() {

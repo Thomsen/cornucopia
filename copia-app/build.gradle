@@ -49,6 +49,7 @@ android {
 
 dependencies {
     compile project(':copia-mvp')
+    compile project(':copia-component')
 //    compile project(':copia-patch')
 
     compile files('libs/BaiduLBS_Android.jar')
@@ -97,6 +98,11 @@ dependencies {
     compile "com.android.support:design:$rootProject.supportLibVersion"
 
 
+    compile 'com.facebook.stetho:stetho:1.5.0'
+
     // sqlite
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
+
+    compile 'io.flowup:android-sdk:0.3.0'
+    testCompile 'io.flowup:android-sdk-no-op:0.3.0'
 }
