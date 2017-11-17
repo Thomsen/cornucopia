@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cornucopia.kotlin">
+
+    <application>
+        <activity
+            android:name=".KotlinMainActivity"
+            android:label="Kotlin/Main"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".recy.RecyMainActivity"
+            android:label="Kotlin/Recy"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

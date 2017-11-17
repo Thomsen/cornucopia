@@ -11,7 +11,6 @@ import com.cornucopia.R;
 
 public class ToolbarDemoActivity extends ActionBarActivity {
 
-
     private Toolbar mToolbar;
 
     protected void onCreate(Bundle savedInstanceState) {

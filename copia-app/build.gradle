@@ -51,6 +51,7 @@ dependencies {
     compile project(':copia-mvp')
     compile project(':copia-component')
 //    compile project(':copia-patch')
+    compile project(':copia-kotlin')
 
     compile files('libs/BaiduLBS_Android.jar')
     compile files('libs/httpmime-4.1.2.jar')
@@ -88,6 +89,7 @@ dependencies {
 
     // jitpack.io
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
+
     // support-v4 sub
     compile "com.android.support:support-compat:$rootProject.supportLibVersion"
     compile "com.android.support:support-fragment:$rootProject.supportLibVersion"

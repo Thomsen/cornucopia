@@ -76,7 +76,7 @@ public class TimerTaskActivity extends CorncopiaActivity {
                     if (!networkInfo.isConnected()) {
                     	Toast.makeText(mContext, "当前网络连接不可用，请启用网络", Toast.LENGTH_SHORT).show();
                         if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
-                            connManager.startUsingNetworkFeature(networkInfo.getType(), "wap"); // OPhone
+//                            connManager.startUsingNetworkFeature(networkInfo.getType(), "wap"); // OPhone
                         }
                     }
                 }

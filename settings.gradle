@@ -1,4 +1,4 @@
-include ':copia-mvp'
+include ':copia-mvp', ':copia-kotlin'
 include ':copia-component'
 include ':copia-app'
 include ':copia-hackdex'
