@@ -15,7 +15,7 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new ArticleFragment(position);
+        return ArticleFragment.newInstance(position);
     }
 
     @Override
