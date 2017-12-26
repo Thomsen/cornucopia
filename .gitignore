@@ -2,6 +2,7 @@
 .gradle
 *.iml
 build
+captures
 local.properties
 *.externalNativeBuild
 **/*.apk

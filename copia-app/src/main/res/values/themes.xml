@@ -4,6 +4,7 @@
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>  // appcompat neeed one of the title
         <!-- windowActionBar true: activiy already has an action bar supplied by the window decor. -->
         <item name="colorPrimary">@color/green</item>
         <item name="colorPrimaryDark">@color/black</item>

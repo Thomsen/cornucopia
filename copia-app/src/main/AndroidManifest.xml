@@ -20,6 +20,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- image contain gps -->
 
+
+    <uses-feature android:glEsVersion="0x00030001" android:required="true" />
+
     <!--
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"
@@ -310,6 +313,14 @@
         <activity
             android:name=".graphics.chart.LineChartActivity"
             android:label="Graphics/Chart/Line" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".graphics.opengl.OpenGLES31Activity"
+            android:label="Graphics/OpenGL/ES3" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
