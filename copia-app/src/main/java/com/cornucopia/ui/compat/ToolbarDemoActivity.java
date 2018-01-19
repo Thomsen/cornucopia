@@ -1,7 +1,7 @@
 package com.cornucopia.ui.compat;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,7 +9,8 @@ import android.widget.Toast;
 
 import com.cornucopia.R;
 
-public class ToolbarDemoActivity extends ActionBarActivity {
+// replace ActionBarActivity
+public class ToolbarDemoActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
 

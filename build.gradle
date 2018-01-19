@@ -22,6 +22,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        google()
         //mavenLocal()
         mavenCentral()
         maven { url "https://jitpack.io" }
@@ -48,6 +49,6 @@ ext {
 
     javaVersion = JavaVersion.VERSION_1_7
 
-    supportLibVersion = '24.2.0'
+    supportLibVersion = '26.1.0'
 }
 
