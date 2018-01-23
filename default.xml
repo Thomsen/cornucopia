@@ -3,5 +3,5 @@
 	<remote name="origin" fetch="https://github.com/Thomsen/" />
 	<default revision="master" remote="origin" sync-j="4" />
 
-	<project name="cornucopia" remote="cornucopia" />
+	<project name="cornucopia" path="cornucopia" />
 </manifest>
