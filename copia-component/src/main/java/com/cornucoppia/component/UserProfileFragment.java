@@ -2,17 +2,22 @@ package com.cornucoppia.component;
 
 import android.arch.lifecycle.LifecycleFragment;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.cornucoppia.component.lifecycle.ComponentObserver;
+import com.cornucoppia.component.lifecycle.UserProfileObserver;
 
 /**
  * Created by thom on 25/5/2017.
  */
 
-public class UserProfileFragment extends LifecycleFragment {
+public class UserProfileFragment extends Fragment {
 
     private static final String UID_KEY = "uid";
 
@@ -22,6 +27,12 @@ public class UserProfileFragment extends LifecycleFragment {
         Bundle bundle = new Bundle();
         bundle.putString(UID_KEY, "0");
         setArguments(bundle);
+        getLifecycle().addObserver(new UserProfileObserver());
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
     @Override

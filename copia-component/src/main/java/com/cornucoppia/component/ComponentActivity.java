@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.cornucoppia.component.lifecycle.ComponentObserver;
+
 public class ComponentActivity extends FragmentActivity {
 
     // extends AppCompatActivity
@@ -15,6 +17,8 @@ public class ComponentActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_component);
+
+        getLifecycle().addObserver(new ComponentObserver());
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
