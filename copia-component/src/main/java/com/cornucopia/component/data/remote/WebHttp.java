@@ -1,7 +1,7 @@
-package com.cornucoppia.component.data.remote;
+package com.cornucopia.component.data.remote;
 
 
-import com.cornucoppia.component.data.model.User;
+import com.cornucopia.component.data.model.User;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

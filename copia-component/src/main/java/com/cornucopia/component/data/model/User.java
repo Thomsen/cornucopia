@@ -1,4 +1,4 @@
-package com.cornucoppia.component.data.model;
+package com.cornucopia.component.data.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Embedded;

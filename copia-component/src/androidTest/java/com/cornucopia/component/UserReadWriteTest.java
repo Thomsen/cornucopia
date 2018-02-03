@@ -5,9 +5,9 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.cornucoppia.component.data.model.User;
-import com.cornucoppia.component.data.persist.UserDao;
-import com.cornucoppia.component.data.persist.UserDatabase;
+import com.cornucopia.component.data.model.User;
+import com.cornucopia.component.data.persist.UserDao;
+import com.cornucopia.component.data.persist.UserDatabase;
 
 import org.junit.After;
 import org.junit.Before;

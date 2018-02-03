@@ -1,6 +1,5 @@
-package com.cornucoppia.component;
+package com.cornucopia.component;
 
-import android.arch.lifecycle.LifecycleFragment;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
@@ -10,8 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cornucoppia.component.lifecycle.ComponentObserver;
-import com.cornucoppia.component.lifecycle.UserProfileObserver;
+import com.cornucopia.component.lifecycle.UserProfileObserver;
 
 /**
  * Created by thom on 25/5/2017.
@@ -43,7 +41,7 @@ public class UserProfileFragment extends Fragment {
         viewModel = ViewModelProviders.of(this).get(UserProfileViewModel.class);
         viewModel.init(userId);
 
-        // java.lang.Class<com.cornucoppia.component.UserProfileViewModel> has no zero argument constructor
+        // java.lang.Class<com.cornucopia.component.UserProfileViewModel> has no zero argument constructor
     }
 
     @Nullable

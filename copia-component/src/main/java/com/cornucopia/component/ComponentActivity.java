@@ -1,11 +1,12 @@
-package com.cornucoppia.component;
+package com.cornucopia.component;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import com.cornucoppia.component.lifecycle.ComponentObserver;
+import com.cornucopia.component.R;
+import com.cornucopia.component.lifecycle.ComponentObserver;
 
 public class ComponentActivity extends FragmentActivity {
 

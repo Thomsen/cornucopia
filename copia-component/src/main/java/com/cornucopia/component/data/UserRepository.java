@@ -1,10 +1,10 @@
-package com.cornucoppia.component.data;
+package com.cornucopia.component.data;
 
 import android.arch.lifecycle.LiveData;
 
-import com.cornucoppia.component.data.model.User;
-import com.cornucoppia.component.data.persist.UserDao;
-import com.cornucoppia.component.data.remote.WebHttp;
+import com.cornucopia.component.data.model.User;
+import com.cornucopia.component.data.persist.UserDao;
+import com.cornucopia.component.data.remote.WebHttp;
 
 import java.io.IOException;
 import java.util.concurrent.Executor;

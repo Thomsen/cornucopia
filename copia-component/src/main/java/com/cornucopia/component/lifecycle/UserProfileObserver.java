@@ -1,4 +1,4 @@
-package com.cornucoppia.component.lifecycle;
+package com.cornucopia.component.lifecycle;
 
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
@@ -9,23 +9,23 @@ import android.util.Log;
  * Created by thom on 31/1/2018.
  */
 
-public class ComponentObserver implements LifecycleObserver {
+public class UserProfileObserver implements LifecycleObserver {
 
     private static final String TAG = "LifecycleObserver";
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    void createActivity() {
-        Log.i(TAG, "create activity");
+    void create() {
+        Log.i(TAG, "create fragment");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    void startActivity() {
-        Log.i(TAG, "start activity");
+    void start() {
+        Log.i(TAG, "start fragmment");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    void stopActivity() {
-        Log.i(TAG, "stop activity");
+    void stop() {
+        Log.i(TAG, "stop fragment");
     }
 
     

@@ -1,4 +1,4 @@
-package com.cornucoppia.component.data.persist;
+package com.cornucopia.component.data.persist;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
@@ -8,7 +8,7 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import com.cornucoppia.component.data.model.User;
+import com.cornucopia.component.data.model.User;
 
 import java.util.List;
 

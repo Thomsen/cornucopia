@@ -1,9 +1,9 @@
-package com.cornucoppia.component.data.persist;
+package com.cornucopia.component.data.persist;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
-import com.cornucoppia.component.data.model.User;
+import com.cornucopia.component.data.model.User;
 
 /**
  * Created by thom on 25/5/2017.

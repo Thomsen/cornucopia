@@ -1,10 +1,10 @@
-package com.cornucoppia.component;
+package com.cornucopia.component;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.cornucoppia.component.data.UserRepository;
-import com.cornucoppia.component.data.model.User;
+import com.cornucopia.component.data.UserRepository;
+import com.cornucopia.component.data.model.User;
 
 /**
  * Created by thom on 25/5/2017.
