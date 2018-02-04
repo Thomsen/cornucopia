@@ -11,7 +11,7 @@ import com.cornucopia.di.dagger2.D2GraphComponent;
 import com.cornucopia.hotfix.Hotfix;
 import com.cornucopia.storage.ticketsmanager.Tickets;
 import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
-import com.cornucoppia.component.data.persist.UserDatabase;
+import com.cornucopia.component.data.persist.UserDatabase;
 import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;

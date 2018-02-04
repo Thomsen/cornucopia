@@ -30,6 +30,15 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".weather.viewmodel.view.WeatherMainActivity"
+            android:label="Third/Component/Weather"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

@@ -43,7 +43,7 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
 
     //noinspection GradleCompatible
-    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
+    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
     compile "android.arch.lifecycle:runtime:$archVersion"
