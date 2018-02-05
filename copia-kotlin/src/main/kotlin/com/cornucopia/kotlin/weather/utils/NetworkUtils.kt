@@ -13,9 +13,9 @@ class NetworkUtils {
 
     companion object {
 
-        val URL_DYNAMIC_WEATHER = "https://andfun-weather.udacity.comm/weather";
+        val URL_DYNAMIC_WEATHER = "https://andfun-weather.udacity.com/weather";
 
-        val URL_STATIC_WEATHER = "https://andfun-weather.udacity.com/weather";
+        val URL_STATIC_WEATHER = "https://andfun-weather.udacity.com/staticweather";
 
         var URL_BASE_FORECAST = URL_DYNAMIC_WEATHER;
 

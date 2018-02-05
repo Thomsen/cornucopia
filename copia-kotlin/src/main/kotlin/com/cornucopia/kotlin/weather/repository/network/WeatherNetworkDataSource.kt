@@ -152,10 +152,11 @@ class WeatherNetworkDataSource {
                 var dayForcast = jsonWeatherArray.getJSONObject(i);
 
                 var dateTimeMillis = normalizedUtcStartDay + DateUtils.DAY_IN_MMILLIS * i;
-                i ++;
 
                 var weather = fromJson(dayForcast, dateTimeMillis) as Weather;
                 weatherEntries[i] = weather;
+
+                i++;
             }
 
             return weatherEntries;

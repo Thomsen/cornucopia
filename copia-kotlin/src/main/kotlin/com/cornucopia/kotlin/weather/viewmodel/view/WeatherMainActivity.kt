@@ -36,11 +36,10 @@ class WeatherMainActivity : AppCompatActivity(), ForecastAdapter.ForecastAdapter
         mModelView = ViewModelProviders.of(this, factory).get(WeatherViewModel::class.java)
 
         mModelView.mForecast.observe(this, Observer {
-            weatherEntries -> {
+            weatherEntries ->
             if (null != weatherEntries) {
 
             }
-        }
         });
 
     }

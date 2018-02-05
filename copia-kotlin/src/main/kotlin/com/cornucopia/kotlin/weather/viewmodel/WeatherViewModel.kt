@@ -10,11 +10,15 @@ import com.cornucopia.kotlin.weather.repository.WeatherRepository
  */
 class WeatherViewModel: ViewModel {
 
-    private lateinit var mRepository: WeatherRepository
+    private var mRepository: WeatherRepository
 
+    // get() = mForecast  dead cycle
     var mForecast: LiveData<List<ListWeather>>
-        get() = mForecast
 
+    init {
+        // with val
+
+    }
 
     constructor(repository: WeatherRepository) {
         mRepository = repository;

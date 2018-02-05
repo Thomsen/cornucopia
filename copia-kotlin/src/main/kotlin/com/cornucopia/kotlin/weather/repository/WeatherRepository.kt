@@ -1,10 +1,12 @@
 package com.cornucopia.kotlin.weather.repository
 
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.Observer
 import com.cornucopia.kotlin.weather.WeatherExecutors
 import com.cornucopia.kotlin.weather.repository.dao.WeatherDao
 import com.cornucopia.kotlin.weather.repository.network.WeatherNetworkDataSource
 import com.cornucopia.kotlin.weather.utils.DateUtils
+import com.cornucopia.kotlin.weather.viewmodel.model.Weather
 
 /**
  * Created by thom on 3/2/2018.
@@ -26,8 +28,8 @@ class WeatherRepository {
         var networkData = mDataSource.getCurrentWeatherForecasts();
 
         // as long as
-        networkData.observeForever {
-            newForecastsFromNetwork -> {
+        networkData.observeForever (Observer<Array<Weather>> {
+            newForecastsFromNetwork ->
             mExecutors.diskIO!!.execute({
 
                 deleteOldData();
@@ -35,8 +37,7 @@ class WeatherRepository {
                 mWeatherDao.bulkInsert(*newForecastsFromNetwork!!); // * vararg params ; !! null check
 
             })
-        }
-        }
+        })
     }
 
     companion object {
