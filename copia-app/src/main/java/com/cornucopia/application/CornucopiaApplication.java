@@ -9,6 +9,7 @@ import com.cornucopia.BuildConfig;
 import com.cornucopia.aspect.dexposed.DexposedHook;
 import com.cornucopia.di.dagger2.D2GraphComponent;
 import com.cornucopia.hotfix.Hotfix;
+import com.cornucopia.kotlin.weather.repository.WeatherDatabase;
 import com.cornucopia.storage.ticketsmanager.Tickets;
 import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
 import com.cornucopia.component.data.persist.UserDatabase;
@@ -83,6 +84,7 @@ public class CornucopiaApplication extends MultiDexApplication {
 				.apiKey("a090c1b35c024aeda4c4c64d6909f0b4")
 				.forceReports(BuildConfig.DEBUG)
 				.start();
+
 	}
 
     private void initCrashHandler() {

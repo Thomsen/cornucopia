@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -47,6 +49,9 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     compile "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
+
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    kapt "android.arch.persistence.room:compiler:1.0.0"  // database impl exists
 
     compile "com.airbnb.android:lottie:2.5.0-beta1"
 

@@ -39,6 +39,7 @@
             </intent-filter>
         </activity>
 
+        <service android:name=".weather.repository.network.WeatherSyncIntentService" />
     </application>
 
 </manifest>
