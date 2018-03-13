@@ -1,4 +1,4 @@
-package com.cornucoppia.component;
+package com.cornucopia.component;
 
 import android.support.test.runner.AndroidJUnit4;
 

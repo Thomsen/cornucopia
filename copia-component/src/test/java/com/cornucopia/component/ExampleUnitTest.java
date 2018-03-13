@@ -1,4 +1,4 @@
-package com.cornucoppia.component;
+package com.cornucopia.component;
 
 import org.junit.Test;
 

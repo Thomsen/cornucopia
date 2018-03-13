@@ -1,4 +1,4 @@
-package com.cornucoppia.component;
+package com.cornucopia.component;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.cornucoppia.component.test", appContext.getPackageName());
+        assertEquals("com.cornucopia.component.test", appContext.getPackageName());
     }
 }

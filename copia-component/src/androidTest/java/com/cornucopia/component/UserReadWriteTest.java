@@ -1,4 +1,4 @@
-package com.cornucoppia.component;
+package com.cornucopia.component;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
@@ -11,6 +11,7 @@ import com.cornucopia.component.data.persist.UserDatabase;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.List;
@@ -40,6 +41,7 @@ public class UserReadWriteTest {
         db.close();
     }
 
+    @Test
     public void writeUserAndReadInList() throws Exception {
         User user = new User();
         user.setName("thom");
@@ -49,6 +51,6 @@ public class UserReadWriteTest {
 
         List<User> byName = userDao.findUsersByName(user.getName());
 
-        assertThat(byName.get(0), equalTo(user));
+        assertThat(byName.get(0).getName(), equalTo(user.getName()));
     }
 }
