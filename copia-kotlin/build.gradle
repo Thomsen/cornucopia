@@ -40,23 +40,24 @@ dependencies {
 
     implementation project(":copia-component")
 
-
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     //noinspection GradleCompatible
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
 
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    compile "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
+    api "androidx.core:core-ktx:0.2"
+
+    api "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
 
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
     kapt "android.arch.persistence.room:compiler:1.0.0"  // database impl exists
 
-    compile "com.airbnb.android:lottie:2.5.0-beta1"
+    api "com.airbnb.android:lottie:2.5.0-beta1"
 
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 
 
     androidTestImplementation 'com.android.support.test:runner:1.0.1';
