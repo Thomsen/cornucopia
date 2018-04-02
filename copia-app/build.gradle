@@ -48,65 +48,65 @@ android {
 }
 
 dependencies {
-    compile project(':copia-mvp')
-    compile project(':copia-component')
-//    compile project(':copia-patch')
-    compile project(':copia-kotlin')
+    implementation project(':copia-mvp')
+    implementation project(':copia-component')
+//    implementation project(':copia-patch')
+    implementation project(':copia-kotlin')
 
-    compile files('libs/BaiduLBS_Android.jar')
-    compile files('libs/httpmime-4.1.2.jar')
-    compile files('libs/IndoorscapeAlbumPlugin.jar')
+    implementation files('libs/BaiduLBS_Android.jar')
+    implementation files('libs/httpmime-4.1.2.jar')
+    implementation files('libs/IndoorscapeAlbumPlugin.jar')
 
-    compile 'com.android.volley:volley:1.0.0'
-    compile 'com.squareup.okhttp3:okhttp:3.6.0'
-    compile 'com.squareup.okio:okio:1.6.0'
-    compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.octo.android.robospice:robospice:1.4.14'
-    compile 'com.taobao.android:dexposed:0.1.1@aar'
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
-//    compile 'io.reactivex:rxjava:1.1.10'
-    compile 'io.reactivex.rxjava2:rxjava:2.0.7'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'com.google.dagger:dagger:2.9'
+    implementation 'com.android.volley:volley:1.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.6.0'
+    implementation 'com.squareup.okio:okio:1.6.0'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.octo.android.robospice:robospice:1.4.14'
+    implementation 'com.taobao.android:dexposed:0.1.1@aar'
+    implementation 'com.squareup.retrofit2:retrofit:2.2.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+//    implementation 'io.reactivex:rxjava:1.1.10'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.7'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.google.dagger:dagger:2.9'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
-    compile 'com.jakewharton:butterknife:8.5.1'
+    implementation 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.7'
-    compile 'com.fasterxml.jackson.core:jackson-core:2.8.7'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.7'
-    compile 'com.alibaba:fastjson:1.2.29'
-    compile 'com.facebook.fresco:fresco:1.1.0'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'org.aspectj:aspectjrt:1.8.10'
+    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.7'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.8.7'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.8.7'
+    implementation 'com.alibaba:fastjson:1.2.29'
+    implementation 'com.facebook.fresco:fresco:1.1.0'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'org.aspectj:aspectjrt:1.8.10'
 
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    compile 'com.github.markzhai:blockcanary-android:1.5.0'
-    compile 'com.bugsnag:bugsnag-android:3.8.0'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    implementation 'com.github.markzhai:blockcanary-android:1.5.0'
+    implementation 'com.bugsnag:bugsnag-android:3.8.0'
 
     // jitpack.io
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.1'
 
     // support-v4 sub
     //noinspection GradleCompatible
-    compile "com.android.support:support-compat:$rootProject.supportLibVersion"
+    implementation "com.android.support:support-compat:$rootProject.supportLibVersion"
     //noinspection GradleCompatible
-    compile "com.android.support:support-fragment:$rootProject.supportLibVersion"
-    compile "com.android.support:support-annotations:$rootProject.supportLibVersion"
-    compile 'com.android.support:multidex:1.0.1'
-    compile "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
-    compile "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
-    compile "com.android.support:design:$rootProject.supportLibVersion"
+    implementation "com.android.support:support-fragment:$rootProject.supportLibVersion"
+    implementation "com.android.support:support-annotations:$rootProject.supportLibVersion"
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
+    implementation "com.android.support:design:$rootProject.supportLibVersion"
 
 
-    compile 'com.facebook.stetho:stetho:1.5.0'
+    implementation 'com.facebook.stetho:stetho:1.5.0'
 
     // sqlite
-    debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.0'
 
-    compile 'io.flowup:android-sdk:0.3.0'
-    testCompile 'io.flowup:android-sdk-no-op:0.3.0'
+    implementation 'io.flowup:android-sdk:0.3.0'
+    testImplementation 'io.flowup:android-sdk-no-op:0.3.0'
 }
