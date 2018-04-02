@@ -9,7 +9,11 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+
+        // Could not get unknown property 'packageForR' for task ':copia-app:processDebugResources'
+        // gradle 3.1.0 with butterknife conflict
+
+        classpath 'com.android.tools.build:gradle:3.0.1'
 //        classpath 'com.andriod.tools.build:gradle-experimental:0.9.1'
         classpath "io.realm:realm-gradle-plugin:3.0.0"
         classpath "nl.eveoh:gradle-aspectj:1.6"
