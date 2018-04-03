@@ -1,6 +1,7 @@
 package com.cornucopia.kotlin.weather.utils
 
 import android.net.Uri
+import androidx.net.toUri
 import com.cornucopia.kotlin.weather.repository.network.WeatherNetworkDataSource
 import java.net.HttpURLConnection
 import java.net.URL
@@ -37,7 +38,8 @@ class NetworkUtils {
         }
 
         private fun buildUrlWithLocationQuery(locationQuery: String): URL {
-            var weatherQueryUri = Uri.parse(URL_BASE_FORECAST).buildUpon()
+//            var weatherQueryUri = Uri.parse(URL_BASE_FORECAST).buildUpon()
+            var weatherQueryUri = URL_BASE_FORECAST.toUri().buildUpon()  // toUri with android-ktx
                     .appendQueryParameter(PARAM_QUERY_, locationQuery)
                     .appendQueryParameter(PARAM_FORMAT_, format)
                     .appendQueryParameter(PARAM_UNITS_, units)
