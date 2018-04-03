@@ -3,21 +3,23 @@ buildscript {
     ext.kotlin_version = '1.2.21'
     repositories {
         jcenter()
-        maven {
-            url "https://maven.eveoh.nl/content/repositories/releases"
-        }
         google()
+        mavenCentral()
+        maven { url "https://maven.eveoh.nl/content/repositories/releases" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
 
         // Could not get unknown property 'packageForR' for task ':copia-app:processDebugResources'
         // gradle 3.1.0 with butterknife conflict
 
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.0'
 //        classpath 'com.andriod.tools.build:gradle-experimental:0.9.1'
+
         classpath "io.realm:realm-gradle-plugin:3.0.0"
         classpath "nl.eveoh:gradle-aspectj:1.6"
-        classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
+
+        classpath "com.jakewharton:butterknife-gradle-plugin:9.0.0-SNAPSHOT"
 
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
@@ -31,6 +33,7 @@ allprojects {
         mavenCentral()
         maven { url "https://jitpack.io" }
         maven { url "https://maven.google.com" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 
@@ -54,5 +57,7 @@ ext {
     javaVersion = JavaVersion.VERSION_1_7
 
     supportLibVersion = '26.1.0'
+
+    butternifeVersion = '9.0.0-SNAPSHOT'
 }
 

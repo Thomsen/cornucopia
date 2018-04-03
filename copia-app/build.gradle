@@ -4,7 +4,7 @@ apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+//    buildToolsVersion rootProjæect.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.cornucopia"
@@ -70,8 +70,10 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation 'com.google.dagger:dagger:2.9'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
-    implementation 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    implementation "com.jakewharton:butterknife:$rootProject.ext.butternifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butternifeVersion"
+
     implementation 'com.google.code.gson:gson:2.8.0'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.7'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.8.7'
