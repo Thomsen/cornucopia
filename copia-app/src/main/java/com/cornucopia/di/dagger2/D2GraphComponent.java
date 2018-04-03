@@ -6,6 +6,9 @@ import com.cornucopia.application.CornucopiaApplication;
 
 import dagger.Component;
 
+/**
+ * 将 @Inject 和 @Module 的 dependency 产生直接的连接
+ */
 @Singleton
 @Component(modules = {D2Module.class})
 public interface D2GraphComponent {

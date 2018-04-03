@@ -276,7 +276,7 @@
 
         <activity
             android:name=".di.dagger2.D2MainActivity"
-            android:label="Di/Main" >
+            android:label="Di/Dagger2Main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
