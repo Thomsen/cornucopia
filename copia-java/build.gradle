@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        maven { url uri ( '../repo' )}
+    }
+    dependencies {
+        classpath 'com.cornucopia.tools:copia-tools:0.0.1'
+    }
+}
+
+repositories {
+    maven { url uri('../repo') }
+}
+
 apply plugin: 'java-library'
+
+apply plugin: 'copia'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

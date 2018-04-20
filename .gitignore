@@ -3,6 +3,7 @@
 *.iml
 build
 captures
+repo
 local.properties
 *.externalNativeBuild
 **/*.apk
