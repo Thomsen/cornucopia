@@ -5,8 +5,11 @@ buildscript {
         jcenter()
         google()
         mavenCentral()
-        maven { url "https://maven.eveoh.nl/content/repositories/releases/" }
+        //
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://maven.eveoh.nl/content/repositories/releases/" }
+
+        maven { url uri('./repo') }
     }
     dependencies {
 
@@ -17,12 +20,19 @@ buildscript {
 //        classpath 'com.andriod.tools.build:gradle-experimental:0.9.1'
 
         classpath "io.realm:realm-gradle-plugin:3.0.0"
-        classpath "nl.eveoh:gradle-aspectj:1.6"
+        classpath "nl.eveoh:gradle-aspectj:1.6"  // maven.eveo.nl
 
         classpath "com.jakewharton:butterknife-gradle-plugin:9.0.0-SNAPSHOT"
 
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
+        //classpath "org.codehaus.groovy:groovy-all:2.4.10"
+
+        // upload jcenter
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+        classpath 'com.github.dcendents:android-maven-plugin:1.2'
+
+        classpath 'com.cornucopia.tools:copia-tools:0.0.1'
     }
 }
 
@@ -34,8 +44,9 @@ allprojects {
         mavenCentral()
         maven { url "https://jitpack.io" }
         maven { url "https://maven.google.com" }
-        maven { url "https://maven.eveoh.nl/content/repositories/releases/" }
+        //
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://maven.eveoh.nl/content/repositories/releases/" }
     }
 }
 

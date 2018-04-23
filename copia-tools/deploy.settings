@@ -1,0 +1,9 @@
+
+siteUrl = https://github.com/Thomsen/cornucopia
+gitUrl = https://github.com/Thomsen/cornucopia
+version = 0.0.1
+groupId = com.cornucopia.tools
+licenses = ['GPL-3.0'] // or something else
+id = copia-tools
+name = copia-tools // actually not used
+

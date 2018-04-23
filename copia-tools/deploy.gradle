@@ -1,0 +1,100 @@
+//buildscript {
+//    repositories {
+//        jcenter()
+//    }
+//    dependencies {
+//        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+//        classpath 'com.github.dcendents:android-maven-plugin:1.2'
+//    }
+//}
+
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+def artifact = new Properties()
+//artifact.load(new FileInputStream("deploy.settings"))
+file("deploy.settings").withInputStream { artifact.load(it) }
+
+version=artifact.version
+group=artifact.groupId
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            packaging 'aar'
+            groupId artifact.groupId
+            artifactId artifact.id
+            version artifact.version
+            name artifact.id // pom.project.name must be same as bintray.pkg.name
+            url artifact.siteUrl
+            inceptionYear '2018' // HARDCODED
+            licenses {
+                license { // HARDCODED
+                    name 'GPL-3.0'
+                    url 'https://www.gnu.org/licenses/gpl.txt'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection artifact.gitUrl
+                developerConnection artifact.gitUrl
+                url artifact.siteUrl
+            }
+        }
+    }
+}
+
+// ~/.gradle/bintray.properties
+
+Properties properties = new Properties()
+File propFile = "${System.properties['user.home']}${File.separator}.gradle${File.separator}bintray.properties" as File
+properties.load(propFile.newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        //userOrg="anyuaning"
+        repo = "maven"
+        name = artifact.id
+        websiteUrl = artifact.siteUrl
+        vcsUrl = artifact.gitUrl
+        licenses = artifact.licenses
+        publish = true
+        version {
+            name = artifact.version
+        }
+    }
+}
+
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allGroovy
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+    // options.encoding = 'UTF-8'
+}
+
+task groovydocJar(type: Jar, dependsOn: groovydoc) {
+    classifier = 'groovydoc'
+    from groovydoc.destinationDir
+}
+
+
+artifacts {
+    archives javadocJar
+    archives groovydocJar
+    archives sourcesJar
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+}

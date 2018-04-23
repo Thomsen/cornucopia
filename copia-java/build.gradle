@@ -1,14 +1,7 @@
-buildscript {
-    repositories {
-        maven { url uri ( '../repo' )}
-    }
-    dependencies {
-        classpath 'com.cornucopia.tools:copia-tools:0.0.1'
-    }
-}
 
 repositories {
-    maven { url uri('../repo') }
+    jcenter()
+    //maven { url uri('../repo') }
 }
 
 apply plugin: 'java-library'
