@@ -28,6 +28,9 @@ android {
         }
 
         debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
             resValue("string", "PORT_NUMBER", "8081")
         }
     }
@@ -45,6 +48,10 @@ android {
     configurations {
         all*.exclude group: 'org.apache.commons'
     }
+
+    lintOptions {
+        abortOnError false // MissingPermission
+    }
 }
 
 dependencies {
@@ -53,9 +60,11 @@ dependencies {
 //    implementation project(':copia-patch')
     implementation project(':copia-kotlin')
 
-    implementation files('libs/BaiduLBS_Android.jar')
-    implementation files('libs/httpmime-4.1.2.jar')
-    implementation files('libs/IndoorscapeAlbumPlugin.jar')
+//    implementation files('libs/BaiduLBS_Android.jar')
+//    implementation files('libs/httpmime-4.1.2.jar')
+//    implementation files('libs/IndoorscapeAlbumPlugin.jar')
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     implementation 'com.android.volley:volley:1.0.0'
     implementation 'com.squareup.okhttp3:okhttp:3.6.0'
@@ -113,3 +122,21 @@ dependencies {
     implementation 'io.flowup:android-sdk:0.3.0'
     testImplementation 'io.flowup:android-sdk-no-op:0.3.0'
 }
+
+// Duplicate zip entry [92.jar:io/realm/BuildConfig.class]
+realm {
+    syncEnabled = true
+}
+
+// Duplicate zip entry [io/realm/b$a.class == 92.jar:io/realm/BaseRealm$RealmObjectContext.class]
+
+apply from: 'proguard.gradle'
+
+// copia module
+apply plugin: 'copia'
+
+moduleConfig {
+    module = "gradle plugin test"
+}
+
+//

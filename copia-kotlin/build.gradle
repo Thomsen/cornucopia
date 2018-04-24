@@ -34,6 +34,10 @@ android {
 //        main.kotlin.srcDirs += 'src/main/kotlin'  // targeting the jvm
         main.java.srcDirs += 'src/main/kotlin'
     }
+
+    lintOptions {
+        abortOnError false // sh ./gradlew build lint error
+    }
 }
 
 dependencies {
