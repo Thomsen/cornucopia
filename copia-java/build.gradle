@@ -1,4 +1,12 @@
+
+repositories {
+    jcenter()
+    //maven { url uri('../repo') }
+}
+
 apply plugin: 'java-library'
+
+apply plugin: 'copia'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

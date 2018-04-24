@@ -1,5 +1,11 @@
-include ':copia-mvp', ':copia-kotlin', ':copia-java'
+include ':copia-mvp'
+include ':copia-kotlin'
 include ':copia-component'
 include ':copia-app'
 include ':copia-hackdex'
 include ':copia-patch'
+
+
+include ':copia-tools'
+
+include ':copia-java'
