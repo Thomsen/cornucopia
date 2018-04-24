@@ -1,0 +1,35 @@
+
+
+project.afterEvaluate {
+    project.android.applicationVariants.each {
+        variant ->
+            def proguardTask = project.tasks.findByName(
+                    "transformClassesAndResourcesWithProguardFor${variant.name.capitalize()}")
+            if (proguardTask) {
+                project.logger.error "proguard => ${variant.name.capitalize()}"
+
+                proguardTask.inputs.files.files.each { File file ->
+                    project.logger.error "proguard file inputs => ${file.absolutePath}"
+                }
+
+                proguardTask.outputs.files.files.each { File file ->
+                    project.logger.error "proguard file outputs => ${file.absolutePath}"
+                }
+            }
+
+            // dex: dexBuilder -> dexMerger
+            def dexTask = project.tasks.findByName("transformClassesWithDexBuilderFor${variant.name.capitalize()}")
+            if (dexTask) {
+                project.logger.error "dex => ${variant.name.capitalize()}"
+
+                dexTask.inputs.files.files.each { File file ->
+                    project.logger.error "dex file input => ${file.absolutePath}"
+                }
+
+                dexTask.outputs.files.files.each { File file ->
+                    project.logger.error "dex file ouptus => ${file.absolutePath}"
+                }
+            }
+    }
+
+}

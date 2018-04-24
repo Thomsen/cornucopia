@@ -1,10 +1,15 @@
 
+
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
 dependencies {
     implementation gradleApi()
     implementation localGroovy()
+
+    implementation 'com.android.tools.build:gradle-core:3.1.0'  // TransformManager
+    implementation 'com.android.tools.build:gradle-api:3.1.0'   // Transform
+    implementation 'com.android.tools.build:gradle:3.1.0'
 }
 
 repositories {
@@ -12,7 +17,7 @@ repositories {
 }
 
 group='com.cornucopia.tools'
-version='0.0.1'
+version='0.0.2'
 
 uploadArchives {
     repositories {
