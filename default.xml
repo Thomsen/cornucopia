@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <manifest>
-	<remote name="origin" fetch="https://github.com/Thomsen/" />
+	<remote name="origin" fetch="https://github.com/Thomsen/"
+		review="https://review.gerrithub.io/"  />
+
 	<default revision="master" remote="origin" sync-j="4" />
 
 	<project name="cornucopia" path="cornucopia" />
