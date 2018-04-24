@@ -13,10 +13,7 @@ class CopiaPlugin implements Plugin<Project> {
             println "copia plugin task"
         }
 
-//        def isApp = project.plugins.hasPlugin(AppPlugin);
-//        if (isApp) {
-            transform(project)
-//        }
+        transform(project)
     }
 
     void transform(Project project) {
@@ -26,7 +23,7 @@ class CopiaPlugin implements Plugin<Project> {
             // AppExtension = build.gradle android {...}
             def android = project.extensions.getByType(AppExtension)
 
-            def transform = new TransformModule(project)
+            def transform = new TransformWrapper(project)
             android.registerTransform(transform)
 
             project.extensions.create("moduleConfig", CopiaModule)
@@ -65,6 +62,10 @@ class CopiaPlugin implements Plugin<Project> {
 
                       class CopiaModule {
                         public static final String module = "${config.module}";
+
+                        public boolean inject() {
+                          return false;
+                        }
                       }
                       """;
 

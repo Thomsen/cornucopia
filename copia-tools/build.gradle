@@ -1,5 +1,4 @@
 
-
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
@@ -9,7 +8,9 @@ dependencies {
 
     implementation 'com.android.tools.build:gradle-core:3.1.0'  // TransformManager
     implementation 'com.android.tools.build:gradle-api:3.1.0'   // Transform
-    implementation 'com.android.tools.build:gradle:3.1.0'
+    implementation 'com.android.tools.build:gradle:3.1.0'       // AppPlugin
+
+    implementation 'org.javassist:javassist:3.22.0-GA'
 }
 
 repositories {

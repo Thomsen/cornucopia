@@ -66,3 +66,6 @@
 
 ## baidu map sdk
 -dontwarn com.baidu.pano.platform.http.**
+
+## copia-tools
+-dontwarn com.cornucopia.tools.CopiaModule

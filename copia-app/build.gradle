@@ -123,6 +123,12 @@ dependencies {
     testImplementation 'io.flowup:android-sdk-no-op:0.3.0'
 }
 
+// Duplicate zip entry [92.jar:io/realm/BuildConfig.class]
+realm {
+    syncEnabled = true
+}
+
+// Duplicate zip entry [io/realm/b$a.class == 92.jar:io/realm/BaseRealm$RealmObjectContext.class]
 
 apply from: 'proguard.gradle'
 
