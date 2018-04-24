@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+//    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
@@ -34,8 +34,8 @@ android {
 def archVersion = "1.0.0"
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
@@ -43,20 +43,20 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
 
     //noinspection GradleCompatible
-    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
-    compile "android.arch.lifecycle:runtime:$archVersion"
-    compile "android.arch.lifecycle:extensions:$archVersion"
-    compile "android.arch.persistence.room:runtime:$archVersion"
-    compile "android.arch.persistence.room:rxjava2:$archVersion"
+    implementation "android.arch.lifecycle:runtime:$archVersion"
+    api "android.arch.lifecycle:extensions:$archVersion"  // implementation Execution failed for task ':copia-kotlin:kaptDebugKotlin'.
+    implementation "android.arch.persistence.room:runtime:$archVersion"
+    api "android.arch.persistence.room:rxjava2:$archVersion"
 
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
     annotationProcessor "android.arch.lifecycle:compiler:$archVersion"
     annotationProcessor "android.arch.persistence.room:compiler:$archVersion"
 
-    compile 'javax.inject:javax.inject:1'
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
-    compile 'io.reactivex.rxjava2:rxjava:2.0.7'
+    api 'javax.inject:javax.inject:1'
+    implementation 'com.squareup.retrofit2:retrofit:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.7'
 }
 

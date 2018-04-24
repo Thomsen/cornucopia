@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.cornucoppia.component.ComponentActivity">
+    tools:context="com.cornucoppia.component.com.cornucopia.component.ComponentActivity">
 
     <!--<fragment-->
         <!--android:id="@+id/fragment_user_profile"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"-->
-        <!--android:name="com.cornucoppia.component.UserProfileFragment"-->
+        <!--android:nacom.cornucopia.component.UserProfileFragmentment"-->
         <!--/>-->
 
     <FrameLayout

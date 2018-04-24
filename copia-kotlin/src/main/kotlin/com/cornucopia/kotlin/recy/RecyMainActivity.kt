@@ -33,12 +33,21 @@ class RecyMainActivity : AppCompatActivity() {
 
     class MainAdapter(val items: List<String>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
+        var isTheMiddle = false;
+
         override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
             holder?.textView!!.text = items[position]
             Log.d("thom", "onBindViewHolder: reuse " + holder!!.textView.tag);
             Log.d("thom", "onBindViewHolder: put " + items.get(position));
 
             holder!!.textView.setTag(items.get(position));
+
+            if (position == (items.size / 2)) {
+                holder.setInTheMiddle(true);
+                holder.textView.text = "item in the middle";
+            } else {
+                holder.setInTheMiddle(false);
+            }
         }
 
         override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
@@ -53,6 +62,15 @@ class RecyMainActivity : AppCompatActivity() {
                     + ", position: " + holder!!.adapterPosition );
         }
 
-        class ViewHolder(val textView : TextView) : RecyclerView.ViewHolder(textView)
+        inner class ViewHolder(val textView : TextView) : RecyclerView.ViewHolder(textView) {
+
+            fun isInTheMiddle(): Boolean {
+                return isTheMiddle;  // inner can visit outter variable
+            }
+
+            fun setInTheMiddle(isMiddle: Boolean) {
+                isTheMiddle = isMiddle;
+            }
+        }
     }
 }

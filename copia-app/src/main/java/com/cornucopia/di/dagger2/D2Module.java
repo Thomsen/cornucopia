@@ -9,6 +9,9 @@ import com.cornucopia.application.CornucopiaApplication;
 import dagger.Module;
 import dagger.Provides;
 
+/**
+ * 产生一系列相关的 dependency
+ */
 @Module
 public class D2Module {
     
