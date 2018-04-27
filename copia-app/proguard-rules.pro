@@ -69,3 +69,14 @@
 
 ## copia-tools
 -dontwarn com.cornucopia.tools.CopiaModule
+
+
+## for aidl service
+-keep class com.cornucopia.service.** {
+  *;
+}
+
+## for hotfix load classname
+-keep class com.cornucopia.hotfix.** {
+  *;
+}

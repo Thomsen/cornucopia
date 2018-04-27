@@ -1,13 +1,14 @@
-apply plugin: 'com.android.application'
+//apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+//    rootProjæect.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.cornucopia"
-        minSdkVersion 16
-        targetSdkVersion 23
+        //applicationId "com.cornucopia"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_7
             targetCompatibility JavaVersion.VERSION_1_7
@@ -26,9 +27,5 @@ android {
 }
 
 dependencies {
-    androidTestCompile files('libs/BaiduLBS_Android.jar')
-    androidTestCompile files('libs/httpmime-4.1.2.jar')
-    androidTestCompile files('libs/IndoorscapeAlbumPlugin.jar')
-
     implementation 'com.android.support:appcompat-v7:24.2.0'
 }

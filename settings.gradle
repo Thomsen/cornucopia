@@ -5,6 +5,8 @@ include ':copia-app'
 include ':copia-hackdex'
 include ':copia-patch'
 
+include ':copia-hotfix'
+
 
 include ':copia-tools'
 
