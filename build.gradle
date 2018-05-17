@@ -7,7 +7,8 @@ buildscript {
         mavenCentral()
         //
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        maven { url "https://maven.eveoh.nl/content/repositories/releases/" }
+        //maven { url "https://maven.eveoh.nl/content/repositories/releases/" }
+        maven { url "https://plugins.gradle.org/m2/"}
 
         maven { url uri('./repo') }
     }
@@ -20,7 +21,11 @@ buildscript {
 //        classpath 'com.andriod.tools.build:gradle-experimental:0.9.1'
 
         classpath "io.realm:realm-gradle-plugin:3.0.0"
-        classpath "nl.eveoh:gradle-aspectj:1.6"  // maven.eveo.nl
+        //classpath "nl.eveoh:gradle-aspectj:1.6"  // maven.eveo.nl
+        classpath "gradle.plugin.aspectj:gradle-aspectj:0.1.6"
+
+        classpath 'org.aspectj:aspectjtools:1.8.9'
+        classpath 'org.aspectj:aspectjweaver:1.8.9'
 
         classpath "com.jakewharton:butterknife-gradle-plugin:9.0.0-SNAPSHOT"
 
@@ -32,7 +37,7 @@ buildscript {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
         classpath 'com.github.dcendents:android-maven-plugin:1.2'
 
-        classpath 'com.cornucopia.tools:copia-tools:0.0.2'
+        classpath 'com.cornucopia.tools:copia-tools:0.0.1'
     }
 }
 
@@ -46,19 +51,19 @@ allprojects {
         maven { url "https://maven.google.com" }
         //
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        maven { url "https://maven.eveoh.nl/content/repositories/releases/" }
+        //maven { url "https://maven.eveoh.nl/content/repositories/releases/" }
     }
 }
 
 project.ext {
-    aspectjVersion = '1.8.4'
+    aspectjVersion = '1.8.10'
 }
 
-apply plugin: 'aspectj'
+//apply plugin: 'aspectj'
 
-dependencies {
-    aspectpath "org.springframework:spring-aspects:4.3.7.RELEASE"
-}
+//dependencies {
+//    aspectpath "org.springframework:spring-aspects:4.3.7.RELEASE"
+//}
 
 
 ext {

@@ -1,10 +1,11 @@
+
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-//    buildToolsVersion rootProjæect.ext.buildToolsVersion
+//    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.cornucopia"
@@ -59,6 +60,7 @@ dependencies {
     implementation project(':copia-component')
 //    implementation project(':copia-patch')
     implementation project(':copia-kotlin')
+    implementation project(":copia-aspect")
 
 //    implementation files('libs/BaiduLBS_Android.jar')
 //    implementation files('libs/httpmime-4.1.2.jar')
@@ -91,13 +93,14 @@ dependencies {
     implementation 'com.alibaba:fastjson:1.2.29'
     implementation 'com.facebook.fresco:fresco:1.1.0'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
-    implementation 'org.aspectj:aspectjrt:1.8.10'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     implementation 'com.github.markzhai:blockcanary-android:1.5.0'
     implementation 'com.bugsnag:bugsnag-android:3.8.0'
+
+    implementation "org.aspectj:aspectjrt:$rootProject.aspectjVersion"
 
     // jitpack.io
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.1'
@@ -135,8 +138,54 @@ apply from: 'proguard.gradle'
 // copia module
 apply plugin: 'copia'
 
-moduleConfig {
-    module = "gradle plugin test"
-}
+//moduleConfig {
+//    module = "gradle plugin test"
+//}
 
-//
+final def log = project.logger
+final def variants = project.android.applicationVariants
+
+import org.aspectj.bridge.IMessage
+import org.aspectj.bridge.MessageHandler
+import org.aspectj.tools.ajc.Main
+
+// building execute
+variants.all { variant ->
+    if (!variant.buildType.isDebuggable()) {
+        log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
+        return;
+    }
+
+    JavaCompile javaCompile = variant.javaCompile
+    javaCompile.doLast {
+        String[] args = ["-showWeaveInfo",
+                         "-1.5",
+                         "-inpath", javaCompile.destinationDir.toString(),
+                         "-aspectpath", javaCompile.classpath.asPath,
+                         "-d", javaCompile.destinationDir.toString(),
+                         "-classpath", javaCompile.classpath.asPath,
+                         "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
+        log.debug "ajc args: " + Arrays.toString(args)
+
+        MessageHandler handler = new MessageHandler(true);
+        new Main().run(args, handler);
+        for (IMessage message : handler.getMessages(null, true)) {
+            switch (message.getKind()) {
+                case IMessage.ABORT:
+                case IMessage.ERROR:
+                case IMessage.FAIL:
+                    log.error message.message, message.thrown
+                    break;
+                case IMessage.WARNING:
+                    log.warn message.message, message.thrown
+                    break;
+                case IMessage.INFO:
+                    log.info message.message, message.thrown
+                    break;
+                case IMessage.DEBUG:
+                    log.debug message.message, message.thrown
+                    break;
+            }
+        }
+    }
+}
