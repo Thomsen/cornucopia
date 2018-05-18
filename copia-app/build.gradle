@@ -60,7 +60,22 @@ dependencies {
     implementation project(':copia-component')
 //    implementation project(':copia-patch')
     implementation project(':copia-kotlin')
-    implementation project(":copia-aspect")
+
+    // This is the old method and no longer works for local
+    // library modules:
+    // debugCompile project(path: ':foo', configuration: 'debug')
+    // releaseCompile project(path: ':foo', configuration: 'release')
+
+    // Instead, simply use the following to take advantage of
+    // variant-aware dependency resolution. You can learn more about
+    // the 'implementation' configuration in the section about
+    // new dependency configurations.
+    implementation project(':copia-aspect')
+
+    // You can, however, keep using variant-specific configurations when
+    // targeting external dependencies. The following line adds 'app-magic'
+    // as a dependency to only the 'debug' version of your module.
+    // debugImplementation 'com.example.android:app-magic:12.3'
 
 //    implementation files('libs/BaiduLBS_Android.jar')
 //    implementation files('libs/httpmime-4.1.2.jar')
