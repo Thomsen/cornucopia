@@ -50,7 +50,7 @@ dependencies {
     //noinspection GradleCompatible
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
 
-    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
 
     api "androidx.core:core-ktx:0.2"
 
