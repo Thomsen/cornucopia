@@ -61,6 +61,8 @@ dependencies {
 
     api "com.airbnb.android:lottie:2.5.0-beta1"
 
+    implementation 'com.google.android:flexbox:1.0.0'
+
     testImplementation 'junit:junit:4.12'
 
 

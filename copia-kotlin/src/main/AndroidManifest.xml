@@ -20,6 +20,14 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
+        <activity android:name=".recy.RecyFlexboxActivity"
+                  android:label="Kotlin/RecyFlex"
+                  android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".animation.LottieDemoActivity"
             android:label="UI/Animation/Lottie"
