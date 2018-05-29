@@ -31,7 +31,8 @@ android {
     }
 }
 
-def archVersion = "1.0.0"
+
+//def archVersion = "1.0.0"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -40,20 +41,21 @@ dependencies {
     })
 
 
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    annotationProcessor "android.arch.persistence.room:compiler:$versions.aac"
 
     //noinspection GradleCompatible
     implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
-    implementation "android.arch.lifecycle:runtime:$archVersion"
-    api "android.arch.lifecycle:extensions:$archVersion"  // implementation Execution failed for task ':copia-kotlin:kaptDebugKotlin'.
-    implementation "android.arch.persistence.room:runtime:$archVersion"
-    api "android.arch.persistence.room:rxjava2:$archVersion"
+    implementation "android.arch.lifecycle:runtime:${versions.aac}"
+    api "android.arch.lifecycle:extensions:${versions.aac}"
+    // implementation Execution failed for task ':copia-kotlin:kaptDebugKotlin'.
+    implementation "android.arch.persistence.room:runtime:${versions.aac}"
+    api "android.arch.persistence.room:rxjava2:${versions.aac}"
 
     testImplementation 'junit:junit:4.12'
-    annotationProcessor "android.arch.lifecycle:compiler:$archVersion"
-    annotationProcessor "android.arch.persistence.room:compiler:$archVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:${versions.aac}"
+    annotationProcessor "android.arch.persistence.room:compiler:${versions.aac}"
 
     api 'javax.inject:javax.inject:1'
     implementation 'com.squareup.retrofit2:retrofit:2.2.0'

@@ -6,10 +6,9 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import com.cornucopia.kotlin.R
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexboxLayoutManager
-import com.google.android.flexbox.JustifyContent
+import com.google.android.flexbox.*
 import kotlinx.android.synthetic.main.activity_recy_flexbox.*
 
 class RecyFlexboxActivity: AppCompatActivity() {
@@ -19,9 +18,10 @@ class RecyFlexboxActivity: AppCompatActivity() {
 
         setContentView(R.layout.activity_recy_flexbox);
 
-        var layoutManager = FlexboxLayoutManager(this, 4)
-        layoutManager.flexDirection = FlexDirection.COLUMN
+        var layoutManager = FlexboxLayoutManager(this, FlexDirection.COLUMN)
+        layoutManager.flexDirection = FlexDirection.ROW  // row vertical scroll， column horizontal scroll
         layoutManager.justifyContent = JustifyContent.FLEX_END
+        layoutManager.flexWrap = FlexWrap.WRAP
 
         recy_flexbox.layoutManager = layoutManager
 
@@ -39,17 +39,28 @@ class RecyFlexboxActivity: AppCompatActivity() {
 
     class ImageAdapter(val items : List<Int>) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
+
+
         override fun getItemCount(): Int = items.size
 
-        override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-            var imageView = ImageView(parent!!.context)
+//        override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
+//            var imageView = ImageView(parent!!.context)
+//            return ViewHolder(imageView)
+//        }
+//
+//        override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+//            holder?.imageView!!.setImageResource(items.get(position))
+//        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            var imageView = ImageView(parent.context)
+            imageView.setPadding(10, 10, 10, 10)
             return ViewHolder(imageView)
         }
 
-        override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-            holder?.imageView!!.setImageResource(items.get(position))
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            holder.imageView.setImageResource(items.get(position))
         }
-
 
         inner class ViewHolder(val imageView : ImageView) : RecyclerView.ViewHolder(imageView) {
 

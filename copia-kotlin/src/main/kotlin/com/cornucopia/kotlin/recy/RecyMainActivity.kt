@@ -31,16 +31,26 @@ class RecyMainActivity : AppCompatActivity() {
         recyList.adapter = MainAdapter(items);
     }
 
+    /**
+     * support library version 26.1.0 -> 27.1.1
+     *  public abstract void onBindViewHolder(VH holder, int position);
+     *  ->
+     *  public abstract void onBindViewHolder(@NonNull VH holder, int position);
+     *  not need holder? and use holder!!
+     *
+     *  @NonNull from support library version 19.1
+     */
+
     class MainAdapter(val items: List<String>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
         var isTheMiddle = false;
 
-        override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-            holder?.textView!!.text = items[position]
-            Log.d("thom", "onBindViewHolder: reuse " + holder!!.textView.tag);
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            holder.textView.text = items[position]
+            Log.d("thom", "onBindViewHolder: reuse " + holder.textView.tag);
             Log.d("thom", "onBindViewHolder: put " + items.get(position));
 
-            holder!!.textView.setTag(items.get(position));
+            holder.textView.setTag(items.get(position));
 
             if (position == (items.size / 2)) {
                 holder.setInTheMiddle(true);
@@ -50,16 +60,16 @@ class RecyMainActivity : AppCompatActivity() {
             }
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             Log.d("thom", "onCreateViewHolder");
-            return ViewHolder(TextView(parent!!.context));
+            return ViewHolder(TextView(parent.context));
         }
 
         override fun getItemCount(): Int = items.size
 
-        override fun onViewRecycled(holder: ViewHolder?) {
-            Log.d("thom", "onViewRecycled: " + holder!!.textView.text
-                    + ", position: " + holder!!.adapterPosition );
+        override fun onViewRecycled(holder: ViewHolder) {
+            Log.d("thom", "onViewRecycled: " + holder.textView.text
+                    + ", position: " + holder.adapterPosition );
         }
 
         inner class ViewHolder(val textView : TextView) : RecyclerView.ViewHolder(textView) {

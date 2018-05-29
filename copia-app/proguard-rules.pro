@@ -69,3 +69,8 @@
 
 ## copia-tools
 -dontwarn com.cornucopia.tools.CopiaModule
+
+# copia-kotlin
+# can't find referenced class com.beloo.widget.chipslayoutmanager.Orientation
+-dontwarn com.beloo.widget.chipslayoutmanager.**
+-dontwarn jack.hive.**  # annotation

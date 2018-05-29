@@ -16,6 +16,12 @@ android {
             sourceCompatibility rootProject.ext.javaVersion
             targetCompatibility rootProject.ext.javaVersion
         }
+        // Schema export directory is not provided to the annotation processor so we cannot export the schema
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
 
         versionCode 1
         versionName "1.0"
@@ -38,6 +44,7 @@ android {
     lintOptions {
         abortOnError false // sh ./gradlew build lint error
     }
+
 }
 
 dependencies {
@@ -56,12 +63,23 @@ dependencies {
 
     api "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
 
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
-    kapt "android.arch.persistence.room:compiler:1.0.0"  // database impl exists
+    annotationProcessor "android.arch.persistence.room:compiler:$versions.aac"
+    kapt "android.arch.persistence.room:compiler:$versions.aac"  // database impl exists
+    // kapt compiler 1.0.0 with kotlin 1.2.21 - 'org.jetbrains.kotlin.kapt3.ProcessorWrapper' 的受支持 source 版本 'RELEASE_7'
 
     api "com.airbnb.android:lottie:2.5.0-beta1"
 
+    // recyclerview layoutmanager
     implementation 'com.google.android:flexbox:1.0.0'
+    implementation ('com.alibaba.android:vlayout:latest.integration@aar') {  // tangram
+        transitive = true
+    }
+    implementation 'com.cleveroad:fan-layout-manager:1.0.5'
+    implementation 'com.azoft.carousellayoutmanager:carousel:1.2.2'
+    implementation 'com.beloo.widget:ChipsLayoutManager:0.3.7@aar'
+    implementation 'com.github.chacojack:hivelayoutmanager:1.0.1'  // minSdk 19,
+    // can't find referenced class with proguard
+    // LondonEyeLayoutManager
 
     testImplementation 'junit:junit:4.12'
 
