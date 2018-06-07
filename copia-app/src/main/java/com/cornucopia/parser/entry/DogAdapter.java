@@ -20,8 +20,8 @@ public class DogAdapter implements JsonSerializer<Dog>, JsonDeserializer<Dog> {
 //		return prim; 
 //		return context.serialize(src);
 		JsonObject obj = new JsonObject();
-		obj.addProperty("name", src.getName());
-		obj.addProperty("ferocity", src.getFerocity());
+		obj.addProperty("name", src.name());
+		obj.addProperty("ferocity", src.ferocity());
 		return obj;
 	}
 	
@@ -34,7 +34,7 @@ public class DogAdapter implements JsonSerializer<Dog>, JsonDeserializer<Dog> {
 		JsonObject obj = json.getAsJsonObject();
 		JsonPrimitive name = (JsonPrimitive) obj.get("name");
 		JsonPrimitive ferocity = (JsonPrimitive) obj.get("ferocity");
-		return new Dog(name.getAsString(), ferocity.getAsInt());
+		return Dog.create(name.getAsString(), ferocity.getAsInt());
 	}
 
 }

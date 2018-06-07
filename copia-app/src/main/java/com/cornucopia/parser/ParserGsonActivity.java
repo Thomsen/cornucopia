@@ -55,7 +55,7 @@ public class ParserGsonActivity extends Activity implements OnClickListener {
 		
 		mAnimal = new IAnimal[] {
 				new Cat("Kitty"),
-				new Dog("Brutus", 5)
+				Dog.create("Brutus", 5)
 		};
 	}
 
@@ -126,7 +126,7 @@ public class ParserGsonActivity extends Activity implements OnClickListener {
 	
 
 	private void jasksonSerializer() {
-		Dog dog = new Dog("Brutus", 5);
+		Dog dog = Dog.create("Brutus", 5);
 		try {
 			mJsonStr = JasksonUtil.getMapper().writeValueAsString(dog);
 			Log.i(TAG, "jaskson serialized: " + mJsonStr);
