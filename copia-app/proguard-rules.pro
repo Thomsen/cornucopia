@@ -74,3 +74,6 @@
 # can't find referenced class com.beloo.widget.chipslayoutmanager.Orientation
 -dontwarn com.beloo.widget.chipslayoutmanager.**
 -dontwarn jack.hive.**  # annotation
+
+# fragment with navigation
+-keep public class * extends android.support.v4.app.Fragment

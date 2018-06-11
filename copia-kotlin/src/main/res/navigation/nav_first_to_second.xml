@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_first_to_second"
+    app:startDestination="@id/navigationFirstFragment">
+
+    <!-- fragment android:name androidx.navigation.fragment.NavHostFragment startDestination -->
+
+
+    <activity
+        android:id="@+id/navigationFirstActivity"
+        android:name="com.cornucopia.kotlin.nav.NavigationFirstActivity"
+        android:label="NavigationFirstActivity" />
+
+    <activity
+        android:id="@+id/navigationSecondActivity"
+        android:name="com.cornucopia.kotlin.nav.NavigationSecondActivity"
+        android:label="NavigationSecondActivity" >
+        <argument android:name="message" android:defaultValue="second" />
+    </activity>
+
+    <!-- pop need app:defaultNavHost="true" -->
+
+    <fragment
+        android:id="@+id/navigationFirstFragment"
+        android:name="com.cornucopia.kotlin.nav.NavigationFirstFragment"
+        android:label="NavigationFirstFragment" >
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_navigationFirstFragment_to_navigationSecondFragment"
+            app:destination="@id/navigationSecondFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigationSecondFragment"
+        android:name="com.cornucopia.kotlin.nav.NavigationSecondFragment"
+        android:label="NavigationSecondFragment" />
+
+    <activity
+        android:id="@+id/navigationActivity"
+        android:name="com.cornucopia.kotlin.nav.NavigationActivity"
+        android:label="NavigationActivity" />
+
+</navigation>

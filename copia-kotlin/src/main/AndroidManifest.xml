@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.cornucopia.kotlin">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.cornucopia.kotlin">
 
-    <uses-sdk tools:overrideLibrary="jack.hivelayoutmanager_library"/>
+    <uses-sdk tools:overrideLibrary="jack.hivelayoutmanager_library" />
 
     <application>
         <activity
@@ -51,7 +51,7 @@
         </activity>
 
         <activity android:name=".nav.NavigationFirstActivity"
-            android:label="Kotlin/Navigation"
+            android:label="Kotlin/Navigation/intent"
             android:theme="@style/KotlinTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,7 +60,21 @@
         </activity>
         <activity android:name=".nav.NavigationSecondActivity" />
 
+        <activity
+            android:name=".nav.NavigationActivity"
+            android:label="Kotlin/Navigation/nav"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
         <service android:name=".weather.repository.network.WeatherSyncIntentService" />
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/actions" />
     </application>
 
 </manifest>
