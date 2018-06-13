@@ -38,7 +38,6 @@ class PostListAdapter() : PagedListAdapter<Post, PostListAdapter.PostHolderView>
         }
     }
 
-
     class PostHolderView(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val body: TextView = itemView.findViewById(R.id.tv_post_body)
@@ -47,7 +46,7 @@ class PostListAdapter() : PagedListAdapter<Post, PostListAdapter.PostHolderView>
 
         fun bind(post: Post?) {
             this.post = post
-            body.text = post?.body ?: "body loading"
+            body.text = (post?.body ?: "body loading") + " " + post!!.id
         }
 
         companion object {

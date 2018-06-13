@@ -23,7 +23,7 @@ val URL_POSTS : String = "http://jsonplaceholder.typicode.com/posts"
 
 class PostNetworkDataSource {
 
-    var liveData = MutableLiveData<PagedList<Post>>()
+//    var liveData = MutableLiveData<PagedList<Post>>()
 
     fun getPosts() : LiveData<PagedList<Post>> {
 
@@ -31,15 +31,15 @@ class PostNetworkDataSource {
 
         val dataSource = SourceFactory()
 
-//        val pagedListConfig = PagedList.Config.Builder()
-//                .setEnablePlaceholders(false)
-//                .setInitialLoadSizeHint(10 * 2)
-//                .setPageSize(10)
-//                .build()
+        val pagedListConfig = PagedList.Config.Builder()
+                .setEnablePlaceholders(false)
+                .setInitialLoadSizeHint(10 * 2) // default pageSize * 3
+                .setPageSize(10)
+                .build()
 
         // No direct method <init>(Ljava/util/concurrent/Executor;)V in class
         // Landroid/arch/lifecycle/ComputableLiveData  -
-        var pageList = LivePagedListBuilder(dataSource, 100)
+        var pageList = LivePagedListBuilder(dataSource, pagedListConfig)
                 .setFetchExecutor(executors)
                 .build()
 
@@ -67,8 +67,7 @@ class PostNetworkDataSource {
 
         override fun loadInitial(params: LoadInitialParams<String>, callback: LoadInitialCallback<Post>) {
             var uri = URL_POSTS.toUri().buildUpon()
-                    .appendQueryParameter("_limit", "100")
-                    .appendQueryParameter("_start", "0")
+                    .appendQueryParameter("_limit", "" + params.requestedLoadSize)
                     .build()
 
             val jsonPost = NetworkUtils.getResponseFromHttpUrl(URL(uri.toString()))
@@ -82,13 +81,26 @@ class PostNetworkDataSource {
         }
 
         override fun loadAfter(params: LoadParams<String>, callback: LoadCallback<Post>) {
+            var uri = URL_POSTS.toUri().buildUpon()
+                    .appendQueryParameter("_limit", "" + params.requestedLoadSize)
+                    .appendQueryParameter("_start", params.key)
+                    .build()
+
+            val jsonPost = NetworkUtils.getResponseFromHttpUrl(URL(uri.toString()))
+
+            var gson = Gson()
+            var typeOf = genericType<List<Post>>()
+            // java.util.ArrayList cannot be cast to android.arch.paging.PagedList
+            var response = gson.fromJson<List<Post>>(jsonPost, typeOf)
+
+            callback.onResult(response)
         }
 
         override fun loadBefore(params: LoadParams<String>, callback: LoadCallback<Post>) {
 
         }
 
-        override fun getKey(item: Post): String = item.title
+        override fun getKey(item: Post): String = "" + item.id  // 排序后定位分页字段
 
         inline fun <reified T> genericType() = object : TypeToken<T>(){}.type
     }
