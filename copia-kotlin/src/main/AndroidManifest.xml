@@ -50,6 +50,16 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".posts.PostListActivity"
+            android:label="Third/Component/Post"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".nav.NavigationFirstActivity"
             android:label="Kotlin/Navigation/intent"
             android:theme="@style/KotlinTheme" >
@@ -71,6 +81,7 @@
         </activity>
 
         <service android:name=".weather.repository.network.WeatherSyncIntentService" />
+
 
         <meta-data
             android:name="com.google.android.actions"
