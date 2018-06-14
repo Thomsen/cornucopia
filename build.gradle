@@ -3,7 +3,7 @@ buildscript {
     // before than other script execute
 
     ext.versions = [
-            'kotlin'            : '1.2.21',
+            'kotlin'            : '1.2.50',
             'androidGradle'    : '3.1.0',
 
             'buildTools'        : '26.1.0',
