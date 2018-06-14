@@ -80,6 +80,16 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".anko.AnkoMainActivity"
+            android:label="Kotlin/Anko/add"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
         <service android:name=".weather.repository.network.WeatherSyncIntentService" />
 
 
