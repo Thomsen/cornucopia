@@ -3,6 +3,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 apply plugin: 'com.jakewharton.butterknife'
 
+Properties properties = new Properties()
+File propFile = "${System.properties['user.home']}${File.separator}.gradle${File.separator}copia.properties" as File
+properties.load(propFile.newDataInputStream())
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 //    buildToolsVersion rootProject.ext.buildToolsVersion
@@ -22,9 +26,19 @@ android {
         multiDexEnabled true
     }
 
+    signingConfigs {
+        signConfig {
+            storeFile file ('../copia.jks')
+            storePassword properties.getProperty("storePassword")
+            keyAlias properties.getProperty("keyAlias")
+            keyPassword properties.getProperty("keyPassword")
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.signConfig
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
 
@@ -34,6 +48,7 @@ android {
 //            aaptOptions.useNewCruncher = false
 
             minifyEnabled false  // for debug
+            signingConfig signingConfigs.signConfig
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             resValue("string", "PORT_NUMBER", "8081")
