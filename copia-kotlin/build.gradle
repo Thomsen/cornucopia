@@ -1,3 +1,5 @@
+println 'lifecycle copia-kotlin build start'
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -10,12 +12,15 @@ android {
 //    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        compileOptions {
-            sourceCompatibility rootProject.ext.javaVersion
-            targetCompatibility rootProject.ext.javaVersion
-        }
+        minSdkVersion rootProject.ext.minSdkVer
+        targetSdkVersion rootProject.ext.targetSdkVer
+
+//        // Schema export directory is not provided to the annotation processor so we cannot export the schema
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+//            }
+//        }
 
         versionCode 1
         versionName "1.0"
@@ -38,6 +43,7 @@ android {
     lintOptions {
         abortOnError false // sh ./gradlew build lint error
     }
+
 }
 
 dependencies {
@@ -50,19 +56,75 @@ dependencies {
     //noinspection GradleCompatible
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
 
-    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
 
     api "androidx.core:core-ktx:0.2"
 
     api "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
 
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
-    kapt "android.arch.persistence.room:compiler:1.0.0"  // database impl exists
+    annotationProcessor "android.arch.persistence.room:compiler:$versions.aac"
+    kapt "android.arch.persistence.room:compiler:$versions.aac"  // database impl exists
+    // kapt compiler 1.0.0 with kotlin 1.2.21 - 'org.jetbrains.kotlin.kapt3.ProcessorWrapper' 的受支持 source 版本 'RELEASE_7'
 
     api "com.airbnb.android:lottie:2.5.0-beta1"
 
+    // recyclerview layoutmanager
+    implementation 'com.google.android:flexbox:1.0.0'
+    implementation ('com.alibaba.android:vlayout:latest.integration@aar') {  // tangram
+        transitive = true
+    }
+    implementation 'com.cleveroad:fan-layout-manager:1.0.5'
+    implementation 'com.azoft.carousellayoutmanager:carousel:1.2.2'
+    implementation 'com.beloo.widget:ChipsLayoutManager:0.3.7@aar'
+
+    // can't find referenced class with proguard
+    // LondonEyeLayoutManager
+    implementation 'com.github.chacojack:hivelayoutmanager:1.0.1'  // minSdk 19,
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.7'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.1'
+
+    implementation 'com.google.code.gson:gson:2.8.0'
+
+    def nav_version = "1.0.0-alpha02"
+
+    implementation "android.arch.navigation:navigation-fragment:$nav_version"
+    implementation "android.arch.navigation:navigation-ui:$nav_version"
+
+    def paging_version = "1.0.0"
+
+    implementation ("android.arch.paging:runtime:$paging_version", {
+        // lifecycle:runtime:1.1.1
+//        exclude group: 'android.arch.lifecycle'
+//        java.lang.NoSuchMethodError: No direct method <init>(Ljava/util/concurrent/Executor;)V in class
+//        Landroid/arch/lifecycle/ComputableLiveData; or its super classes
+//        (declaration of 'android.arch.lifecycle.ComputableLiveData'
+//        appears in /data/app/com.cornucopia-1/base.apk:classes6.dex)  -- need lifecycle 1.1.1
+    })
+    testImplementation ("android.arch.paging:common:$paging_version")
+    implementation "android.arch.paging:rxjava2:1.0.0-rc1"
+
+//    def paging_version = "2.0.0-alpha1"
+//
+//    implementation "androidx.paging:paging-runtime:$paging_version"
+//    // alternatively - without Android dependencies for testing
+//    testImplementation "androidx.paging:paging-common:$paging_version"
+//    // optional - RxJava support
+//    implementation "androidx.paging:paging-rxjava2:$paging_version"
+
     testImplementation 'junit:junit:4.12'
 
+    implementation "androidx.cardview:cardview:1.0.0-alpha3"
+
+    implementation "io.reactivex.rxjava2:rxkotlin:2.2.0"
+
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.1.4'
+
+    // kotlin anko
+    def anko_version = "0.10.5"
+    implementation "org.jetbrains.anko:anko:$anko_version"  // all feature
+    // some of the features (anko-commons anko-sdk25 anko-appcompat-v7 anko-sdk35-coroutines anko-sqlite ...)
 
     androidTestImplementation 'com.android.support.test:runner:1.0.1';
     androidTestImplementation 'com.android.support.test:rules:1.0.1';

@@ -10,7 +10,7 @@ import com.cornucopia.kotlin.weather.viewmodel.model.Weather
  * Created by thom on 3/2/2018.
  */
 @Database(
-        entities = [Weather::class],
+        entities = [(Weather::class)],
         version = 1
 )
 @TypeConverters(
@@ -21,6 +21,7 @@ abstract class WeatherDatabase : RoomDatabase() {
     companion object {
         fun getInstance(context: Context) = Resource(context).INSTANCE;
     };
+
 
     abstract fun weatherDao() : WeatherDao;
 

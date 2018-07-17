@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.cornucopia.kotlin">
+
+    <uses-sdk tools:overrideLibrary="jack.hivelayoutmanager_library" />
 
     <application>
         <activity
@@ -15,6 +18,14 @@
         <activity android:name=".recy.RecyMainActivity"
             android:label="Kotlin/Recy"
             android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".recy.RecyFlexboxActivity"
+                  android:label="Kotlin/RecyFlex"
+                  android:theme="@style/KotlinTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
@@ -39,7 +50,64 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".posts.PostListActivity"
+            android:label="Third/Component/Post"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".nav.NavigationFirstActivity"
+            android:label="Kotlin/Navigation/intent"
+            android:theme="@style/KotlinTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".nav.NavigationSecondActivity" />
+
+        <activity
+            android:name=".nav.NavigationActivity"
+            android:label="Kotlin/Navigation/nav"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".anko.AnkoMainActivity"
+            android:label="Kotlin/Anko/add"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".RxKotlinActivity"
+            android:label="Kotlin/Rx/one"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".wxapi.WXEntryActivity" />
+
         <service android:name=".weather.repository.network.WeatherSyncIntentService" />
+
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/actions" />
     </application>
 
 </manifest>

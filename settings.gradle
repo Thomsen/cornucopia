@@ -1,4 +1,7 @@
+println 'lifecycle settings start'
+
 include ':copia-mvp'
+include ':copia-aspect'
 include ':copia-kotlin'
 include ':copia-component'
 include ':copia-app'

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.cornucopia.kotlin.R
+import com.cornucopia.kotlin.weather.repository.ListWeather
 import com.cornucopia.kotlin.weather.utils.InjectorUtils
 import com.cornucopia.kotlin.weather.viewmodel.WeatherViewModel
 import com.cornucopia.kotlin.weather.viewmodel.WeatherViewModelFactory
@@ -20,7 +21,9 @@ class WeatherMainActivity : AppCompatActivity(), ForecastAdapter.ForecastAdapter
 
     private lateinit var mForecastAdapter: ForecastAdapter
 
-    lateinit  var mModelView: WeatherViewModel;
+    lateinit var mModelView: WeatherViewModel
+
+    var mWeathers : List<ListWeather> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +32,6 @@ class WeatherMainActivity : AppCompatActivity(), ForecastAdapter.ForecastAdapter
 
         recy_forecast.layoutManager = LinearLayoutManager(this)
 
-        mForecastAdapter = ForecastAdapter(this, this)
-
         var factory = InjectorUtils.provideViewModelFactory(this);
 
         mModelView = ViewModelProviders.of(this, factory).get(WeatherViewModel::class.java)
@@ -38,7 +39,8 @@ class WeatherMainActivity : AppCompatActivity(), ForecastAdapter.ForecastAdapter
         mModelView.mForecast.observe(this, Observer {
             weatherEntries ->
             if (null != weatherEntries) {
-
+                mForecastAdapter = ForecastAdapter(this, weatherEntries,this)
+                recy_forecast.adapter = mForecastAdapter
             }
         });
 

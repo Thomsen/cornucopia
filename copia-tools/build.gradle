@@ -1,3 +1,4 @@
+println 'lifecycle copia-tools build start'
 
 apply plugin: 'groovy'
 apply plugin: 'maven'
@@ -16,9 +17,6 @@ dependencies {
 repositories {
     mavenCentral()
 }
-
-group='com.cornucopia.tools'
-version='0.0.2'
 
 uploadArchives {
     repositories {

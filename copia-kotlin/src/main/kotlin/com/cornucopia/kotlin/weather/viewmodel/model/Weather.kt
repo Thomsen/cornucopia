@@ -1,6 +1,7 @@
 package com.cornucopia.kotlin.weather.viewmodel.model
 
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.Ignore
 import android.arch.persistence.room.Index
 import android.arch.persistence.room.PrimaryKey
 import java.util.*
@@ -14,7 +15,7 @@ import java.util.*
         // an annotation can't be used as the annotations argument
         //indices = {@Index(value = {"date"}, unique=true)}
 )
-class Weather() {
+class Weather {
 
     // val read only
     // var read and write
@@ -48,10 +49,17 @@ class Weather() {
 
     }
 
+    // There are multiple good constructors and Room will pick the no-arg constructor
+    // add @Ignore
+    @Ignore
+    constructor() {
+
+    }
 
     // Constructor used by Room to create
+    @Ignore
     constructor(id: Int, weatherIconId: Int, date: Date, min: Double, max: Double,
-                humidity: Double, pressure: Double, wind: Double, degrees: Double): this() {
+                humidity: Double, pressure: Double, wind: Double, degrees: Double) {
         this.id = id
         this.weatherIconId = weatherIconId
         this.date = date
@@ -65,7 +73,7 @@ class Weather() {
 
     // by network parse
     constructor(weatherIconId: Int, date: Date, min: Double, max: Double,
-                humidity: Double, pressure: Double, wind: Double, degrees: Double): this() {
+                humidity: Double, pressure: Double, wind: Double, degrees: Double) {
         this.weatherIconId = weatherIconId
         this.date = date
         this.min = min

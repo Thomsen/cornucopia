@@ -1,39 +1,29 @@
 package com.cornucopia.parser.entry;
 
-public class Dog implements IAnimal {
+import android.os.Parcelable;
 
-	private String name;
+import com.google.auto.value.AutoValue;
+
+@AutoValue
+public abstract class Dog implements IAnimal, Parcelable {
+
+	abstract String name();
 	
-	private int ferocity;
+	abstract int ferocity();
 	
 	public Dog() {
-		
 	}
 	
-	public Dog(String name, int ferocity) {
-		this.setName(name);
-		this.setFerocity(ferocity);
+	public static Dog create(String name, int ferocity) {
+		return new AutoValue_Dog(name, ferocity);
 	}
 
 	@Override
 	public String sound() {
-		return getName() + ":\"brak\" { ferocity level: " + getFerocity() + " }"; 
+		return name() + ":\"brak\" { ferocity level: " + ferocity() + " }";
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getFerocity() {
-		return ferocity;
-	}
-
-	public void setFerocity(int ferocity) {
-		this.ferocity = ferocity;
-	}
+	// Parcelable need auto-value-parcel generate writeToParcel
+	// com.ryanharter.auto.value:auto-value-parcel
 
 }

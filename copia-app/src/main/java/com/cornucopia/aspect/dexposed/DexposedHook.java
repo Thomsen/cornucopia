@@ -14,13 +14,13 @@ public class DexposedHook {
     
     public void hook(Context context) {
         if (DexposedBridge.canDexposed(context)) {
-            hookClick();
+            hookClick(context);
         } else {
             Log.i(TAG, "cannot load dexposed native library");
         }
     }
     
-    private void hookClick() {
+    private void hookClick(final Context context) {
         // 接口中方法，实现类中无法监听
         DexposedBridge.findAndHookMethod(View.OnClickListener.class, "onClick", View.class, new XC_MethodHook() {
             
@@ -42,7 +42,8 @@ public class DexposedHook {
                     throws Throwable {
                 super.afterHookedMethod(param);
                 
-                Log.i(TAG, " ============================= DexposedActivity onClick after"); 
+                Log.i(TAG, " ============================= DexposedActivity onClick after");
+                Toast.makeText(context, "dexposed hook click afger", Toast.LENGTH_SHORT).show();
                 
             }
         });

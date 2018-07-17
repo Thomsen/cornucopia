@@ -11,7 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cornucopia.R;
+import com.cornucopia.tools.CopiaAnnotation;
 
+@CopiaAnnotation(name="loading")
 public class LoadingActivity extends Activity {
 
 	@Override

@@ -13,11 +13,12 @@ import com.cornucopia.kotlin.weather.viewmodel.model.Weather
  */
 class WeatherRepository {
 
-    private lateinit var mExecutors: WeatherExecutors
+    // lateinit is unnecessary: definitely initialized in constructors
+    private var mExecutors: WeatherExecutors
 
-    private lateinit var mDataSource: WeatherNetworkDataSource
+    private var mDataSource: WeatherNetworkDataSource
 
-    private lateinit var mWeatherDao: WeatherDao
+    private var mWeatherDao: WeatherDao
 
     constructor(weatherDao: WeatherDao, dataSource: WeatherNetworkDataSource,
                 executors: WeatherExecutors) {
