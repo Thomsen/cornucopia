@@ -89,7 +89,7 @@ dependencies {
 //    implementation project(':copia-patch')
     implementation project(':copia-kotlin')
 
-    implementation project(path: ':copia-tools')
+    //implementation project(path: ':copia-tools')
 
     // This is the old method and no longer works for local
     // library modules:
