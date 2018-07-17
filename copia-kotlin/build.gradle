@@ -1,3 +1,5 @@
+println 'lifecycle copia-kotlin build start'
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -10,18 +12,15 @@ android {
 //    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        compileOptions {
-            sourceCompatibility rootProject.ext.javaVersion
-            targetCompatibility rootProject.ext.javaVersion
-        }
-        // Schema export directory is not provided to the annotation processor so we cannot export the schema
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
-            }
-        }
+        minSdkVersion rootProject.ext.minSdkVer
+        targetSdkVersion rootProject.ext.targetSdkVer
+
+//        // Schema export directory is not provided to the annotation processor so we cannot export the schema
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+//            }
+//        }
 
         versionCode 1
         versionName "1.0"

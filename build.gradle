@@ -1,14 +1,18 @@
+println 'lifecycle cornucopia build start'
+
+//noinspection GradleIdeError
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     // before than other script execute
 
     ext.versions = [
+            'copiaTools'       : '0.0.3',
             'kotlin'            : '1.2.50',
-            'androidGradle'    : '3.1.0',
+            'androidGradle'     : '3.1.0',
 
             'buildTools'        : '26.1.0',
             'supportLibrary'    : '27.1.1',
-            'aac'                : '1.1.0'
+            'aac'               : '1.1.0'
     ]
 
     ext.deps = [
@@ -66,7 +70,7 @@ buildscript {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
         classpath 'com.github.dcendents:android-maven-plugin:1.2'
 
-        classpath 'com.cornucopia.tools:copia-tools:0.0.1'
+        classpath "com.cornucopia.tools:copia-tools:${versions.copiaTools}"
     }
 }
 
@@ -96,10 +100,19 @@ project.ext {
 
 
 ext {
-    minSdkVersion = 16
-    targetSdkVersion = 23
+    // D8: Static interface methods are only supported starting with Android N (--min-api 24)
+    // java version 8 (Supplier Predicate Function ...) need --min-api 24
+
+    minSdkVer = 24  // android 7.0
+    targetSdkVer = 26
     compileSdkVersion = 26
     buildToolsVersion = '26.1.0'
+
+
+    // ERROR in com.android.tools.r8.com.google.common.io.CharSource.lines:()Ljava/util/stream/Stream;
+    // : invalid opcode ba - invokedynamic requires --min-sdk-version >= 26 (currently 23)
+
+    // https://developer.android.com/studio/write/java8-support
 
     javaVersion = JavaVersion.VERSION_1_7
 
