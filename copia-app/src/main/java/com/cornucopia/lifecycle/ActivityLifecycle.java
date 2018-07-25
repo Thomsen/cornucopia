@@ -4,17 +4,27 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.os.SystemClock;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.cornucopia.R;
 
 public class ActivityLifecycle extends Activity {
-	
+
+	// 07-25 06:17:45.483 3676-3695/system_process I/ActivityManager: Displayed com.cornucopia/.lifecycle.ActivityLifecycle: +365ms
+
 	public final static String TAG_ACTIVITY_LIFECYCLE = "lifecycle";
+
+	private long mStartTime;
+
+	private long mEndTime;
 
 	@Override
 	public void onContentChanged() {
+		mStartTime = System.nanoTime();
 		super.onContentChanged();
 		
 		Log.i(TAG_ACTIVITY_LIFECYCLE, "activity content changed");
@@ -82,8 +92,36 @@ public class ActivityLifecycle extends Activity {
 		// The activity has become visible (it is now "resumed").
 
 		Log.i(TAG_ACTIVITY_LIFECYCLE, "activity resume");
+
+		Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler() {
+			// IdleHandler 会在Looper的消息队列处理完当前阻塞（等待下一个消息）被调用
+			@Override
+			public boolean queueIdle() {
+				// ams and wms
+				// wm.addView
+				// view measure/layout/draw finish
+
+				Log.i(TAG_ACTIVITY_LIFECYCLE, "activity resume idle handler");
+
+				Log.i(TAG_ACTIVITY_LIFECYCLE, "Displayed ActivityLifecycle onCreate to Idle: "
+						+ (System.nanoTime() - mStartTime));
+
+				return false;
+			}
+		});
+
+		mEndTime = System.nanoTime();
+
+		Log.i(TAG_ACTIVITY_LIFECYCLE, "Displayed ActivityLifecycle onCreate to onResume: "
+				+ (mEndTime - mStartTime));  // 2800806 = 2.8 ms
 	}
-	
+
+	@Override
+	public void onAttachedToWindow() {
+		super.onAttachedToWindow();
+
+		Log.i(TAG_ACTIVITY_LIFECYCLE, "activity attached to window");
+	}
 
 	@Override
 	protected void onPostResume() {
