@@ -20,4 +20,8 @@ android {
         }
     }
 
+    dependencies {
+        implementation project(':copia-component')
+    }
+
 }

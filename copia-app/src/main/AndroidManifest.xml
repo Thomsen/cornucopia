@@ -200,6 +200,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".spi.DisplayActivity"
+            android:label="Basic/SpiDisplay" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
         <service
             android:name=".service.RemoteExService"
             android:process=":remote" >
