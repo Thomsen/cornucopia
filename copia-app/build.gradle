@@ -180,6 +180,8 @@ dependencies {
     }
     testImplementation 'io.flowup:android-sdk-no-op:0.3.0'
 
+    implementation 'com.tencent:mmkv:1.0.10'
+
 }
 
 // Duplicate zip entry [92.jar:io/realm/BuildConfig.class]

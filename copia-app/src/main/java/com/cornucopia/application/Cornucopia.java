@@ -13,9 +13,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+import com.tencent.mmkv.MMKV;
 
 public class Cornucopia extends ListActivity {
 	
@@ -48,6 +51,17 @@ public class Cornucopia extends ListActivity {
 				android.R.layout.simple_list_item_1, new String[] { "item" },
 				new int[] { android.R.id.text1 }));
 
+		String rootDir = MMKV.initialize(this);
+		Log.i("mmkv root", rootDir);
+
+		MMKV mmkv = MMKV.defaultMMKV();
+		mmkv.encode("bool", true);
+		boolean bValue = mmkv.decodeBool("bool");
+		Log.i("mmkv bool", "" + bValue);
+
+		mmkv.encode("string", "hello mmkv");
+		String sValue = mmkv.decodeString("string");
+		Log.i("mmkv string", "" + sValue);
 	}
 
 	/**
