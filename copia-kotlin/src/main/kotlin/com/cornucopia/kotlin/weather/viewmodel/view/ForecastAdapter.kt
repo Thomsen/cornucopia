@@ -44,7 +44,7 @@ class ForecastAdapter : RecyclerView.Adapter<ForecastAdapter.ForecastHolder> {
         mWeathers = weathers
     }
 
-    class ForecastHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    class ForecastHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
 
         var itemDate : TextView
         var itemInterval : TextView

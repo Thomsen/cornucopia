@@ -7,12 +7,14 @@ buildscript {
 
     ext.versions = [
             'copiaTools'        : '0.0.1',
-            'kotlin'            : '1.2.50',
-            'androidGradle'     : '3.1.3',
+            'kotlin'            : '1.2.70',
+            'androidGradle'     : '3.2.0',
 
-            'buildTools'        : '26.1.0',
-            'supportLibrary'    : '27.1.1',
-            'aac'               : '1.1.0'
+            'buildTools'        : '28.0.0',
+            'supportLibrary'    : '28.0.0',
+            'aac'                : '1.1.0',
+
+            'butterknife'       : '9.0.0-SNAPSHOT'
     ]
 
     ext.deps = [
@@ -25,7 +27,7 @@ buildscript {
         ],
 
         support : [
-                'appCompat'    : "com.android.support:appcompat-v7:${versions.buildTools}"
+                'appCompat'    : "com.android.support:appcompat-v7:${versions.supportLibrary}"
         ],
 
         kotlin : [
@@ -35,8 +37,8 @@ buildscript {
 
 
     repositories {
-        jcenter()
         google()
+        jcenter()
         mavenCentral()
         //
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
@@ -60,7 +62,10 @@ buildscript {
         classpath 'org.aspectj:aspectjtools:1.8.9'
         classpath 'org.aspectj:aspectjweaver:1.8.9'
 
-        classpath "com.jakewharton:butterknife-gradle-plugin:9.0.0-SNAPSHOT"
+        classpath ("com.jakewharton:butterknife-gradle-plugin:${versions.butterknife}") {
+            exclude group: 'com.android.tools.build', module: 'gradle'
+        }
+
 
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
 
@@ -76,8 +81,8 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         google()
+        jcenter()
         //mavenLocal()
         mavenCentral()
         maven { url "https://jitpack.io" }
@@ -103,10 +108,9 @@ ext {
     // D8: Static interface methods are only supported starting with Android N (--min-api 24)
     // java version 8 (Supplier Predicate Function ...) need --min-api 24
 
-    minSdkVer = 24  // android 7.0
+    minSdkVer = 23  // android 7.0
     targetSdkVer = 26
-    compileSdkVersion = 26
-    buildToolsVersion = '26.1.0'
+    compileSdkVersion = 28
 
 
     // ERROR in com.android.tools.r8.com.google.common.io.CharSource.lines:()Ljava/util/stream/Stream;
@@ -116,9 +120,7 @@ ext {
 
     javaVersion = JavaVersion.VERSION_1_8
 
-    supportLibVersion = '27.1.1'
 
-    butternifeVersion = '9.0.0-SNAPSHOT'
 }
 
 boolean isDebug() {

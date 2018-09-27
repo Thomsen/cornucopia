@@ -241,7 +241,8 @@ public class ThermometerView extends View implements SensorEventListener {
         drawBackground(canvas);
        
         float scale = getWidth();
-        canvas.save(Canvas.MATRIX_SAVE_FLAG); // 保存状态，矩阵变换
+        // https://developer.android.com/sdk/api_diff/28/changes
+//        canvas.save(Canvas.MATRIX_SAVE_FLAG); // 保存状态，矩阵变换
         canvas.scale(scale, scale); // 缩放变换preconcat，width x height变为（1.0 x 1.0）
         
         drawLogo(canvas);
@@ -257,7 +258,7 @@ public class ThermometerView extends View implements SensorEventListener {
     private void drawHand(Canvas canvas) {
         if (handInitialized) {
             float handAngle = degreeToAngle(handPosition);
-            canvas.save(Canvas.MATRIX_SAVE_FLAG);
+//            canvas.save(Canvas.MATRIX_SAVE_FLAG);
             canvas.rotate(handAngle, 0.5f, 0.5f);
             canvas.drawPath(handPath, handPaint); // android:targetSdkVersion="16" 无效
             canvas.restore();
@@ -271,7 +272,7 @@ public class ThermometerView extends View implements SensorEventListener {
     }
 
     private void drawLogo(Canvas canvas) {
-        canvas.save(Canvas.MATRIX_SAVE_FLAG);
+//        canvas.save(Canvas.MATRIX_SAVE_FLAG);
         
         canvas.translate(0.5f - logoBitmap.getWidth() * logoScale / 2.0f,
                          0.5f - logoBitmap.getHeight() * logoScale / 2.0f);
@@ -302,7 +303,7 @@ public class ThermometerView extends View implements SensorEventListener {
     private void drawScale(Canvas canvas) {
         canvas.drawOval(scaleRect, scalePaint);
         
-        canvas.save(Canvas.MATRIX_SAVE_FLAG);
+//        canvas.save(Canvas.MATRIX_SAVE_FLAG);
         
         for (int i=0; i<totalNicks; ++i) {
             float y1 = scaleRect.top;

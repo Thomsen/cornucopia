@@ -54,13 +54,13 @@ dependencies {
 
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     //noinspection GradleCompatible
-    implementation "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
+    implementation "com.android.support:appcompat-v7:${versions.supportLibrary}"
 
     api "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
 
     api "androidx.core:core-ktx:0.2"
 
-    api "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
+    api "com.android.support:recyclerview-v7:${versions.supportLibrary}"
 
     annotationProcessor "android.arch.persistence.room:compiler:$versions.aac"
     kapt "android.arch.persistence.room:compiler:$versions.aac"  // database impl exists
