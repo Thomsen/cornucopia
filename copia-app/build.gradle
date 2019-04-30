@@ -182,6 +182,7 @@ dependencies {
 
     implementation 'com.tencent:mmkv:1.0.10'
 
+    testImplementation 'junit:junit:4.12'
 }
 
 // Duplicate zip entry [92.jar:io/realm/BuildConfig.class]

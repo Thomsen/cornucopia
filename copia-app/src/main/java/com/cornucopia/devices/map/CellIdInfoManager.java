@@ -19,7 +19,6 @@ public class CellIdInfoManager {
 	
 	/**
 	 * 得到手机的信号信息
-	 * @author wangchangsen
 	 * @date 2012-9-12 下午2:19:35
 	 * @return
 	 */

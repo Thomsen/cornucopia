@@ -5,6 +5,10 @@ import java.nio.ByteBuffer;
 public class ByteUtils {
     
     private ByteUtils() {}
+
+    public static int toUnsignedByte(byte b) {
+        return b & 0xFF;
+    }
     
     // byte - 8bit, short - 16bit, int - 32bit , long - 64bit, float - 32bit, double - 64bit, char - 16bit unicode
     // byte [-128, 127], char [0, 65535]
@@ -48,7 +52,7 @@ public class ByteUtils {
                 (b[1] & 0xFF) << 16 |  
                 (b[0] & 0xFF) << 24;  
     }
-      
+
     /**
      * int to byte array
      * @param a
