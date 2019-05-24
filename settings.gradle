@@ -10,7 +10,8 @@ include ':copia-patch'
 
 include ':copia-hotfix'
 
-
 include ':copia-tools'
 
 include ':copia-java'
+
+include ':copia_processor'
