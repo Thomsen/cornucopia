@@ -1,6 +1,6 @@
 package com.cornucopia.spi;
 
-import com.cornucopia.component.spi.Display;
+import com.cornucopia.jetpack.spi.Display;
 
 public class DisplayImpl implements Display {
 

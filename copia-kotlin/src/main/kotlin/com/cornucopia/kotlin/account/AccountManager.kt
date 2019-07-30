@@ -1,6 +1,6 @@
 package com.cornucopia.kotlin.account
 
-import com.cornucopia.component.data.model.User
+import com.cornucopia.jetpack.data.model.User
 import io.reactivex.Observable
 
 interface AccountManager {

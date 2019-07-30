@@ -21,7 +21,7 @@ android {
     }
 
     dependencies {
-        implementation project(':copia-component')
+        implementation project(':copia-jetpack')
     }
 
 }

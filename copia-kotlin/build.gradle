@@ -48,7 +48,7 @@ android {
 
 dependencies {
 
-    implementation project(":copia-component")
+    implementation project(':copia-jetpack')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 

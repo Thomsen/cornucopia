@@ -1,6 +1,6 @@
 package com.cornucopia.kotlin.spi
 
-import com.cornucopia.component.spi.Display
+import com.cornucopia.jetpack.spi.Display
 
 class KotlinDisplay : Display {
 

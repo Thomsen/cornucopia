@@ -1,7 +1,7 @@
 package com.cornucopia.mvp.spi;
 
 
-import com.cornucopia.component.spi.Display;
+import com.cornucopia.jetpack.spi.Display;
 
 public class MvpDisplay implements Display {
 

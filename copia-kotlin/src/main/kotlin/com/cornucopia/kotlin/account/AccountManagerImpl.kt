@@ -1,10 +1,9 @@
 package com.cornucopia.kotlin.account
 
 import android.content.Context
-import com.cornucopia.component.data.model.User
+import com.cornucopia.jetpack.data.model.User
 import com.cornucopia.kotlin.account.AccountManager.Companion.APP_ID
 import com.tencent.mm.opensdk.modelmsg.SendAuth
-import com.tencent.mm.opensdk.openapi.IWXAPI
 import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import io.reactivex.Observable
 

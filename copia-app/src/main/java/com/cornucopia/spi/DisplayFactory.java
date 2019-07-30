@@ -1,6 +1,6 @@
 package com.cornucopia.spi;
 
-import com.cornucopia.component.spi.Display;
+import com.cornucopia.jetpack.spi.Display;
 
 import java.util.Iterator;
 import java.util.ServiceLoader;
