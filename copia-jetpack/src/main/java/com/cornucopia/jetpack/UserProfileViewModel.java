@@ -1,7 +1,7 @@
 package com.cornucopia.jetpack;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.cornucopia.jetpack.data.UserRepository;
 import com.cornucopia.jetpack.data.model.User;

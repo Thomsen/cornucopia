@@ -1,8 +1,8 @@
 package com.cornucopia.ui.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import androidx.core.app.Fragment;
+import androidx.core.app.FragmentActivity;
 import android.util.Log;
 
 import com.cornucopia.R;

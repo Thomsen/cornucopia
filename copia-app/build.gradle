@@ -157,14 +157,14 @@ dependencies {
 
     // support-v4 sub
     //noinspection GradleCompatible
-    implementation "com.android.support:support-compat:${versions.supportLibrary}"
+    implementation 'androidx.core:core:1.0.0'
     //noinspection GradleCompatible
-    implementation "com.android.support:support-fragment:${versions.supportLibrary}"
-    implementation "com.android.support:support-annotations:${versions.supportLibrary}"
-    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'androidx.fragment:fragment:1.0.0'
+    implementation 'androidx.annotation:annotation:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.0'
     implementation deps.support.appCompat
-    implementation "com.android.support:recyclerview-v7:${versions.supportLibrary}"
-    implementation "com.android.support:design:${versions.supportLibrary}"
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
 
     implementation 'com.google.auto.value:auto-value-annotations:1.6'
     annotationProcessor "com.google.auto.value:auto-value:1.6"  // in java library not found method
