@@ -1,12 +1,12 @@
 package com.cornucopia.kotlin.posts
 
-import android.arch.paging.PagedListAdapter
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.cornucopia.kotlin.R
 
 class PostListAdapter() : PagedListAdapter<Post, PostListAdapter.PostHolderView>(POST_COMPARTOR) {

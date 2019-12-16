@@ -1,10 +1,11 @@
 package com.cornucopia.ui.animation;
 
 import android.annotation.SuppressLint;
-import androidx.core.view.ViewPager.PageTransformer;
 import android.view.View;
 
-public class ZoomOutPageTransformer implements PageTransformer {
+import androidx.viewpager.widget.ViewPager;
+
+public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
 
     private static final float MIN_SCALE = 0.85f;
 

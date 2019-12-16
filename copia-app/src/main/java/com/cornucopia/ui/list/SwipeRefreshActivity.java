@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.core.widget.SwipeRefreshLayout;
-import androidx.core.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -18,7 +16,9 @@ import com.cornucopia.R;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class SwipeRefreshActivity extends Activity implements OnRefreshListener, OnItemClickListener {
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+public class SwipeRefreshActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener, OnItemClickListener {
     
     private SwipeRefreshLayout mSrfLayout;
     

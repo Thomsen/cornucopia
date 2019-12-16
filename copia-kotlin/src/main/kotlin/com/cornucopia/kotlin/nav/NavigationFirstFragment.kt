@@ -1,15 +1,14 @@
 package com.cornucopia.kotlin.nav
 
 import android.os.Bundle
-import androidx.core.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
-import androidx.os.bundleOf
-import androidx.util.rangeTo
 import com.cornucopia.kotlin.R
 import com.cornucopia.kotlin.R.id.btn_to_act
 import com.jakewharton.rxbinding2.view.RxView

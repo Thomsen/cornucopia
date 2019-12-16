@@ -1,7 +1,7 @@
 package com.cornucopia.kotlin.nav
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.cornucopia.kotlin.R
 
 class NavigationActivity : AppCompatActivity() {

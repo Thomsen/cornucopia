@@ -1,11 +1,11 @@
 package com.cornucopia.kotlin.weather.viewmodel.view
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.cornucopia.kotlin.R
 import com.cornucopia.kotlin.weather.repository.ListWeather
 import kotlinx.android.synthetic.main.layout_forecast_item.view.*

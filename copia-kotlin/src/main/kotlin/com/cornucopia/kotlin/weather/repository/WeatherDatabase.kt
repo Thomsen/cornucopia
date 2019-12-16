@@ -1,7 +1,10 @@
 package com.cornucopia.kotlin.weather.repository
 
-import android.arch.persistence.room.*
 import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.cornucopia.kotlin.weather.repository.dao.WeatherDao
 import com.cornucopia.kotlin.weather.utils.DateConverter
 import com.cornucopia.kotlin.weather.viewmodel.model.Weather
@@ -11,7 +14,8 @@ import com.cornucopia.kotlin.weather.viewmodel.model.Weather
  */
 @Database(
         entities = [(Weather::class)],
-        version = 1
+        version = 1,
+        exportSchema = false
 )
 @TypeConverters(
     DateConverter::class

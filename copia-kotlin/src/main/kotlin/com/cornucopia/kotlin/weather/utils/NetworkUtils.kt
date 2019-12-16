@@ -1,7 +1,7 @@
 package com.cornucopia.kotlin.weather.utils
 
 import android.net.Uri
-import androidx.net.toUri
+import androidx.core.net.toUri
 import com.cornucopia.kotlin.weather.repository.network.WeatherNetworkDataSource
 import java.net.HttpURLConnection
 import java.net.URL

@@ -5,10 +5,11 @@ import com.cornucopia.R;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.core.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import androidx.fragment.app.ListFragment;
 
 public class HeadlineFragment extends ListFragment {
 	

@@ -1,9 +1,10 @@
 package com.cornucopia.jetpack;
 
 import android.os.Bundle;
-import androidx.core.app.FragmentActivity;
-import androidx.core.app.FragmentManager;
-import androidx.core.app.FragmentTransaction;
+
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.cornucopia.jetpack.lifecycle.ComponentObserver;
 

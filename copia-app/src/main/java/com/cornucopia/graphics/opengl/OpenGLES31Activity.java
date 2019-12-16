@@ -5,8 +5,10 @@ import android.content.pm.ConfigurationInfo;
 import android.opengl.GLSurfaceView;
 import android.os.Build;
 import android.os.Bundle;
+
+import com.google.android.material.snackbar.Snackbar;
+
 import androidx.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**

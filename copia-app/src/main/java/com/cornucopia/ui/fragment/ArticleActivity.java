@@ -1,10 +1,10 @@
 package com.cornucopia.ui.fragment;
 
 import android.os.Bundle;
-import androidx.core.app.FragmentActivity;
-import androidx.core.app.FragmentTransaction;
-import androidx.core.view.PagerAdapter;
-import androidx.core.view.ViewPager;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.cornucopia.R;
 import com.cornucopia.ui.animation.ZoomOutPageTransformer;

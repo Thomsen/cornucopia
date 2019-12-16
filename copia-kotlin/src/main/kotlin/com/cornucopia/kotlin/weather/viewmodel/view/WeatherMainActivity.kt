@@ -1,11 +1,11 @@
 package com.cornucopia.kotlin.weather.viewmodel.view
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cornucopia.kotlin.R
 import com.cornucopia.kotlin.weather.repository.ListWeather
 import com.cornucopia.kotlin.weather.utils.InjectorUtils

@@ -1,9 +1,9 @@
 package com.cornucopia.kotlin.weather.repository.network
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import android.content.Context
 import android.content.Intent
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.cornucopia.kotlin.weather.WeatherExecutors
 import com.cornucopia.kotlin.weather.utils.DateUtils
 import com.cornucopia.kotlin.weather.utils.NetworkUtils
