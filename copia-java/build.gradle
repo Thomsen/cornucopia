@@ -6,7 +6,7 @@ repositories {
 
 apply plugin: 'java-library'
 
-apply plugin: 'copia'
+//apply plugin: 'copia'
 
 
 dependencies {

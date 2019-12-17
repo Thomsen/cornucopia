@@ -9,8 +9,10 @@ class CopiaPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
-        project.task("testTask") << {
-            println "copia plugin task"
+        project.task("testTask") {
+            doLast {
+                println "copia plugin task"
+            }
         }
 
         transform(project)

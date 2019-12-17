@@ -198,7 +198,7 @@ realm {
 apply from: 'evaluate.gradle'
 
 // copia module
-apply plugin: 'copia'
+//apply plugin: 'copia'
 
 //moduleConfig {
 //    module = "gradle plugin test"
