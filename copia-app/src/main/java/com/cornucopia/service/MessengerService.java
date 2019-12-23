@@ -18,7 +18,12 @@ public class MessengerService extends Service  {
             super.handleMessage(msg);
             switch(msg.what) {
             case HANDLE_MESSENGER: {
-                Toast.makeText(getApplicationContext(), "hello messenger", Toast.LENGTH_SHORT).show();
+                Object obj = msg.obj;
+                String content = "";
+                if (obj instanceof String) {
+                    content = new StringBuffer().append(obj).toString();
+                }
+                Toast.makeText(getApplicationContext(), content, Toast.LENGTH_SHORT).show();
                 break;
             }
             default: {
@@ -32,7 +37,7 @@ public class MessengerService extends Service  {
     
     @Override
     public IBinder onBind(Intent intent) {
-        Toast.makeText(getApplicationContext(), "binding", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "binding messenger service", Toast.LENGTH_SHORT).show();
         return messenger.getBinder();
     }
     

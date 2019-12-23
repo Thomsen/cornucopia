@@ -104,6 +104,9 @@
 
         <service android:name=".weather.repository.network.WeatherSyncIntentService" />
 
+        <service android:name=".service.LocalService"
+             />
+
 
         <meta-data
             android:name="com.google.android.actions"

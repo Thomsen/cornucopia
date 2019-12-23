@@ -13,13 +13,18 @@ public class RemoteExService extends Service {
 	public void onCreate() {
 		super.onCreate();
 		
-		Toast.makeText(this, "服务启动", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, "remote service created", Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	public IBinder onBind(Intent intent) {
 		// 不同的接口返回不同的抽象类
 		if (IRemoteService.class.getName().equals(intent.getAction())) {
+			try {
+				mBinder.asBinder().linkToDeath(deathRecipient, 0);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 			return mBinder;
 		}
 		
@@ -39,6 +44,21 @@ public class RemoteExService extends Service {
 				throws RemoteException {
 			// TODO 对不同的参数类型进行操作
 			
+		}
+	};
+
+	/**
+	 * Binder可能会意外死忙（比如Service Crash），Client监听到Binder死忙后可以进行重连服务等操作
+	 */
+	IBinder.DeathRecipient deathRecipient = new IBinder.DeathRecipient() {
+		@Override
+		public void binderDied() {
+			if (mBinder != null) {
+				mBinder.asBinder().unlinkToDeath(this, 0);
+				mBinder = null;
+			}
+
+			// TODO: 重连服务或其他操作
 		}
 	};
 }

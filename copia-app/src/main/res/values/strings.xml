@@ -49,5 +49,12 @@
     <string name="title_activity_tickets_deadlock">TicketsDeadlock</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="unbind_local_service">解绑本地服务</string>
+    <string name="bind_local_service">绑定本地服务</string>
+    <string name="bind_remote_service">绑定远程服务</string>
+    <string name="unbind_remote_service">解绑远程服务</string>
+    <string name="bind_messenger">Messenger发送消息</string>
+
+    <string name="send_local_service">发送消息到本地服务</string>
 
 </resources>

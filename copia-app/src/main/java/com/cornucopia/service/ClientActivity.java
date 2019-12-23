@@ -1,5 +1,9 @@
 package com.cornucopia.service;
 
+import com.bugsnag.android.Client;
+import com.cornucopia.R;
+import com.cornucopia.kotlin.service.ILocalService;
+import com.cornucopia.kotlin.service.LocalService;
 import com.cornucopia.utils.IntentUtils;
 
 import android.app.Activity;
@@ -22,34 +26,69 @@ public class ClientActivity extends Activity {
 	
 	private Activity mActivity;
 	private IRemoteService mIRemoteService;
+
+	private ILocalService mLocalService;
+
+//	private boolean isBoundLocal = false;
+	private boolean isBoundRemote = false;
 	
-	private TextView mTextView;
-	private Button mBtnShowRemoteId;
+	private TextView mTextViewRemote;
+	private Button mBtnRemoteService;
 	private Button mBtnCloseRemoteService;
 
-	private ServiceConnection mConnecitonService = new ServiceConnection() {
+	private TextView mTextViewLocal;
+	private Button mBtnLocalService;
+
+	private ServiceConnection mConnectionLocalService = new ServiceConnection() {
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			// remote process, binder must local service
+			// java.lang.ClassCastException: android.os.BinderProxy cannot be cast to com.cornucopia.kotlin.service.LocalService$LocalBinder
+			LocalService.LocalBinder binder = (LocalService.LocalBinder) service;
+
+			mLocalService = binder.getService();
+
+			mTextViewLocal.setText("本地服务： " + mLocalService.getName());
+			mTextViewLocal.setVisibility(View.VISIBLE);
+			mBtnLocalService.setText(R.string.unbind_local_service);
+		}
 
 		@Override
-		public void onServiceConnected(ComponentName arg0, IBinder arg1) {
-			Toast.makeText(mActivity, "绑定服务", Toast.LENGTH_SHORT).show();
+		public void onServiceDisconnected(ComponentName name) {
+			// 不是onServiceConnected的逆过程
+			// 是在服务崩溃或杀死的时候被调用，unbind主要是清理bind的对象
+			// 被动状态会触发
+			mLocalService = null;
+		}
+
+	};
+
+	private ServiceConnection mConnectionRemoteService = new ServiceConnection() {
+
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service) {
 			
-			mIRemoteService = IRemoteService.Stub.asInterface(arg1);
+			mIRemoteService = IRemoteService.Stub.asInterface(service);
 			
 			if (mIRemoteService == null) {
-				mBtnShowRemoteId.setEnabled(false);
+				mBtnRemoteService.setEnabled(false);
 			} else {
-				mBtnShowRemoteId.setEnabled(true);
+				mBtnRemoteService.setEnabled(true);
 			}
+
+			isBoundRemote = true;
+
 			// 显示进程ID
 			setTextViewContent();
 		}
 
 		@Override
-		public void onServiceDisconnected(ComponentName arg0) {
-			Toast.makeText(mActivity, "服务中断", Toast.LENGTH_SHORT).show();
+		public void onServiceDisconnected(ComponentName name) {
+			Toast.makeText(mActivity, name + " disconnected", Toast.LENGTH_SHORT).show();
 			
 			// 只有发现异常服务中断时，才会调用该方法
 			mIRemoteService = null;
+			isBoundRemote = false;
 			setTextViewContent();
 		}
 		
@@ -62,6 +101,7 @@ public class ClientActivity extends Activity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mMessenger = new Messenger(service);
+
         }
 
         @Override
@@ -80,19 +120,64 @@ public class ClientActivity extends Activity {
 		LinearLayout linearLayout = new LinearLayout(this);
 		linearLayout.setOrientation(LinearLayout.VERTICAL);
 		
-		mTextView = new TextView(this);
-		mBtnShowRemoteId = new Button(this);
+		mTextViewRemote = new TextView(this);
+		mBtnRemoteService = new Button(this);
 		mBtnCloseRemoteService = new Button(this);
-		
-		mBtnShowRemoteId.setText("绑定远程服务");
-		// TODO show/hide
-		mBtnCloseRemoteService.setText("关闭远程服务");
-		
-		linearLayout.addView(mTextView);
-		linearLayout.addView(mBtnShowRemoteId);
+
+		mTextViewLocal = new TextView(this);
+		mTextViewLocal.setVisibility(View.GONE);
+		mBtnLocalService = new Button(this);
+
+		mBtnLocalService.setText(R.string.bind_local_service);
+		mBtnRemoteService.setText(R.string.bind_remote_service);
+		// show/hide
+		mBtnCloseRemoteService.setText(R.string.unbind_remote_service);
+
+		Button btnSendLocal = new Button(this);
+		btnSendLocal.setText(R.string.send_local_service);
+
+		linearLayout.addView(mTextViewLocal);
+
+		linearLayout.addView(mBtnLocalService);
+		linearLayout.addView(btnSendLocal);
+		linearLayout.addView(mTextViewRemote);
+		linearLayout.addView(mBtnRemoteService);
 		linearLayout.addView(mBtnCloseRemoteService);
+		visibleCloseRemote();
+
+		mBtnLocalService.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (null != mLocalService && mLocalService.isBound()) {
+					// 怎样停止绑定的服务
+					mActivity.unbindService(mConnectionLocalService);  // execute onBind
+					mActivity.stopService(new Intent(mActivity, LocalService.class)); // onDestroy
+
+					mTextViewLocal.setText("");
+					mTextViewLocal.setVisibility(View.GONE);
+					mBtnLocalService.setText(R.string.bind_local_service);
+				} else {
+					Intent intent = new Intent();
+					intent.setClass(mActivity, LocalService.class);
+					mActivity.bindService(intent, mConnectionLocalService, Context.BIND_AUTO_CREATE);
+					// 启动后台服务，页面去绑定他
+				}
+			}
+		});
+
+		btnSendLocal.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (null != mLocalService) {
+					mLocalService.sendMessage("client");
+				} else {
+					Toast.makeText(ClientActivity.this, R.string.bind_local_service,
+							Toast.LENGTH_LONG).show();
+				}
+			}
+		});
 		
-		mBtnShowRemoteId.setOnClickListener(new View.OnClickListener() {
+		mBtnRemoteService.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -102,7 +187,7 @@ public class ClientActivity extends Activity {
 				implictIntent.setPackage(getPackageName());
 				Intent intent = IntentUtils.getExplicitIntent(mActivity, implictIntent);
 //				Intent intent = new Intent(mActivity, IRemoteService.class);
-			    mActivity.bindService(intent, mConnecitonService, Context.BIND_AUTO_CREATE);
+			    mActivity.bindService(intent, mConnectionRemoteService, Context.BIND_AUTO_CREATE);
 			}
 		});
 		
@@ -123,13 +208,14 @@ public class ClientActivity extends Activity {
         });
 		
 		Button btnMessenger = new Button(this);
-		btnMessenger.setText("hello messenger");
+		btnMessenger.setText(R.string.bind_messenger);
 		
 		btnMessenger.setOnClickListener(new View.OnClickListener() {
             
             @Override
             public void onClick(View v) {
                 Message msg = Message.obtain(null, MessengerService.HANDLE_MESSENGER, 0, 0);
+				msg.obj = "client activity";
                 try {
                     mMessenger.send(msg);
                 } catch (RemoteException e) {
@@ -151,13 +237,13 @@ public class ClientActivity extends Activity {
 		
 //		Intent intent = new Intent(mActivity, RemoteExService.class);
 		// 需要在manifest配置IRemoteService，正确的配置成action
-		Intent intent = new Intent(IRemoteService.class.getName()); // android 5.0
+//		Intent intent = new Intent(IRemoteService.class.getName()); // android 5.0
 		
 		// 启动服务。不启动，在系统-正在运行的服务中就看不到，但进程依然存在，是一个缓存应用程序(cached process)。
 //		startService(intent); 
 
 		// 启动服务，并没有调用onBind方法，需要绑定服务
-		bindService(IntentUtils.getExplicitIntent(this, intent), mConnecitonService, Context.BIND_AUTO_CREATE);
+//		bindService(IntentUtils.getExplicitIntent(this, intent), mConnectionRemoteService, Context.BIND_AUTO_CREATE);
 		
 		// messenger bound service
 		bindService(new Intent(this, MessengerService.class), mMessengerService, Context.BIND_AUTO_CREATE);
@@ -167,31 +253,39 @@ public class ClientActivity extends Activity {
 	@Override
 	protected void onStop() {
 		super.onStop();
-		
-		unbindService(mConnecitonService);
-		
+
+		if (isBoundRemote) {
+			unbindService(mConnectionRemoteService);
+		}
+
 		unbindService(mMessengerService);
+
+		if (null != mLocalService && mLocalService.isBound()) {
+			unbindService(mConnectionLocalService);
+		}
 	}
 
 	private void setTextViewContent() {
 		try {
 			// 调用mIRemoteService前需要绑定服务
 		    if (null != mIRemoteService) {
-		        mTextView.setText(String.valueOf(mIRemoteService.getPid()));
+		        mTextViewRemote.setText("远程服务：" + String.valueOf(mIRemoteService.getPid()));
 		    } else {
-		        mTextView.setText("无进程ID");
+				mTextViewRemote.setText("远程服务：无");
 		    }
 		    visibleCloseRemote();
 		} catch (RemoteException e) {
-			mTextView.setText("exception");
+			mTextViewRemote.setText("exception");
 		}
 	}
 	
 	private void visibleCloseRemote() {
 	    if (null == mIRemoteService) {
+	    	mTextViewRemote.setVisibility(View.GONE);
 	        mBtnCloseRemoteService.setVisibility(View.GONE);
 	    } else {
-	        mBtnCloseRemoteService.setVisibility(View.VISIBLE);
+			mTextViewRemote.setVisibility(View.VISIBLE);
+			mBtnCloseRemoteService.setVisibility(View.VISIBLE);
 	    }
 	}
 

@@ -1,6 +1,8 @@
 package com.cornucopia.application;
 
+import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 import com.bugsnag.android.Bugsnag;
 import com.cornucopia.BuildConfig;
@@ -14,6 +16,8 @@ import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import androidx.multidex.MultiDexApplication;
@@ -41,6 +45,13 @@ public class CornucopiaApplication extends MultiDexApplication {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+
+		if (isInMainProcess(getApplicationContext())) {
+			Log.i("copia", "main process: " + processNameFromReflect(this));
+		} else {
+			// mainifest process 会创建一次application
+			Log.i("copia", "onCreate: " + processNameFromReflect(this));
+		}
 		
 		instance = this;
 		
@@ -137,5 +148,31 @@ public class CornucopiaApplication extends MultiDexApplication {
     public static RefWatcher getRefWatcher() {
         return refWatcher;
     }
+
+
+    // 通过反射获取进程名
+	private String processNameFromReflect(Application app) {
+		String processName = null;
+		try {
+			Field loadedApkField = app.getClass().getField("mLoadedApk");
+			loadedApkField.setAccessible(true);
+			Object loadedApk = loadedApkField.get(app);
+
+			Field activityThreadField = loadedApk.getClass().getDeclaredField("mActivityThread");
+			activityThreadField.setAccessible(true);
+			Object activityThread = activityThreadField.get(loadedApk);
+
+			Method getProcessName = activityThread.getClass().getDeclaredMethod("getProcessName", null);
+			processName = (String) getProcessName.invoke(activityThread, null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return processName;
+	}
+
+	// 判断是否是主进程
+	public boolean isInMainProcess(Context context){
+		return context.getPackageName().equals(processNameFromReflect(this));
+	}
 
 }
