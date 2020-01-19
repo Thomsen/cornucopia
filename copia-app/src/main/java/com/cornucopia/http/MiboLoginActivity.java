@@ -1,5 +1,6 @@
 package com.cornucopia.http;
 
+import com.cornucopia.java.http.OkHttpOpt;
 import com.google.gson.Gson;
 
 import android.app.Activity;
@@ -14,7 +15,6 @@ import android.widget.Toast;
 
 import com.cornucopia.R;
 import com.cornucopia.http.mibo.MiboUser;
-import com.cornucopia.http.okhttp.OkHttpOpt;
 import com.cornucopia.http.retrofit.MiboRetrofitService;
 import com.cornucopia.http.retrofit.RetrofitOpt;
 import com.cornucopia.http.volley.VolleyOpt;
@@ -120,7 +120,7 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
         new Thread() {
             public void run() {
                 String showUrl = serverAddress + "/users/6";
-                OkHttpOpt oopt = new OkHttpOpt(MiboLoginActivity.this);
+                OkHttpOpt oopt = new OkHttpOpt();
                 String resp = oopt.okHttpGet(showUrl);
                 Log.d(TAG, "ok http resp: " + resp);
             }
@@ -128,10 +128,21 @@ public class MiboLoginActivity extends Activity implements OnClickListener {
     }
     
     private void okHttpLogin() {
-        OkHttpOpt oopt = new OkHttpOpt(this);
+        OkHttpOpt oopt = new OkHttpOpt();
         String loginUrl = serverAddress + "/users/login";
         oopt.okHttpLogin(loginUrl, mEtUsername.getText().toString(),
-                mEtPassword.getText().toString());
+                mEtPassword.getText().toString(), new OkHttpOpt.NetworkCallback() {
+                    @Override
+                    public void onResponse(String result) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(MiboLoginActivity.this,
+                                        result, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
     }
 
     private void retrofitListUser() {

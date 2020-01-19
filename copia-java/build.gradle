@@ -11,6 +11,13 @@ apply plugin: 'java-library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.squareup.okhttp3:okhttp:3.6.0'
+    implementation 'com.squareup.okio:okio:1.6.0'
+
+    implementation group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.3.2'
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.10'
+
 }
 
 sourceCompatibility = rootProject.ext.javaVersion

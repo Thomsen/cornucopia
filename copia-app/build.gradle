@@ -92,6 +92,7 @@ dependencies {
     implementation project(':copia-jetpack')
 //    implementation project(':copia-patch')
     implementation project(':copia-kotlin')
+    implementation project(':copia-java')
 
     //implementation project(path: ':copia-tools')
 
