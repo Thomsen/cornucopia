@@ -7,3 +7,4 @@ repo
 local.properties
 *.externalNativeBuild
 **/*.apk
+**/.cxx

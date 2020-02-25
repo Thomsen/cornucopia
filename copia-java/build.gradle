@@ -1,4 +1,12 @@
 
+plugins {
+    id "org.jetbrains.kotlin.jvm"
+}
+// default
+//sourceSets {
+//    main.kotlin.srcDirs += 'src/main/kotlin'
+//}
+
 repositories {
     jcenter()
     //maven { url uri('../repo') }
@@ -7,6 +15,13 @@ repositories {
 apply plugin: 'java-library'
 
 //apply plugin: 'copia'
+
+//apply plugin: 'kotlin'
+//sourceSets {
+//    main.java.srcDirs += 'src/main/java'
+//    main.kotlin.srcDirs += 'src/main/kotlin'  // targeting the jvm
+//}
+// replace by plugins {}
 
 
 dependencies {
@@ -18,6 +33,12 @@ dependencies {
     implementation group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.3.2'
     implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.10'
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.jetbrains.kotlin:kotlin-reflect"
+    testImplementation "org.jetbrains.kotlin:kotlin-test"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit"
+
+    implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
 }
 
 sourceCompatibility = rootProject.ext.javaVersion
