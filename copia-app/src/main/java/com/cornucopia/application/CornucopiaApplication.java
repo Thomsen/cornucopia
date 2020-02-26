@@ -13,8 +13,6 @@ import com.cornucopia.storage.ticketsmanager.Tickets;
 import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
 import com.cornucopia.jetpack.data.persist.UserDatabase;
 import com.facebook.stetho.Stetho;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -23,6 +21,9 @@ import java.util.ArrayList;
 import androidx.multidex.MultiDexApplication;
 import androidx.room.Room;
 import io.flowup.FlowUp;
+import leakcanary.AppWatcher;
+import leakcanary.LeakCanary;
+import leakcanary.ObjectWatcher;
 
 
 public class CornucopiaApplication extends MultiDexApplication {
@@ -33,7 +34,7 @@ public class CornucopiaApplication extends MultiDexApplication {
 	
 	private static D2GraphComponent graph;
 	
-	private static RefWatcher refWatcher;
+	private static ObjectWatcher refWatcher;
 	
 	private static CornucopiaApplication instance;
 	
@@ -77,8 +78,8 @@ public class CornucopiaApplication extends MultiDexApplication {
 		buildComponentGraph();
 		
 //		initRealmInstance();
-		
-		refWatcher = LeakCanary.install(this);
+
+		refWatcher = AppWatcher.INSTANCE.getObjectWatcher();
 		
 		// no found class
 //		AppBlockCanaryContext appBlock = new AppBlockCanaryContext(); 
@@ -145,7 +146,7 @@ public class CornucopiaApplication extends MultiDexApplication {
 //        Realm.setDefaultConfiguration(config);
 //    }
 
-    public static RefWatcher getRefWatcher() {
+    public static ObjectWatcher getRefWatcher() {
         return refWatcher;
     }
 

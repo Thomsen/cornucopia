@@ -100,6 +100,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".memory.LeakKtActivity"
+            android:label="Memory/LeakKtAsyncWork" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".wxapi.WXEntryActivity" />
 
         <service android:name=".weather.repository.network.WeatherSyncIntentService" />

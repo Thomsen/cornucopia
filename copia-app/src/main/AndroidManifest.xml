@@ -140,6 +140,22 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".memory.LeakActivity"
+            android:label="Memory/LeakAsyncWork" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".memory.LambdaNotLeakActivity"
+            android:label="Memory/LeakNotWithLambda" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".storage.contacts.FetchContacts"
             android:label="Basic/Content Provider/FetchContacts" >
             <intent-filter>
