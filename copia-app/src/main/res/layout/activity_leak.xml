@@ -9,4 +9,18 @@
         android:layout_height="wrap_content"
         android:text="Button" />
 
+    <Button
+        android:id="@+id/btn_leak_runnable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Button Runnable" />
+
+    <Button
+        android:id="@+id/btn_leak_listener_runnable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Button Listener Runnable" />
+
 </LinearLayout>

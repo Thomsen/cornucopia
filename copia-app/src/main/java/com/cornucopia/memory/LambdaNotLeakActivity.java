@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.cornucopia.R;
 
@@ -22,6 +23,19 @@ public class LambdaNotLeakActivity extends Activity {
 
         btnLeak.setOnClickListener((View view) -> startAsyncWork());
 
+        Button btnLeakRunnable = findViewById(R.id.btn_leak_runnable);
+        btnLeakRunnable.setVisibility(View.VISIBLE);
+        btnLeakRunnable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startAsyncWorkLambda();
+            }
+        });
+
+        Button btnLeakListenerRunnable = findViewById(R.id.btn_leak_listener_runnable);
+        btnLeakListenerRunnable.setVisibility(View.VISIBLE);
+        btnLeakListenerRunnable.setOnClickListener((View view) -> startAsyncWorkLambda());
+
     }
 
     private void startAsyncWork() {
@@ -29,7 +43,25 @@ public class LambdaNotLeakActivity extends Activity {
             @Override
             public void run() {
                 SystemClock.sleep(20000);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "leak listener lambda work done",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
+        };
+        new Thread(work).start();
+    }
+
+    private void startAsyncWorkLambda() {
+        Runnable work = () -> {
+            SystemClock.sleep(20000);
+            runOnUiThread(() -> {
+                Toast.makeText(getApplicationContext(), "leak runnable lambda work done",
+                        Toast.LENGTH_SHORT).show();
+            });
         };
         new Thread(work).start();
     }

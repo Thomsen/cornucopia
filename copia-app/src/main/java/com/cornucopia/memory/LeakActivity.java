@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.cornucopia.R;
 
@@ -29,15 +30,22 @@ public class LeakActivity extends Activity {
 
     }
 
-
     private void startAsyncWork() {
         Runnable work = new Runnable() {
             @Override
             public void run() {
                 SystemClock.sleep(20000);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "leak work done", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         };
         new Thread(work).start();
     }
 
 }
+
+// javap -c build\intermediates\javac\debug\classes\...
