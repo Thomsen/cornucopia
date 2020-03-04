@@ -13,10 +13,16 @@ import com.cornucopia.storage.ticketsmanager.Tickets;
 import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
 import com.cornucopia.jetpack.data.persist.UserDatabase;
 import com.facebook.stetho.Stetho;
+import com.susion.rabbit.Rabbit;
+import com.susion.rabbit.base.RabbitMonitorProtocol;
+import com.susion.rabbit.base.config.RabbitConfig;
+import com.susion.rabbit.base.config.RabbitMonitorConfig;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import androidx.multidex.MultiDexApplication;
 import androidx.room.Room;
@@ -96,6 +102,14 @@ public class CornucopiaApplication extends MultiDexApplication {
 				.forceReports(BuildConfig.DEBUG)
 				.start();
 
+
+		HashSet autoOpenMonitors = new HashSet<String>();
+		autoOpenMonitors.add(new HashMap().put("net", "exception"));
+		RabbitConfig rabbitConfig = new RabbitConfig();
+		RabbitMonitorConfig monitorConfig = new RabbitMonitorConfig();
+		monitorConfig.getAutoOpenMonitors().addAll(autoOpenMonitors);
+		rabbitConfig.setMonitorConfig(monitorConfig);
+		Rabbit.INSTANCE.init(new RabbitConfig());
 	}
 
     private void initCrashHandler() {

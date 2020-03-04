@@ -3,6 +3,7 @@ println 'lifecycle copia-app build start'
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'rabbit-tracer'
 
 Properties properties = new Properties()
 File propFile = "${System.properties['user.home']}${File.separator}.gradle${File.separator}copia.properties" as File
@@ -185,6 +186,10 @@ dependencies {
 
     implementation project(":copia_processor")
     annotationProcessor project(':copia_processor')
+
+    implementation "com.susion:rabbit:${versions.susion}"
+
+
 }
 
 // Duplicate zip entry [92.jar:io/realm/BuildConfig.class]
@@ -249,4 +254,9 @@ variants.all { variant ->
             }
         }
     }
+}
+
+rabbitConfig {
+    enable = true
+    printLog = true
 }

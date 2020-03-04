@@ -20,6 +20,7 @@ import android.widget.SimpleAdapter;
 
 
 import com.copia.processor.FieldInject;
+import com.susion.rabbit.Rabbit;
 import com.tencent.mmkv.MMKV;
 
 public class Cornucopia extends ListActivity {
@@ -68,6 +69,8 @@ public class Cornucopia extends ListActivity {
 		mmkv.encode("string", "hello mmkv");
 		String sValue = mmkv.decodeString("string");
 		Log.i("mmkv string", "" + sValue);
+
+		Rabbit.INSTANCE.open(true, this);
 	}
 
 	/**
