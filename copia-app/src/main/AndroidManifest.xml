@@ -29,11 +29,10 @@
         android:targetPackage="com.cornucopia.test" >
     </instrumentation> -->
 
-    <!--<uses-sdk-->
-        <!--android:minSdkVersion="16"-->
-        <!--android:targetSdkVersion="22"-->
-        <!--android:maxSdkVersion="24"-->
-        <!--tools:overrideLibrary="com.taobao.android.dexposed" />-->
+    <uses-sdk
+        android:targetSdkVersion="22"
+        android:maxSdkVersion="24"
+        tools:overrideLibrary="com.taobao.android.dexposed" />
 
     <application
         android:name=".application.CornucopiaApplication"

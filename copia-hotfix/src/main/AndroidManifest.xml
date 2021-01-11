@@ -4,9 +4,7 @@
     package="com.cornucopia"
     android:versionCode="2"
     android:versionName="1.0" >
-    
-    <!--<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="22" />-->
-    
+
     <application>
     </application>
 

@@ -7,14 +7,14 @@ buildscript {
 
     ext.versions = [
             'copiaTools'        : '0.0.1',
-            'kotlin'            : '1.2.70',
-            'androidGradle'     : '3.2.0',
+            'kotlin'            : '1.3.21',
+            'androidGradle'     : '3.3.2',
 
             'buildTools'        : '28.0.0',
             'supportLibrary'    : '28.0.0',
             'aac'                : '1.1.0',
 
-            'butterknife'       : '9.0.0-SNAPSHOT'
+            'butterknife'       : '9.0.0'
     ]
 
     ext.deps = [
@@ -111,6 +111,7 @@ ext {
     minSdkVer = 23  // android 7.0
     targetSdkVer = 26
     compileSdkVersion = 28
+    minSdkVer = 24  // android 7.0
 
 
     // ERROR in com.android.tools.r8.com.google.common.io.CharSource.lines:()Ljava/util/stream/Stream;

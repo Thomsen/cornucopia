@@ -19,7 +19,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 
-import com.copia.processor.FieldInject;
+//import com.copia.processor.FieldInject;
 import com.tencent.mmkv.MMKV;
 
 public class Cornucopia extends ListActivity {
@@ -27,8 +27,8 @@ public class Cornucopia extends ListActivity {
 	private static final String CATEGORY_CORNUCOPIA = "com.cornucopia.CATEGORY_CORNUCOPIA";
 
 
-	@FieldInject(value = "cornucopia")
-	private String mValue;
+//	@FieldInject(value = "cornucopia")
+//	private String mValue;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

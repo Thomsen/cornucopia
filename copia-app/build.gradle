@@ -184,8 +184,8 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
 
-    implementation project(":copia_processor")
-    annotationProcessor project(':copia_processor')
+    //implementation project(":copia_processor")
+    //annotationProcessor project(':copia_processor')
 }
 
 // Duplicate zip entry [92.jar:io/realm/BuildConfig.class]
