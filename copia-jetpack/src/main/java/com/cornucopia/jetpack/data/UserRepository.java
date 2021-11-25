@@ -1,6 +1,6 @@
 package com.cornucopia.jetpack.data;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 
 import com.cornucopia.jetpack.data.model.User;
 import com.cornucopia.jetpack.data.persist.UserDao;

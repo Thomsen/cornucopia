@@ -1,6 +1,6 @@
 package com.cornucopia.jetpack.data.model;
 
-import android.arch.persistence.room.ColumnInfo;
+import androidx.room.ColumnInfo;
 
 /**
  * Created by thom on 26/5/2017.

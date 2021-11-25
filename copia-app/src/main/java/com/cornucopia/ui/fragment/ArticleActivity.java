@@ -1,13 +1,12 @@
 package com.cornucopia.ui.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.cornucopia.R;
-import com.cornucopia.ui.animation.DephPageTransformer;
 import com.cornucopia.ui.animation.ZoomOutPageTransformer;
 
 public class ArticleActivity extends FragmentActivity implements HeadlineFragment.OnHeadlineSelectedListener {

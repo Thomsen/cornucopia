@@ -1,9 +1,9 @@
 package com.cornucopia.kotlin.recy
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.TextView
@@ -16,7 +16,8 @@ class RecyMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recy_main)
 
-        recyList.layoutManager = LinearLayoutManager(this);
+        recyList.layoutManager =
+            LinearLayoutManager(this);
 
 //        var items = listOf<String>("a", "b")
 

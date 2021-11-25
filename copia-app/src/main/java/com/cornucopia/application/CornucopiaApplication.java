@@ -1,8 +1,8 @@
 package com.cornucopia.application;
 
-import android.arch.persistence.room.Room;
+import androidx.room.Room;
 import android.content.Context;
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
 import com.bugsnag.android.Bugsnag;
 import com.cornucopia.BuildConfig;

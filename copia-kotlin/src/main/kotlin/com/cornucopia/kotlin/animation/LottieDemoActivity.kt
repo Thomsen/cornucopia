@@ -1,7 +1,7 @@
 package com.cornucopia.kotlin.animation
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.cornucopia.kotlin.R
 
 import kotlinx.android.synthetic.main.activity_lottie_demo.*;

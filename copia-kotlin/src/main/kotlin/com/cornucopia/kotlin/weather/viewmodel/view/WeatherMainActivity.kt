@@ -1,11 +1,11 @@
 package com.cornucopia.kotlin.weather.viewmodel.view
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cornucopia.kotlin.R
 import com.cornucopia.kotlin.weather.repository.ListWeather
 import com.cornucopia.kotlin.weather.utils.InjectorUtils
@@ -30,7 +30,8 @@ class WeatherMainActivity : AppCompatActivity(), ForecastAdapter.ForecastAdapter
 
         setContentView(R.layout.activity_weather_main)
 
-        recy_forecast.layoutManager = LinearLayoutManager(this)
+        recy_forecast.layoutManager =
+            LinearLayoutManager(this)
 
         var factory = InjectorUtils.provideViewModelFactory(this);
 

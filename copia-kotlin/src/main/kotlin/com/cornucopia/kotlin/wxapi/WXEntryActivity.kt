@@ -1,7 +1,7 @@
 package com.cornucopia.kotlin.wxapi
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.cornucopia.kotlin.account.AccountManager
 import com.tencent.mm.opensdk.constants.ConstantsAPI
 import com.tencent.mm.opensdk.modelbase.BaseReq

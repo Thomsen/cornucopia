@@ -104,10 +104,11 @@
 
         <service android:name=".weather.repository.network.WeatherSyncIntentService" />
 
-
+        <!-- https://developers.google.com/assistant/app/action-schema -->
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/actions" />
+
     </application>
 
 </manifest>

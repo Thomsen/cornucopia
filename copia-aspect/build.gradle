@@ -11,7 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
     }
 
@@ -29,10 +29,10 @@ dependencies {
 
     implementation "org.aspectj:aspectjrt:$rootProject.aspectjVersion"
 
-    implementation "com.android.support:appcompat-v7:${versions.supportLibrary}"
+    implementation 'androidx.appcompat:appcompat:1.0.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 }
 
 //
@@ -53,8 +53,9 @@ android.libraryVariants.all { variant ->
                          "-aspectpath", javaCompile.classpath.asPath,
                          "-d", javaCompile.destinationDir.toString(),
                          "-classpath", javaCompile.classpath.asPath,
-                         "-bootclasspath", plugin.project.android.bootClasspath.join(
-                File.pathSeparator)]
+//                         "-bootclasspath", plugin.project.android.bootClasspath.join(
+//                File.pathSeparator)
+        ]
 
         MessageHandler handler = new MessageHandler(true);
         new Main().run(args, handler)

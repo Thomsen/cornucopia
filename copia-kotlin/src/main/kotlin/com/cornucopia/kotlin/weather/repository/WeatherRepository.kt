@@ -1,7 +1,8 @@
 package com.cornucopia.kotlin.weather.repository
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.cornucopia.kotlin.weather.WeatherExecutors
 import com.cornucopia.kotlin.weather.repository.dao.WeatherDao
 import com.cornucopia.kotlin.weather.repository.network.WeatherNetworkDataSource
@@ -94,7 +95,8 @@ class WeatherRepository {
         initializeData();
 
         var today = DateUtils.getNormalizedUtcDateForToday();
-        return mWeatherDao.getCurrentWeatherForecasts(today);
+//        return mWeatherDao.getCurrentWeatherForecasts(today);
+        return MutableLiveData()
     }
 
 

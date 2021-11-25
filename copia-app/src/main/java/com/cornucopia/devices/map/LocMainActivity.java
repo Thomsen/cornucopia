@@ -7,9 +7,8 @@ import android.os.Message;
 import android.view.Menu;
 import android.widget.TextView;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
 import com.cornucopia.R;
+import com.cornucopia.devices.map.location.LocationManager;
 
 public class LocMainActivity extends Activity {
     
@@ -29,7 +28,7 @@ public class LocMainActivity extends Activity {
     
     GeoLocationInfo locInfo;
     
-    BaiduLocationManager baiduLocManager;
+    LocationManager locationManager;
     
     private static final int REFRESH_LOCATION = 0;
     
@@ -74,7 +73,9 @@ public class LocMainActivity extends Activity {
     
     public void onDestroy() {
     	super.onDestroy();
-    	baiduLocManager.onStop();
+    	if (locationManager != null) {
+            locationManager.stop();
+        }
     }
 
     /** 
@@ -99,37 +100,7 @@ public class LocMainActivity extends Activity {
 //    	}.start();
         
     	
-    	// baidu geolocation 需放在ui线程
-    	baiduLocManager = new BaiduLocationManager(mActivity);
-    	baiduLocManager.registerLocationListener(null);
-    	baiduLocManager.registerLocationListener(new BDLocationListener() {
 
-			@Override
-			public void onReceiveLocation(BDLocation location) {
-				
-				if (location.getLocType() == 61 || location.getLocType() == 161) {
-					locInfo = new GeoLocationInfo();
-					locInfo.setLongitude(location.getLongitude());
-					locInfo.setLatitude(location.getLatitude());
-					locInfo.setAltitude(location.getAltitude());
-					locInfo.setStrAddress(location.getAddrStr());
-					
-					if (location.getLocType() == BDLocation.TypeGpsLocation) {
-						
-					} else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {
-						
-					}
-					
-					GeoAddressInfo addressInfo = new GeoAddressInfo();
-					addressInfo.setCity(location.getCity());
-				}
-				
-				mHandler.sendEmptyMessage(REFRESH_LOCATION);
-			}
-    		
-    	});
-    	baiduLocManager.onStart();
-        
     }
 
     /** 

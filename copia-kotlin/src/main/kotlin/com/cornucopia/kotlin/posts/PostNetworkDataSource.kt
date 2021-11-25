@@ -1,15 +1,15 @@
 package com.cornucopia.kotlin.posts
 
 import android.app.usage.NetworkStats
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Transformations
-import android.arch.paging.DataSource
-import android.arch.paging.ItemKeyedDataSource
-import android.arch.paging.LivePagedListBuilder
-import android.arch.paging.PagedList
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
+import androidx.paging.DataSource
+import androidx.paging.ItemKeyedDataSource
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import android.net.NetworkInfo
-import androidx.net.toUri
+import androidx.core.net.toUri
 import com.cornucopia.kotlin.weather.utils.NetworkUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

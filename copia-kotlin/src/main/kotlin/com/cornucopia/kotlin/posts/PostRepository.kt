@@ -1,7 +1,7 @@
 package com.cornucopia.kotlin.posts
 
-import android.arch.lifecycle.LiveData
-import android.arch.paging.PagedList
+import androidx.lifecycle.LiveData
+import androidx.paging.PagedList
 
 class PostRepository(networkDataSource: PostNetworkDataSource) {
 

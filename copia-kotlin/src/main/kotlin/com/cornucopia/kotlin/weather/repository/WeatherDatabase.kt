@@ -1,6 +1,6 @@
 package com.cornucopia.kotlin.weather.repository
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import android.content.Context
 import com.cornucopia.kotlin.weather.repository.dao.WeatherDao
 import com.cornucopia.kotlin.weather.utils.DateConverter

@@ -4,6 +4,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 apply plugin: 'com.jakewharton.butterknife'
 
+// copia module
+//apply plugin: 'copia'
+
 Properties properties = new Properties()
 File propFile = "${System.properties['user.home']}${File.separator}.gradle${File.separator}copia.properties" as File
 properties.load(propFile.newDataInputStream())
@@ -16,6 +19,8 @@ android {
         applicationId "com.cornucopia"
         minSdkVersion rootProject.ext.minSdkVer
         targetSdkVersion rootProject.ext.targetSdkVer
+        versionCode 3
+        versionName "1.3"
 
 		// :copia-app:transformClassesWithDexBuilderForDebugD8:
 		// Invoke-customs are only supported starting with Android O (--min-api 26)
@@ -46,9 +51,9 @@ android {
             minifyEnabled false
             signingConfig signingConfigs.signConfig
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-            ndk {
-                abiFilters 'armeabi'
-            }
+//            ndk {
+//                abiFilters 'armeabi'
+//            }
             manifestPlaceholders []
         }
 
@@ -76,6 +81,7 @@ android {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/rxjava.properties'
         exclude 'META-INF/androidx.cardview_cardview.version'
+        exclude 'META-INF/androidx.versionedparcelable_versionedparcelable.version'
     }
 
     configurations {
@@ -83,7 +89,21 @@ android {
     }
 
     lintOptions {
-        abortOnError false // MissingPermission
+        // Turns off checks for the issue IDs you specify.
+        disable 'TypographyFractions','TypographyQuotes'
+        // Turns on checks for the issue IDs you specify. These checks are in
+        // addition to the default lint checks.
+        enable 'RtlHardcoded','RtlCompat', 'RtlEnabled'
+        // To enable checks for only a subset of issue IDs and ignore all others,
+        // list the issue IDs with the 'check' property instead. This property overrides
+        // any issue IDs you enable or disable using the properties above.
+        check 'NewApi', 'InlinedApi'
+        // If set to true, turns off analysis progress reporting by lint.
+        quiet true
+        // if set to true (default), stops the build if errors are found.
+        abortOnError true
+        // if true, only report errors.
+        ignoreWarnings true
     }
 }
 
@@ -130,8 +150,8 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.0.7'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
 
-    implementation 'com.google.dagger:dagger:2.9'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
+    implementation 'com.google.dagger:dagger:2.27'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.27'
 
     implementation "com.jakewharton:butterknife:${versions.butterknife}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${versions.butterknife}"
@@ -157,14 +177,14 @@ dependencies {
 
     // support-v4 sub
     //noinspection GradleCompatible
-    implementation "com.android.support:support-compat:${versions.supportLibrary}"
+    implementation 'androidx.core:core:1.0.0'
     //noinspection GradleCompatible
-    implementation "com.android.support:support-fragment:${versions.supportLibrary}"
-    implementation "com.android.support:support-annotations:${versions.supportLibrary}"
-    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'androidx.fragment:fragment:1.0.0'
+    implementation 'androidx.annotation:annotation:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.0'
     implementation deps.support.appCompat
-    implementation "com.android.support:recyclerview-v7:${versions.supportLibrary}"
-    implementation "com.android.support:design:${versions.supportLibrary}"
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
 
     implementation 'com.google.auto.value:auto-value-annotations:1.6'
     annotationProcessor "com.google.auto.value:auto-value:1.6"  // in java library not found method
@@ -197,8 +217,6 @@ realm {
 
 apply from: 'evaluate.gradle'
 
-// copia module
-apply plugin: 'copia'
 
 //moduleConfig {
 //    module = "gradle plugin test"

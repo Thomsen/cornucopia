@@ -24,16 +24,17 @@ android {
         }
     }
 
-    externalNativeBuild {
-
-        cmake {
-            path 'CMakeLists.txt'
-        }
+//    externalNativeBuild {
+//
+//        cmake {
+//            path 'CMakeLists.txt'
+//            version "3.10.2"
+//        }
 
 //        ndkBuild {
 //            path 'src/main/jni/Android.mk'
 //        }
-    }
+//    }
 
     lintOptions {
         abortOnError false
@@ -41,5 +42,5 @@ android {
 }
 
 dependencies {
-    implementation "com.android.support:support-v4:$versions.supportLibrary"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

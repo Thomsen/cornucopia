@@ -53,14 +53,14 @@ public class CellIdInfoManager {
 			
 			listInfo.add(cellInfo);
 			
-			List<NeighboringCellInfo> listNeighboring = manager.getNeighboringCellInfo();
-			for (NeighboringCellInfo info : listNeighboring) {
-				
-				cellInfo.setCellId(info.getCid());
-				
-				listInfo.add(cellInfo);
-				
-			}
+//			List<NeighboringCellInfo> listNeighboring = manager.getNeighboringCellInfo();
+//			for (NeighboringCellInfo info : listNeighboring) {
+//
+//				cellInfo.setCellId(info.getCid());
+//
+//				listInfo.add(cellInfo);
+//
+//			}
 			
 		} else if (manager.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) {
 			// 电信2G

@@ -1,6 +1,6 @@
 package com.cornucopia.widgets.material.edit.validation;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Base Validator class to either implement or inherit from for custom validation

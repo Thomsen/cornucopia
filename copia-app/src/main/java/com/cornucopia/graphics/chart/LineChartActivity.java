@@ -3,8 +3,8 @@ package com.cornucopia.graphics.chart;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+import androidx.core.content.ContextCompat;
 import android.view.MotionEvent;
 import android.view.WindowManager;
 
