@@ -50,6 +50,9 @@ public class CameraPictureCallback implements PictureCallback {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            // fireUri is null NPE
+            e.printStackTrace();
         }
     }
 

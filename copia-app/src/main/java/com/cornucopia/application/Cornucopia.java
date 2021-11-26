@@ -53,9 +53,14 @@ public class Cornucopia extends ListActivity {
 			path = "";
 		}
 
-		setListAdapter(new SimpleAdapter(this, getIntentData(path),
-				android.R.layout.simple_list_item_1, new String[] { "item" },
-				new int[] { android.R.id.text1 }));
+		try {
+			setListAdapter(new SimpleAdapter(this, getIntentData(path),
+					android.R.layout.simple_list_item_1, new String[]{"item"},
+					new int[]{android.R.id.text1}));
+		} catch (Exception e) {
+			// Package manager has died
+			e.printStackTrace();
+		}
 
 		String rootDir = MMKV.initialize(this);
 		Log.i("mmkv root", rootDir);

@@ -87,7 +87,7 @@ public class CornucopiaApplication extends MultiDexApplication {
 	}
 
     private void initCrashHandler() {
-        Bugsnag.init(this);
+        Bugsnag.start(this);
         
 //        MetaData metaData = new MetaData();
 //        metaData.addToTab("User", "username", "thom");
