@@ -19,8 +19,8 @@ android {
         applicationId "com.cornucopia"
         minSdkVersion rootProject.ext.minSdkVer
         targetSdkVersion rootProject.ext.targetSdkVer
-        versionCode 3
-        versionName "1.3"
+        versionCode 4
+        versionName "1.4"
 
 		// :copia-app:transformClassesWithDexBuilderForDebugD8:
 		// Invoke-customs are only supported starting with Android O (--min-api 26)
@@ -191,6 +191,8 @@ dependencies {
     annotationProcessor 'com.ryanharter.auto.value:auto-value-parcel:0.2.6'
 
     implementation 'com.facebook.stetho:stetho:1.5.0'
+
+    implementation 'androidx.core:core-splashscreen:1.0.0-alpha02'
 
     // sqlite
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.0'

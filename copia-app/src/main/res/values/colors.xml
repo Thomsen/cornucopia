@@ -9,4 +9,6 @@
     <color name="black">#ff000000</color>
     <color name="grey">#cccccc</color>
 
+    <color name="splashBackground">#ff1ec6f8</color>
+
 </resources>

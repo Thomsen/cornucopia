@@ -110,7 +110,7 @@ ext {
 
     minSdkVer = 23  // android 6.0
     targetSdkVer = 30
-    compileSdkVersion = 30
+    compileSdkVersion = 31
 
 
     // ERROR in com.android.tools.r8.com.google.common.io.CharSource.lines:()Ljava/util/stream/Stream;
