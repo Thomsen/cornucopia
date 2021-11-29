@@ -1,20 +1,5 @@
 package com.cornucopia.storage.deadlock;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import com.cornucopia.R;
-import com.cornucopia.R.id;
-import com.cornucopia.R.layout;
-import com.cornucopia.R.menu;
-import com.cornucopia.storage.ticketsmanager.Tickets;
-import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
-
 import android.app.Activity;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -27,6 +12,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+
+import com.cornucopia.R;
+import com.cornucopia.storage.ticketsmanager.Tickets;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class TicketDeadlockActivity extends Activity implements OnClickListener {
     
@@ -121,9 +117,13 @@ public class TicketDeadlockActivity extends Activity implements OnClickListener 
             
             try {
                 Log.i("SingleThread", "ticket single insert started");  // s2
-                countDownLatch.wait(); // AQS.acquireSharedInterruptibly   s3
+                countDownLatch.await(); // AQS.acquireSharedInterruptibly   s3
                 Log.i("SingleThread", "ticket single insert wait end. " + single.getResult());  // s11
             } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (IllegalMonitorStateException e) {
+                // java.lang.IllegalMonitorStateException: object not locked by thread before wait()
+                // wait -> await
                 e.printStackTrace();
             }
         }
@@ -492,15 +492,16 @@ public class TicketDeadlockActivity extends Activity implements OnClickListener 
 
                 boolean shouldCommit = false;
                 try {
+                    if (null != readerThread) {
+                        readerThread.start();  // s6
+                        readerThread.join(); // The join method allows one thread to wait for the completion of another.  s7    
+                    }
+                    // reader don't need transaction, otherwise database pool hold
                     if (isTrans) {
                         TicketSQLiteDatabase.beginTransaction(sqliteDatabase);
                     }
                     TicketSQLiteDatabase.doFakeInsert(sqliteDatabase);
                     shouldCommit = true;
-                    if (null != readerThread) {
-                        readerThread.start();  // s6
-                        readerThread.join(); // The join method allows one thread to wait for the completion of another.  s7    
-                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {

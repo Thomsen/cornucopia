@@ -1,12 +1,12 @@
 package com.cornucopia.storage.deadlock;
 
-import java.io.File;
-
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import java.io.File;
 
 public class TicketSQLiteDatabase {
     
@@ -48,6 +48,8 @@ public class TicketSQLiteDatabase {
         String sql = "SELECT * FROM " + TICKETS_TABLE;
         Cursor cursor = null;
         try {
+//            The connection pool for database '' has been unable to grant a connection to thread
+            // the translation takes up the connection
             cursor = sqLiteDatabase.rawQuery(sql, null);
             Log.d(TAG, "Iterating over rows");
             while (cursor.moveToNext()) {
