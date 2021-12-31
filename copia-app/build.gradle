@@ -34,7 +34,7 @@ android {
         testApplicationId "com.cornucopia.test"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
 
-        multiDexEnabled true
+//        multiDexEnabled true
     }
 
     signingConfigs {
@@ -48,6 +48,7 @@ android {
 
     buildTypes {
         release {
+            multiDexEnabled true
             minifyEnabled false
             signingConfig signingConfigs.signConfig
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
@@ -62,6 +63,7 @@ android {
 //            aaptOptions.cruncherEnabled = false
 //            aaptOptions.useNewCruncher = false
 
+            multiDexEnabled false
             minifyEnabled false  // for debug
             signingConfig signingConfigs.signConfig
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

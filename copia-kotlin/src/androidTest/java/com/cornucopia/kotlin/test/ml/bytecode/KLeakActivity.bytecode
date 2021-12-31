@@ -1,0 +1,204 @@
+.class public final Lcom/cornucopia/kotlin/ml/KLeakActivity;
+.super Landroid/app/Activity;
+.source "KLeakActivity.kt"
+
+
+# annotations
+.annotation runtime Lkotlin/Metadata;
+    bv = {
+        0x1,
+        0x0,
+        0x3
+    }
+    d1 = {
+        "\u0000 \n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0002\u0018\u00002\u00020\u0001B\u0005\u00a2\u0006\u0002\u0010\u0002J\u0012\u0010\u0005\u001a\u00020\u00062\u0008\u0010\u0007\u001a\u0004\u0018\u00010\u0008H\u0014J\u0008\u0010\t\u001a\u00020\u0006H\u0002R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082.\u00a2\u0006\u0002\n\u0000\u00a8\u0006\n"
+    }
+    d2 = {
+        "Lcom/cornucopia/kotlin/ml/KLeakActivity;",
+        "Landroid/app/Activity;",
+        "()V",
+        "binding",
+        "Lcom/cornucopia/kotlin/databinding/ActivityLeakBinding;",
+        "onCreate",
+        "",
+        "savedInstanceState",
+        "Landroid/os/Bundle;",
+        "startAsyncWork",
+        "copia-kotlin_debug"
+    }
+    k = 0x1
+    mv = {
+        0x1,
+        0x4,
+        0x1
+    }
+.end annotation
+
+
+# instance fields
+.field private _$_findViewCache:Ljava/util/HashMap;
+
+.field private binding:Lcom/cornucopia/kotlin/databinding/ActivityLeakBinding;
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 1
+
+    .line 8
+    invoke-direct {p0}, Landroid/app/Activity;-><init>()V
+
+    return-void
+.end method
+
+.method public static final synthetic access$startAsyncWork(Lcom/cornucopia/kotlin/ml/KLeakActivity;)V
+    .registers 1
+    .param p0, "$this"    # Lcom/cornucopia/kotlin/ml/KLeakActivity;
+
+    .line 8
+    invoke-direct {p0}, Lcom/cornucopia/kotlin/ml/KLeakActivity;->startAsyncWork()V
+
+    return-void
+.end method
+
+.method private final startAsyncWork()V
+    .registers 3
+
+    .line 23
+    sget-object v0, Lcom/cornucopia/kotlin/ml/KLeakActivity$startAsyncWork$work$1;->INSTANCE:Lcom/cornucopia/kotlin/ml/KLeakActivity$startAsyncWork$work$1;
+
+    check-cast v0, Ljava/lang/Runnable;
+
+    .line 24
+    .local v0, "work":Ljava/lang/Runnable;
+    new-instance v1, Ljava/lang/Thread;
+
+    invoke-direct {v1, v0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
+
+    invoke-virtual {v1}, Ljava/lang/Thread;->start()V
+
+    .line 25
+    return-void
+.end method
+
+
+# virtual methods
+.method public _$_clearFindViewByIdCache()V
+    .registers 2
+
+    iget-object v0, p0, Lcom/cornucopia/kotlin/ml/KLeakActivity;->_$_findViewCache:Ljava/util/HashMap;
+
+    if-eqz v0, :cond_7
+
+    invoke-virtual {v0}, Ljava/util/HashMap;->clear()V
+
+    :cond_7
+    return-void
+.end method
+
+.method public _$_findCachedViewById(I)Landroid/view/View;
+    .registers 4
+
+    iget-object v0, p0, Lcom/cornucopia/kotlin/ml/KLeakActivity;->_$_findViewCache:Ljava/util/HashMap;
+
+    if-nez v0, :cond_b
+
+    new-instance v0, Ljava/util/HashMap;
+
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    iput-object v0, p0, Lcom/cornucopia/kotlin/ml/KLeakActivity;->_$_findViewCache:Ljava/util/HashMap;
+
+    :cond_b
+    iget-object v0, p0, Lcom/cornucopia/kotlin/ml/KLeakActivity;->_$_findViewCache:Ljava/util/HashMap;
+
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/view/View;
+
+    if-nez v0, :cond_26
+
+    invoke-virtual {p0, p1}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/cornucopia/kotlin/ml/KLeakActivity;->_$_findViewCache:Ljava/util/HashMap;
+
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object p1
+
+    invoke-virtual {v1, p1, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    :cond_26
+    return-object v0
+.end method
+
+.method protected onCreate(Landroid/os/Bundle;)V
+    .registers 4
+    .param p1, "savedInstanceState"    # Landroid/os/Bundle;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+
+    .line 13
+    invoke-super {p0, p1}, Landroid/app/Activity;->onCreate(Landroid/os/Bundle;)V
+
+    .line 14
+    invoke-virtual {p0}, Lcom/cornucopia/kotlin/ml/KLeakActivity;->getLayoutInflater()Landroid/view/LayoutInflater;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/cornucopia/kotlin/databinding/ActivityLeakBinding;->inflate(Landroid/view/LayoutInflater;)Lcom/cornucopia/kotlin/databinding/ActivityLeakBinding;
+
+    move-result-object v0
+
+    const-string v1, "ActivityLeakBinding.inflate(layoutInflater)"
+
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iput-object v0, p0, Lcom/cornucopia/kotlin/ml/KLeakActivity;->binding:Lcom/cornucopia/kotlin/databinding/ActivityLeakBinding;
+
+    .line 15
+    const-string v1, "binding"
+
+    if-nez v0, :cond_19
+
+    invoke-static {v1}, Lkotlin/jvm/internal/Intrinsics;->throwUninitializedPropertyAccessException(Ljava/lang/String;)V
+
+    :cond_19
+    invoke-virtual {v0}, Lcom/cornucopia/kotlin/databinding/ActivityLeakBinding;->getRoot()Landroidx/constraintlayout/widget/ConstraintLayout;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/view/View;
+
+    invoke-virtual {p0, v0}, Lcom/cornucopia/kotlin/ml/KLeakActivity;->setContentView(Landroid/view/View;)V
+
+    .line 17
+    iget-object v0, p0, Lcom/cornucopia/kotlin/ml/KLeakActivity;->binding:Lcom/cornucopia/kotlin/databinding/ActivityLeakBinding;
+
+    if-nez v0, :cond_29
+
+    invoke-static {v1}, Lkotlin/jvm/internal/Intrinsics;->throwUninitializedPropertyAccessException(Ljava/lang/String;)V
+
+    :cond_29
+    iget-object v0, v0, Lcom/cornucopia/kotlin/databinding/ActivityLeakBinding;->btnLeak:Landroid/widget/Button;
+
+    new-instance v1, Lcom/cornucopia/kotlin/ml/KLeakActivity$onCreate$1;
+
+    invoke-direct {v1, p0}, Lcom/cornucopia/kotlin/ml/KLeakActivity$onCreate$1;-><init>(Lcom/cornucopia/kotlin/ml/KLeakActivity;)V
+
+    check-cast v1, Landroid/view/View$OnClickListener;
+
+    invoke-virtual {v0, v1}, Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 20
+    return-void
+.end method

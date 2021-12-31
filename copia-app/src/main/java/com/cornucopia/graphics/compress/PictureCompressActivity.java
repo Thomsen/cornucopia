@@ -4,13 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-
-import androidx.fragment.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,8 +17,9 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
+import androidx.fragment.app.FragmentActivity;
+
 import com.cornucopia.R;
-import com.cornucopia.application.CornucopiaApplication;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
@@ -53,8 +52,6 @@ public class PictureCompressActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_picture_compress);
-        
-        CornucopiaApplication.getRefWatcher().watch(this);
 
         mImageOriginal = (ImageView) findViewById(R.id.iv_image_original);
         mImageGrayCompress = (ImageView) findViewById(R.id.iv_image_gray_compress);

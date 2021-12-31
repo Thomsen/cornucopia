@@ -36,8 +36,8 @@ class WeatherExecutors {
 
         private val mainThreadHandler = android.os.Handler(Looper.getMainLooper());
 
-        override fun execute(command: Runnable?) {
-            mainThreadHandler.post(command);
+        override fun execute(command: Runnable) {
+            mainThreadHandler.post(command)
         }
 
     }

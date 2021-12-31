@@ -26,6 +26,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+
+        testInstrumentationRunnerArgument "listener", "com.cornucopia.kotlin.test.ml.LeakRunListener"
     }
 
     buildTypes {
@@ -42,6 +44,10 @@ android {
 
     lintOptions {
         abortOnError false // sh ./gradlew build lint error
+    }
+
+    viewBinding {
+        enabled = true
     }
 
 }
@@ -62,9 +68,10 @@ dependencies {
 
     api 'androidx.recyclerview:recyclerview:1.0.0'
 
-    annotationProcessor 'androidx.room:room-compiler:2.0.0'
-    kapt 'androidx.room:room-compiler:2.0.0'  // database impl exists
+    // annotationProcessor 'androidx.room:room-compiler:2.2.4'
+    kapt 'androidx.room:room-compiler:2.2.4'  // database impl exists
     // kapt compiler 1.0.0 with kotlin 1.2.21 - 'org.jetbrains.kotlin.kapt3.ProcessorWrapper' 的受支持 source 版本 'RELEASE_7'
+    // kotlin 1.4.21 need 2.2.4 not annotationProcessor
 
     api "com.airbnb.android:lottie:2.5.0-beta1"
 
@@ -140,6 +147,10 @@ dependencies {
 //    is also present at [com.android.support:recyclerview-v7:26.1.0] AndroidManifest.xml:25:13-35 value=(26.1.0).
 //    Suggestion: add 'tools:replace="android:value"' to <meta-data> element at manifestMerger8782304704568896817.xml:26:9-28:38 to override.
     // exclude group: 'com.android.support'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+    androidTestImplementation "com.squareup.leakcanary:leakcanary-android-instrumentation:2.7"
+
 }
 
 //compileKotlin {

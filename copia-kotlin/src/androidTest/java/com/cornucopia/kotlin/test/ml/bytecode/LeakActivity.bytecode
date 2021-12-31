@@ -1,0 +1,48 @@
+.class public Lcom/cornucopia/kotlin/ml/LeakActivity;
+.super Landroid/app/Activity;
+.source "LeakActivity.java"
+
+
+# instance fields
+.field private binding:Lcom/cornucopia/kotlin/databinding/ActivityLeakBinding;
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 1
+
+    .line 12
+    invoke-direct {p0}, Landroid/app/Activity;-><init>()V
+
+    return-void
+.end method
+
+.method static synthetic access$000(Lcom/cornucopia/kotlin/ml/LeakActivity;)V
+    .registers 1
+    .param p0, "x0"    # Lcom/cornucopia/kotlin/ml/LeakActivity;
+
+    .line 12
+    invoke-direct {p0}, Lcom/cornucopia/kotlin/ml/LeakActivity;->startAsyncWork()V
+
+    return-void
+.end method
+
+.method private startAsyncWork()V
+    .registers 3
+
+    .line 32
+    new-instance v0, Lcom/cornucopia/kotlin/ml/LeakActivity$2;
+
+    invoke-direct {v0, p0}, Lcom/cornucopia/kotlin/ml/LeakActivity$2;-><init>(Lcom/cornucopia/kotlin/ml/LeakActivity;)V
+
+    .line 38
+    .local v0, "work":Ljava/lang/Runnable;
+    new-instance v1, Ljava/lang/Thread;
+
+    invoke-direct {v1, v0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
+
+    invoke-virtual {v1}, Ljava/lang/Thread;->start()V
+
+    .line 39
+    return-void
+.end method

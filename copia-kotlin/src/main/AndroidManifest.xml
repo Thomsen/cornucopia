@@ -100,6 +100,37 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ml.LeakActivity"
+            android:label="Kotlin/ML/onej"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ml.KLeakActivity"
+            android:label="Kotlin/ML/onek"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ml.KLeakTwoActivity"
+            android:label="Kotlin/ML/twok"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
+
         <activity android:name=".wxapi.WXEntryActivity" />
 
         <service android:name=".weather.repository.network.WeatherSyncIntentService" />
