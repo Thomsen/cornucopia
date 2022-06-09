@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.cornucopia.R;
 
-public class ActivityLifecycle extends Activity {
+public class FragmentLifecycleActivity extends Activity {
 
 	// 07-25 06:17:45.483 3676-3695/system_process I/ActivityManager: Displayed com.cornucopia/.lifecycle.ActivityLifecycle: +365ms
 

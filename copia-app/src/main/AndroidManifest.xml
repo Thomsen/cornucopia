@@ -119,8 +119,8 @@
         <!-- Basic -->
 
         <activity
-            android:name=".lifecycle.ActivityLifecycle"
-            android:label="Basic/Lifecycle/ActivityLifecycle" >
+            android:name=".lifecycle.FragmentLifecycleActivity"
+            android:label="Basic/Lifecycle/ActivityFragmentLifecycle" >
 
             <!-- android:configChanges="orientation|keyboardHidden" > -->
             <intent-filter>
@@ -128,6 +128,27 @@
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
+
+
+        <activity
+            android:name=".lifecycle.LaunchModeActivity"
+            android:label="Basic/Lifecycle/LaunchMode" >
+
+            <!-- android:configChanges="orientation|keyboardHidden" > -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".lifecycle.launch.LaunchStandardActivity" android:launchMode="standard" />
+        <activity android:name=".lifecycle.launch.LaunchTopActivity" android:launchMode="singleTop" />
+        <activity android:name=".lifecycle.launch.LaunchTaskActivity" android:launchMode="singleTask" />
+        <activity android:name=".lifecycle.launch.LaunchInstanceActivity" android:launchMode="singleInstance" />
+
+        <activity android:name=".lifecycle.launch.LaunchResultActivity" />
+
+
         <activity
             android:name=".lifecycle.StarterActivity"
             android:label="Basic/Lifecycle/LifecycleStarter" >
