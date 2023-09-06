@@ -109,7 +109,7 @@ ext {
     // java version 8 (Supplier Predicate Function ...) need --min-api 24
 
     minSdkVer = 23  // android 6.0
-    targetSdkVer = 30
+    targetSdkVer = 33
     compileSdkVersion = 31
 
 
