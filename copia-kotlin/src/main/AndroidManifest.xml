@@ -130,6 +130,16 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".perf.AnrActivity"
+            android:label="Kotlin/Perf/AnrAct"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
 
         <activity android:name=".wxapi.WXEntryActivity" />
 

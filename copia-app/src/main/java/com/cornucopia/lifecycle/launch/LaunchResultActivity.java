@@ -1,6 +1,6 @@
-package com.cornucopia.lifecycle.launch;//
+package com.cornucopia.lifecycle.launch;
+//
 // Created by Thomsen on 30/03/2022.
-// Copyright (c) 2022 Ricepo LLC. All rights reserved.
 //
 
 import com.cornucopia.lifecycle.LaunchModeActivity;
