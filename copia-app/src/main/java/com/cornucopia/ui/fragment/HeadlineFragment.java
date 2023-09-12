@@ -14,7 +14,8 @@ public class HeadlineFragment extends ListFragment {
 	
 	private String[] headlines = new String[] {
 			"headline one",
-			"headline two"
+			"headline two",
+			"headline three"
 	};
 	
 	
@@ -54,9 +55,19 @@ public class HeadlineFragment extends ListFragment {
 	public void onListItemClick(ListView lv, View v, int position, long id) {
 		super.onListItemClick(lv, v, position, id);
 		
+		setSelect(position);
+	}
+
+	private void setSelect(int position) {
+
 		mCallback.onArticleSelected(position);
-		
 		getListView().setItemChecked(position, true);
+	}
+
+	public void performClick(int position) {
+		View itemView = getListAdapter().getView(position, null, getListView());
+		getListView().performItemClick(itemView, position, -1);
+		itemView.setActivated(true);
 	}
 
 	public interface OnHeadlineSelectedListener {

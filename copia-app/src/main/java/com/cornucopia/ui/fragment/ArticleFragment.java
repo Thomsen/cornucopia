@@ -62,11 +62,11 @@ public class ArticleFragment extends Fragment {
 
 		Bundle bundle = getArguments();
 
-//		if (bundle != null) {
-//			updateArticleView(bundle.getInt(POSITION_STATE));
-//		} else if (mCurrentPosition != -1)  {
+		if (bundle != null) {
+			updateArticleView(bundle.getInt(POSITION_STATE));
+		} else if (mCurrentPosition != -1)  {
 			updateArticleView(mCurrentPosition);
-//		}
+		}
 
 	}
 
