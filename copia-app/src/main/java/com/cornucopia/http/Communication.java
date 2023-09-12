@@ -48,54 +48,51 @@ public class Communication extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		final String url = "http://www.baidu.com";
-		
-		switch (v.getId()) {
-		case R.id.conn_url_get: {
-			
-			new Thread() {
-				public void run() {
-					
-					final String content = getResultWithUrlGet(url); 
-					
-					runOnUiThread(new Runnable() {
-						
-						@Override
-						public void run() {
-							mTextView.setText(content);
-						}
-					});
-				}
-			}.start();
-			
 
-			break;
-		}
-		case R.id.conn_url_post: {
-			
-			new Thread("urlPost") {
-				public void run() {
-					
-					final CharSequence content = getResultWithUrlPost(url); 
-					
-					runOnUiThread(new Runnable() {
-						
-						@Override
-						public void run() {
-							mTextView.setText(content);
-						}
-					});
-				}
-			}.start();
+			if(v.getId() == R.id.conn_url_get) {
 
-			break;
-		}
-		case R.id.conn_http_get: {
+				new Thread() {
+					public void run() {
+
+						final String content = getResultWithUrlGet(url);
+
+						runOnUiThread(new Runnable() {
+
+							@Override
+							public void run() {
+								mTextView.setText(content);
+							}
+						});
+					}
+				}.start();
+
+
+			}
+		if (v.getId() == R.id.conn_url_post) {
+
+				new Thread("urlPost") {
+					public void run() {
+
+						final CharSequence content = getResultWithUrlPost(url);
+
+						runOnUiThread(new Runnable() {
+
+							@Override
+							public void run() {
+								mTextView.setText(content);
+							}
+						});
+					}
+				}.start();
+
+			}
+		if (v.getId() == R.id.conn_http_get) {
 //			url = "http://www.baidu.com";
-			
-			new Thread(new Runnable() {
-				
-				@Override
-				public void run() {
+
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
 //					final String content = getResultWithHttpGet(url);
 //
 //					runOnUiThread(new Runnable() {
@@ -105,32 +102,29 @@ public class Communication extends Activity implements OnClickListener {
 //							mTextView.setText(content);
 //						}
 //					});
-				}
-			}).start();
-			
-			break;
-		}
-		case R.id.conn_http_post: {
-			BlockingQueue<Runnable> queue = new LinkedBlockingQueue<Runnable>();
-			ThreadPoolExecutor tpe = new ThreadPoolExecutor(5, 10, 1000, TimeUnit.SECONDS, queue);
-			tpe.execute(new Runnable() {
-				
-				@Override
-				public void run() {
-					final CharSequence content = getResultWithHttpPost(url); 
-					
-					runOnUiThread(new Runnable() {
-						
-						@Override
-						public void run() {
-							mTextView.setText(content);
-						}
-					});
-				}
-			});
-			
-			break;
-		}
+					}
+				}).start();
+
+			}
+		if (v.getId() == R.id.conn_http_post) {
+				BlockingQueue<Runnable> queue = new LinkedBlockingQueue<Runnable>();
+				ThreadPoolExecutor tpe = new ThreadPoolExecutor(5, 10, 1000, TimeUnit.SECONDS, queue);
+				tpe.execute(new Runnable() {
+
+					@Override
+					public void run() {
+						final CharSequence content = getResultWithHttpPost(url);
+
+						runOnUiThread(new Runnable() {
+
+							@Override
+							public void run() {
+								mTextView.setText(content);
+							}
+						});
+					}
+				});
+
 		}
 		
 	}

@@ -14,13 +14,14 @@ import com.cornucopia.jetpack.data.persist.UserDatabase;
 import com.cornucopia.storage.ticketsmanager.Tickets;
 import com.cornucopia.storage.ticketsmanager.TicketsSQLiteOpenHelper;
 import com.facebook.stetho.Stetho;
+import com.google.android.play.core.splitcompat.SplitCompatApplication;
 
 import java.util.ArrayList;
 
 import io.flowup.FlowUp;
 
 
-public class CornucopiaApplication extends MultiDexApplication {
+public class CornucopiaApplication extends SplitCompatApplication {
 
 	private ArrayList<Tickets> currentTickets;
 

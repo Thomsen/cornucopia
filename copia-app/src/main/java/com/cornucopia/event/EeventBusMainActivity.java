@@ -57,19 +57,12 @@ public class EeventBusMainActivity extends Activity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_eventbus: {
+        if (v.getId() == R.id.btn_eventbus) {
                 EventBus.getDefault().post(new MessageEvent("event message click"));
-                break;
             }
-            case R.id.btn_eventbus_sub: {
+        if (v.getId() == R.id.btn_eventbus_sub)  {
                 Intent intent = new Intent(this, EventBusSubActivity.class);
-                startActivity(intent);
-                break;
-            }
-            default: {
-                break;
-            }
+            startActivity(intent);
         }
     }
 

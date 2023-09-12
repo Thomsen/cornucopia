@@ -63,17 +63,11 @@ public class SpeakAndTextActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 
-		switch (v.getId()) {
-		case R.id.multimedia_stt: {
-			startSTTRecognition();
-			break;
-		}
-		case R.id.multimedia_tts: {
+		if (v.getId() == R.id.multimedia_stt) {
+				startSTTRecognition();
+			}
+		if (v.getId() == R.id.multimedia_tts) {
 			startTTSRecognition();
-			break;
-		}
-		default:
-			break;
 		}
 
 	}

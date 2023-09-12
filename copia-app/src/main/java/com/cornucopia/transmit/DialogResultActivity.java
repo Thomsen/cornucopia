@@ -20,18 +20,14 @@ public class DialogResultActivity extends Activity implements View.OnClickListen
 
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.button: {
-
+		// switch will error: constant expression required
+		if (view.getId() == R.id.button) {
 			Intent intent = new Intent();
 			intent.putExtra("result", "data");
 
 			setResult(RESULT_OK, intent);
 
 			finish();
-
-			break;
-		}
 		}
 	}
 }

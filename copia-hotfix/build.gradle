@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdk rootProject.ext.compileSdkVersion
+    namespace 'com.cornucopia'
 
     defaultConfig {
         applicationId "com.cornucopia"

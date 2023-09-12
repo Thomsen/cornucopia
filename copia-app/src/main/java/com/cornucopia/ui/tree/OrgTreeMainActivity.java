@@ -69,17 +69,10 @@ public class OrgTreeMainActivity extends Activity implements OnItemClickListener
     @Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 
-    	switch (item.getItemId()) {
-    	case R.id.menu_settings: {
-//    		Toast.makeText(this, "hehe", Toast.LENGTH_SHORT).show();
-    		List<String> ls = mTreeAdapter.getOrgTypeDataId(mTreeAdapter.getOrgSelected());
-    		Log.i("thom", "" + ls);
-    		break;
-    	}
-    	default: {
-    		break;
-    	}
-    	}
+		if (item.getItemId() == R.id.menu_settings) {//    		Toast.makeText(this, "hehe", Toast.LENGTH_SHORT).show();
+			List<String> ls = mTreeAdapter.getOrgTypeDataId(mTreeAdapter.getOrgSelected());
+			Log.i("thom", "" + ls);
+		}
     	
     	return super.onMenuItemSelected(featureId, item);
 	}

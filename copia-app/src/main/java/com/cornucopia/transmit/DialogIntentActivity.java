@@ -44,51 +44,43 @@ public class DialogIntentActivity extends Activity implements View.OnClickListen
 
 	    @Override
 	    public void onClick(View view) {
-	        switch (view.getId()) {
-	            case R.id.button: {
+			// case R.id.button: will error: constant expression required
+			if (view.getId() == R.id.button) {
+					AlertDialog.Builder builder = new AlertDialog.Builder(this);
+					builder.setTitle("TZ");
 
-	                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	                builder.setTitle("TZ");
+					LinearLayout ll = new LinearLayout(this);
 
-	                LinearLayout ll = new LinearLayout(this);
+					EditText et = new EditText(this);
 
-	                EditText et = new EditText(this);
+					Button btn = new Button(this);
 
-	                Button btn = new Button(this);
+					et.setId(R.id.dialog_et_one);
+					btn.setId(R.id.dialog_button_one);
+					btn.setText("intent");
 
-	                et.setId(R.id.dialog_et_one);
-	                btn.setId(R.id.dialog_button_one);
-	                btn.setText("intent");
+					mEt = et;
 
-	                mEt = et;
+					btn.setOnClickListener(this);
 
-	                btn.setOnClickListener(this);
+					ll.addView(et);
+					ll.addView(btn);
 
-	                ll.addView(et);
-	                ll.addView(btn);
+					builder.setView(ll);
 
-	                builder.setView(ll);
+					builder.create();
+					builder.show();
 
-	                builder.create();
-	                builder.show();
-
-	                break;
-	            }
-	            case R.id.button2: {
-	                Intent intent = new Intent(this, DialogResultActivity.class);
-	                startActivityForResult(intent, REQUEST_CODE_START);
-	                break;
-	            }
-	            case R.id.dialog_button_one: {
-	                Intent intent = new Intent(this, DialogResultActivity.class);
-	                startActivityForResult(intent, REQUEST_CODE_DIALOG_START);
-	                break;
-	            }
-	            default: {
-	                break;
-	            }
-	        }
-	    }
+				}
+			if (view.getId() == R.id.button2)  {
+				Intent intent = new Intent(this, DialogResultActivity.class);
+				startActivityForResult(intent, REQUEST_CODE_START);
+			}
+			if (view.getId() == R.id.dialog_button_one) {
+				Intent intent = new Intent(this, DialogResultActivity.class);
+				startActivityForResult(intent, REQUEST_CODE_DIALOG_START);
+			}
+		}
 
 	    @Override
 	    protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -2,8 +2,9 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdk rootProject.ext.compileSdkVersion
 //    buildToolsVersion rootProject.ext.buildToolsVersion
+    namespace 'com.cornucopia.patch'
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVer

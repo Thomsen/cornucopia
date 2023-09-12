@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <dist:module
+        dist:instant="false"
+        dist:title="@string/title_copia_dynamic">
+        <dist:delivery>
+            <dist:on-demand />
+        </dist:delivery>
+
+        <dist:fusing dist:include="true" />
+    </dist:module>
+
+    <application>
+        <activity
+            android:name=".ResponsiveMainActivity"
+            android:exported="false"
+            android:label="Dynamic/Response"
+            android:resizeableActivity="true"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="24" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

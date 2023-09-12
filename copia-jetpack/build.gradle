@@ -1,8 +1,10 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdk rootProject.ext.compileSdkVersion
 //    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    namespace 'com.cornucopia.jetpack'
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVer

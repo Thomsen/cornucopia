@@ -49,5 +49,7 @@
     <string name="title_activity_tickets_deadlock">TicketsDeadlock</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_copia_dynamic">copia_dynamic</string>
+    <string name="title_activity_responsive_main">ResponsiveMainActivity</string>
 
 </resources>

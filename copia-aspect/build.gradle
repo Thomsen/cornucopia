@@ -3,7 +3,8 @@ println 'lifecycle copia-aspect build start'
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdk rootProject.ext.compileSdkVersion
+    namespace 'com.cornucopia.aspect'
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVer
