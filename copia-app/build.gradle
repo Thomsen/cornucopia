@@ -21,8 +21,8 @@ android {
         applicationId "com.cornucopia"
         minSdkVersion rootProject.ext.minSdkVer
         targetSdkVersion rootProject.ext.targetSdkVer
-        versionCode 8
-        versionName "1.6"
+        versionCode 11
+        versionName "1.7"
 
 		// :copia-app:transformClassesWithDexBuilderForDebugD8:
 		// Invoke-customs are only supported starting with Android O (--min-api 26)

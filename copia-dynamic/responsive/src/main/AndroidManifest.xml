@@ -7,7 +7,12 @@
         dist:instant="false"
         dist:title="@string/title_copia_dynamic">
         <dist:delivery>
-            <dist:on-demand />
+<!--            <dist:on-demand />-->
+            <dist:install-time>
+                <dist:conditions>
+                    <dist:min-sdk dist:value="26"/>
+                </dist:conditions>
+            </dist:install-time>
         </dist:delivery>
 
         <dist:fusing dist:include="true" />
