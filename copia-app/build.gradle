@@ -114,7 +114,7 @@ android {
         buildConfig true
         aidl true
     }
-    dynamicFeatures = [':copia-dynamic:response']
+    dynamicFeatures = [':copia-dynamic:responsive']
 }
 
 dependencies {

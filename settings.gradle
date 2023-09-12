@@ -15,4 +15,4 @@ include ':copia-tools'
 include ':copia-java'
 
 include ':copia_processor'
-include ':copia-dynamic:response'
+include ':copia-dynamic:responsive'
