@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Gravity
 import android.view.View
 import com.cornucopia.kotlin.R
-import org.jetbrains.anko.*
-import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class AnkoMainActivity : AppCompatActivity() {
 
@@ -15,20 +13,19 @@ class AnkoMainActivity : AppCompatActivity() {
 
 //        setContentView(ankoUI())
 
-        AnkoMainComponent().setContentView(this)
+//        AnkoMainComponent().setContentView(this)
 
-        val fragment = AnkoAddFragment.Companion.newInstance()
-        supportFragmentManager.beginTransaction().replace(R.id.R_id_anko_fragment, fragment).commit()
+//        val fragment = AnkoAddFragment.Companion.newInstance()
+//        supportFragmentManager.beginTransaction().replace(R.id.R_id_anko_fragment, fragment).commit()
     }
 
-    private fun ankoUI(): View {
-        return frameLayout() {
-            textView {
-                gravity = Gravity.CENTER
-                text = "anko text"
-            } .lparams(width = matchParent, height = wrapContent)
-        }
-
+    private fun ankoUI() {
+//        return frameLayout() {
+//            textView {
+//                gravity = Gravity.CENTER
+//                text = "anko text"
+//            } .lparams(width = matchParent, height = wrapContent)
+//        }
     }
 }
 

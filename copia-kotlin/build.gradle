@@ -137,8 +137,8 @@ dependencies {
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.1.4'
 
     // kotlin anko
-    def anko_version = "0.10.5"
-    implementation "org.jetbrains.anko:anko:$anko_version"  // all feature
+//    def anko_version = "0.10.5"
+//    implementation "org.jetbrains.anko:anko:$anko_version"  // all feature
     // some of the features (anko-commons anko-sdk25 anko-appcompat-v7 anko-sdk35-coroutines anko-sqlite ...)
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.5';

@@ -22,8 +22,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
-import org.jetbrains.anko.contentView
-import org.jetbrains.anko.toast
 
 class RxKotlinActivity: AppCompatActivity() {
 
@@ -34,8 +32,8 @@ class RxKotlinActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_rx)
-        binding = ActivityRxBinding.bind(contentView!!)
+        binding = ActivityRxBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         testOne()
 

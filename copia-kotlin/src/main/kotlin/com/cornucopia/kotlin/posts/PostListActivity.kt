@@ -9,15 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import com.cornucopia.kotlin.R
 import com.cornucopia.kotlin.databinding.ActivityPostListBinding
-import org.jetbrains.anko.contentView
 
 class PostListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_post_list)
-        val binding = ActivityPostListBinding.bind(contentView!!)
+        val binding = ActivityPostListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         binding.rvPosts.layoutManager =
             LinearLayoutManager(this)

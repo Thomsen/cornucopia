@@ -8,7 +8,6 @@ import com.cornucopia.kotlin.databinding.ActivityNavigationFirstBinding
 import com.jakewharton.rxbinding2.view.RxView
 import io.reactivex.functions.Action
 import io.reactivex.functions.Consumer
-import org.jetbrains.anko.contentView
 
 class NavigationFirstActivity : AppCompatActivity() {
 
@@ -17,8 +16,8 @@ class NavigationFirstActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_navigation_first);
-        binding = ActivityNavigationFirstBinding.bind(contentView!!)
+        binding = ActivityNavigationFirstBinding.inflate(layoutInflater)
+        setContentView(binding.root);
 
         RxView.clicks(binding.btnNavSecond)
             .subscribe(mToSecondConsumer, mErrorConsumer);

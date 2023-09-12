@@ -7,16 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.ViewGroup
 import android.widget.TextView
-import com.cornucopia.kotlin.R
 import com.cornucopia.kotlin.databinding.ActivityRecyMainBinding
-import org.jetbrains.anko.contentView
 
 class RecyMainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recy_main)
-        val binding = ActivityRecyMainBinding.bind(contentView!!)
+        val binding = ActivityRecyMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         binding.recyList.layoutManager =
             LinearLayoutManager(this);

@@ -12,7 +12,6 @@ import com.cornucopia.kotlin.weather.repository.ListWeather
 import com.cornucopia.kotlin.weather.utils.InjectorUtils
 import com.cornucopia.kotlin.weather.viewmodel.WeatherViewModel
 import com.cornucopia.kotlin.weather.viewmodel.WeatherViewModelFactory
-import org.jetbrains.anko.contentView
 import java.util.Date;
 
 /**
@@ -29,8 +28,8 @@ class WeatherMainActivity : AppCompatActivity(), ForecastAdapter.ForecastAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_weather_main)
-        val binding = ActivityWeatherMainBinding.bind(contentView!!)
+        val binding = ActivityWeatherMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         binding.recyForecast.layoutManager =
             LinearLayoutManager(this)

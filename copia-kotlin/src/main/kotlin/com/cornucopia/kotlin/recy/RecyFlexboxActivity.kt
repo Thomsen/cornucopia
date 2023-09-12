@@ -10,15 +10,14 @@ import android.widget.LinearLayout
 import com.cornucopia.kotlin.R
 import com.cornucopia.kotlin.databinding.ActivityRecyFlexboxBinding
 import com.google.android.flexbox.*
-import org.jetbrains.anko.contentView
 
 class RecyFlexboxActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_recy_flexbox);
-        val binding = ActivityRecyFlexboxBinding.bind(contentView!!)
+        val binding = ActivityRecyFlexboxBinding.inflate(layoutInflater)
+        setContentView(binding.root);
 
         var layoutManager = FlexboxLayoutManager(this, FlexDirection.COLUMN)
         layoutManager.flexDirection = FlexDirection.ROW  // row vertical scroll， column horizontal scroll
