@@ -6,15 +6,13 @@ import android.widget.TextView;
 
 import com.cornucopia.R;
 import com.cornucopia.application.CornucopiaApplication;
+import com.cornucopia.databinding.ActivityTestBinding;
+import com.cornucopia.transmit.ActivityTest;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class D2MainActivity extends Activity {
 
-    @BindView(R.id.text_activity_test)
     TextView tvTest;
     
     private D2CollectionUtils d2Collection;
@@ -25,11 +23,11 @@ public class D2MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        setContentView(R.layout.activity_test);
-        ButterKnife.bind(this);
 
-//        tvTest = (TextView) findViewById(R.id.text_activity_test);
+        ActivityTestBinding binding = ActivityTestBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        tvTest = binding.textActivityTest;
         
         tvTest.setText("dragger2 butterknife bind view");
         
