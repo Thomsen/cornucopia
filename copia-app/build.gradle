@@ -1,7 +1,8 @@
 println 'lifecycle copia-app build start'
 
 apply plugin: 'com.android.application'
-apply plugin: 'realm-android'
+//apply plugin: 'realm-android'
+apply plugin: 'io.realm.kotlin'
 
 // copia module
 //apply plugin: 'copia'
@@ -221,9 +222,9 @@ dependencies {
 }
 
 // Duplicate zip entry [92.jar:io/realm/BuildConfig.class]
-realm {
-    syncEnabled = true
-}
+//realm {
+//    syncEnabled = true
+//}
 
 // Duplicate zip entry [io/realm/b$a.class == 92.jar:io/realm/BaseRealm$RealmObjectContext.class]
 
