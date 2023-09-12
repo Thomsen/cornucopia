@@ -19,7 +19,7 @@ android {
         applicationId "com.cornucopia"
         minSdkVersion rootProject.ext.minSdkVer
         targetSdkVersion rootProject.ext.targetSdkVer
-        versionCode 6
+        versionCode 8
         versionName "1.6"
 
 		// :copia-app:transformClassesWithDexBuilderForDebugD8:

@@ -1,7 +1,7 @@
 println 'lifecycle copia-tools build start'
 
 apply plugin: 'groovy'
-apply plugin: 'maven'
+//apply plugin: 'maven'
 
 dependencies {
     implementation gradleApi()
@@ -9,7 +9,7 @@ dependencies {
 
     implementation 'com.android.tools.build:gradle-core:3.1.0'  // TransformManager
     implementation 'com.android.tools.build:gradle-api:3.1.0'   // Transform
-    implementation 'com.android.tools.build:gradle:3.1.0'       // AppPlugin
+    implementation 'com.android.tools.build:gradle:8.1.1'       // AppPlugin
 
     implementation 'org.javassist:javassist:3.22.0-GA'
 }
@@ -18,12 +18,14 @@ repositories {
     mavenCentral()
 }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: uri('../repo'))
-        }
-    }
-}
+// TODO maven publish when gradle upgrade
 
-apply from: 'deploy.gradle'
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            repository(url: uri('../repo'))
+//        }
+//    }
+//}
+
+//apply from: 'deploy.gradle'

@@ -8,15 +8,17 @@ import android.util.Log
 import android.view.ViewGroup
 import android.widget.TextView
 import com.cornucopia.kotlin.R
-import kotlinx.android.synthetic.main.activity_recy_main.*
+import com.cornucopia.kotlin.databinding.ActivityRecyMainBinding
+import org.jetbrains.anko.contentView
 
 class RecyMainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recy_main)
+        val binding = ActivityRecyMainBinding.bind(contentView!!)
 
-        recyList.layoutManager =
+        binding.recyList.layoutManager =
             LinearLayoutManager(this);
 
 //        var items = listOf<String>("a", "b")
@@ -29,7 +31,7 @@ class RecyMainActivity : AppCompatActivity() {
             x++;
         }
 
-        recyList.adapter = MainAdapter(items);
+        binding.recyList.adapter = MainAdapter(items);
     }
 
     /**

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Gravity
 import android.view.View
 import com.cornucopia.kotlin.R
-import kotlinx.coroutines.experimental.android.UI
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 

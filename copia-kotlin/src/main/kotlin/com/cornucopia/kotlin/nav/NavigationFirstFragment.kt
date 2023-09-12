@@ -13,7 +13,6 @@ import com.cornucopia.kotlin.R
 import com.cornucopia.kotlin.R.id.btn_to_act
 import com.jakewharton.rxbinding2.view.RxView
 import io.reactivex.functions.Consumer
-import kotlinx.android.synthetic.main.fragment_first.*
 
 
 class NavigationFirstFragment : Fragment() {

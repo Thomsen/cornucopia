@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import com.cornucopia.kotlin.R
 import com.cornucopia.kotlin.R.id.tv_second
-import kotlinx.android.synthetic.main.activity_nav_second.*
 
 class NavigationSecondActivity : AppCompatActivity() {
 

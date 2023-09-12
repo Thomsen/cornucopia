@@ -8,14 +8,16 @@
         <!--android:minSdkVersion="16"-->
         <!--android:targetSdkVersion="22" />-->
 
-    <permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     
     <application >
 
         <!-- patch to merge copia-app -->
         <activity
-                android:name="com.cornucopia.view.PatchMainActivity"
-                android:label="Third/Patch/Main" >
+            android:name="com.cornucopia.view.PatchMainActivity"
+            android:exported="false"
+            android:label="Third/Patch/Main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />

@@ -7,11 +7,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cornucopia.kotlin.R
+import com.cornucopia.kotlin.databinding.ActivityWeatherMainBinding
 import com.cornucopia.kotlin.weather.repository.ListWeather
 import com.cornucopia.kotlin.weather.utils.InjectorUtils
 import com.cornucopia.kotlin.weather.viewmodel.WeatherViewModel
 import com.cornucopia.kotlin.weather.viewmodel.WeatherViewModelFactory
-import kotlinx.android.synthetic.main.activity_weather_main.*
+import org.jetbrains.anko.contentView
 import java.util.Date;
 
 /**
@@ -29,8 +30,9 @@ class WeatherMainActivity : AppCompatActivity(), ForecastAdapter.ForecastAdapter
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_weather_main)
+        val binding = ActivityWeatherMainBinding.bind(contentView!!)
 
-        recy_forecast.layoutManager =
+        binding.recyForecast.layoutManager =
             LinearLayoutManager(this)
 
         var factory = InjectorUtils.provideViewModelFactory(this);
@@ -41,7 +43,7 @@ class WeatherMainActivity : AppCompatActivity(), ForecastAdapter.ForecastAdapter
             weatherEntries ->
             if (null != weatherEntries) {
                 mForecastAdapter = ForecastAdapter(this, weatherEntries,this)
-                recy_forecast.adapter = mForecastAdapter
+                binding.recyForecast.adapter = mForecastAdapter
             }
         });
 

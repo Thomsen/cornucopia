@@ -7,7 +7,7 @@ class PostModelViewFactory(repository: PostRepository) : ViewModelProvider.NewIn
 
     val rep = repository
 
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return PostViewModel(rep) as T
     }
 }

@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import com.cornucopia.kotlin.account.AccountManager
 import com.cornucopia.kotlin.account.AccountManagerImpl
+import com.cornucopia.kotlin.databinding.ActivityRxBinding
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage
 import com.tencent.mm.opensdk.modelmsg.WXTextObject
@@ -21,27 +22,30 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_rx.*
+import org.jetbrains.anko.contentView
 import org.jetbrains.anko.toast
 
 class RxKotlinActivity: AppCompatActivity() {
 
     val wxApi = WXAPIFactory.createWXAPI(this, AccountManager.APP_ID)
 
+    lateinit var binding: ActivityRxBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_rx)
+        binding = ActivityRxBinding.bind(contentView!!)
 
         testOne()
 
-        btn_wx_login.setOnClickListener(object : View.OnClickListener {
+        binding.btnWxLogin.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 loginWithWx()
             }
         });
 
-        btn_wx_mini.setOnClickListener { view ->
+        binding.btnWxMini.setOnClickListener { view ->
             Snackbar.make(view, "mini", Snackbar.LENGTH_SHORT).show()
 
             when (view)  {
@@ -52,7 +56,7 @@ class RxKotlinActivity: AppCompatActivity() {
             }
          }
 
-        btn_wx_share.setOnClickListener {
+        binding.btnWxShare.setOnClickListener {
             // view not use
 
             shareWx();

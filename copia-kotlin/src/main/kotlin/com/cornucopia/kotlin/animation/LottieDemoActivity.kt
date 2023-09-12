@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cornucopia.kotlin.R
 
-import kotlinx.android.synthetic.main.activity_lottie_demo.*;
 
 /**
  * Created by thom on 19/1/2018.

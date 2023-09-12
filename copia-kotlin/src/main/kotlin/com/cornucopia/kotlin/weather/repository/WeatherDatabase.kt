@@ -10,8 +10,8 @@ import com.cornucopia.kotlin.weather.viewmodel.model.Weather
  * Created by thom on 3/2/2018.
  */
 @Database(
-        entities = [(Weather::class)],
-        version = 1
+    entities = [(Weather::class)],
+    version = 1,
 )
 @TypeConverters(
     DateConverter::class

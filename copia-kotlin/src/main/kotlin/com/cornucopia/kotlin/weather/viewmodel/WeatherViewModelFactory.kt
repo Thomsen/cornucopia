@@ -15,7 +15,7 @@ class WeatherViewModelFactory: ViewModelProvider.NewInstanceFactory {
         mRepository = repository;
     }
 
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return WeatherViewModel(mRepository) as T; // as and is,
         // as: WeatherViewModelFactory cannot be cast to android.arch.lifecycle.ViewModel
     }

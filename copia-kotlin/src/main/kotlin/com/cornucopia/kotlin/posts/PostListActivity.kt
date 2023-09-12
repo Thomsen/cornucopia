@@ -8,7 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import com.cornucopia.kotlin.R
-import kotlinx.android.synthetic.main.activity_post_list.*
+import com.cornucopia.kotlin.databinding.ActivityPostListBinding
+import org.jetbrains.anko.contentView
 
 class PostListActivity : AppCompatActivity() {
 
@@ -16,8 +17,9 @@ class PostListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_post_list)
+        val binding = ActivityPostListBinding.bind(contentView!!)
 
-        rv_posts.layoutManager =
+        binding.rvPosts.layoutManager =
             LinearLayoutManager(this)
 
         var postRepository = PostRepository(PostNetworkDataSource())
@@ -35,6 +37,6 @@ class PostListActivity : AppCompatActivity() {
             }
         })
 
-        rv_posts.adapter = adapter
+        binding.rvPosts.adapter = adapter
     }
 }

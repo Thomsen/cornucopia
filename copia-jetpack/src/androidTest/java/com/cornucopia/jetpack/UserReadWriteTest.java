@@ -31,7 +31,7 @@ public class UserReadWriteTest {
 
     @Before
     public void createDB() {
-        Context context = InstrumentationRegistry.getTargetContext();
+        Context context = InstrumentationRegistry.getInstrumentation().getContext();
         db = Room.inMemoryDatabaseBuilder(context, UserDatabase.class).build();
         userDao = db.userDao();
     }

@@ -8,6 +8,7 @@
     <application>
         <activity
             android:name=".KotlinMainActivity"
+            android:exported="false"
             android:label="Kotlin/Main"
             android:theme="@style/KotlinTheme">
             <intent-filter>
@@ -16,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".recy.RecyMainActivity"
+            android:exported="false"
             android:label="Kotlin/Recy"
             android:theme="@style/KotlinTheme">
             <intent-filter>
@@ -24,8 +26,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".recy.RecyFlexboxActivity"
-                  android:label="Kotlin/RecyFlex"
-                  android:theme="@style/KotlinTheme">
+            android:exported="false"
+            android:label="Kotlin/RecyFlex"
+            android:theme="@style/KotlinTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
@@ -33,6 +36,7 @@
         </activity>
 
         <activity android:name=".animation.LottieDemoActivity"
+            android:exported="false"
             android:label="UI/Animation/Lottie"
             android:theme="@style/KotlinTheme">
             <intent-filter>
@@ -42,6 +46,7 @@
         </activity>
 
         <activity android:name=".weather.viewmodel.view.WeatherMainActivity"
+            android:exported="false"
             android:label="Third/Component/Weather"
             android:theme="@style/KotlinTheme">
             <intent-filter>
@@ -52,6 +57,7 @@
 
         <activity
             android:name=".posts.PostListActivity"
+            android:exported="false"
             android:label="Third/Component/Post"
             android:theme="@style/KotlinTheme">
             <intent-filter>
@@ -61,6 +67,7 @@
         </activity>
 
         <activity android:name=".nav.NavigationFirstActivity"
+            android:exported="false"
             android:label="Kotlin/Navigation/intent"
             android:theme="@style/KotlinTheme" >
             <intent-filter>
@@ -72,6 +79,7 @@
 
         <activity
             android:name=".nav.NavigationActivity"
+            android:exported="false"
             android:label="Kotlin/Navigation/nav"
             android:theme="@style/KotlinTheme">
             <intent-filter>
@@ -82,6 +90,7 @@
 
         <activity
             android:name=".anko.AnkoMainActivity"
+            android:exported="false"
             android:label="Kotlin/Anko/add"
             android:theme="@style/KotlinTheme">
             <intent-filter>
@@ -92,6 +101,7 @@
 
         <activity
             android:name=".RxKotlinActivity"
+            android:exported="false"
             android:label="Kotlin/Rx/one"
             android:theme="@style/KotlinTheme">
             <intent-filter>
@@ -102,6 +112,7 @@
 
         <activity
             android:name=".ml.LeakActivity"
+            android:exported="false"
             android:label="Kotlin/ML/onej"
             android:theme="@style/KotlinTheme">
             <intent-filter>
@@ -112,6 +123,7 @@
 
         <activity
             android:name=".ml.KLeakActivity"
+            android:exported="false"
             android:label="Kotlin/ML/onek"
             android:theme="@style/KotlinTheme">
             <intent-filter>
@@ -122,6 +134,7 @@
 
         <activity
             android:name=".ml.KLeakTwoActivity"
+            android:exported="false"
             android:label="Kotlin/ML/twok"
             android:theme="@style/KotlinTheme">
             <intent-filter>
@@ -132,6 +145,7 @@
 
         <activity
             android:name=".perf.AnrActivity"
+            android:exported="false"
             android:label="Kotlin/Perf/AnrAct"
             android:theme="@style/KotlinTheme">
             <intent-filter>

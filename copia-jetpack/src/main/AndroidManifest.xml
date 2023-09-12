@@ -9,6 +9,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true">
         <activity android:name="com.cornucopia.jetpack.ComponentActivity"
+            android:exported="false"
             android:label="Jetpack/User" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

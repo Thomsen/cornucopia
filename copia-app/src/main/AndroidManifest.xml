@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        package="com.cornucopia" >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.cornucopia" >
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
@@ -44,17 +44,34 @@
             android:name="com.bugsnag.android.API_KEY"
             android:value="a36d30d59be748e249b99d06162df7fa" />
 
+        <!-- library exported -->
+        <activity
+            android:name="com.github.moduth.blockcanary.ui.DisplayActivity"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@drawable/block_canary_icon"
+            android:label="@string/block_canary_display_activity_label"
+            android:taskAffinity="com.github.moduth.blockcanary"
+            android:theme="@style/block_canary_BlockCanary.Base" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <!-- Application -->
 
         <activity
             android:name=".application.LoadingActivity"
-                android:theme="@style/Theme.App.Starting" >
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".application.Cornucopia" >
+        <activity android:name=".application.Cornucopia" android:exported="false" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -64,6 +81,7 @@
 
         <activity
             android:name=".http.Communication"
+            android:exported="false"
             android:label="Http/Communication" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -72,6 +90,7 @@
         </activity>
         <activity
             android:name=".http.MiboLoginActivity"
+            android:exported="false"
             android:label="Http/Mibo Login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -80,6 +99,7 @@
         </activity>
         <activity
             android:name=".http.robospice.RobospiceActivity"
+            android:exported="false"
             android:label="Http/Robospice" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -88,17 +108,19 @@
         </activity>
 
         <service android:name=".http.robospice.RobospiceService" />
-        
-        <activity 
-            android:name=".http.socket.SocketMainActivity" 
+
+        <activity
+            android:name=".http.socket.SocketMainActivity"
+            android:exported="false"
             android:label="Http/Socket" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        <activity 
-            android:name=".http.socket.SocketNioMainActivity" 
+        <activity
+            android:name=".http.socket.SocketNioMainActivity"
+            android:exported="false"
             android:label="Http/SocketNio" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -109,6 +131,7 @@
         <!-- Aspect -->
         <activity
             android:name=".aspect.dexposed.DexposedActivity"
+            android:exported="false"
             android:label="Aspect/Dexposed" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -120,6 +143,7 @@
 
         <activity
             android:name=".lifecycle.FragmentLifecycleActivity"
+            android:exported="false"
             android:label="Basic/Lifecycle/ActivityFragmentLifecycle" >
 
             <!-- android:configChanges="orientation|keyboardHidden" > -->
@@ -132,6 +156,7 @@
 
         <activity
             android:name=".lifecycle.LaunchModeActivity"
+            android:exported="false"
             android:label="Basic/Lifecycle/LaunchMode" >
 
             <!-- android:configChanges="orientation|keyboardHidden" > -->
@@ -151,6 +176,7 @@
 
         <activity
             android:name=".lifecycle.StarterActivity"
+            android:exported="false"
             android:label="Basic/Lifecycle/LifecycleStarter" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -159,6 +185,7 @@
         </activity>
         <activity
             android:name=".storage.contacts.FetchContacts"
+            android:exported="false"
             android:label="Basic/Content Provider/FetchContacts" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -167,6 +194,7 @@
         </activity>
         <activity
             android:name=".storage.contacts.AddContacts"
+            android:exported="false"
             android:label="Basic/Content Provider/AddContacts" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -175,6 +203,7 @@
         </activity>
         <activity
             android:name=".transmit.ActivityTest"
+            android:exported="false"
             android:label="Basic/Activity/Activity Test" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -183,6 +212,7 @@
         </activity>
         <activity
             android:name=".transmit.ActivityTransmitData"
+            android:exported="false"
             android:label="Basic/Activity/Activity Transmit Data" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -193,6 +223,7 @@
         </activity>
         <activity
             android:name=".transmit.DialogIntentActivity"
+            android:exported="false"
             android:label="Basic/Activity/Activity Dialog Intent" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -211,6 +242,7 @@
 <!--        </activity>-->
         <activity
             android:name=".service.ClientActivity"
+            android:exported="false"
             android:label="Basic/Service/ClientActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -220,6 +252,7 @@
 
         <activity
             android:name=".spi.DisplayActivity"
+            android:exported="false"
             android:label="Basic/SpiDisplay" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -229,6 +262,7 @@
 
         <service
             android:name=".service.RemoteExService"
+            android:exported="false"
             android:process=":remote" >
 
             <!-- INSTALL_PARSE_FAILED_MANIFEST_MALFORMED process="remote" -->
@@ -248,6 +282,7 @@
 
         <activity
             android:name=".devices.PolicyAdminActivity"
+            android:exported="false"
             android:label="Device/Policy/General" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -257,6 +292,7 @@
 
         <receiver
             android:name=".devices.PolicyAdminActivity$PolicyAdminReceiver"
+            android:exported="false"
             android:permission="android.permission.BIND_DEVICE_ADMIN" >
             <meta-data
                 android:name="android.app.device_admin"
@@ -269,6 +305,7 @@
 
         <activity
             android:name=".devices.map.LocMainActivity"
+            android:exported="false"
             android:label="Device/Map/Loc" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -277,6 +314,7 @@
         </activity>
         <activity
             android:name=".devices.timer.TimerTaskActivity"
+            android:exported="false"
             android:label="Device/Task" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -284,14 +322,14 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".devices.timer.TimerTaskActivity$MyReceiver" >
+        <receiver android:name=".devices.timer.TimerTaskActivity$MyReceiver" android:exported="false" >
             <intent-filter>
                 <action android:name="android.intent.action.BATTERY_LOW" />
                 <action android:name="com.example.alarm" />
                 <action android:name="com.example.alarmwakeup" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".devices.timer.AlarmTimerBroadcast" >
+        <receiver android:name=".devices.timer.AlarmTimerBroadcast" android:exported="false" >
             <intent-filter>
                 <action android:name="timer_restart" />
             </intent-filter>
@@ -303,6 +341,7 @@
 
         <activity
             android:name=".di.dagger2.D2MainActivity"
+            android:exported="false"
             android:label="Di/Dagger2Main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -314,6 +353,7 @@
 
         <activity
             android:name=".graphics.compress.PictureCompressActivity"
+            android:exported="false"
             android:label="Graphics/PictureCompress" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -322,6 +362,7 @@
         </activity>
         <activity
             android:name=".graphics.fresco.FrescoDemoActivity"
+            android:exported="false"
             android:label="Graphics/PictureFresco" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -330,15 +371,17 @@
         </activity>
         <activity
             android:name=".graphics.glide.GlideDemoActivity"
+            android:exported="false"
             android:label="Graphics/PictureGlide" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
+
         <activity
             android:name=".graphics.chart.LineChartActivity"
+            android:exported="false"
             android:label="Graphics/Chart/Line" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -347,6 +390,7 @@
         </activity>
 
         <activity android:name=".graphics.opengl.OpenGLES31Activity"
+            android:exported="false"
             android:label="Graphics/OpenGL/ES3" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -358,6 +402,7 @@
 
         <activity
             android:name=".multimedia.SpeakAndTextActivity"
+            android:exported="false"
             android:label="Multimedia/Voice/STTS"
             android:windowSoftInputMode="adjustResize" >
             <intent-filter>
@@ -367,6 +412,7 @@
         </activity>
         <activity
             android:name=".multimedia.CameraShowActivity"
+            android:exported="false"
             android:label="Multimedia/Camera"
             android:windowSoftInputMode="adjustResize" >
             <intent-filter>
@@ -383,6 +429,7 @@
 
         <activity
             android:name=".parser.ParserGsonActivity"
+            android:exported="false"
             android:label="Parser/Gson" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -393,6 +440,7 @@
         <!-- Storage -->
         <activity
             android:name=".storage.ticketsmanager.ViewTicketsActivity"
+            android:exported="false"
             android:label="Storage/SQLite/Add Tickets" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -401,6 +449,7 @@
         </activity>
         <activity
             android:name=".storage.ticketsmanager.ViewTicketsListActivity"
+            android:exported="false"
             android:label="Storage/SQLite/Add Tickets List" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -411,9 +460,10 @@
         </activity>
         <activity android:name=".storage.ticketsmanager.TicketsManagerActivity" >
         </activity>
-        
+
         <activity
             android:name="com.cornucopia.storage.deadlock.TicketDeadlockActivity"
+            android:exported="false"
             android:label="Storage/SQLite/Deadlock" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -445,6 +495,7 @@
 
         <activity
             android:name=".ui.html.HtmlUI"
+            android:exported="false"
             android:label="UI/Html" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -453,6 +504,7 @@
         </activity>
         <activity
             android:name=".ui.dynamic.ExpandlistDemo"
+            android:exported="false"
             android:label="UI/Dynamic/Expandlist" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -461,6 +513,7 @@
         </activity>
         <activity
             android:name=".ui.dynamic.SearchbarDemo"
+            android:exported="false"
             android:label="UI/Dynamic/SearchBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -469,6 +522,7 @@
         </activity>
         <activity
             android:name=".ui.dynamic.DynamicMenuMainActivity"
+            android:exported="false"
             android:label="UI/Dynamic/Menu" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -477,6 +531,7 @@
         </activity>
         <activity
             android:name=".ui.fragment.ArticleActivity"
+            android:exported="false"
             android:label="UI/Fragment/Article" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -485,6 +540,7 @@
         </activity>
         <activity
             android:name=".ui.fragment.MenuFragmentActivity"
+            android:exported="false"
             android:label="UI/Fragment/Menu" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -493,6 +549,7 @@
         </activity>
         <activity
             android:name=".ui.ThermometerActivity"
+            android:exported="false"
             android:label="UI/Custom/Thermometer" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -501,15 +558,17 @@
         </activity>
         <activity
             android:name=".ui.drag.DragMainActivity"
+            android:exported="false"
             android:label="UI/Drag/DragMain" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
+
         <activity
             android:name=".ui.list.SwipeRefreshActivity"
+            android:exported="false"
             android:label="UI/List/SwipeRefresh" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -518,24 +577,27 @@
         </activity>
         <activity
             android:name=".ui.list.PullPushRefreshDemo"
+            android:exported="false"
             android:label="UI/List/PullPushRefresh" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
+
         <activity
             android:name=".ui.list.RecyclerListActivity"
+            android:exported="false"
             android:label="UI/List/Recycler" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
             </intent-filter>
         </activity>
-        
+
         <activity
             android:name=".ui.material.DemoButtonActivity"
+            android:exported="false"
             android:label="UI/Material/Button" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -544,6 +606,7 @@
         </activity>
         <activity
             android:name=".ui.material.DemoEditTextActivity"
+            android:exported="false"
             android:label="UI/Material/EditText" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -552,6 +615,7 @@
         </activity>
         <activity
             android:name=".ui.compat.ToolbarDemoActivity"
+            android:exported="false"
             android:label="UI/Compat/Toolbar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -560,6 +624,7 @@
         </activity>
         <activity
             android:name=".ui.tree.OrgTreeMainActivity"
+            android:exported="false"
             android:label="UI/Tree/Orgtree" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -568,6 +633,7 @@
         </activity>
         <activity
             android:name=".web.WebBrowserDemo"
+            android:exported="false"
             android:label="Web/WebBrowser" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -576,6 +642,7 @@
         </activity>
         <activity
             android:name=".web.NativeInvokeJsToNative"
+            android:exported="false"
             android:label="Web/NativeInvokeJsToNative" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -584,6 +651,7 @@
         </activity>
         <activity
             android:name=".web.JsInvokeNative"
+            android:exported="false"
             android:label="Web/JsInvokeNative" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -592,6 +660,7 @@
         </activity>
         <activity
             android:name=".event.EeventBusMainActivity"
+            android:exported="false"
             android:label="Event/EventBus" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -602,6 +671,7 @@
         </activity>
         <activity
             android:name=".event.rxjava.RxjavaActivity"
+            android:exported="false"
             android:label="Event/Rxjava" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -613,6 +683,7 @@
 
         <activity
             android:name=".search.loader.AppListActivity"
+            android:exported="false"
             android:label="Search/Applist" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -621,6 +692,7 @@
         </activity>
         <activity
             android:name=".search.rxjava.RxAppListActivity"
+            android:exported="false"
             android:label="Search/RxApplist" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -655,6 +727,7 @@
         <!-- mvp -->
         <activity
             android:name="com.cornucopia.mvp.TasksActivity"
+            android:exported="false"
             android:label="Third/MVP/Todo" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

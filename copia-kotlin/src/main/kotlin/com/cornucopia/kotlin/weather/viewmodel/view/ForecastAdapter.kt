@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.cornucopia.kotlin.R
 import com.cornucopia.kotlin.weather.repository.ListWeather
-import kotlinx.android.synthetic.main.layout_forecast_item.view.*
 import java.util.Date;
 
 /**
@@ -51,7 +50,7 @@ class ForecastAdapter : RecyclerView.Adapter<ForecastAdapter.ForecastHolder> {
 
         init {
             itemDate = itemView!!.findViewById(R.id.tv_forecast_date)
-            itemInterval = itemView!!.tv_forecast_interval
+            itemInterval = itemView!!.findViewById(R.id.tv_forecast_interval)
         }
     }
 

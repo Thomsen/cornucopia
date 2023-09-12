@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.cornucopia.kotlin.R
+import com.cornucopia.kotlin.databinding.ActivityRecyFlexboxBinding
 import com.google.android.flexbox.*
-import kotlinx.android.synthetic.main.activity_recy_flexbox.*
+import org.jetbrains.anko.contentView
 
 class RecyFlexboxActivity: AppCompatActivity() {
 
@@ -17,13 +18,14 @@ class RecyFlexboxActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_recy_flexbox);
+        val binding = ActivityRecyFlexboxBinding.bind(contentView!!)
 
         var layoutManager = FlexboxLayoutManager(this, FlexDirection.COLUMN)
         layoutManager.flexDirection = FlexDirection.ROW  // row vertical scroll， column horizontal scroll
         layoutManager.justifyContent = JustifyContent.FLEX_END
         layoutManager.flexWrap = FlexWrap.WRAP
 
-        recy_flexbox.layoutManager = layoutManager
+        binding.recyFlexbox.layoutManager = layoutManager
 
 
         var items: MutableList<Int> = mutableListOf()
@@ -33,7 +35,7 @@ class RecyFlexboxActivity: AppCompatActivity() {
                 items.add(R.mipmap.ic_nine_table)
             }
         }
-        recy_flexbox.adapter = ImageAdapter(items)
+        binding.recyFlexbox.adapter = ImageAdapter(items)
 
     }
 
