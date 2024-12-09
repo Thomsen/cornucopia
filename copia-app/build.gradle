@@ -21,8 +21,8 @@ android {
         applicationId "com.cornucopia"
         minSdkVersion rootProject.ext.minSdkVer
         targetSdkVersion rootProject.ext.targetSdkVer
-        versionCode 11
-        versionName "1.7"
+        versionCode 13
+        versionName "1.9"
 
 		// :copia-app:transformClassesWithDexBuilderForDebugD8:
 		// Invoke-customs are only supported starting with Android O (--min-api 26)
@@ -148,14 +148,15 @@ dependencies {
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation "com.google.android.play:core:1.6.4"
+//    implementation "com.google.android.play:core:1.10.3"
+    implementation 'com.google.android.play:feature-delivery:2.1.0'
 
-    implementation 'com.android.volley:volley:1.1.0'
+    implementation 'com.android.volley:volley:1.2.1'
     implementation 'com.squareup.okhttp3:okhttp:3.6.0'
     implementation 'com.squareup.okio:okio:1.6.0'
     implementation 'org.greenrobot:eventbus:3.0.0'
     implementation 'com.octo.android.robospice:robospice:1.4.14'
-    implementation 'com.taobao.android:dexposed:0.1.1@aar'
+    implementation 'com.github.alibaba:dexposed:0.1.8'
     implementation 'com.squareup.retrofit2:retrofit:2.2.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
 //    implementation 'io.reactivex:rxjava:1.1.10'
@@ -206,14 +207,16 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.0-alpha02'
 
     // sqlite
-    debugImplementation 'com.amitshekhar.android:debug-db:1.0.0'
+    debugImplementation 'com.github.amitshekhariitbhu.Android-Debug-Database:debug-db:1.0.7'
 
-    implementation ('io.flowup:android-sdk:0.3.0') {
+    // depend gcm:play-service-base conflict feature-delivery
+    implementation ('io.flowup:android-sdk:1.0.0') {
         exclude module: 'support-v4'
+        exclude module: 'play-services-gcm'
     }
-    testImplementation 'io.flowup:android-sdk-no-op:0.3.0'
+    testImplementation 'io.flowup:android-sdk-no-op:1.0.0'
 
-    implementation 'com.tencent:mmkv:1.0.10'
+    implementation 'com.tencent:mmkv:2.0.1'
 
     testImplementation 'junit:junit:4.12'
 

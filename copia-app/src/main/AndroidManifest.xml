@@ -292,8 +292,9 @@
 
         <receiver
             android:name=".devices.PolicyAdminActivity$PolicyAdminReceiver"
-            android:exported="false"
-            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            android:exported="false">
+<!--            android:permission="android.permission.BIND_DEVICE_ADMIN" >-->
+            <!-- aws device farm not allow -->
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/device_admin" />

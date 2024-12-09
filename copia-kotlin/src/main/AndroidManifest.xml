@@ -10,6 +10,7 @@
             android:name=".KotlinMainActivity"
             android:exported="false"
             android:label="Kotlin/Main"
+            android:hardwareAccelerated="false"
             android:theme="@style/KotlinTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -147,6 +148,17 @@
             android:name=".perf.AnrActivity"
             android:exported="false"
             android:label="Kotlin/Perf/AnrAct"
+            android:theme="@style/KotlinTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cornucopia.CATEGORY_CORNUCOPIA" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".barrier.BarrierActivity"
+            android:exported="false"
+            android:label="Kotlin/Barrier/Main"
             android:theme="@style/KotlinTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

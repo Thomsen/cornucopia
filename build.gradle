@@ -36,8 +36,9 @@ buildscript {
 
     repositories {
         google()
-        jcenter()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
+
         //
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         //maven { url "https://maven.eveoh.nl/content/repositories/releases/" }
@@ -66,10 +67,10 @@ buildscript {
         //classpath "org.codehaus.groovy:groovy-all:2.4.10"
 
         // upload jcenter
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
+//        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
         classpath 'com.github.dcendents:android-maven-plugin:1.2'
 
-        classpath "com.cornucopia.tools:copia-tools:${versions.copiaTools}"
+//        classpath "com.cornucopia.tools:copia-tools:${versions.copiaTools}"
     }
 }
 
@@ -82,7 +83,6 @@ println 'lifecycle cornucopia build start'
 allprojects {
     repositories {
         google()
-        jcenter()
         //mavenLocal()
         mavenCentral()
         maven { url "https://jitpack.io" }
@@ -109,7 +109,7 @@ ext {
     // java version 8 (Supplier Predicate Function ...) need --min-api 24
 
     minSdkVer = 23  // android 6.0
-    targetSdkVer = 33
+    targetSdkVer = 34
     compileSdkVersion = 34
 
 
